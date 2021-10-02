@@ -44,7 +44,7 @@ public class TextUi {
         out.print(PROMPT_MESSAGE);
         String input = in.nextLine();
         // Keep getting input until its not empty
-        while (input.trim().isEmpty()){
+        while (input.trim().isEmpty()) {
             input = in.nextLine();
         }
         return input;
@@ -60,7 +60,7 @@ public class TextUi {
     /**
      * Prints to the screen that you don't understand the commands.
      */
-    public void printUnknownCommandMessage(){
+    public void printUnknownCommandMessage() {
         out.println(INVALID_COMMAND_MESSAGE);
     }
 }
