@@ -1,5 +1,8 @@
 package seedu.duke.ui;
 
+import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.ADD_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.GOODBYE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_COMMAND_MESSAGE;
 import static seedu.duke.common.Messages.LOGO;
@@ -62,5 +65,26 @@ public class TextUi {
      */
     public void printUnknownCommandMessage() {
         out.println(INVALID_COMMAND_MESSAGE);
+    }
+
+    /**
+     * Prints Goodbye message to user.
+     */
+    public void printAddElderlyMessage() {
+        out.println(ADD_ELDERLY_MESSAGE);
+    }
+
+    /**
+     * Prints Goodbye message to user.
+     */
+    public void printAddAppointmentMessage() {
+        out.println(ADD_APPOINTMENT_MESSAGE);
+    }
+
+    /**
+     * Prints Goodbye message to user.
+     */
+    public void printAddMedicineMessage() {
+        out.println(ADD_MEDICINE_MESSAGE);
     }
 }

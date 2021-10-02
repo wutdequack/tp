@@ -41,4 +41,18 @@ public class Messages {
      */
     public static final String GOODBYE_MESSAGE = "Bye command has been recognized. Goodbye!";
 
+    /**
+     * Used when elderly has been added.
+     */
+    public static final String ADD_ELDERLY_MESSAGE = "Elderly has been added!";
+
+    /**
+     * Used when appointment has been added.
+     */
+    public static final String ADD_APPOINTMENT_MESSAGE = "Appointment has been added!";
+
+    /**
+     * Used when medicine has been added.
+     */
+    public static final String ADD_MEDICINE_MESSAGE = "Medicine has been added!";
 }
