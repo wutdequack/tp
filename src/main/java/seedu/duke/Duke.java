@@ -15,6 +15,7 @@ import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
 import static seedu.duke.common.MagicValues.INDEX_OF_PURPOSE;
 import static seedu.duke.common.MagicValues.INDEX_OF_TIME;
 import static seedu.duke.common.MagicValues.LENGTH_IF_PURPOSE_EXISTS;
+import static seedu.duke.common.MagicValues.ui;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -34,7 +35,6 @@ public class Duke {
     public static Boolean toContinue = true;
 
     private ElderlyList elderlyHelperFunction;
-    private TextUi ui;
 
     /**
      * Main entry-point for the java.duke.Duke application.
