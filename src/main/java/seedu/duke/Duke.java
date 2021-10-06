@@ -16,10 +16,12 @@ import static seedu.duke.common.MagicValues.INDEX_OF_PURPOSE;
 import static seedu.duke.common.MagicValues.INDEX_OF_TIME;
 import static seedu.duke.common.MagicValues.LENGTH_IF_PURPOSE_EXISTS;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import seedu.duke.common.Elderly;
 import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
+import seedu.duke.list.ElderlyList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
 
@@ -31,6 +33,7 @@ public class Duke {
      */
     public static Boolean toContinue = true;
 
+    private ElderlyList elderlyHelperFunction;
     private TextUi ui;
 
     /**
@@ -53,6 +56,8 @@ public class Duke {
      */
     private void start() {
         ui = new TextUi();
+        elderlyHelperFunction = new ElderlyList();
+        elderlyArrayList = new ArrayList<Elderly>();
         ui.printWelcomeMessage();
     }
 
@@ -91,19 +96,19 @@ public class Duke {
             handleByeSequence();
             break;
         case ADD_MEDICINE:
-            addMedicine(userLine);
+            elderlyHelperFunction.addMedicine(userLine);
             break;
         case VIEW_MEDICINE:
-            viewMedicine(userLine);
+            elderlyHelperFunction.viewMedicine(userLine);
             break;
         case ADD_APPOINTMENT:
-            addAppointment(userLine);
+            elderlyHelperFunction.addAppointment(userLine);
             break;
         case VIEW_APPOINTMENT:
-            viewAppointment(userLine);
+            elderlyHelperFunction.viewAppointment(userLine);
             break;
         case ADD_ELDERLY:
-            addElderly(userLine);
+            elderlyHelperFunction.addElderly(userLine);
             break;
         default:
             // Command is not recognized
@@ -111,120 +116,6 @@ public class Duke {
             break;
         }
 
-    }
-
-    /**
-     * Adds the elderly into the elderly array list.
-     *
-     * @param userLine Line that is inputted by the user.
-     */
-    public void addElderly(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        String elderlyName = paramList[1];
-        elderlyArrayList.add(new Elderly(elderlyName));
-        ui.printAddElderlyMessage();
-    }
-
-    /**
-     * Adds the medicine to the given elderly based on the input.
-     *
-     * @param userLine Line that is inputted by the user.
-     */
-    public void addMedicine(String userLine) {
-        String[] paramList = userLine.split(" [nmf]/");
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        String medicineName = paramList[INDEX_OF_MEDICINE_NAME];
-        String frequency = paramList[INDEX_OF_FREQUENCY];
-        elderly.addMedicine(new Medicine(medicineName, frequency));
-        ui.printAddMedicineMessage();
-    }
-
-    /**
-     * Views all medicine the elderly needs to take based on the input.
-     *
-     * @param userLine Line that is inputted by the user.
-     */
-    public void viewMedicine(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        printMedicines(elderly);
-    }
-
-    /**
-     * Prints all the medicine, given the elderly.
-     *
-     * @param elderly The elderly in question.
-     */
-    public void printMedicines(Elderly elderly) {
-        int counter = 1;
-        System.out.println("Medicine of " + elderly.getName() + " are shown below:");
-        for (Medicine medicine : elderly.getMedicines()) {
-            System.out.format("% 3d.", counter);
-            System.out.println(medicine);
-            counter++;
-        }
-    }
-
-    /**
-     * Adds the appointment to the given elderly based on the input.
-     *
-     * @param userLine Line that is inputted by the user.
-     */
-    public void addAppointment(String userLine) {
-        String[] paramList = userLine.split(" [nldtp]/");
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        String location = paramList[INDEX_OF_LOCATION];
-        String date = paramList[INDEX_OF_DATE];
-        String time = paramList[INDEX_OF_TIME];
-        String purpose;
-        if (paramList.length == LENGTH_IF_PURPOSE_EXISTS) {
-            purpose = paramList[INDEX_OF_PURPOSE];
-        } else {
-            purpose = "general checkup";
-        }
-        elderly.addAppointment(new Appointment(location, date, time, purpose));
-        ui.printAddAppointmentMessage();
-    }
-
-    /**
-     * Views all appointments the elderly needs to take based on the input.
-     *
-     * @param userLine Line that is inputted by the user.
-     */
-    public void viewAppointment(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        printAppointments(elderly);
-    }
-
-    /**
-     * Prints all the appointments, given the elderly.
-     *
-     * @param elderly The elderly in question.
-     */
-    public void printAppointments(Elderly elderly) {
-        int counter = 1;
-        System.out.println("Appointments of " + elderly.getName() + " are shown below:");
-        for (Appointment appointment : elderly.getAppointments()) {
-            System.out.format("% 3d.", counter);
-            System.out.println(appointment);
-            counter++;
-        }
-    }
-
-    public Elderly getElderly(String name) {
-        int counter = 0;
-        for (Elderly elderly : elderlyArrayList) {
-            if (Objects.equals(elderly.getName(), name)) {
-                break;
-            }
-            counter++;
-        }
-        return elderlyArrayList.get(counter);
     }
 
 }

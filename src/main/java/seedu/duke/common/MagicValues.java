@@ -1,6 +1,7 @@
 package seedu.duke.common;
 
 import java.util.ArrayList;
+import seedu.duke.ui.TextUi;
 
 public class MagicValues {
     /**
@@ -32,5 +33,6 @@ public class MagicValues {
     /**
      * Elderly arraylist.
      */
-    public static ArrayList<Elderly> elderlyArrayList = new ArrayList<Elderly>();
+    public static ArrayList<Elderly> elderlyArrayList;
+    public static TextUi ui;
 }
