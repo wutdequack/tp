@@ -1,1 +1,10 @@
+addelderly n/tan
+addelderly n/lim
+addmed n/tan m/panadol f/once a day
+addmed n/tan m/azheitynine f/every hour
+viewmed n/tan
+viewmed n/lim
+addappt n/tan l/ktph d/1st jan t/1000 p/eyecheckup
+addappt n/tan l/ktph d/2nd feb t/1500
+viewappt n/tan
 bye
