@@ -1,3 +1,5 @@
+package seedu.duke;
+
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
 import static seedu.duke.common.MagicValues.ADD_ELDERLY;
 import static seedu.duke.common.MagicValues.ADD_MEDICINE;
