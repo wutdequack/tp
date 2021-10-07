@@ -55,4 +55,15 @@ public class Messages {
      * Used when medicine has been added.
      */
     public static final String ADD_MEDICINE_MESSAGE = "Medicine has been added!";
+
+    /**
+     * Used when Next-Of_kin has been added.
+     */
+    public static final String ADD_NOK_MESSAGE = "Next-of-Kin has been added!";
+
+    /**
+     * Used when record of elderly has been added.
+     */
+    public static final String ADD_RECORD_MESSAGE = "Record of elderly has been added!";
+
 }

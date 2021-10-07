@@ -1,5 +1,3 @@
-package seedu.duke;
-
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
 import static seedu.duke.common.MagicValues.ADD_ELDERLY;
 import static seedu.duke.common.MagicValues.ADD_MEDICINE;
@@ -15,6 +13,14 @@ import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
 import static seedu.duke.common.MagicValues.INDEX_OF_PURPOSE;
 import static seedu.duke.common.MagicValues.INDEX_OF_TIME;
 import static seedu.duke.common.MagicValues.LENGTH_IF_PURPOSE_EXISTS;
+import static seedu.duke.common.MagicValues.ADD_NOK;
+import static seedu.duke.common.MagicValues.ADD_RECORD;
+import static seedu.duke.common.MagicValues.VIEW_NOK;
+import static seedu.duke.common.MagicValues.VIEW_RECORD;
+
+
+
+
 import static seedu.duke.common.MagicValues.ui;
 
 import java.util.ArrayList;
@@ -25,6 +31,8 @@ import seedu.duke.common.Medicine;
 import seedu.duke.list.ElderlyList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
+
+
 
 
 public class Duke {
@@ -109,6 +117,18 @@ public class Duke {
             break;
         case ADD_ELDERLY:
             elderlyHelperFunction.addElderly(userLine);
+            break;
+        case ADD_NOK:
+            elderlyHelperFunction.addNok(userLine);
+            break;
+        case VIEW_NOK:
+            elderlyHelperFunction.viewNok(userLine);
+            break;
+        case ADD_RECORD:
+            elderlyHelperFunction.addRecord(userLine);
+            break;
+        case VIEW_RECORD:
+            elderlyHelperFunction.viewRecord(userLine);
             break;
         default:
             // Command is not recognized
