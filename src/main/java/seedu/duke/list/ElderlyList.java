@@ -1,20 +1,35 @@
 package seedu.duke.list;
 
+import seedu.duke.common.Elderly;
+import seedu.duke.common.Medicine;
+import seedu.duke.common.Appointment;
+import seedu.duke.common.NextOfKin;
+import seedu.duke.common.Record;
+
+
+import java.util.Objects;
+
+//import seedu.duke.common.*;
+
 import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_ADDRESS;
 import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
 import static seedu.duke.common.MagicValues.INDEX_OF_LOCATION;
+import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_PHONE_NUMBER;
 import static seedu.duke.common.MagicValues.INDEX_OF_MEDICINE_NAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_ADDRESS;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_EMAIL;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_PHONE_NUMBER;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_RELATIONSHIP;
 import static seedu.duke.common.MagicValues.INDEX_OF_PURPOSE;
 import static seedu.duke.common.MagicValues.INDEX_OF_TIME;
 import static seedu.duke.common.MagicValues.LENGTH_IF_PURPOSE_EXISTS;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_NAME;
 import static seedu.duke.common.MagicValues.elderlyArrayList;
+
 import static seedu.duke.common.MagicValues.ui;
 
-import java.util.Objects;
-import seedu.duke.common.Appointment;
-import seedu.duke.common.Elderly;
-import seedu.duke.common.Medicine;
 
 public class ElderlyList {
 
@@ -98,7 +113,7 @@ public class ElderlyList {
     }
 
     /**
-     * Views all appointments the elderly needs to take based on the input.
+     * Views all appointments the elderly has based on the input.
      *
      * @param userLine Line that is inputted by the user.
      */
@@ -122,6 +137,83 @@ public class ElderlyList {
             System.out.println(appointment);
             counter++;
         }
+    }
+
+    /**
+     * Adds Next-Of-Kin information to the given elderly based on the input.
+     *
+     * @param userLine Line that is inputted by user.
+     */
+    public void addNok(String userLine) {
+        String[] paramList = userLine.split(" [nkpear]/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        String nokName = paramList[INDEX_OF_NOK_NAME];
+        String nokPhoneNumber = paramList[INDEX_OF_NOK_PHONE_NUMBER];
+        String nokEmail = paramList[INDEX_OF_NOK_EMAIL];
+        String nokAddress = paramList[INDEX_OF_NOK_ADDRESS];
+        String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
+        elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
+        ui.printAddNokMessage();
+    }
+
+    /**
+     * Views the Next-Of_kin information of the elderly based on input.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void viewNok(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        printNextOfKin(elderly);
+    }
+
+    /**
+     * Prints the Next-Of-Kin information, given the elderly.
+     *
+     * @param elderly The elderly in question.
+     */
+    public void printNextOfKin(Elderly elderly) {
+        System.out.println("Details of " + elderly.getName() + " Next-of-Kin are shown below:");
+        System.out.println(elderly.getNextOfKin());
+    }
+
+    /**
+     * Adds information to the given elderly based on the input.
+     *
+     * @param userLine Line that is inputted by user.
+     */
+    public void addRecord(String userLine) {
+        String[] paramList = userLine.split(" [npa]/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        String elderlyPhoneNumber = paramList[INDEX_OF_ELDERLY_PHONE_NUMBER];
+        String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
+        elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
+        ui.printAddRecordMessage();
+    }
+
+    /**
+     * Views the information of the elderly based on input.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void viewRecord(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        printRecord(elderly);
+    }
+
+    /**
+     * Prints the information, given the elderly.
+     *
+     * @param elderly The elderly in question.
+     */
+    public void printRecord(Elderly elderly) {
+        System.out.println("Record of " + elderly.getName() + " is shown below:");
+        System.out.println(elderly.getRecord());
     }
 
     /**
