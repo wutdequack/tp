@@ -83,7 +83,7 @@ public class Elderly {
 
     public void setBirthday(String birthday) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try{
+        try {
             this.birthday = simpleDateFormat.parse(birthday);
         } catch (ParseException e) {
             System.out.println("Error in parsing");

@@ -11,7 +11,7 @@ import seedu.duke.list.ElderlyList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
 
-import static seedu.duke.common.MagicValues.*;
+import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
 import static seedu.duke.common.MagicValues.ADD_ELDERLY;
 import static seedu.duke.common.MagicValues.ADD_MEDICINE;
