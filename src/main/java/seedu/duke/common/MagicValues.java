@@ -17,6 +17,13 @@ public class MagicValues {
     public static final String VIEW_NOK = "VIEWNOK";
     public static final String ADD_RECORD = "ADDREC";
     public static final String VIEW_RECORD = "VIEWREC";
+    public static final String SET_BIRTHDAY = "SETBIRTHDAY";
+    public static final String VIEW_BIRTHDAY = "VIEWBIRTHDAY";
+    public static final String SET_BLOOD_PRESSURE = "SETBLOODPRESSURE";
+    public static final String VIEW_BLOOD_PRESSURE = "VIEWBLOODPRESSURE";
+    public static final String SET_VACCINATED = "SETVACCINATED";
+    public static final String VIEW_VACCINATION = "VIEWVACCINATION";
+    public static final String UPDATE_VACCINATATION_STATUS = "UPDATEVACCINATIONSTATUS";
 
 
     /**
@@ -38,6 +45,10 @@ public class MagicValues {
     public static final int INDEX_OF_NOK_ADDRESS = 5;
     public static final int INDEX_OF_NOK_RELATIONSHIP = 6;
     public static final int LENGTH_IF_PURPOSE_EXISTS = 6;
+    public static final int INDEX_OF_SYSTOLIC_PRESSURE = 2;
+    public static final int INDEX_OF_DIASTOLIC_PRESSURE = 3;
+    public static final int INDEX_OF_BIRTHDAY = 2;
+    public static final int INDEX_OF_VACCINATED_STATUS = 2;
 
 
 

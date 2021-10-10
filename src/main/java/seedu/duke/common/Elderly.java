@@ -1,6 +1,9 @@
 package seedu.duke.common;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Elderly {
@@ -11,6 +14,10 @@ public class Elderly {
     protected ArrayList<Record> records = new ArrayList<Record>();
 
     protected String name;
+
+    private double[] bloodPressure;
+    private boolean isVaccinated;
+    private Date birthday;
 
     public Elderly(String name) {
         this.name = name;
@@ -52,5 +59,40 @@ public class Elderly {
         return records;
     }
 
+    public void setBloodPressure(double systolic, double diastolic) {
+        bloodPressure = new double[2];
+        bloodPressure[0] = systolic;
+        bloodPressure[1] = diastolic;
+    }
+
+    public double[] getBloodPressure() {
+        return bloodPressure;
+    }
+
+    public void setVaccinated() {
+        isVaccinated = true;
+    }
+
+    public void updateVaccinationStatus(boolean vaccinated) {
+        isVaccinated = vaccinated;
+    }
+
+    public boolean isVaccinated() {
+        return isVaccinated;
+    }
+
+    public void setBirthday(String birthday) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            this.birthday = simpleDateFormat.parse(birthday);
+        } catch (ParseException e) {
+            System.out.println("Error in parsing");
+            // todo : to be handled later
+        }
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
 }
 

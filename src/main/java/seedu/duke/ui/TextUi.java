@@ -14,6 +14,9 @@ import static seedu.duke.common.Messages.LOGO;
 import static seedu.duke.common.Messages.GOODBYE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_COMMAND_MESSAGE;
 import static seedu.duke.common.Messages.ADD_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.SET_VACCINATED_MESSAGE;
+import static seedu.duke.common.Messages.SET_BIRTHDAY_MESSAGE;
+import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
 
 public class TextUi {
     private final Scanner in;
@@ -25,7 +28,8 @@ public class TextUi {
 
     /**
      * Sets the default constructor for interaction with UI.
-     * @param in A Scanner object.
+     *
+     * @param in  A Scanner object.
      * @param out A PrintStream object.
      */
     public TextUi(InputStream in, PrintStream out) {
@@ -43,6 +47,7 @@ public class TextUi {
 
     /**
      * Prompts the user for input and returns the received input.
+     *
      * @return Line entered by the user.
      */
     public String getUserInput() {
@@ -96,5 +101,17 @@ public class TextUi {
 
     public void printAddRecordMessage() {
         out.println(ADD_RECORD_MESSAGE);
+    }
+
+    public void printSetVaccinationMessage() {
+        out.println(SET_VACCINATED_MESSAGE);
+    }
+
+    public void printSetBirthdayMessage() {
+        out.println(SET_BIRTHDAY_MESSAGE);
+    }
+
+    public void printSetBloodPressureMessage() {
+        out.println(SET_BLOOD_PRESSURE_MESSAGE);
     }
 }

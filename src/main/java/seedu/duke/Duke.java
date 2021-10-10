@@ -1,5 +1,17 @@
 package seedu.duke;
 
+
+import java.util.ArrayList;
+import java.util.Objects;
+
+import seedu.duke.common.Elderly;
+import seedu.duke.common.Appointment;
+import seedu.duke.common.Medicine;
+import seedu.duke.list.ElderlyList;
+import seedu.duke.ui.TextUi;
+import seedu.duke.parser.Parser;
+
+import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
 import static seedu.duke.common.MagicValues.ADD_ELDERLY;
 import static seedu.duke.common.MagicValues.ADD_MEDICINE;
@@ -19,22 +31,12 @@ import static seedu.duke.common.MagicValues.ADD_NOK;
 import static seedu.duke.common.MagicValues.ADD_RECORD;
 import static seedu.duke.common.MagicValues.VIEW_NOK;
 import static seedu.duke.common.MagicValues.VIEW_RECORD;
-
-
-
-
-import static seedu.duke.common.MagicValues.ui;
-
-import java.util.ArrayList;
-import java.util.Objects;
-import seedu.duke.common.Elderly;
-import seedu.duke.common.Appointment;
-import seedu.duke.common.Medicine;
-import seedu.duke.list.ElderlyList;
-import seedu.duke.ui.TextUi;
-import seedu.duke.parser.Parser;
-
-
+import static seedu.duke.common.MagicValues.VIEW_BLOOD_PRESSURE;
+import static seedu.duke.common.MagicValues.SET_BLOOD_PRESSURE;
+import static seedu.duke.common.MagicValues.VIEW_BIRTHDAY;
+import static seedu.duke.common.MagicValues.SET_BIRTHDAY;
+import static seedu.duke.common.MagicValues.SET_VACCINATED;
+import static seedu.duke.common.MagicValues.VIEW_VACCINATION;
 
 
 public class Duke {
@@ -132,6 +134,25 @@ public class Duke {
         case VIEW_RECORD:
             elderlyHelperFunction.viewRecord(userLine);
             break;
+        case VIEW_BLOOD_PRESSURE:
+            elderlyHelperFunction.viewBloodPressure(userLine);
+            break;
+        case SET_BLOOD_PRESSURE:
+            elderlyHelperFunction.setBloodPressure(userLine);
+            break;
+        case VIEW_BIRTHDAY:
+            elderlyHelperFunction.viewBirthday(userLine);
+            break;
+        case SET_BIRTHDAY:
+            elderlyHelperFunction.setBirthday(userLine);
+            break;
+        case SET_VACCINATED:
+            elderlyHelperFunction.setVaccinated(userLine);
+            break;
+        case VIEW_VACCINATION:
+            elderlyHelperFunction.getVaccinationStatus(userLine);
+            break;
+
         default:
             // Command is not recognized
             ui.printUnknownCommandMessage();
