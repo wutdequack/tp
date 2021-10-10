@@ -4,7 +4,19 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-import static seedu.duke.common.Messages.*;
+import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
+import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
+import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.WELCOME_MESSAGE;
+import static seedu.duke.common.Messages.PROMPT_MESSAGE;
+import static seedu.duke.common.Messages.LOGO;
+import static seedu.duke.common.Messages.GOODBYE_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_COMMAND_MESSAGE;
+import static seedu.duke.common.Messages.ADD_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.SET_VACCINATED_MESSAGE;
+import static seedu.duke.common.Messages.SET_BIRTHDAY_MESSAGE;
+import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
 
 public class TextUi {
     private final Scanner in;

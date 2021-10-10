@@ -217,7 +217,7 @@ public class ElderlyList {
     }
 
     /**
-     * Views the blood pressure of the elderly
+     * Views the blood pressure of the elderly.
      *
      * @param userLine Line that has been inputted by user.
      */
@@ -235,7 +235,7 @@ public class ElderlyList {
     }
 
     /**
-     * Sets the blood pressure of the elderly
+     * Sets the blood pressure of the elderly.
      *
      * @param userLine Line that has been inputted by user.
      */
@@ -251,7 +251,7 @@ public class ElderlyList {
     }
 
     /**
-     * Views the birthday of the elderly
+     * Views the birthday of the elderly.
      *
      * @param userLine Line that has been inputted by user.
      */
@@ -267,11 +267,11 @@ public class ElderlyList {
     }
 
     /**
-     * Sets the birthday of the elderly
+     * Sets the birthday of the elderly.
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void setBirthday(String userLine){
+    public void setBirthday(String userLine) {
         String[] paramList = userLine.split(" n/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         String birthday = paramList[INDEX_OF_BIRTHDAY];
@@ -282,11 +282,11 @@ public class ElderlyList {
     }
 
     /**
-     * Sets the vaccination status of the elderly to be true
+     * Sets the vaccination status of the elderly to be true.
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void setVaccinated(String userLine){
+    public void setVaccinated(String userLine) {
         String[] paramList = userLine.split(" n/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         Elderly elderly = getElderly(elderlyName);
@@ -296,21 +296,21 @@ public class ElderlyList {
     }
 
     /**
-     * Gets the vaccination status of the elderly to be true
+     * Gets the vaccination status of the elderly to be true.
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void getVaccinationStatus(String userLine){
+    public void getVaccinationStatus(String userLine) {
         String[] paramList = userLine.split(" n/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         Elderly elderly = getElderly(elderlyName);
         printVaccinationStatus(elderly);
     }
 
-    private void printVaccinationStatus(Elderly elderly){
+    private void printVaccinationStatus(Elderly elderly) {
         boolean isVaccinated = elderly.isVaccinated();
-        System.out.printf("%s is currently",elderly.getName());
-        if(!isVaccinated) {
+        System.out.printf("%s is currently", elderly.getName());
+        if (!isVaccinated) {
             System.out.printf("not ");
         }
         System.out.printf("vaccinated.%n");
