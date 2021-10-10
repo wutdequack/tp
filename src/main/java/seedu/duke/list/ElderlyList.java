@@ -11,7 +11,28 @@ import java.util.Date;
 import java.util.Objects;
 
 //import seedu.duke.common.*;
-import static seedu.duke.common.MagicValues.*;
+import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
+import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_ADDRESS;
+import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
+import static seedu.duke.common.MagicValues.INDEX_OF_LOCATION;
+import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_PHONE_NUMBER;
+import static seedu.duke.common.MagicValues.INDEX_OF_MEDICINE_NAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_ADDRESS;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_EMAIL;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_PHONE_NUMBER;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_RELATIONSHIP;
+import static seedu.duke.common.MagicValues.INDEX_OF_PURPOSE;
+import static seedu.duke.common.MagicValues.INDEX_OF_TIME;
+import static seedu.duke.common.MagicValues.LENGTH_IF_PURPOSE_EXISTS;
+import static seedu.duke.common.MagicValues.INDEX_OF_NOK_NAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_BIRTHDAY;
+import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE;
+import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE;
+
+import static seedu.duke.common.MagicValues.elderlyArrayList;
+
+import static seedu.duke.common.MagicValues.ui;
 
 
 public class ElderlyList {
