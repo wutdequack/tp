@@ -7,28 +7,11 @@ import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
 
+import java.util.Date;
 import java.util.Objects;
 
 //import seedu.duke.common.*;
-
-import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
-import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
-import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_ADDRESS;
-import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
-import static seedu.duke.common.MagicValues.INDEX_OF_LOCATION;
-import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_PHONE_NUMBER;
-import static seedu.duke.common.MagicValues.INDEX_OF_MEDICINE_NAME;
-import static seedu.duke.common.MagicValues.INDEX_OF_NOK_ADDRESS;
-import static seedu.duke.common.MagicValues.INDEX_OF_NOK_EMAIL;
-import static seedu.duke.common.MagicValues.INDEX_OF_NOK_PHONE_NUMBER;
-import static seedu.duke.common.MagicValues.INDEX_OF_NOK_RELATIONSHIP;
-import static seedu.duke.common.MagicValues.INDEX_OF_PURPOSE;
-import static seedu.duke.common.MagicValues.INDEX_OF_TIME;
-import static seedu.duke.common.MagicValues.LENGTH_IF_PURPOSE_EXISTS;
-import static seedu.duke.common.MagicValues.INDEX_OF_NOK_NAME;
-import static seedu.duke.common.MagicValues.elderlyArrayList;
-
-import static seedu.duke.common.MagicValues.ui;
+import static seedu.duke.common.MagicValues.*;
 
 
 public class ElderlyList {
@@ -231,6 +214,106 @@ public class ElderlyList {
             counter++;
         }
         return elderlyArrayList.get(counter);
+    }
+
+    /**
+     * Views the blood pressure of the elderly
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void viewBloodPressure(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        printBloodPressure(elderly);
+    }
+
+    private void printBloodPressure(Elderly elderly) {
+        double[] bloodPuressure = elderly.getBloodPressure();
+        System.out.printf("Blood pressure of %s is now (%.2f %.2f)%n", elderly.getName(),
+                bloodPuressure[0], bloodPuressure[1]);
+    }
+
+    /**
+     * Sets the blood pressure of the elderly
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void setBloodPressure(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
+        double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
+        Elderly elderly = getElderly(elderlyName);
+        elderly.setBloodPressure(systolicPressure, diastolicPressure);
+        ui.printSetBloodPressureMessage();
+        printBloodPressure(elderly);
+    }
+
+    /**
+     * Views the birthday of the elderly
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void viewBirthday(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        printBirthday(elderly);
+    }
+
+    private void printBirthday(Elderly elderly) {
+        System.out.printf("Birthday of %s is %s%n", elderly.getName(), elderly.getBirthday());
+    }
+
+    /**
+     * Sets the birthday of the elderly
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void setBirthday(String userLine){
+        String[] paramList = userLine.split(" n/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        String birthday = paramList[INDEX_OF_BIRTHDAY];
+        Elderly elderly = getElderly(elderlyName);
+        elderly.setBirthday(birthday);
+        ui.printSetBirthdayMessage();
+        printBirthday(elderly);
+    }
+
+    /**
+     * Sets the vaccination status of the elderly to be true
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void setVaccinated(String userLine){
+        String[] paramList = userLine.split(" n/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        elderly.setVaccinated();
+        ui.printSetVaccinationMessage();
+        printVaccinationStatus(elderly);
+    }
+
+    /**
+     * Gets the vaccination status of the elderly to be true
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void getVaccinationStatus(String userLine){
+        String[] paramList = userLine.split(" n/");
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        printVaccinationStatus(elderly);
+    }
+
+    private void printVaccinationStatus(Elderly elderly){
+        boolean isVaccinated = elderly.isVaccinated();
+        System.out.printf("%s is currently",elderly.getName());
+        if(!isVaccinated) {
+            System.out.printf("not ");
+        }
+        System.out.printf("vaccinated.%n");
     }
 
 }

@@ -1,29 +1,5 @@
 package seedu.duke;
 
-import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
-import static seedu.duke.common.MagicValues.ADD_ELDERLY;
-import static seedu.duke.common.MagicValues.ADD_MEDICINE;
-import static seedu.duke.common.MagicValues.BYE_STRING;
-import static seedu.duke.common.MagicValues.VIEW_APPOINTMENT;
-import static seedu.duke.common.MagicValues.VIEW_MEDICINE;
-import static seedu.duke.common.MagicValues.elderlyArrayList;
-import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
-import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
-import static seedu.duke.common.MagicValues.INDEX_OF_LOCATION;
-import static seedu.duke.common.MagicValues.INDEX_OF_MEDICINE_NAME;
-import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
-import static seedu.duke.common.MagicValues.INDEX_OF_PURPOSE;
-import static seedu.duke.common.MagicValues.INDEX_OF_TIME;
-import static seedu.duke.common.MagicValues.LENGTH_IF_PURPOSE_EXISTS;
-import static seedu.duke.common.MagicValues.ADD_NOK;
-import static seedu.duke.common.MagicValues.ADD_RECORD;
-import static seedu.duke.common.MagicValues.VIEW_NOK;
-import static seedu.duke.common.MagicValues.VIEW_RECORD;
-
-
-
-
-import static seedu.duke.common.MagicValues.ui;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -34,7 +10,7 @@ import seedu.duke.list.ElderlyList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
 
-
+import static seedu.duke.common.MagicValues.*;
 
 
 public class Duke {
@@ -132,6 +108,19 @@ public class Duke {
         case VIEW_RECORD:
             elderlyHelperFunction.viewRecord(userLine);
             break;
+        case VIEW_BLOOD_PRESSURE:
+            elderlyHelperFunction.viewBloodPressure(userLine);
+        case SET_BLOOD_PRESSURE:
+            elderlyHelperFunction.setBloodPressure(userLine);
+        case VIEW_BIRTHDAY:
+            elderlyHelperFunction.viewBirthday(userLine);
+        case SET_BIRTHDAY:
+            elderlyHelperFunction.setBirthday(userLine);
+        case SET_VACCINATED:
+            elderlyHelperFunction.setVaccinated(userLine);
+        case VIEW_VACCINATION:
+            elderlyHelperFunction.getVaccinationStatus(userLine);
+
         default:
             // Command is not recognized
             ui.printUnknownCommandMessage();

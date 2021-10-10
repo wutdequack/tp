@@ -66,4 +66,19 @@ public class Messages {
      */
     public static final String ADD_RECORD_MESSAGE = "Record of elderly has been added!";
 
+    /**
+     * Used when vaccination status of the elderly is set to be vaccinated.
+     */
+    public static final String SET_VACCINATED_MESSAGE = "We have set this elderly to be vaccinated";
+
+    /**
+     * Used when birthday of the elderly has been set.
+     */
+    public static final String SET_BIRTHDAY_MESSAGE = "Birthday of the elderly has been added!";
+
+    /**
+     * Used when blood pressure of the elderly has been updated.
+     */
+    public static final String SET_BLOOD_PRESSURE_MESSAGE = "Blood pressure of the elderly has been updated!";
+
 }
