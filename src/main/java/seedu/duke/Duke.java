@@ -18,7 +18,6 @@ import static seedu.duke.common.MagicValues.ADD_MEDICINE;
 import static seedu.duke.common.MagicValues.BYE_STRING;
 import static seedu.duke.common.MagicValues.VIEW_APPOINTMENT;
 import static seedu.duke.common.MagicValues.VIEW_MEDICINE;
-import static seedu.duke.common.MagicValues.elderlyArrayList;
 import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_LOCATION;
@@ -69,7 +68,6 @@ public class Duke {
     private void start() {
         ui = new TextUi();
         elderlyHelperFunction = new ElderlyList();
-        elderlyArrayList = new ArrayList<Elderly>();
         ui.printWelcomeMessage();
     }
 

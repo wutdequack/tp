@@ -52,9 +52,6 @@ public class MagicValues {
 
 
 
-    /**
-     * Elderly arraylist.
-     */
-    public static ArrayList<Elderly> elderlyArrayList;
+
     public static TextUi ui;
 }
