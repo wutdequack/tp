@@ -20,7 +20,7 @@ public class Medicine {
 
     @Override
     public String toString() {
-        return String.format("%s, %s", getMedicineName(), getFrequency());
+        return String.format("Medicine Name: %s, Frequency: %s", getMedicineName(), getFrequency());
     }
 
 }

@@ -32,6 +32,7 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return String.format("%s, %s, %s, %s", getLocation(), getDate(), getTime(), getPurpose());
+        return String.format("Location: %s, Date: %s, Time: %s, Purpose of Visit: %s", getLocation(), getDate(),
+                getTime(), getPurpose());
     }
 }

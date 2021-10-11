@@ -39,7 +39,8 @@ public class NextOfKin {
 
     @Override
     public String toString() {
-        return String.format("%s, %s, %s, %s, %s", getNokName(), getNokPhoneNumber(), getNokEmail(),
+        return String.format("NOK Name: %s, NOK Phone Number: %s, NOK Email: %s, NOK Aaddress: %s, Relationship: %s",
+                getNokName(), getNokPhoneNumber(), getNokEmail(),
                 getNokAddress(), getNokRelationship());
     }
 

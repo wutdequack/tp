@@ -1,9 +1,20 @@
 package seedu.duke.common;
 
+import static seedu.duke.common.Messages.APPOINTMENTS_MESSAGE;
+import static seedu.duke.common.Messages.BIRTHDAY_MESSAGE;
+import static seedu.duke.common.Messages.MEDICINES_MESSAGE;
+import static seedu.duke.common.Messages.NOKS_MESSAGE;
+import static seedu.duke.common.Messages.OVERALL_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.RECORDS_MESSAGE;
+import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 public class Elderly {
@@ -93,6 +104,43 @@ public class Elderly {
 
     public Date getBirthday() {
         return birthday;
+    }
+
+    @Override
+    public String toString() {
+        String listOfRecordsString = records
+                .stream()
+                .map(Objects::toString)
+                .reduce((t, u) -> t + '\n' + u)
+                .orElse("");
+        String listOfAppointmentsString = appointments
+                .stream()
+                .map(Objects::toString)
+                .reduce((t, u) -> t + '\n' + u)
+                .orElse("");
+        String listOfMedicinesString = medicines
+                .stream()
+                .map(Objects::toString)
+                .reduce((t, u) -> t + '\n' + u)
+                .orElse("");
+        String listOfNoksString = nextofkins
+                .stream()
+                .map(Objects::toString)
+                .reduce((t, u) -> t + '\n' + u)
+                .orElse("");
+        String vaccinatedString = String.format(VACCINATED_MESSAGE, isVaccinated ? "Yes" : "No");
+        String birthdayString = String.format(BIRTHDAY_MESSAGE,
+                birthday == null ? "Not Recorded" : birthday.toString());
+        String combinedListofRecordsString = String.format(RECORDS_MESSAGE, name, listOfRecordsString);
+        String combinedlistOfAppointmentsString = String.format(APPOINTMENTS_MESSAGE,
+                listOfAppointmentsString);
+        String combinedlistOfMedicinesString = String.format(MEDICINES_MESSAGE,
+                listOfMedicinesString);
+        String combinedlistOfNoksString = String.format(NOKS_MESSAGE, name,
+                listOfNoksString);
+        return String.format(OVERALL_ELDERLY_MESSAGE, name, vaccinatedString,
+                birthdayString, combinedListofRecordsString,
+                combinedlistOfAppointmentsString, combinedlistOfMedicinesString, combinedlistOfNoksString);
     }
 }
 
