@@ -81,4 +81,20 @@ public class Messages {
      */
     public static final String SET_BLOOD_PRESSURE_MESSAGE = "Blood pressure of the elderly has been updated!";
 
+    /**
+     * Used when counting number of elderly for list.
+     */
+    public static final String NUMBER_OF_ELDERLY_STRING = "There are currently %d elderly registered in the system\n";
+
+    /**
+     * Used when printing elderly object.
+     */
+    public static final String VACCINATED_MESSAGE = "Vaccinated? : %s";
+    public static final String BIRTHDAY_MESSAGE = "Birthday: %s";
+    public static final String RECORDS_MESSAGE = "Here are %s's records:\n%s\n";
+    public static final String APPOINTMENTS_MESSAGE = "Here is the list of upcoming appointments:\n%s\n";
+    public static final String MEDICINES_MESSAGE = "This is the list of medicine(s):\n%s\n";
+    public static final String NOKS_MESSAGE = "These are NOK(s) attached to %s:\n%s\n";
+    public static final String OVERALL_ELDERLY_MESSAGE = "Elderly Name: %s\n%s\n%s\n%s\n%s\n%s\n%s";
+
 }

@@ -32,6 +32,7 @@ import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE;
 
 import static seedu.duke.common.MagicValues.ui;
+import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 
 
 public class ElderlyList {
@@ -337,6 +338,14 @@ public class ElderlyList {
             System.out.printf("not ");
         }
         System.out.printf("vaccinated.%n");
+    }
+
+    /**
+     * Print current list of elderly.
+     */
+    public void printElderly() {
+        System.out.printf(NUMBER_OF_ELDERLY_STRING, elderlyArrayList.size());
+        elderlyArrayList.forEach(System.out::println);
     }
 
 }

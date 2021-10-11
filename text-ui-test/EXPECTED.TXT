@@ -20,12 +20,12 @@ Welcome admin. Type after the '>' to start.
 > Medicine has been added!
 > Medicine has been added!
 > Medicine of tan are shown below:
-  1.panadol, once a day
-  2.azheitynine, every hour
+  1.Medicine Name: panadol, Frequency: once a day
+  2.Medicine Name: azheitynine, Frequency: every hour
 > Medicine of lim are shown below:
 > Appointment has been added!
 > Appointment has been added!
 > Appointments of tan are shown below:
-  1.ktph, 1st jan, 1000, eyecheckup
-  2.ktph, 2nd feb, 1500, general checkup
+  1.Location: ktph, Date: 1st jan, Time: 1000, Purpose of Visit: eyecheckup
+  2.Location: ktph, Date: 2nd feb, Time: 1500, Purpose of Visit: general checkup
 > Bye command has been recognized. Goodbye!

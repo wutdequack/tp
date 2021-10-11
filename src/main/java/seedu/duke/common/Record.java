@@ -20,7 +20,7 @@ public class Record {
 
     @Override
     public String toString() {
-        return String.format("%s, %s", getElderlyPhoneNumber(), getElderlyAddress());
+        return String.format("Elderly HP: %s, Elderly Address: %s", getElderlyPhoneNumber(), getElderlyAddress());
     }
 
 }

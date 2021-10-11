@@ -3,11 +3,13 @@ package seedu.duke.ui;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
+import seedu.duke.common.Elderly;
 
 import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 import static seedu.duke.common.Messages.WELCOME_MESSAGE;
 import static seedu.duke.common.Messages.PROMPT_MESSAGE;
 import static seedu.duke.common.Messages.LOGO;
@@ -75,42 +77,57 @@ public class TextUi {
     }
 
     /**
-     * Prints Goodbye message to user.
+     * Prints Add Elderly message to user.
      */
     public void printAddElderlyMessage() {
         out.println(ADD_ELDERLY_MESSAGE);
     }
 
     /**
-     * Prints Goodbye message to user.
+     * Prints acknowledgement of appointment added to user.
      */
     public void printAddAppointmentMessage() {
         out.println(ADD_APPOINTMENT_MESSAGE);
     }
 
     /**
-     * Prints Goodbye message to user.
+     * Prints acknowledgement of medicine added to user.
      */
     public void printAddMedicineMessage() {
         out.println(ADD_MEDICINE_MESSAGE);
     }
 
+    /**
+     * Prints acknowledgement of NOK added to user.
+     */
     public void printAddNokMessage() {
         out.println(ADD_NOK_MESSAGE);
     }
 
+    /**
+     * Prints acknowledgement of record added to user.
+     */
     public void printAddRecordMessage() {
         out.println(ADD_RECORD_MESSAGE);
     }
 
+    /**
+     * Prints acknowledgement of Vaccination status added to user.
+     */
     public void printSetVaccinationMessage() {
         out.println(SET_VACCINATED_MESSAGE);
     }
 
+    /**
+     * Prints acknowledgement of birthday added to user.
+     */
     public void printSetBirthdayMessage() {
         out.println(SET_BIRTHDAY_MESSAGE);
     }
 
+    /**
+     * Prints acknowledgement of blood pressure added to user.
+     */
     public void printSetBloodPressureMessage() {
         out.println(SET_BLOOD_PRESSURE_MESSAGE);
     }

@@ -11,6 +11,7 @@ import seedu.duke.list.ElderlyList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
 
+import static seedu.duke.common.MagicValues.LIST_ELDERLY;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
 import static seedu.duke.common.MagicValues.ADD_ELDERLY;
@@ -150,7 +151,9 @@ public class Duke {
         case VIEW_VACCINATION:
             elderlyHelperFunction.getVaccinationStatus(userLine);
             break;
-
+        case LIST_ELDERLY:
+            elderlyHelperFunction.printElderly();
+            break;
         default:
             // Command is not recognized
             ui.printUnknownCommandMessage();

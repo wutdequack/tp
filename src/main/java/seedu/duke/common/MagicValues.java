@@ -8,6 +8,7 @@ public class MagicValues {
      * Keywords for commands.
      */
     public static final String BYE_STRING = "BYE";
+    public static final String LIST_ELDERLY = "LIST";
     public static final String ADD_MEDICINE = "ADDMED";
     public static final String ADD_APPOINTMENT = "ADDAPPT";
     public static final String VIEW_MEDICINE = "VIEWMED";
