@@ -34,7 +34,7 @@ public class NextOfKin {
     }
 
     public String getNokRelationship() {
-        return nokPhoneNumber;
+        return nokRelationship;
     }
 
     @Override
