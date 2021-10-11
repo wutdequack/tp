@@ -21,4 +21,10 @@ public class AppointmentTest {
         assertEquals(generalAppointment.getTime(), "0900");
         assertEquals(generalAppointment.getPurpose(), "general checkup");
     }
+
+    @Test
+    void testAppointmentToString() {
+        assertEquals(generalAppointment.toString(), "Location: khoo teck puat hospital, Date: 01012021, "
+                + "Time: 0900, Purpose of Visit: general checkup");
+    }
 }

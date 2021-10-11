@@ -347,11 +347,30 @@ public class ElderlyList {
     }
 
     /**
-     * Print current list of elderly.
+     * Get the number of elderly in the current list.
+     */
+    public int getElderlyCount() {
+        return elderlyArrayList.size();
+    }
+
+    /**
+     * Returns a consolidated String of all the elderly.
+     * @return String containing all the elderly information in the system.
+     */
+    public String getConsolidatedStringOfElderly() {
+        return elderlyArrayList
+                .stream()
+                .map(Objects::toString)
+                .reduce((t, u) -> t + '\n' + u)
+                .orElse("");
+    }
+
+    /**
+     * Print current list of elderly along with number of elderly in system.
      */
     public void printElderly() {
-        System.out.printf(NUMBER_OF_ELDERLY_STRING, elderlyArrayList.size());
-        elderlyArrayList.forEach(System.out::println);
+        System.out.printf(NUMBER_OF_ELDERLY_STRING, getElderlyCount());
+        ui.printElderlyList(getConsolidatedStringOfElderly());
     }
 
 }
