@@ -159,8 +159,9 @@ public class ElderlyListTest {
         assertEquals(tanNoks, elderlyList.getElderly("johntan123").getNextOfKin());
         NextOfKin limNoks = elderlyList.getElderly("limqq369").getNextOfKin().get(0);
         assertEquals("tony lim", limNoks.getNokName());
-        assertEquals("01012021", limAppointments.getDate());
-        assertEquals("0900", limAppointments.getTime());
-        assertEquals("general checkup", limAppointments.getPurpose());
+        assertEquals("98765432", limNoks.getNokPhoneNumber());
+        assertEquals("tonylim@yahoo.com", limNoks.getNokEmail());
+        assertEquals("123 yishun street", limNoks.getNokAddress());
+        assertEquals("son", limNoks.getNokRelationship());
     }
 }
