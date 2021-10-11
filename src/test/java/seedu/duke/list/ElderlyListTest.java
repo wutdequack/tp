@@ -24,8 +24,7 @@ public class ElderlyListTest {
         elderlyList.addElderly("addelderly n/limqq369");
         elderlyList.addMedicine("addmed n/limqq369 m/panadol f/once a day");
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
-        elderlyList.addNok("addnok n/limqq369 k/tony lim p/98765432 e/tonylim@yahoo.com a/123 yishun street"
-                + " r/son");
+        elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun street r/son");
     }
 
     @Test
@@ -158,9 +157,9 @@ public class ElderlyListTest {
     void addNokTest() {
         assertEquals(tanNoks, elderlyList.getElderly("johntan123").getNextOfKin());
         NextOfKin limNoks = elderlyList.getElderly("limqq369").getNextOfKin().get(0);
-        assertEquals("tony lim", limNoks.getNokName());
+        assertEquals("tony", limNoks.getNokName());
         assertEquals("98765432", limNoks.getNokPhoneNumber());
-        assertEquals("tonylim@yahoo.com", limNoks.getNokEmail());
+        assertEquals("tony@yahoo.com", limNoks.getNokEmail());
         assertEquals("123 yishun street", limNoks.getNokAddress());
         assertEquals("son", limNoks.getNokRelationship());
     }
