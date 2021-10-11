@@ -44,6 +44,15 @@ public class ElderlyList {
     }
 
     /**
+     * Returns the elderly array list.
+     *
+     * @return elderlyArrayList is the elderly array list.
+     */
+    public ArrayList<Elderly> getElderlyArrayList() {
+        return elderlyArrayList;
+    }
+
+    /**
      * Adds the elderly into the elderly array list.
      *
      * @param userLine Line that is inputted by the user.
@@ -52,7 +61,6 @@ public class ElderlyList {
         String[] paramList = userLine.split(" n/");
         String elderlyName = paramList[1];
         elderlyArrayList.add(new Elderly(elderlyName));
-        ui.printAddElderlyMessage();
     }
 
     /**
@@ -67,7 +75,6 @@ public class ElderlyList {
         String medicineName = paramList[INDEX_OF_MEDICINE_NAME];
         String frequency = paramList[INDEX_OF_FREQUENCY];
         elderly.addMedicine(new Medicine(medicineName, frequency));
-        ui.printAddMedicineMessage();
     }
 
     /**
@@ -116,7 +123,6 @@ public class ElderlyList {
             purpose = "general checkup";
         }
         elderly.addAppointment(new Appointment(location, date, time, purpose));
-        ui.printAddAppointmentMessage();
     }
 
     /**
