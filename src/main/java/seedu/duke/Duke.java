@@ -108,18 +108,22 @@ public class Duke {
             break;
         case ADD_MEDICINE:
             elderlyHelperFunction.addMedicine(userLine);
+            ui.printAddMedicineMessage();
             break;
         case VIEW_MEDICINE:
             elderlyHelperFunction.viewMedicine(userLine);
             break;
         case ADD_APPOINTMENT:
             elderlyHelperFunction.addAppointment(userLine);
+            ui.printAddAppointmentMessage();
+
             break;
         case VIEW_APPOINTMENT:
             elderlyHelperFunction.viewAppointment(userLine);
             break;
         case ADD_ELDERLY:
             elderlyHelperFunction.addElderly(userLine);
+            ui.printAddElderlyMessage();
             break;
         case ADD_NOK:
             elderlyHelperFunction.addNok(userLine);
