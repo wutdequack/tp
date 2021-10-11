@@ -131,4 +131,12 @@ public class TextUi {
     public void printSetBloodPressureMessage() {
         out.println(SET_BLOOD_PRESSURE_MESSAGE);
     }
+
+    /**
+     * Prints the list of elderly given a consolidated list of elderly.
+     * @param elderlyListString A string containing a consolidated list of elderly.
+     */
+    public void printElderlyList(String elderlyListString) {
+        out.println(elderlyListString);
+    }
 }

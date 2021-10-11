@@ -18,4 +18,9 @@ public class MedicineTest {
         assertEquals(medicine.getMedicineName(), "panadol");
         assertEquals(medicine.getFrequency(), "once a day");
     }
+
+    @Test
+    void testMedicineToString() {
+        assertEquals(medicine.toString(), "Medicine Name: panadol, Frequency: once a day");
+    }
 }

@@ -18,4 +18,37 @@ public class ElderlyTest {
         assertEquals(johnTan.getName(), "johntan123");
     }
 
+    @Test
+    void testElderlyToString() {
+        assertEquals(johnTan.toString(), "Elderly Name: johntan123\n"
+                + "Vaccinated? : No\n"
+                + "Birthday: Not Recorded\n"
+                + "Here are johntan123's records:\n"
+                + "\n"
+                + "\n"
+                + "Here is the list of upcoming appointments:\n"
+                + "\n"
+                + "\n"
+                + "This is the list of medicine(s):\n"
+                + "\n"
+                + "\n"
+                + "These are NOK(s) attached to johntan123:\n"
+                + "\n");
+        johnTan.setVaccinated();
+        assertEquals(johnTan.toString(), "Elderly Name: johntan123\n"
+                + "Vaccinated? : Yes\n"
+                + "Birthday: Not Recorded\n"
+                + "Here are johntan123's records:\n"
+                + "\n"
+                + "\n"
+                + "Here is the list of upcoming appointments:\n"
+                + "\n"
+                + "\n"
+                + "This is the list of medicine(s):\n"
+                + "\n"
+                + "\n"
+                + "These are NOK(s) attached to johntan123:\n"
+                + "\n");
+    }
+
 }
