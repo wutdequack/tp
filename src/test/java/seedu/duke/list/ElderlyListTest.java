@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
+import seedu.duke.common.NextOfKin;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -14,6 +15,8 @@ public class ElderlyListTest {
     ArrayList<Medicine> limMedicines = new ArrayList<Medicine>();
     ArrayList<Appointment> tanAppointments = new ArrayList<Appointment>();
     ArrayList<Appointment> limAppointments = new ArrayList<Appointment>();
+    ArrayList<NextOfKin> tanNoks = new ArrayList<NextOfKin>();
+    ArrayList<NextOfKin> limNoks = new ArrayList<NextOfKin>();
 
     @BeforeEach
     public void setUp() {
@@ -21,6 +24,8 @@ public class ElderlyListTest {
         elderlyList.addElderly("addelderly n/limqq369");
         elderlyList.addMedicine("addmed n/limqq369 m/panadol f/once a day");
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
+        elderlyList.addNok("addnok n/limqq369 k/tony lim p/98765432 e/tonylim@yahoo.com a/123 yishun street"
+                + " r/son");
     }
 
     @Test
@@ -144,6 +149,16 @@ public class ElderlyListTest {
         assertEquals(tanAppointments, elderlyList.getElderly("johntan123").getAppointments());
         Appointment limAppointments = elderlyList.getElderly("limqq369").getAppointments().get(0);
         assertEquals("khoo teck puat hospital", limAppointments.getLocation());
+        assertEquals("01012021", limAppointments.getDate());
+        assertEquals("0900", limAppointments.getTime());
+        assertEquals("general checkup", limAppointments.getPurpose());
+    }
+
+    @Test
+    void addNokTest() {
+        assertEquals(tanNoks, elderlyList.getElderly("johntan123").getNextOfKin());
+        NextOfKin limNoks = elderlyList.getElderly("limqq369").getNextOfKin().get(0);
+        assertEquals("tony lim", limNoks.getNokName());
         assertEquals("01012021", limAppointments.getDate());
         assertEquals("0900", limAppointments.getTime());
         assertEquals("general checkup", limAppointments.getPurpose());
