@@ -1,5 +1,6 @@
 package seedu.duke.list;
 
+import java.util.ArrayList;
 import seedu.duke.common.Elderly;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.Appointment;
@@ -30,12 +31,13 @@ import static seedu.duke.common.MagicValues.INDEX_OF_BIRTHDAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE;
 
-import static seedu.duke.common.MagicValues.elderlyArrayList;
-
 import static seedu.duke.common.MagicValues.ui;
 
 
 public class ElderlyList {
+
+
+    protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<Elderly>();
 
     public ElderlyList() {
     }
