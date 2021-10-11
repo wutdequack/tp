@@ -167,7 +167,6 @@ public class ElderlyList {
         String nokAddress = paramList[INDEX_OF_NOK_ADDRESS];
         String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
         elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
-        ui.printAddNokMessage();
     }
 
     /**
