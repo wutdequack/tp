@@ -138,8 +138,6 @@ public class ElderlyListTest {
     //    }
 
     @Test
-        // make sure the variable name follows the coding standard
-        // final String name? all cap or like this?
     void addElderlyTest() {
         final String expectedOutput = "johntan123";
         assertEquals(expectedOutput, elderlyList.getElderly("johntan123").getName());
@@ -176,15 +174,15 @@ public class ElderlyListTest {
 
     @Test
     void birthdayTest() {
-        final String EXPECTED_OUTPUT = "1903-06-09";
-        assertEquals(EXPECTED_OUTPUT,
+        final String expectedOutput = "1903-06-09";
+        assertEquals(expectedOutput,
                 elderlyList.getElderly("limqq369").getBirthday());
     }
 
     @Test
     void bloodPressureTest() {
-        final String EXPECTED_OUTPUT = "(169.00 108.00)";
-        assertEquals(EXPECTED_OUTPUT,
+        final String expectedOutput = "(169.00 108.00)";
+        assertEquals(expectedOutput,
                 elderlyList.getElderly("limqq369").getBloodPressure());
     }
 }
