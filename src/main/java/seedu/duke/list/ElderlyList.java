@@ -1,6 +1,7 @@
 package seedu.duke.list;
 
 import java.util.ArrayList;
+
 import seedu.duke.common.Elderly;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.Appointment;
@@ -269,14 +270,13 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void setBloodPressure(String userLine) {
-        String[] paramList = userLine.split(" n/");
+        String[] paramList = userLine.split(" [nsd]/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
         double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
         Elderly elderly = getElderly(elderlyName);
         elderly.setBloodPressure(systolicPressure, diastolicPressure);
-        ui.printSetBloodPressureMessage();
-        printBloodPressure(elderly);
+        ui.printSetBloodPressureMessage(elderly);
     }
 
     /**
@@ -301,13 +301,12 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void setBirthday(String userLine) {
-        String[] paramList = userLine.split(" n/");
+        String[] paramList = userLine.split(" [nb]/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         String birthday = paramList[INDEX_OF_BIRTHDAY];
         Elderly elderly = getElderly(elderlyName);
         elderly.setBirthday(birthday);
-        ui.printSetBirthdayMessage();
-        printBirthday(elderly);
+        ui.printSetBirthdayMessage(elderly);
     }
 
     /**
@@ -320,8 +319,7 @@ public class ElderlyList {
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         Elderly elderly = getElderly(elderlyName);
         elderly.setVaccinated();
-        ui.printSetVaccinationMessage();
-        printVaccinationStatus(elderly);
+        ui.printSetVaccinationMessage(elderly);
     }
 
     /**
@@ -333,17 +331,9 @@ public class ElderlyList {
         String[] paramList = userLine.split(" n/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         Elderly elderly = getElderly(elderlyName);
-        printVaccinationStatus(elderly);
+        elderly.printVaccinationStatus();
     }
 
-    private void printVaccinationStatus(Elderly elderly) {
-        boolean isVaccinated = elderly.isVaccinated();
-        System.out.printf("%s is currently", elderly.getName());
-        if (!isVaccinated) {
-            System.out.printf("not ");
-        }
-        System.out.printf("vaccinated.%n");
-    }
 
     /**
      * Get the number of elderly in the current list.
@@ -354,6 +344,7 @@ public class ElderlyList {
 
     /**
      * Returns a consolidated String of all the elderly.
+     *
      * @return String containing all the elderly information in the system.
      */
     public String getConsolidatedStringOfElderly() {

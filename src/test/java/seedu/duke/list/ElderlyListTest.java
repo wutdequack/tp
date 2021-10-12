@@ -1,11 +1,13 @@
 package seedu.duke.list;
 
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.NextOfKin;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -25,6 +27,9 @@ public class ElderlyListTest {
         elderlyList.addMedicine("addmed n/limqq369 m/panadol f/once a day");
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
         elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun street r/son");
+        elderlyList.setBirthday("setbirthday n/limqq369 b/1903-06-09");
+        elderlyList.setBloodPressure("setbloodpressure n/limqq369 s/169.0 d/108.0");
+        elderlyList.setVaccinated("setvaccinated n/limqq369");
     }
 
     //    @Test
@@ -133,6 +138,8 @@ public class ElderlyListTest {
     //    }
 
     @Test
+        // make sure the variable name follows the coding standard
+        // final String name? all cap or like this?
     void addElderlyTest() {
         final String expectedOutput = "johntan123";
         assertEquals(expectedOutput, elderlyList.getElderly("johntan123").getName());
@@ -143,7 +150,7 @@ public class ElderlyListTest {
         assertEquals(tanMedicines, elderlyList.getElderly("johntan123").getMedicines());
         Medicine limMedicine = elderlyList.getElderly("limqq369").getMedicines().get(0);
         assertEquals("panadol", limMedicine.getMedicineName());
-        assertEquals("once a day",limMedicine.getFrequency());
+        assertEquals("once a day", limMedicine.getFrequency());
     }
 
     @Test
@@ -165,5 +172,19 @@ public class ElderlyListTest {
         assertEquals("tony@yahoo.com", limNoks.getNokEmail());
         assertEquals("123 yishun street", limNoks.getNokAddress());
         assertEquals("son", limNoks.getNokRelationship());
+    }
+
+    @Test
+    void birthdayTest() {
+        final String EXPECTED_OUTPUT = "1903-06-09";
+        assertEquals(EXPECTED_OUTPUT,
+                elderlyList.getElderly("limqq369").getBirthday());
+    }
+
+    @Test
+    void bloodPressureTest() {
+        final String EXPECTED_OUTPUT = "(169.00 108.00)";
+        assertEquals(EXPECTED_OUTPUT,
+                elderlyList.getElderly("limqq369").getBloodPressure());
     }
 }

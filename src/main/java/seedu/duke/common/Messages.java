@@ -69,17 +69,17 @@ public class Messages {
     /**
      * Used when vaccination status of the elderly is set to be vaccinated.
      */
-    public static final String SET_VACCINATED_MESSAGE = "We have set this elderly to be vaccinated";
+    public static final String SET_VACCINATED_MESSAGE = "We have set %s to be vaccinated\r\n";
 
     /**
      * Used when birthday of the elderly has been set.
      */
-    public static final String SET_BIRTHDAY_MESSAGE = "Birthday of the elderly has been added!";
+    public static final String SET_BIRTHDAY_MESSAGE = "Birthday of %s has been set to %s\r\n";
 
     /**
      * Used when blood pressure of the elderly has been updated.
      */
-    public static final String SET_BLOOD_PRESSURE_MESSAGE = "Blood pressure of the elderly has been updated!";
+    public static final String SET_BLOOD_PRESSURE_MESSAGE = "Blood pressure of %s has been updated to %.2f %.2f!\r\n";
 
     /**
      * Used when counting number of elderly for list.
