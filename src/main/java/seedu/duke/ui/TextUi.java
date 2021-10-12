@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 import seedu.duke.common.Elderly;
 
-import static seedu.duke.common.MagicValues.*;
+import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
+import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
