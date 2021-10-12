@@ -9,7 +9,6 @@ import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
 
-import java.util.Date;
 import java.util.Objects;
 
 //import seedu.duke.common.*;
@@ -305,7 +304,7 @@ public class ElderlyList {
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         String birthday = paramList[INDEX_OF_BIRTHDAY];
         Elderly elderly = getElderly(elderlyName);
-        elderly.setBirthday(birthday);
+        elderly.setElderlyBirthday(birthday);
         ui.printSetBirthdayMessage(elderly);
     }
 
