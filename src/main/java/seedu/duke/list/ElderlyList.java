@@ -1,6 +1,7 @@
 package seedu.duke.list;
 
 import java.util.ArrayList;
+
 import seedu.duke.common.Elderly;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.Appointment;
@@ -8,7 +9,6 @@ import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
 
-import java.util.Date;
 import java.util.Objects;
 
 //import seedu.duke.common.*;
@@ -211,7 +211,6 @@ public class ElderlyList {
         String elderlyPhoneNumber = paramList[INDEX_OF_ELDERLY_PHONE_NUMBER];
         String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
         elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
-        ui.printAddRecordMessage();
     }
 
     /**
@@ -278,16 +277,15 @@ public class ElderlyList {
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void setBloodPressure(String userLine) {
-        String[] paramList = userLine.split(" n/");
+    public Elderly setBloodPressure(String userLine) {
+        String[] paramList = userLine.split(" [nsd]/");
         assert paramList.length == 4 : "setbloodpressure input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
         double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
         Elderly elderly = getElderly(elderlyName);
         elderly.setBloodPressure(systolicPressure, diastolicPressure);
-        ui.printSetBloodPressureMessage();
-        printBloodPressure(elderly);
+        return elderly;
     }
 
     /**
@@ -312,15 +310,14 @@ public class ElderlyList {
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void setBirthday(String userLine) {
-        String[] paramList = userLine.split(" n/");
+    public Elderly setBirthday(String userLine) {
+        String[] paramList = userLine.split(" [nb]/");
         assert paramList.length == 3 : "setbirthday input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         String birthday = paramList[INDEX_OF_BIRTHDAY];
         Elderly elderly = getElderly(elderlyName);
-        elderly.setBirthday(birthday);
-        ui.printSetBirthdayMessage();
-        printBirthday(elderly);
+        elderly.setElderlyBirthday(birthday);
+        return elderly;
     }
 
     /**
@@ -328,14 +325,13 @@ public class ElderlyList {
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void setVaccinated(String userLine) {
+    public Elderly setVaccinated(String userLine) {
         String[] paramList = userLine.split(" n/");
         assert paramList.length == 2 : "setvaccinated input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         Elderly elderly = getElderly(elderlyName);
         elderly.setVaccinated();
-        ui.printSetVaccinationMessage();
-        printVaccinationStatus(elderly);
+        return elderly;
     }
 
     /**
@@ -348,17 +344,9 @@ public class ElderlyList {
         assert paramList.length == 2 : "Name is empty";
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         Elderly elderly = getElderly(elderlyName);
-        printVaccinationStatus(elderly);
+        elderly.printVaccinationStatus();
     }
 
-    private void printVaccinationStatus(Elderly elderly) {
-        boolean isVaccinated = elderly.isVaccinated();
-        System.out.printf("%s is currently", elderly.getName());
-        if (!isVaccinated) {
-            System.out.printf("not ");
-        }
-        System.out.printf("vaccinated.%n");
-    }
 
     /**
      * Get the number of elderly in the current list.
@@ -369,6 +357,7 @@ public class ElderlyList {
 
     /**
      * Returns a consolidated String of all the elderly.
+     *
      * @return String containing all the elderly information in the system.
      */
     public String getConsolidatedStringOfElderly() {

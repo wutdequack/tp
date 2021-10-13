@@ -92,7 +92,7 @@ public class Elderly {
         return isVaccinated;
     }
 
-    public void setBirthday(String birthday) {
+    public void setElderlyBirthday(String birthday) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             this.birthday = simpleDateFormat.parse(birthday);
@@ -102,8 +102,16 @@ public class Elderly {
         }
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public String getBirthday() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(birthday);
+    }
+
+    public void printVaccinationStatus() {
+        System.out.printf("%s is currently ", getName());
+        if (!isVaccinated) {
+            System.out.printf("not ");
+        }
+        System.out.printf("vaccinated.%n");
     }
 
     @Override

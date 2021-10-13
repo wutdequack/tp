@@ -3,8 +3,11 @@ package seedu.duke.ui;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
+
 import seedu.duke.common.Elderly;
 
+import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
+import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
@@ -114,26 +117,29 @@ public class TextUi {
     /**
      * Prints acknowledgement of Vaccination status added to user.
      */
-    public void printSetVaccinationMessage() {
-        out.println(SET_VACCINATED_MESSAGE);
+    public void printSetVaccinationMessage(Elderly elderly) {
+        out.printf(SET_VACCINATED_MESSAGE, elderly.getName());
     }
 
     /**
      * Prints acknowledgement of birthday added to user.
      */
-    public void printSetBirthdayMessage() {
-        out.println(SET_BIRTHDAY_MESSAGE);
+    public void printSetBirthdayMessage(Elderly elderly) {
+        out.printf(SET_BIRTHDAY_MESSAGE, elderly.getName(), elderly.getBirthday());
     }
 
     /**
      * Prints acknowledgement of blood pressure added to user.
      */
-    public void printSetBloodPressureMessage() {
-        out.println(SET_BLOOD_PRESSURE_MESSAGE);
+    public void printSetBloodPressureMessage(Elderly elderly) {
+        out.printf(SET_BLOOD_PRESSURE_MESSAGE, elderly.getName(),
+                elderly.getBloodPressure()[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
+                elderly.getBloodPressure()[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
     }
 
     /**
      * Prints the list of elderly given a consolidated list of elderly.
+     *
      * @param elderlyListString A string containing a consolidated list of elderly.
      */
     public void printElderlyList(String elderlyListString) {

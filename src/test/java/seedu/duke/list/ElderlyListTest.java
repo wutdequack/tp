@@ -1,13 +1,15 @@
 package seedu.duke.list;
 
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.NextOfKin;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class ElderlyListTest {
     ElderlyList elderlyList = new ElderlyList();
@@ -25,6 +27,9 @@ public class ElderlyListTest {
         elderlyList.addMedicine("addmed n/limqq369 m/panadol f/once a day");
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
         elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun street r/son");
+        elderlyList.setBirthday("setbirthday n/limqq369 b/1903-06-09");
+        elderlyList.setBloodPressure("setbloodpressure n/limqq369 s/169.0 d/108.0");
+        elderlyList.setVaccinated("setvaccinated n/limqq369");
     }
 
     //    @Test
@@ -143,7 +148,7 @@ public class ElderlyListTest {
         assertEquals(tanMedicines, elderlyList.getElderly("johntan123").getMedicines());
         Medicine limMedicine = elderlyList.getElderly("limqq369").getMedicines().get(0);
         assertEquals("panadol", limMedicine.getMedicineName());
-        assertEquals("once a day",limMedicine.getFrequency());
+        assertEquals("once a day", limMedicine.getFrequency());
     }
 
     @Test
@@ -165,5 +170,19 @@ public class ElderlyListTest {
         assertEquals("tony@yahoo.com", limNoks.getNokEmail());
         assertEquals("123 yishun street", limNoks.getNokAddress());
         assertEquals("son", limNoks.getNokRelationship());
+    }
+
+    @Test
+    void birthdayTest() {
+        final String expectedOutput = "1903-06-09";
+        assertEquals(expectedOutput,
+                elderlyList.getElderly("limqq369").getBirthday());
+    }
+
+    @Test
+    void bloodPressureTest() {
+        final double[] expectedOutput = new double[]{169.0, 108.0};
+        assertArrayEquals(expectedOutput,
+                elderlyList.getElderly("limqq369").getBloodPressure());
     }
 }

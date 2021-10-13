@@ -1,6 +1,7 @@
 package seedu.duke.common;
 
 import java.util.ArrayList;
+
 import seedu.duke.ui.TextUi;
 
 public class MagicValues {
@@ -49,10 +50,10 @@ public class MagicValues {
     public static final int INDEX_OF_SYSTOLIC_PRESSURE = 2;
     public static final int INDEX_OF_DIASTOLIC_PRESSURE = 3;
     public static final int INDEX_OF_BIRTHDAY = 2;
+    public static final int INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY = 0;
+    public static final int INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY = 1;
     public static final int INDEX_OF_VACCINATED_STATUS = 2;
 
 
-
-
-    public static TextUi ui;
+    public static TextUi ui = new TextUi();
 }
