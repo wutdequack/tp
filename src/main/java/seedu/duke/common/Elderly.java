@@ -136,7 +136,8 @@ public class Elderly {
                 .map(Objects::toString)
                 .reduce((t, u) -> t + '\n' + u)
                 .orElse("");
-        String vaccinatedString = String.format(VACCINATED_MESSAGE, name, isVaccinated ? "Vaccinated" : "Not vaccinated");
+        String vaccinatedString = String.format(VACCINATED_MESSAGE, name,
+                isVaccinated ? "Vaccinated" : "Not vaccinated");
         String birthdayString = String.format(BIRTHDAY_MESSAGE, name,
                 birthday == null ? "Not Recorded" : getBirthday());
         String combinedListofRecordsString = String.format(RECORDS_MESSAGE, name, listOfRecordsString);
