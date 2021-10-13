@@ -99,6 +99,7 @@ public class Duke {
      */
     private void executeCommand(String userLine) {
         String keyword = new Parser().getKeywordFromUserInput(userLine);
+        Elderly targetElderly;
 
         // Checks for the input for keywords
         switch (keyword.toUpperCase()) {
@@ -133,6 +134,7 @@ public class Duke {
             break;
         case ADD_RECORD:
             elderlyHelperFunction.addRecord(userLine);
+            ui.printAddRecordMessage();
             break;
         case VIEW_RECORD:
             elderlyHelperFunction.viewRecord(userLine);
@@ -141,16 +143,19 @@ public class Duke {
             elderlyHelperFunction.viewBloodPressure(userLine);
             break;
         case SET_BLOOD_PRESSURE:
-            elderlyHelperFunction.setBloodPressure(userLine);
+            targetElderly = elderlyHelperFunction.setBloodPressure(userLine);
+            ui.printSetBloodPressureMessage(targetElderly);
             break;
         case VIEW_BIRTHDAY:
             elderlyHelperFunction.viewBirthday(userLine);
             break;
         case SET_BIRTHDAY:
-            elderlyHelperFunction.setBirthday(userLine);
+            targetElderly = elderlyHelperFunction.setBirthday(userLine);
+            ui.printSetBirthdayMessage(targetElderly);
             break;
         case SET_VACCINATED:
-            elderlyHelperFunction.setVaccinated(userLine);
+            targetElderly = elderlyHelperFunction.setVaccinated(userLine);
+            ui.printSetVaccinationMessage(targetElderly);
             break;
         case VIEW_VACCINATION:
             elderlyHelperFunction.getVaccinationStatus(userLine);

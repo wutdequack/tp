@@ -8,8 +8,7 @@ import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.NextOfKin;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ElderlyListTest {
     ElderlyList elderlyList = new ElderlyList();

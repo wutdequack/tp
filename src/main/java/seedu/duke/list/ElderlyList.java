@@ -203,7 +203,6 @@ public class ElderlyList {
         String elderlyPhoneNumber = paramList[INDEX_OF_ELDERLY_PHONE_NUMBER];
         String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
         elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
-        ui.printAddRecordMessage();
     }
 
     /**
@@ -268,14 +267,14 @@ public class ElderlyList {
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void setBloodPressure(String userLine) {
+    public Elderly setBloodPressure(String userLine) {
         String[] paramList = userLine.split(" [nsd]/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
         double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
         Elderly elderly = getElderly(elderlyName);
         elderly.setBloodPressure(systolicPressure, diastolicPressure);
-        ui.printSetBloodPressureMessage(elderly);
+        return elderly;
     }
 
     /**
@@ -299,13 +298,13 @@ public class ElderlyList {
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void setBirthday(String userLine) {
+    public Elderly setBirthday(String userLine) {
         String[] paramList = userLine.split(" [nb]/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         String birthday = paramList[INDEX_OF_BIRTHDAY];
         Elderly elderly = getElderly(elderlyName);
         elderly.setElderlyBirthday(birthday);
-        ui.printSetBirthdayMessage(elderly);
+        return elderly;
     }
 
     /**
@@ -313,12 +312,12 @@ public class ElderlyList {
      *
      * @param userLine Line that has been inputted by user.
      */
-    public void setVaccinated(String userLine) {
+    public Elderly setVaccinated(String userLine) {
         String[] paramList = userLine.split(" n/");
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
         Elderly elderly = getElderly(elderlyName);
         elderly.setVaccinated();
-        ui.printSetVaccinationMessage(elderly);
+        return elderly;
     }
 
     /**
