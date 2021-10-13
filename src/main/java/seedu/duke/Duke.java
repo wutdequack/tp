@@ -117,7 +117,6 @@ public class Duke {
         case ADD_APPOINTMENT:
             elderlyHelperFunction.addAppointment(userLine);
             ui.printAddAppointmentMessage();
-
             break;
         case VIEW_APPOINTMENT:
             elderlyHelperFunction.viewAppointment(userLine);
@@ -165,6 +164,7 @@ public class Duke {
             break;
         default:
             // Command is not recognized
+            //assert keyword.equals("a") : "Nothing has been input";
             ui.printUnknownCommandMessage();
             break;
         }
