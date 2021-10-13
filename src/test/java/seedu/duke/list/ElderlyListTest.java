@@ -8,7 +8,8 @@ import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.NextOfKin;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ElderlyListTest {
     ElderlyList elderlyList = new ElderlyList();
@@ -181,9 +182,7 @@ public class ElderlyListTest {
     @Test
     void bloodPressureTest() {
         final double[] expectedOutput = new double[]{169.0, 108.0};
-        assertEquals(expectedOutput[0],
-                elderlyList.getElderly("limqq369").getBloodPressure()[0]);
-        assertEquals(expectedOutput[1],
-                elderlyList.getElderly("limqq369").getBloodPressure()[1]);
+        assertArrayEquals(expectedOutput,
+                elderlyList.getElderly("limqq369").getBloodPressure());
     }
 }
