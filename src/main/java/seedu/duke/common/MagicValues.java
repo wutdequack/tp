@@ -55,5 +55,5 @@ public class MagicValues {
     public static final int INDEX_OF_VACCINATED_STATUS = 2;
 
 
-    public static TextUi ui;
+    public static TextUi ui = new TextUi();
 }

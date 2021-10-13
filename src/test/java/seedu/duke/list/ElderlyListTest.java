@@ -181,7 +181,7 @@ public class ElderlyListTest {
 
     @Test
     void bloodPressureTest() {
-        final String expectedOutput = "(169.00 108.00)";
+        final double[] expectedOutput = new double[]{169.0, 108.0};
         assertEquals(expectedOutput,
                 elderlyList.getElderly("limqq369").getBloodPressure());
     }
