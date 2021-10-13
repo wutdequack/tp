@@ -89,8 +89,8 @@ public class Messages {
     /**
      * Used when printing elderly object.
      */
-    public static final String VACCINATED_MESSAGE = "Vaccinated? : %s";
-    public static final String BIRTHDAY_MESSAGE = "Birthday: %s";
+    public static final String VACCINATED_MESSAGE = "Vaccination status of %s: %s";
+    public static final String BIRTHDAY_MESSAGE = "Birthday of %s: %s";
     public static final String RECORDS_MESSAGE = "Here are %s's records:\n%s\n";
     public static final String APPOINTMENTS_MESSAGE = "Here is the list of upcoming appointments:\n%s\n";
     public static final String MEDICINES_MESSAGE = "This is the list of medicine(s):\n%s\n";
