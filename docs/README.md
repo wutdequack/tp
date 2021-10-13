@@ -106,6 +106,77 @@ Appointments of johntan123 are shown below:
   2.Location: khoo teck puat hospital, Date: 05032021, Time: 1500, Purpose of Visit: eye checkup
 ```
 
+### `addnok` - Adds details of Next-Of-Kin to an elderly
+
+Details of the elderly's Next-Of-Kin will be added to the application.
+Specifically, the details are name, phone number, email, address and relationship.
+
+Example of usage:
+
+`addnok n/johntan123 k/tony lim p/98765432 e/tonylim@gmail.com a/123 Yishun Street r/son`
+
+
+Expected outcome:
+
+Next-Of-kin added message will be shown.
+
+```
+Next-Of-Kin has been added!
+```
+
+### `viewnok` - Views details of Next-Of-Kin that the elderly has
+
+Next-Of-Kin details of the given elderly will be shown by the application.
+
+Example of usage:
+
+`viewnok n/johntan123`
+
+Expected outcome:
+
+Next-Of-Kin details allocated to that elderly will be shown.
+
+```
+Details of johntan123 Next-of-Kin are shown below:
+[NOK Name: tony lim, NOK Phone Number: 98765432, NOK Email: tonylim@gmail.com, NOK Aaddress: 123 Yishun Street, 
+Relationship: son]
+```
+
+### `addrec` - Adds record details to an elderly
+
+Details of the elderly will be added to the application.
+Specifically, the details are name, phone number and address.
+
+Example of usage:
+
+`addrec n/johntan123 p/93456781 a/123 Yishun Street`
+
+
+Expected outcome:
+
+Record added message will be shown.
+
+```
+Record of elderly has been added!
+```
+
+### `viewrec` - Views details of elderly that has been stored
+
+Next-Of-Kin details for all appointments of the given elderly will be shown by the application.
+
+Example of usage:
+
+`viewrec n/johntan123`
+
+Expected outcome:
+
+Next-Of-Kin details allocated to that elderly will be shown.
+
+```
+Record of johntan123 is shown below:
+[Elderly HP: 93456781, Elderly Address: 123 Yishun Street]
+```
+
 ### `bye` - Terminates the application
 
 Application will be terminated
