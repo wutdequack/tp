@@ -1,12 +1,7 @@
 package seedu.duke;
 
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 import seedu.duke.common.Elderly;
-import seedu.duke.common.Appointment;
-import seedu.duke.common.Medicine;
 import seedu.duke.list.ElderlyList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
@@ -19,14 +14,6 @@ import static seedu.duke.common.MagicValues.ADD_MEDICINE;
 import static seedu.duke.common.MagicValues.BYE_STRING;
 import static seedu.duke.common.MagicValues.VIEW_APPOINTMENT;
 import static seedu.duke.common.MagicValues.VIEW_MEDICINE;
-import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
-import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
-import static seedu.duke.common.MagicValues.INDEX_OF_LOCATION;
-import static seedu.duke.common.MagicValues.INDEX_OF_MEDICINE_NAME;
-import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
-import static seedu.duke.common.MagicValues.INDEX_OF_PURPOSE;
-import static seedu.duke.common.MagicValues.INDEX_OF_TIME;
-import static seedu.duke.common.MagicValues.LENGTH_IF_PURPOSE_EXISTS;
 import static seedu.duke.common.MagicValues.ADD_NOK;
 import static seedu.duke.common.MagicValues.ADD_RECORD;
 import static seedu.duke.common.MagicValues.VIEW_NOK;
@@ -87,9 +74,8 @@ public class Duke {
     /**
      * Stops loop and print bye message.
      */
-    public void handleByeSequence() {
+    public void terminateInput() {
         toContinue = false;
-        ui.printGoodByeMessage();
     }
 
     /**
@@ -105,7 +91,8 @@ public class Duke {
         switch (keyword.toUpperCase()) {
         case BYE_STRING:
             // Stop loop and print Goodbye
-            handleByeSequence();
+            terminateInput();
+            ui.printGoodByeMessage();
             break;
         case ADD_MEDICINE:
             elderlyHelperFunction.addMedicine(userLine);

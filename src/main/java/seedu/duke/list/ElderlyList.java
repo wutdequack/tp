@@ -97,7 +97,7 @@ public class ElderlyList {
      *
      * @param elderly The elderly in question.
      */
-    public void printMedicines(Elderly elderly) {
+    private void printMedicines(Elderly elderly) {
         int counter = 1;
         System.out.println("Medicine of " + elderly.getName() + " are shown below:");
         for (Medicine medicine : elderly.getMedicines()) {
@@ -147,7 +147,7 @@ public class ElderlyList {
      *
      * @param elderly The elderly in question.
      */
-    public void printAppointments(Elderly elderly) {
+    private void printAppointments(Elderly elderly) {
         int counter = 1;
         System.out.println("Appointments of " + elderly.getName() + " are shown below:");
         for (Appointment appointment : elderly.getAppointments()) {
@@ -250,6 +250,7 @@ public class ElderlyList {
             }
             counter++;
         }
+        assert counter < getElderlyCount() : "Elderly is not found";
         return elderlyArrayList.get(counter);
     }
 
