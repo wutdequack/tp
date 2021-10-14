@@ -50,6 +50,7 @@ public class MagicValues {
     public static final int INDEX_OF_SYSTOLIC_PRESSURE = 2;
     public static final int INDEX_OF_DIASTOLIC_PRESSURE = 3;
     public static final int INDEX_OF_BIRTHDAY = 2;
+    public static final int LENGTH_OF_BLOOS_PRESSURE_ARRAY = 2;
     public static final int INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY = 0;
     public static final int INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY = 1;
     public static final int INDEX_OF_VACCINATED_STATUS = 2;
