@@ -114,6 +114,7 @@ public class Duke {
             break;
         case ADD_NOK:
             elderlyHelperFunction.addNok(userLine);
+            ui.printAddNokMessage();
             break;
         case VIEW_NOK:
             elderlyHelperFunction.viewNok(userLine);
