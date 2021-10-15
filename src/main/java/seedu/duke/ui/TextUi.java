@@ -145,4 +145,11 @@ public class TextUi {
     public void printElderlyList(String elderlyListString) {
         out.println(elderlyListString);
     }
+
+    /**
+     * Prints acknowledgement of dietary preference of elderly added to user.
+     */
+    public void printSetDietMessage(Elderly elderly) {
+        out.printf(SET_BIRTHDAY_MESSAGE, elderly.getName(), elderly.getDiet());
+    }
 }

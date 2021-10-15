@@ -336,11 +336,38 @@ public class ElderlyList {
     }
 
     /**
-     * Gets the vaccination status of the elderly to be true.
+     * Gets the vaccination status of the elderly.
      *
      * @param userLine Line that has been inputted by user.
      */
     public void getVaccinationStatus(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        assert paramList.length == 2 : "Name is empty";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        elderly.printVaccinationStatus();
+    }
+
+    /**
+     * Sets the dietary preference of the elderly to be true.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public Elderly setDietaryPreference(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        assert paramList.length == 2 : "setdiet input does not have all required values";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly = getElderly(elderlyName);
+        elderly.setDiet();
+        return elderly;
+    }
+
+    /**
+     * Gets the dietary preference of the elderly.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void viewDietaryPreference(String userLine) {
         String[] paramList = userLine.split(" n/");
         assert paramList.length == 2 : "Name is empty";
         String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];

@@ -24,6 +24,8 @@ import static seedu.duke.common.MagicValues.VIEW_BIRTHDAY;
 import static seedu.duke.common.MagicValues.SET_BIRTHDAY;
 import static seedu.duke.common.MagicValues.SET_VACCINATED;
 import static seedu.duke.common.MagicValues.VIEW_VACCINATION;
+import static seedu.duke.common.MagicValues.SET_DIET;
+import static seedu.duke.common.MagicValues.VIEW_DIET;
 
 
 public class Duke {
@@ -150,6 +152,14 @@ public class Duke {
         case LIST_ELDERLY:
             elderlyHelperFunction.printElderly();
             break;
+        case SET_DIET:
+            targetElderly = elderlyHelperFunction.setDietaryPreference(userLine);
+            ui.printSetDietMessage(targetElderly);
+            break;
+        case VIEW_DIET:
+            elderlyHelperFunction.viewDietaryPreference(userLine);
+            break;
+
         default:
             // Command is not recognized
             // assert keyword.equals("a") : "Nothing has been input";

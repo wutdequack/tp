@@ -26,6 +26,8 @@ public class MagicValues {
     public static final String SET_VACCINATED = "SETVACCINATED";
     public static final String VIEW_VACCINATION = "VIEWVACCINATION";
     public static final String UPDATE_VACCINATATION_STATUS = "UPDATEVACCINATIONSTATUS";
+    public static final String SET_DIET = "SETDIET";
+    public static final String VIEW_DIET = "VIEWDIET";
 
 
     /**
