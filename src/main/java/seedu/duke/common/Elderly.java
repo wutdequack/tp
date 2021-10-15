@@ -1,5 +1,8 @@
 package seedu.duke.common;
 
+import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
+import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
+import static seedu.duke.common.MagicValues.LENGTH_OF_BLOOS_PRESSURE_ARRAY;
 import static seedu.duke.common.Messages.APPOINTMENTS_MESSAGE;
 import static seedu.duke.common.Messages.BIRTHDAY_MESSAGE;
 import static seedu.duke.common.Messages.MEDICINES_MESSAGE;
@@ -71,9 +74,9 @@ public class Elderly {
     }
 
     public void setBloodPressure(double systolic, double diastolic) {
-        bloodPressure = new double[2];
-        bloodPressure[0] = systolic;
-        bloodPressure[1] = diastolic;
+        bloodPressure = new double[LENGTH_OF_BLOOS_PRESSURE_ARRAY];
+        bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY] = systolic;
+        bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY] = diastolic;
     }
 
     public double[] getBloodPressure() {

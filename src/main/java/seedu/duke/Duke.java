@@ -152,7 +152,7 @@ public class Duke {
             break;
         default:
             // Command is not recognized
-            //assert keyword.equals("a") : "Nothing has been input";
+            // assert keyword.equals("a") : "Nothing has been input";
             ui.printUnknownCommandMessage();
             break;
         }
