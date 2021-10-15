@@ -22,6 +22,7 @@ import static seedu.duke.common.Messages.ADD_ELDERLY_MESSAGE;
 import static seedu.duke.common.Messages.SET_VACCINATED_MESSAGE;
 import static seedu.duke.common.Messages.SET_BIRTHDAY_MESSAGE;
 import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
+import static seedu.duke.common.Messages.SET_DIET_MESSAGE;
 
 public class TextUi {
     private final Scanner in;
@@ -150,6 +151,6 @@ public class TextUi {
      * Prints acknowledgement of dietary preference of elderly added to user.
      */
     public void printSetDietMessage(Elderly elderly) {
-        out.printf(SET_BIRTHDAY_MESSAGE, elderly.getName(), elderly.getDiet());
+        out.printf(SET_DIET_MESSAGE, elderly.getName(), elderly.getDiet());
     }
 }
