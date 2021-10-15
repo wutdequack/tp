@@ -93,8 +93,7 @@ public class Messages {
     public static final String NUMBER_OF_ELDERLY_STRING = "There are currently %d elderly registered in the system\n";
 
     /**
-     * Used to list down all the supported dietary preferences
-     * for user's selection
+     * Used to list down all the supported dietary preferences for user's selection.
      */
     public static final String LIST_OF_DIETS = "Select the possible diet of the elderly%n1. Halal%n2. Vegetarian%n"
             + "3. Vegan%n4. Beef free%n5. Diabetes%n 6. No restriction%n";
