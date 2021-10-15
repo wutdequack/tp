@@ -1,5 +1,7 @@
 package seedu.duke.common;
 
+import seedu.duke.parser.Parser;
+
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.LENGTH_OF_BLOOS_PRESSURE_ARRAY;
@@ -10,6 +12,7 @@ import static seedu.duke.common.Messages.NOKS_MESSAGE;
 import static seedu.duke.common.Messages.OVERALL_ELDERLY_MESSAGE;
 import static seedu.duke.common.Messages.RECORDS_MESSAGE;
 import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
+import static seedu.duke.common.Messages.LIST_OF_DIETS;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,9 +35,11 @@ public class Elderly {
     private double[] bloodPressure;
     private boolean isVaccinated;
     private Date birthday;
+    private DietaryPreference diet;
 
     public Elderly(String name) {
         this.name = name;
+        diet = DietaryPreference.NOT_SET;
     }
 
     public String getName() {
@@ -115,6 +120,64 @@ public class Elderly {
             System.out.printf("not ");
         }
         System.out.printf("vaccinated.%n");
+    }
+
+    public String getDiet() {
+        switch (diet) {
+        case HALAL:
+            return "Halal";
+        case VEGETARIAN:
+            return "Vegetarian";
+        case VEGAN:
+            return "Vegan";
+        case BEEF_FREE:
+            return "Beef free";
+        case DIABETES:
+            return "Diabetes";
+        case NO_RESTRICTION:
+            return "No restriction";
+        case NOT_SET:
+            return "Not set";
+        default:
+            // to be handled by exception later
+            return "Error";
+        }
+    }
+
+    public void setDiet() {
+        System.out.printf(LIST_OF_DIETS);
+        int choice = Parser.parseChoiceFromUserInput();
+        switch (choice) {
+        case 1:
+            diet = DietaryPreference.HALAL;
+            break;
+        case 2:
+            diet = DietaryPreference.VEGETARIAN;
+            break;
+        case 3:
+            diet = DietaryPreference.VEGAN;
+            break;
+        case 4:
+            diet = DietaryPreference.BEEF_FREE;
+            break;
+        case 5:
+            diet = DietaryPreference.DIABETES;
+            break;
+        case 6:
+            diet = DietaryPreference.NO_RESTRICTION;
+            break;
+        default:
+            // to be handled by exception later
+            System.out.println("Wrong input");
+        }
+    }
+
+    public void printDietaryPreference() {
+        if (diet == DietaryPreference.NOT_SET) {
+            System.out.printf("Dietary preference of %s has not been set%n", name);
+            return;
+        }
+        System.out.printf("%s is having a %s diet%n", name, getDiet());
     }
 
     @Override

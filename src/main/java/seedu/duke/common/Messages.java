@@ -82,9 +82,23 @@ public class Messages {
     public static final String SET_BLOOD_PRESSURE_MESSAGE = "Blood pressure of %s has been updated to %.2f %.2f!\r\n";
 
     /**
+     * Used when dietary prefrence of the elderly has been updated.
+     */
+    public static final String SET_DIET_MESSAGE = "Dietary preference of %s has been set to %s\r\n";
+
+
+    /**
      * Used when counting number of elderly for list.
      */
     public static final String NUMBER_OF_ELDERLY_STRING = "There are currently %d elderly registered in the system\n";
+
+    /**
+     * Used to list down all the supported dietary preferences
+     * for user's selection
+     */
+    public static final String LIST_OF_DIETS = "Select the possible diet of the elderly%n" +
+            "1. Halal%n2. Vegetarian%n3. Vegan%n" +
+            "4. Beef free%n5. Diabetes%n 6. No restriction%n";
 
     /**
      * Used when printing elderly object.

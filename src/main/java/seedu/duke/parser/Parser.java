@@ -1,5 +1,7 @@
 package seedu.duke.parser;
 
+import java.util.Scanner;
+
 import static seedu.duke.common.MagicValues.INDEX_OF_KEYWORD;
 
 public class Parser {
@@ -9,6 +11,7 @@ public class Parser {
 
     /**
      * Extracts keyword from user input.
+     *
      * @param userLine Line that is inputted by the user.
      * @return String containing the keyword.
      */
@@ -16,5 +19,12 @@ public class Parser {
         return userLine.split(" ")[INDEX_OF_KEYWORD];
     }
 
+    public static int parseChoiceFromUserInput() {
+        int choice;
+        try (Scanner sc = new Scanner(System.in)) {
+            choice = Integer.parseInt(sc.nextLine());
+        }
+        return choice;
+    }
 
 }
