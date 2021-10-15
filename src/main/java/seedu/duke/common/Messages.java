@@ -96,9 +96,8 @@ public class Messages {
      * Used to list down all the supported dietary preferences
      * for user's selection
      */
-    public static final String LIST_OF_DIETS = "Select the possible diet of the elderly%n" +
-            "1. Halal%n2. Vegetarian%n3. Vegan%n" +
-            "4. Beef free%n5. Diabetes%n 6. No restriction%n";
+    public static final String LIST_OF_DIETS = "Select the possible diet of the elderly%n1. Halal%n2. Vegetarian%n"
+            + "3. Vegan%n4. Beef free%n5. Diabetes%n 6. No restriction%n";
 
     /**
      * Used when printing elderly object.
