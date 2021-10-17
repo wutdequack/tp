@@ -10,7 +10,14 @@
 
 
 ## Product scope
+Hi, welcome to the Elderly in Your Hood.
+It is a product to empower service personnel to 
+store information about the elderly they are servicing in the elderly home.
+
 ### Target user profile
+It is for service staffs at the elderly home who works at a PC,
+prefers typing, and wants to avoid the tedious tracking of details of each and every
+elderly they are servicing.
 
 {Describe the target user profile}
 
@@ -28,6 +35,8 @@
 ## Non-Functional Requirements
 
 {Give non-functional requirements}
+1. The product is not required to ensure that the dosage of medicine keyed are safe.
+2. The product should work on both 32-bit and 64-bit system.
 
 ## Glossary
 
