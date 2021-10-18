@@ -26,6 +26,6 @@ Welcome admin. Type after the '>' to start.
 > Appointment has been added!
 > Appointment has been added!
 > Appointments of tan are shown below:
-  1.Location: ktph, Date: 1st jan, Time: 1000, Purpose of Visit: eyecheckup
-  2.Location: ktph, Date: 2nd feb, Time: 1500, Purpose of Visit: general checkup
+  1.Location: ktph, Date: 01012021, Time: 1000, Purpose of Visit: eyecheckup
+  2.Location: ktph, Date: 02022021, Time: 1500, Purpose of Visit: general checkup
 > Bye command has been recognized. Goodbye!
