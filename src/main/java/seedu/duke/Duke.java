@@ -98,18 +98,21 @@ public class Duke {
             break;
         case ADD_MEDICINE:
             elderlyHelperFunction.addMedicine(userLine);
+            ui.printAddMedicineMessage();
             break;
         case VIEW_MEDICINE:
             elderlyHelperFunction.viewMedicine(userLine);
             break;
         case ADD_APPOINTMENT:
             elderlyHelperFunction.addAppointment(userLine);
+            ui.printAddAppointmentMessage();
             break;
         case VIEW_APPOINTMENT:
             elderlyHelperFunction.viewAppointment(userLine);
             break;
         case ADD_ELDERLY:
             elderlyHelperFunction.addElderly(userLine);
+            ui.printAddElderlyMessage();
             break;
         case ADD_NOK:
             elderlyHelperFunction.addNok(userLine);
@@ -129,19 +132,19 @@ public class Duke {
             elderlyHelperFunction.viewBloodPressure(userLine);
             break;
         case SET_BLOOD_PRESSURE:
-            //targetElderly = elderlyHelperFunction.setBloodPressure(userLine);
-            //ui.printSetBloodPressureMessage(targetElderly);
+            targetElderly = elderlyHelperFunction.setBloodPressure(userLine);
+            ui.printSetBloodPressureMessage(targetElderly);
             break;
         case VIEW_BIRTHDAY:
             elderlyHelperFunction.viewBirthday(userLine);
             break;
         case SET_BIRTHDAY:
-            //targetElderly = elderlyHelperFunction.setBirthday(userLine);
-            //ui.printSetBirthdayMessage(targetElderly);
+            targetElderly = elderlyHelperFunction.setBirthday(userLine);
+            ui.printSetBirthdayMessage(targetElderly);
             break;
         case SET_VACCINATED:
-            //targetElderly = elderlyHelperFunction.setVaccinated(userLine);
-            //ui.printSetVaccinationMessage(targetElderly);
+            targetElderly = elderlyHelperFunction.setVaccinated(userLine);
+            ui.printSetVaccinationMessage(targetElderly);
             break;
         case VIEW_VACCINATION:
             elderlyHelperFunction.getVaccinationStatus(userLine);
@@ -150,8 +153,8 @@ public class Duke {
             elderlyHelperFunction.printElderly();
             break;
         case SET_DIET:
-            //targetElderly = elderlyHelperFunction.setDietaryPreference(userLine);
-            //ui.printSetDietMessage(targetElderly);
+            targetElderly = elderlyHelperFunction.setDietaryPreference(userLine);
+            ui.printSetDietMessage(targetElderly);
             break;
         case VIEW_DIET:
             elderlyHelperFunction.viewDietaryPreference(userLine);

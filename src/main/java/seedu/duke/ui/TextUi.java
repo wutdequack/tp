@@ -11,19 +11,14 @@ import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_ADD_MEDICINE_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_VIEW_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_ADD_APPOINTMENT_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_VIEW_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 import static seedu.duke.common.Messages.WELCOME_MESSAGE;
 import static seedu.duke.common.Messages.PROMPT_MESSAGE;
 import static seedu.duke.common.Messages.LOGO;
 import static seedu.duke.common.Messages.GOODBYE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_COMMAND_MESSAGE;
 import static seedu.duke.common.Messages.ADD_ELDERLY_MESSAGE;
-import static seedu.duke.common.Messages.NO_SUCH_ELDERLY_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_ADD_ELDERLY_MESSAGE;
 import static seedu.duke.common.Messages.SET_VACCINATED_MESSAGE;
 import static seedu.duke.common.Messages.SET_BIRTHDAY_MESSAGE;
 import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
@@ -93,20 +88,6 @@ public class TextUi {
     }
 
     /**
-     * Prints that the elderly name given is not in system.
-     */
-    public void printNoSuchElderly() {
-        out.println(NO_SUCH_ELDERLY_MESSAGE);
-    }
-
-    /**
-     * Prints the correct format for addelderly.
-     */
-    public void printInvalidAddElderlyMessage() {
-        out.println(INVALID_ADD_ELDERLY_MESSAGE);
-    }
-
-    /**
      * Prints acknowledgement of appointment added to user.
      */
     public void printAddAppointmentMessage() {
@@ -114,39 +95,10 @@ public class TextUi {
     }
 
     /**
-     * Prints correct format for viewappt.
-     */
-    public void printInvalidViewAppointmentMessage() {
-        out.println(INVALID_VIEW_APPOINTMENT_MESSAGE);
-    }
-
-    /**
-     * Prints the correct format for addappt.
-     */
-    public void printInvalidAddAppointmentMessage() {
-        out.println(INVALID_ADD_APPOINTMENT_MESSAGE);
-    }
-
-
-    /**
      * Prints acknowledgement of medicine added to user.
      */
     public void printAddMedicineMessage() {
         out.println(ADD_MEDICINE_MESSAGE);
-    }
-
-    /**
-     * Prints correct format for viewmed.
-     */
-    public void printInvalidViewMedicineMessage() {
-        out.println(INVALID_VIEW_MEDICINE_MESSAGE);
-    }
-
-    /**
-     * Prints the correct format for addmed.
-     */
-    public void printInvalidAddMedicineMessage() {
-        out.println(INVALID_ADD_MEDICINE_MESSAGE);
     }
 
     /**
