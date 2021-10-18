@@ -1,6 +1,5 @@
 package seedu.duke;
 
-
 import seedu.duke.common.Elderly;
 import seedu.duke.list.ElderlyList;
 import seedu.duke.ui.TextUi;
