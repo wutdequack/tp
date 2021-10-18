@@ -1,5 +1,6 @@
 package seedu.duke.common;
 
+
 /**
  * Class containing hardcoded Strings.
  */
