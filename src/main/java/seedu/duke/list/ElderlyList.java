@@ -8,10 +8,16 @@ import seedu.duke.common.Appointment;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
+import seedu.duke.exceptions.MedicineException;
+import seedu.duke.exceptions.ElderlyException;
+import seedu.duke.exceptions.AppointmentException;
 
 import java.util.Objects;
 
 //import seedu.duke.common.*;
+import static seedu.duke.common.MagicValues.NAME_SPLIT;
+import static seedu.duke.common.MagicValues.ADD_MEDICINE_SPLIT;
+import static seedu.duke.common.MagicValues.ADD_APPOINTMENT_SPLIT;
 import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_ADDRESS;
@@ -30,8 +36,10 @@ import static seedu.duke.common.MagicValues.INDEX_OF_NOK_NAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_BIRTHDAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE;
-
+import static seedu.duke.common.MagicValues.GENERAL_CHECKUP;
 import static seedu.duke.common.MagicValues.ui;
+import static seedu.duke.common.MagicValues.re;
+
 import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 
 
@@ -58,10 +66,17 @@ public class ElderlyList {
      * @param userLine Line that is inputted by the user.
      */
     public void addElderly(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[1];
-        elderlyArrayList.add(new Elderly(elderlyName));
+        try {
+            if (!re.isValidAddElderly(userLine)) {
+                throw new ElderlyException();
+            }
+            String[] paramList = userLine.split(NAME_SPLIT);
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            elderlyArrayList.add(new Elderly(elderlyName));
+            ui.printAddElderlyMessage();
+        } catch (ElderlyException e) {
+            ui.printInvalidAddElderlyMessage();
+        }
     }
 
     /**
@@ -70,13 +85,23 @@ public class ElderlyList {
      * @param userLine Line that is inputted by the user.
      */
     public void addMedicine(String userLine) {
-        String[] paramList = userLine.split(" [nmf]/");
-        assert paramList.length == 4 : "addmed input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        String medicineName = paramList[INDEX_OF_MEDICINE_NAME];
-        String frequency = paramList[INDEX_OF_FREQUENCY];
-        elderly.addMedicine(new Medicine(medicineName, frequency));
+        try {
+            if (!re.isValidAddMedicine(userLine)) {
+                throw new MedicineException();
+            }
+            String[] paramList = userLine.split(ADD_MEDICINE_SPLIT);
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            String medicineName = paramList[INDEX_OF_MEDICINE_NAME];
+            String frequency = paramList[INDEX_OF_FREQUENCY];
+            assert paramList.length == 4 : "addmed input does not have all required values";
+            elderly.addMedicine(new Medicine(medicineName, frequency));
+            ui.printAddMedicineMessage();
+        } catch (MedicineException e) {
+            ui.printInvalidAddMedicineMessage();
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     /**
@@ -85,11 +110,20 @@ public class ElderlyList {
      * @param userLine Line that is inputted by the user.
      */
     public void viewMedicine(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        printMedicines(elderly);
+        try {
+            if (!re.isValidViewMedicine(userLine)) {
+                throw new MedicineException();
+            }
+            String[] paramList = userLine.split(NAME_SPLIT);
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            assert paramList.length == 2 : "Name is empty";
+            Elderly elderly = getElderly(elderlyName);
+            printMedicines(elderly);
+        } catch (MedicineException e) {
+            ui.printInvalidViewMedicineMessage();
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     /**
@@ -113,20 +147,30 @@ public class ElderlyList {
      * @param userLine Line that is inputted by the user.
      */
     public void addAppointment(String userLine) {
-        String[] paramList = userLine.split(" [nldtp]/");
-        assert paramList.length == 5 || paramList.length == 6 : "addappt input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        String location = paramList[INDEX_OF_LOCATION];
-        String date = paramList[INDEX_OF_DATE];
-        String time = paramList[INDEX_OF_TIME];
-        String purpose;
-        if (paramList.length == LENGTH_IF_PURPOSE_EXISTS) {
-            purpose = paramList[INDEX_OF_PURPOSE];
-        } else {
-            purpose = "general checkup";
+        try {
+            if (!re.isValidAddAppointment(userLine)) {
+                throw new AppointmentException();
+            }
+            String[] paramList = userLine.split(ADD_APPOINTMENT_SPLIT);
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            String location = paramList[INDEX_OF_LOCATION];
+            String date = paramList[INDEX_OF_DATE];
+            String time = paramList[INDEX_OF_TIME];
+            String purpose;
+            if (paramList.length == LENGTH_IF_PURPOSE_EXISTS) {
+                purpose = paramList[INDEX_OF_PURPOSE];
+            } else {
+                purpose = GENERAL_CHECKUP;
+            }
+            assert paramList.length == 5 || paramList.length == 6 : "addappt input does not have all required values";
+            elderly.addAppointment(new Appointment(location, date, time, purpose));
+            ui.printAddAppointmentMessage();
+        } catch (AppointmentException e) {
+            ui.printInvalidAddAppointmentMessage();
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
         }
-        elderly.addAppointment(new Appointment(location, date, time, purpose));
     }
 
     /**
@@ -135,11 +179,20 @@ public class ElderlyList {
      * @param userLine Line that is inputted by the user.
      */
     public void viewAppointment(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        printAppointments(elderly);
+        try {
+            if (!re.isValidViewAppointment(userLine)) {
+                throw new AppointmentException();
+            }
+            String[] paramList = userLine.split(NAME_SPLIT);
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            assert paramList.length == 2 : "Name is empty";
+            Elderly elderly = getElderly(elderlyName);
+            printAppointments(elderly);
+        } catch (AppointmentException e) {
+            ui.printInvalidViewAppointmentMessage();
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     /**
@@ -163,16 +216,20 @@ public class ElderlyList {
      * @param userLine Line that is inputted by user.
      */
     public void addNok(String userLine) {
-        String[] paramList = userLine.split(" [nkpear]/");
-        assert paramList.length == 7 : "addnok input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        String nokName = paramList[INDEX_OF_NOK_NAME];
-        String nokPhoneNumber = paramList[INDEX_OF_NOK_PHONE_NUMBER];
-        String nokEmail = paramList[INDEX_OF_NOK_EMAIL];
-        String nokAddress = paramList[INDEX_OF_NOK_ADDRESS];
-        String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
-        elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
+        try {
+            String[] paramList = userLine.split(" [nkpear]/");
+            assert paramList.length == 7 : "addnok input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            String nokName = paramList[INDEX_OF_NOK_NAME];
+            String nokPhoneNumber = paramList[INDEX_OF_NOK_PHONE_NUMBER];
+            String nokEmail = paramList[INDEX_OF_NOK_EMAIL];
+            String nokAddress = paramList[INDEX_OF_NOK_ADDRESS];
+            String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
+            elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     /**
@@ -181,11 +238,15 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void viewNok(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        printNextOfKin(elderly);
+        try {
+            String[] paramList = userLine.split(" n/");
+            assert paramList.length == 2 : "Name is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            printNextOfKin(elderly);
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     /**
@@ -204,13 +265,17 @@ public class ElderlyList {
      * @param userLine Line that is inputted by user.
      */
     public void addRecord(String userLine) {
-        String[] paramList = userLine.split(" [npa]/");
-        assert paramList.length == 4 : "addrec input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        String elderlyPhoneNumber = paramList[INDEX_OF_ELDERLY_PHONE_NUMBER];
-        String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
-        elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
+        try {
+            String[] paramList = userLine.split(" [npa]/");
+            assert paramList.length == 4 : "addrec input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            String elderlyPhoneNumber = paramList[INDEX_OF_ELDERLY_PHONE_NUMBER];
+            String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
+            elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     /**
@@ -219,11 +284,15 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void viewRecord(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        printRecord(elderly);
+        try {
+            String[] paramList = userLine.split(" n/");
+            assert paramList.length == 2 : "Name is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            printRecord(elderly);
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     /**
@@ -242,15 +311,20 @@ public class ElderlyList {
      * @param name String containing name of elderly.
      * @return Elderly object.
      */
-    public Elderly getElderly(String name) {
+    public Elderly getElderly(String name) throws ElderlyException {
         int counter = 0;
+        boolean elderlyExists = false;
         for (Elderly elderly : elderlyArrayList) {
             if (Objects.equals(elderly.getName(), name)) {
+                elderlyExists = true;
                 break;
             }
             counter++;
         }
-        assert counter < getElderlyCount() : "Elderly is not found";
+        if (!elderlyExists) {
+            throw new ElderlyException();
+        }
+        //assert counter < getElderlyCount() : "Elderly is not found";
         return elderlyArrayList.get(counter);
     }
 
@@ -260,11 +334,15 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void viewBloodPressure(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        printBloodPressure(elderly);
+        try {
+            String[] paramList = userLine.split(" n/");
+            assert paramList.length == 2 : "Name is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            printBloodPressure(elderly);
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     private void printBloodPressure(Elderly elderly) {
@@ -273,21 +351,21 @@ public class ElderlyList {
                 bloodPuressure[0], bloodPuressure[1]);
     }
 
-    /**
-     * Sets the blood pressure of the elderly.
-     *
-     * @param userLine Line that has been inputted by user.
-     */
-    public Elderly setBloodPressure(String userLine) {
-        String[] paramList = userLine.split(" [nsd]/");
-        assert paramList.length == 4 : "setbloodpressure input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
-        double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
-        Elderly elderly = getElderly(elderlyName);
-        elderly.setBloodPressure(systolicPressure, diastolicPressure);
-        return elderly;
-    }
+    //    /**
+    //     * Sets the blood pressure of the elderly.
+    //     *
+    //     * @param userLine Line that has been inputted by user.
+    //     */
+    //    public Elderly setBloodPressure(String userLine) {
+    //        String[] paramList = userLine.split(" [nsd]/");
+    //        assert paramList.length == 4 : "setbloodpressure input does not have all required values";
+    //        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+    //        double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
+    //        double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
+    //        Elderly elderly = getElderly(elderlyName);
+    //        elderly.setBloodPressure(systolicPressure, diastolicPressure);
+    //        return elderly;
+    //    }
 
     /**
      * Views the birthday of the elderly.
@@ -295,45 +373,49 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void viewBirthday(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        printBirthday(elderly);
+        try {
+            String[] paramList = userLine.split(" n/");
+            assert paramList.length == 2 : "Name is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            printBirthday(elderly);
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
     private void printBirthday(Elderly elderly) {
         System.out.printf("Birthday of %s is %s%n", elderly.getName(), elderly.getBirthday());
     }
 
-    /**
-     * Sets the birthday of the elderly.
-     *
-     * @param userLine Line that has been inputted by user.
-     */
-    public Elderly setBirthday(String userLine) {
-        String[] paramList = userLine.split(" [nb]/");
-        assert paramList.length == 3 : "setbirthday input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        String birthday = paramList[INDEX_OF_BIRTHDAY];
-        Elderly elderly = getElderly(elderlyName);
-        elderly.setElderlyBirthday(birthday);
-        return elderly;
-    }
+    //    /**
+    //     * Sets the birthday of the elderly.
+    //     *
+    //     * @param userLine Line that has been inputted by user.
+    //     */
+    //    public Elderly setBirthday(String userLine) {
+    //        String[] paramList = userLine.split(" [nb]/");
+    //        assert paramList.length == 3 : "setbirthday input does not have all required values";
+    //        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+    //        String birthday = paramList[INDEX_OF_BIRTHDAY];
+    //        Elderly elderly = getElderly(elderlyName);
+    //        elderly.setElderlyBirthday(birthday);
+    //        return elderly;
+    //    }
 
-    /**
-     * Sets the vaccination status of the elderly to be true.
-     *
-     * @param userLine Line that has been inputted by user.
-     */
-    public Elderly setVaccinated(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "setvaccinated input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        elderly.setVaccinated();
-        return elderly;
-    }
+    //    /**
+    //     * Sets the vaccination status of the elderly to be true.
+    //     *
+    //     * @param userLine Line that has been inputted by user.
+    //     */
+    //    public Elderly setVaccinated(String userLine) {
+    //        String[] paramList = userLine.split(" n/");
+    //        assert paramList.length == 2 : "setvaccinated input does not have all required values";
+    //        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+    //        Elderly elderly = getElderly(elderlyName);
+    //        elderly.setVaccinated();
+    //        return elderly;
+    //    }
 
     /**
      * Gets the vaccination status of the elderly.
@@ -341,26 +423,30 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void getVaccinationStatus(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        elderly.printVaccinationStatus();
+        try {
+            String[] paramList = userLine.split(" n/");
+            assert paramList.length == 2 : "Name is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            elderly.printVaccinationStatus();
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
-    /**
-     * Sets the dietary preference of the elderly to be true.
-     *
-     * @param userLine Line that has been inputted by user.
-     */
-    public Elderly setDietaryPreference(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "setdiet input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        elderly.setDiet();
-        return elderly;
-    }
+    //    /**
+    //     * Sets the dietary preference of the elderly to be true.
+    //     *
+    //     * @param userLine Line that has been inputted by user.
+    //     */
+    //    public Elderly setDietaryPreference(String userLine) {
+    //        String[] paramList = userLine.split(" n/");
+    //        assert paramList.length == 2 : "setdiet input does not have all required values";
+    //        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+    //        Elderly elderly = getElderly(elderlyName);
+    //        elderly.setDiet();
+    //        return elderly;
+    //    }
 
     /**
      * Gets the dietary preference of the elderly.
@@ -368,11 +454,15 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void viewDietaryPreference(String userLine) {
-        String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "Name is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-        Elderly elderly = getElderly(elderlyName);
-        elderly.printVaccinationStatus();
+        try {
+            String[] paramList = userLine.split(" n/");
+            assert paramList.length == 2 : "Name is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            elderly.printVaccinationStatus();
+        } catch (ElderlyException e) {
+            ui.printNoSuchElderly();
+        }
     }
 
 
