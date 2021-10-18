@@ -1,8 +1,8 @@
 package seedu.duke.common;
 
-import java.util.ArrayList;
-
 import seedu.duke.ui.TextUi;
+
+import seedu.duke.regex.RegexChecker;
 
 public class MagicValues {
     /**
@@ -11,8 +11,9 @@ public class MagicValues {
     public static final String BYE_STRING = "BYE";
     public static final String LIST_ELDERLY = "LIST";
     public static final String ADD_MEDICINE = "ADDMED";
-    public static final String ADD_APPOINTMENT = "ADDAPPT";
     public static final String VIEW_MEDICINE = "VIEWMED";
+    public static final String GENERAL_CHECKUP = "general checkup";
+    public static final String ADD_APPOINTMENT = "ADDAPPT";
     public static final String VIEW_APPOINTMENT = "VIEWAPPT";
     public static final String ADD_ELDERLY = "ADDELDERLY";
     public static final String ADD_NOK = "ADDNOK";
@@ -57,6 +58,10 @@ public class MagicValues {
     public static final int INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY = 1;
     public static final int INDEX_OF_VACCINATED_STATUS = 2;
 
+    public static final String NAME_SPLIT = " n/";
+    public static final String ADD_MEDICINE_SPLIT = " [nmf]/";
+    public static final String ADD_APPOINTMENT_SPLIT = " [nldtp]/";
 
     public static TextUi ui = new TextUi();
+    public static RegexChecker re = new RegexChecker();
 }
