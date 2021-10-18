@@ -47,46 +47,14 @@ public class Messages {
     public static final String ADD_ELDERLY_MESSAGE = "Elderly has been added!";
 
     /**
-     * Used when invalid elderly name is given.
-     */
-    public static final String NO_SUCH_ELDERLY_MESSAGE = "Elderly name you have keyed in does not exist";
-
-    /**
-     * Used when invalid addelderly is typed.
-     */
-    public static final String INVALID_ADD_ELDERLY_MESSAGE = "Add Elderly format: addelderly n/[username]";
-
-    /**
      * Used when appointment has been added.
      */
     public static final String ADD_APPOINTMENT_MESSAGE = "Appointment has been added!";
 
     /**
-     * Used when invalid addappt is typed.
-     */
-    public static final String INVALID_ADD_APPOINTMENT_MESSAGE = "Add Appointment format: addappt n/[username] "
-            + "l/[location] d/[date] t/[time] {p/[purpose]}";
-
-    /**
-     * Used when invalid viewappt is typed.
-     */
-    public static final String INVALID_VIEW_APPOINTMENT_MESSAGE = "View Appointment format: viewappt n/[username]";
-
-    /**
      * Used when medicine has been added.
      */
     public static final String ADD_MEDICINE_MESSAGE = "Medicine has been added!";
-
-    /**
-     * Used when invalid addmed is typed.
-     */
-    public static final String INVALID_ADD_MEDICINE_MESSAGE = "Add Medicine format: addmed n/[username] m/[medicine "
-            + "name] f/[frequency]";
-
-    /**
-     * Used when invalid viewmed is typed.
-     */
-    public static final String INVALID_VIEW_MEDICINE_MESSAGE = "View Medicine format: viewmed n/[username]";
 
     /**
      * Used when Next-Of_kin has been added.
