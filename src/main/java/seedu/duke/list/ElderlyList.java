@@ -8,13 +8,14 @@ import seedu.duke.common.Appointment;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
-import seedu.duke.exceptions.MedicineException;
-import seedu.duke.exceptions.ElderlyException;
-import seedu.duke.exceptions.AppointmentException;
-import seedu.duke.exceptions.NokException;
-import seedu.duke.exceptions.RecordException;
+import seedu.duke.exceptions.ElderlyNotFoundException;
+import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
+import seedu.duke.exceptions.InvalidNokFormatException;
+import seedu.duke.exceptions.InvalidMedicineException;
+import seedu.duke.exceptions.InvalidAppointmentFormatException;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
@@ -71,13 +72,13 @@ public class ElderlyList {
     public void addElderly(String userLine) {
         try {
             if (!re.isValidAddElderly(userLine)) {
-                throw new ElderlyException();
+                throw new ElderlyNotFoundException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             elderlyArrayList.add(new Elderly(elderlyName));
             ui.printAddElderlyMessage();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printInvalidAddElderlyMessage();
         }
     }
@@ -90,7 +91,7 @@ public class ElderlyList {
     public void addMedicine(String userLine) {
         try {
             if (!re.isValidAddMedicine(userLine)) {
-                throw new MedicineException();
+                throw new InvalidMedicineException();
             }
             String[] paramList = userLine.split(ADD_MEDICINE_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
@@ -100,9 +101,9 @@ public class ElderlyList {
             assert paramList.length == 4 : "addmed input does not have all required values";
             elderly.addMedicine(new Medicine(medicineName, frequency));
             ui.printAddMedicineMessage();
-        } catch (MedicineException e) {
+        } catch (InvalidMedicineException e) {
             ui.printInvalidAddMedicineMessage();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
         }
     }
@@ -115,16 +116,16 @@ public class ElderlyList {
     public void viewMedicine(String userLine) {
         try {
             if (!re.isValidViewMedicine(userLine)) {
-                throw new MedicineException();
+                throw new InvalidMedicineException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             assert paramList.length == 2 : "Name is empty";
             Elderly elderly = getElderly(elderlyName);
             printMedicines(elderly);
-        } catch (MedicineException e) {
+        } catch (InvalidMedicineException e) {
             ui.printInvalidViewMedicineMessage();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
         }
     }
@@ -152,7 +153,7 @@ public class ElderlyList {
     public void addAppointment(String userLine) {
         try {
             if (!re.isValidAddAppointment(userLine)) {
-                throw new AppointmentException();
+                throw new InvalidAppointmentFormatException();
             }
             String[] paramList = userLine.split(ADD_APPOINTMENT_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
@@ -169,9 +170,9 @@ public class ElderlyList {
             assert paramList.length == 5 || paramList.length == 6 : "addappt input does not have all required values";
             elderly.addAppointment(new Appointment(location, date, time, purpose));
             ui.printAddAppointmentMessage();
-        } catch (AppointmentException e) {
+        } catch (InvalidAppointmentFormatException e) {
             ui.printInvalidAddAppointmentMessage();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
         }
     }
@@ -184,16 +185,16 @@ public class ElderlyList {
     public void viewAppointment(String userLine) {
         try {
             if (!re.isValidViewAppointment(userLine)) {
-                throw new AppointmentException();
+                throw new InvalidAppointmentFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             assert paramList.length == 2 : "Name is empty";
             Elderly elderly = getElderly(elderlyName);
             printAppointments(elderly);
-        } catch (AppointmentException e) {
+        } catch (InvalidAppointmentFormatException e) {
             ui.printInvalidViewAppointmentMessage();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
         }
     }
@@ -221,7 +222,7 @@ public class ElderlyList {
     public void addNok(String userLine) {
         try {
             if (!re.isValidAddNok(userLine)) {
-                throw new NokException();
+                throw new InvalidNokFormatException();
             }
             String[] paramList = userLine.split(ADD_NOK_SPLIT);
             assert paramList.length == 7 : "addnok input does not have all required values";
@@ -234,9 +235,9 @@ public class ElderlyList {
             String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
             elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
             ui.printAddNokMessage();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
-        } catch (NokException e) {
+        } catch (InvalidNokFormatException e) {
             ui.printInvalidAddNokMessage();
         }
     }
@@ -249,16 +250,16 @@ public class ElderlyList {
     public void viewNok(String userLine) {
         try {
             if (!re.isValidViewNok(userLine)) {
-                throw new NokException();
+                throw new InvalidNokFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             assert paramList.length == 2 : "Name is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printNextOfKin(elderly);
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
-        } catch (NokException e) {
+        } catch (InvalidNokFormatException e) {
             ui.printInvalidViewNokMessage();
         }
     }
@@ -281,7 +282,7 @@ public class ElderlyList {
     public void addRecord(String userLine) {
         try {
             if (!re.isValidAddRecord(userLine)) {
-                throw new RecordException();
+                throw new InvalidElderlyRecordFormatException();
             }
             String[] paramList = userLine.split(ADD_RECORD_SPLIT);
             assert paramList.length == 4 : "addrec input does not have all required values";
@@ -291,9 +292,9 @@ public class ElderlyList {
             String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
             elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
             ui.printAddRecordMessage();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
-        } catch (RecordException e) {
+        } catch (InvalidElderlyRecordFormatException e) {
             ui.printInvalidAddRecordMessage();
         }
     }
@@ -306,16 +307,16 @@ public class ElderlyList {
     public void viewRecord(String userLine) {
         try {
             if (!re.isValidViewRec(userLine)) {
-                throw new RecordException();
+                throw new InvalidElderlyRecordFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             assert paramList.length == 2 : "Name is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printRecord(elderly);
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
-        } catch (RecordException e) {
+        } catch (InvalidElderlyRecordFormatException e) {
             ui.printInvalidViewRecordMessage();
         }
     }
@@ -336,7 +337,7 @@ public class ElderlyList {
      * @param name String containing name of elderly.
      * @return Elderly object.
      */
-    public Elderly getElderly(String name) throws ElderlyException {
+    public Elderly getElderly(String name) throws ElderlyNotFoundException {
         int counter = 0;
         boolean elderlyExists = false;
         for (Elderly elderly : elderlyArrayList) {
@@ -347,7 +348,7 @@ public class ElderlyList {
             counter++;
         }
         if (!elderlyExists) {
-            throw new ElderlyException();
+            throw new ElderlyNotFoundException();
         }
         //assert counter < getElderlyCount() : "Elderly is not found";
         return elderlyArrayList.get(counter);
@@ -365,7 +366,7 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printBloodPressure(elderly);
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
         }
     }
@@ -376,21 +377,26 @@ public class ElderlyList {
                 bloodPuressure[0], bloodPuressure[1]);
     }
 
-    //    /**
-    //     * Sets the blood pressure of the elderly.
-    //     *
-    //     * @param userLine Line that has been inputted by user.
-    //     */
-    //    public Elderly setBloodPressure(String userLine) {
-    //        String[] paramList = userLine.split(" [nsd]/");
-    //        assert paramList.length == 4 : "setbloodpressure input does not have all required values";
-    //        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-    //        double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
-    //        double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
-    //        Elderly elderly = getElderly(elderlyName);
-    //        elderly.setBloodPressure(systolicPressure, diastolicPressure);
-    //        return elderly;
-    //    }
+    /**
+     * Sets the blood pressure of the elderly.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public Optional<Elderly> setBloodPressure(String userLine) {
+        String[] paramList = userLine.split(" [nsd]/");
+        assert paramList.length == 4 : "setbloodpressure input does not have all required values";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
+        double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
+        Elderly elderly;
+        try {
+            elderly = getElderly(elderlyName);
+            elderly.setBloodPressure(systolicPressure, diastolicPressure);
+            return Optional.of(elderly);
+        } catch (ElderlyNotFoundException e) {
+            return Optional.empty();
+        }
+    }
 
     /**
      * Views the birthday of the elderly.
@@ -404,7 +410,7 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printBirthday(elderly);
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
         }
     }
@@ -413,34 +419,44 @@ public class ElderlyList {
         System.out.printf("Birthday of %s is %s%n", elderly.getName(), elderly.getBirthday());
     }
 
-    //    /**
-    //     * Sets the birthday of the elderly.
-    //     *
-    //     * @param userLine Line that has been inputted by user.
-    //     */
-    //    public Elderly setBirthday(String userLine) {
-    //        String[] paramList = userLine.split(" [nb]/");
-    //        assert paramList.length == 3 : "setbirthday input does not have all required values";
-    //        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-    //        String birthday = paramList[INDEX_OF_BIRTHDAY];
-    //        Elderly elderly = getElderly(elderlyName);
-    //        elderly.setElderlyBirthday(birthday);
-    //        return elderly;
-    //    }
+        /**
+         * Sets the birthday of the elderly.
+         *
+         * @param userLine Line that has been inputted by user.
+         */
+        public Optional<Elderly> setBirthday(String userLine) {
+            String[] paramList = userLine.split(" [nb]/");
+            assert paramList.length == 3 : "setbirthday input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            String birthday = paramList[INDEX_OF_BIRTHDAY];
+            Elderly elderly;
+            try {
+                elderly = getElderly(elderlyName);
+                elderly.setElderlyBirthday(birthday);
+                return Optional.of(elderly);
+            } catch(ElderlyNotFoundException e) {
+                return Optional.empty();
+            }
+        }
 
-    //    /**
-    //     * Sets the vaccination status of the elderly to be true.
-    //     *
-    //     * @param userLine Line that has been inputted by user.
-    //     */
-    //    public Elderly setVaccinated(String userLine) {
-    //        String[] paramList = userLine.split(" n/");
-    //        assert paramList.length == 2 : "setvaccinated input does not have all required values";
-    //        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-    //        Elderly elderly = getElderly(elderlyName);
-    //        elderly.setVaccinated();
-    //        return elderly;
-    //    }
+    /**
+     * Sets the vaccination status of the elderly to be true.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public Optional<Elderly> setVaccinated(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        assert paramList.length == 2 : "setvaccinated input does not have all required values";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly;
+        try {
+            elderly = getElderly(elderlyName);
+            elderly.setVaccinated();
+            return Optional.of(elderly);
+        } catch (ElderlyNotFoundException e) {
+            return Optional.empty();
+        }
+    }
 
     /**
      * Gets the vaccination status of the elderly.
@@ -454,24 +470,29 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printVaccinationStatus();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
         }
     }
 
-    //    /**
-    //     * Sets the dietary preference of the elderly to be true.
-    //     *
-    //     * @param userLine Line that has been inputted by user.
-    //     */
-    //    public Elderly setDietaryPreference(String userLine) {
-    //        String[] paramList = userLine.split(" n/");
-    //        assert paramList.length == 2 : "setdiet input does not have all required values";
-    //        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-    //        Elderly elderly = getElderly(elderlyName);
-    //        elderly.setDiet();
-    //        return elderly;
-    //    }
+    /**
+     * Sets the dietary preference of the elderly to be true.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public Optional<Elderly> setDietaryPreference(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        assert paramList.length == 2 : "setdiet input does not have all required values";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        Elderly elderly;
+        try {
+            elderly = getElderly(elderlyName);
+            elderly.setDiet();
+            return Optional.of(elderly);
+        } catch (ElderlyNotFoundException e) {
+            return Optional.empty();
+        }
+    }
 
     /**
      * Gets the dietary preference of the elderly.
@@ -485,7 +506,7 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printVaccinationStatus();
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printNoSuchElderly();
         }
     }
