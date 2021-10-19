@@ -133,14 +133,14 @@ public class Duke {
             break;
         case SET_BLOOD_PRESSURE:
             targetElderly = elderlyHelperFunction.setBloodPressure(userLine);
-            targetElderly.ifPresentOrElse(ui::printSetVaccinationMessage, ui::printNoSuchElderly);
+            targetElderly.ifPresentOrElse(ui::printSetBloodPressureMessage, ui::printNoSuchElderly);
             break;
         case VIEW_BIRTHDAY:
             elderlyHelperFunction.viewBirthday(userLine);
             break;
         case SET_BIRTHDAY:
             targetElderly = elderlyHelperFunction.setBirthday(userLine);
-            targetElderly.ifPresentOrElse(ui::printSetVaccinationMessage, ui::printNoSuchElderly);
+            targetElderly.ifPresentOrElse(ui::printSetBirthdayMessage, ui::printNoSuchElderly);
             break;
         case SET_VACCINATED:
             targetElderly = elderlyHelperFunction.setVaccinated(userLine);
@@ -154,7 +154,7 @@ public class Duke {
             break;
         case SET_DIET:
             targetElderly = elderlyHelperFunction.setDietaryPreference(userLine);
-            targetElderly.ifPresentOrElse(ui::printSetVaccinationMessage, ui::printNoSuchElderly);
+            targetElderly.ifPresentOrElse(ui::printSetDietMessage, ui::printNoSuchElderly);
             break;
         case VIEW_DIET:
             elderlyHelperFunction.viewDietaryPreference(userLine);
