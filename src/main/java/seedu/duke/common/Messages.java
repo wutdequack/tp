@@ -92,8 +92,8 @@ public class Messages {
     /**
      * Used when invalid addnok is typed.
      */
-    public static final String INVALID_ADD_NOK_MESSAGE = "Add Next-Of-Kin information format: addnok n/[username] " +
-            "k/[name of next-of-kin] p/[phone number] e/[email] a/[address] r/[relationship]";
+    public static final String INVALID_ADD_NOK_MESSAGE = "Add Next-Of-Kin information format: addnok n/[username] "
+            + "k/[name of next-of-kin] p/[phone number] e/[email] a/[address] r/[relationship]";
 
     /**
      * Used when invalid viewnok is typed.
