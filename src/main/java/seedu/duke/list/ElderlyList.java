@@ -280,7 +280,7 @@ public class ElderlyList {
      */
     public void addRecord(String userLine) {
         try {
-            if(!re.isValidAddRecord(userLine)) {
+            if (!re.isValidAddRecord(userLine)) {
                 throw new RecordException();
             }
             String[] paramList = userLine.split(ADD_RECORD_SPLIT);
@@ -305,7 +305,7 @@ public class ElderlyList {
      */
     public void viewRecord(String userLine) {
         try {
-            if(!re.isValidViewRec(userLine)) {
+            if (!re.isValidViewRec(userLine)) {
                 throw new RecordException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
