@@ -8,7 +8,7 @@ import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
-import seedu.duke.exceptions.ElderlyException;
+import seedu.duke.exceptions.ElderlyNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,9 +32,9 @@ public class ElderlyListTest {
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
         elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun st r/son");
         elderlyList.addRecord("addrec n/limqq369 p/98776542 a/234 bukit merah st");
-        //elderlyList.setBirthday("setbirthday n/limqq369 b/1903-06-09");
-        //elderlyList.setBloodPressure("setbloodpressure n/limqq369 s/169.0 d/108.0");
-        //elderlyList.setVaccinated("setvaccinated n/limqq369");
+        elderlyList.setBirthday("setbirthday n/limqq369 b/1903-06-09");
+        elderlyList.setBloodPressure("setbloodpressure n/limqq369 s/169.0 d/108.0");
+        elderlyList.setVaccinated("setvaccinated n/limqq369");
     }
 
     //    @Test
@@ -147,7 +147,7 @@ public class ElderlyListTest {
         final String expectedOutput = "johntan123";
         try {
             assertEquals(expectedOutput, elderlyList.getElderly("johntan123").getName());
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             System.out.println("error");
         }
     }
@@ -159,7 +159,7 @@ public class ElderlyListTest {
             Medicine limMedicine = elderlyList.getElderly("limqq369").getMedicines().get(0);
             assertEquals("panadol", limMedicine.getMedicineName());
             assertEquals("once a day", limMedicine.getFrequency());
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             System.out.println("error");
         }
     }
@@ -173,7 +173,7 @@ public class ElderlyListTest {
             assertEquals("01012021", limAppointments.getDate());
             assertEquals("0900", limAppointments.getTime());
             assertEquals("general checkup", limAppointments.getPurpose());
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             System.out.println("error");
         }
     }
@@ -188,7 +188,7 @@ public class ElderlyListTest {
             assertEquals("tony@yahoo.com", limNoks.getNokEmail());
             assertEquals("123 yishun st", limNoks.getNokAddress());
             assertEquals("son", limNoks.getNokRelationship());
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             System.out.println("error");
         }
     }
@@ -200,30 +200,30 @@ public class ElderlyListTest {
             Record limRecords = elderlyList.getElderly("limqq369").getRecord().get(0);
             assertEquals("98776542", limRecords.getElderlyPhoneNumber());
             assertEquals("234 bukit merah st", limRecords.getElderlyAddress());
-        } catch (ElderlyException e) {
+        } catch (ElderlyNotFoundException e) {
             System.out.println("error");
         }
     }
 
-    //@Test
-    //void birthdayTest() {
-    //    try {
-    //        final String expectedOutput = "1903-06-09";
-    //        assertEquals(expectedOutput,
-    //                elderlyList.getElderly("limqq369").getBirthday());
-    //    } catch (ElderlyException e) {
-    //        System.out.println("error");
-    //    }
-    //}
+    @Test
+    void birthdayTest() {
+        try {
+            final String expectedOutput = "1903-06-09";
+            assertEquals(expectedOutput,
+                    elderlyList.getElderly("limqq369").getBirthday());
+        } catch (ElderlyNotFoundException e) {
+            System.out.println("error");
+        }
+    }
 
-    //@Test
-    //void bloodPressureTest() {
-    //    try {
-    //        final double[] expectedOutput = new double[]{169.0, 108.0};
-    //        assertArrayEquals(expectedOutput,
-    //                elderlyList.getElderly("limqq369").getBloodPressure());
-    //    } catch (ElderlyException e) {
-    //        System.out.println("error");
-    //    }
-    //}
+    @Test
+    void bloodPressureTest() {
+        try {
+            final double[] expectedOutput = new double[]{169.0, 108.0};
+            assertArrayEquals(expectedOutput,
+                    elderlyList.getElderly("limqq369").getBloodPressure());
+        } catch (ElderlyNotFoundException e) {
+            System.out.println("error");
+        }
+    }
 }

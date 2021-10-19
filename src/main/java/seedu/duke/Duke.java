@@ -7,6 +7,10 @@ import seedu.duke.list.ElderlyList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
 
+import javax.swing.text.html.Option;
+
+import java.util.Optional;
+
 import static seedu.duke.common.MagicValues.LIST_ELDERLY;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
@@ -88,7 +92,7 @@ public class Duke {
      */
     private void executeCommand(String userLine) {
         String keyword = new Parser().getKeywordFromUserInput(userLine);
-        Elderly targetElderly;
+        Optional<Elderly> targetElderly;
 
         // Checks for the input for keywords
         switch (keyword.toUpperCase()) {
@@ -128,19 +132,19 @@ public class Duke {
             elderlyHelperFunction.viewBloodPressure(userLine);
             break;
         case SET_BLOOD_PRESSURE:
-            //targetElderly = elderlyHelperFunction.setBloodPressure(userLine);
-            //ui.printSetBloodPressureMessage(targetElderly);
+            targetElderly = elderlyHelperFunction.setBloodPressure(userLine);
+            targetElderly.ifPresentOrElse(ui::printSetBloodPressureMessage, ui::printNoSuchElderly);
             break;
         case VIEW_BIRTHDAY:
             elderlyHelperFunction.viewBirthday(userLine);
             break;
         case SET_BIRTHDAY:
-            //targetElderly = elderlyHelperFunction.setBirthday(userLine);
-            //ui.printSetBirthdayMessage(targetElderly);
+            targetElderly = elderlyHelperFunction.setBirthday(userLine);
+            targetElderly.ifPresentOrElse(ui::printSetBirthdayMessage, ui::printNoSuchElderly);
             break;
         case SET_VACCINATED:
-            //targetElderly = elderlyHelperFunction.setVaccinated(userLine);
-            //ui.printSetVaccinationMessage(targetElderly);
+            targetElderly = elderlyHelperFunction.setVaccinated(userLine);
+            targetElderly.ifPresentOrElse(ui::printSetVaccinationMessage, ui::printNoSuchElderly);
             break;
         case VIEW_VACCINATION:
             elderlyHelperFunction.getVaccinationStatus(userLine);
@@ -149,8 +153,8 @@ public class Duke {
             elderlyHelperFunction.printElderly();
             break;
         case SET_DIET:
-            //targetElderly = elderlyHelperFunction.setDietaryPreference(userLine);
-            //ui.printSetDietMessage(targetElderly);
+            targetElderly = elderlyHelperFunction.setDietaryPreference(userLine);
+            targetElderly.ifPresentOrElse(ui::printSetDietMessage, ui::printNoSuchElderly);
             break;
         case VIEW_DIET:
             elderlyHelperFunction.viewDietaryPreference(userLine);

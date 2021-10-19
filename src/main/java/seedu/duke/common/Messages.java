@@ -155,6 +155,11 @@ public class Messages {
             + "3. Vegan%n4. Beef free%n5. Diabetes%n6. No restriction%n";
 
     /**
+     * Used when invalid elderly name is given.
+     */
+    public static final String ELDERLY_NOT_FOUND_MESSAGE = "Elderly named %s does not exist. Try again!%n";
+
+    /**
      * Used when printing elderly object.
      */
     public static final String VACCINATED_MESSAGE = "Vaccination status of %s: %s";
