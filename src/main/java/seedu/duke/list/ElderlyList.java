@@ -419,25 +419,25 @@ public class ElderlyList {
         System.out.printf("Birthday of %s is %s%n", elderly.getName(), elderly.getBirthday());
     }
 
-        /**
-         * Sets the birthday of the elderly.
-         *
-         * @param userLine Line that has been inputted by user.
-         */
-        public Optional<Elderly> setBirthday(String userLine) {
-            String[] paramList = userLine.split(" [nb]/");
-            assert paramList.length == 3 : "setbirthday input does not have all required values";
-            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-            String birthday = paramList[INDEX_OF_BIRTHDAY];
-            Elderly elderly;
-            try {
-                elderly = getElderly(elderlyName);
-                elderly.setElderlyBirthday(birthday);
-                return Optional.of(elderly);
-            } catch(ElderlyNotFoundException e) {
-                return Optional.empty();
-            }
+    /**
+     * Sets the birthday of the elderly.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public Optional<Elderly> setBirthday(String userLine) {
+        String[] paramList = userLine.split(" [nb]/");
+        assert paramList.length == 3 : "setbirthday input does not have all required values";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+        String birthday = paramList[INDEX_OF_BIRTHDAY];
+        Elderly elderly;
+        try {
+            elderly = getElderly(elderlyName);
+            elderly.setElderlyBirthday(birthday);
+            return Optional.of(elderly);
+        } catch (ElderlyNotFoundException e) {
+            return Optional.empty();
         }
+    }
 
     /**
      * Sets the vaccination status of the elderly to be true.

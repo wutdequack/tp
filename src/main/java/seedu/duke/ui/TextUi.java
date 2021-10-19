@@ -8,7 +8,30 @@ import seedu.duke.common.Elderly;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
-import static seedu.duke.common.Messages.*;
+import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
+import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
+import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_NOK_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_VIEW_NOK_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_RECORD_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_VIEW_RECORD_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_VIEW_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_VIEW_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.WELCOME_MESSAGE;
+import static seedu.duke.common.Messages.PROMPT_MESSAGE;
+import static seedu.duke.common.Messages.LOGO;
+import static seedu.duke.common.Messages.GOODBYE_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_COMMAND_MESSAGE;
+import static seedu.duke.common.Messages.ADD_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.NO_SUCH_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.SET_VACCINATED_MESSAGE;
+import static seedu.duke.common.Messages.SET_BIRTHDAY_MESSAGE;
+import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
+import static seedu.duke.common.Messages.SET_DIET_MESSAGE;
 
 public class TextUi {
     private final Scanner in;
