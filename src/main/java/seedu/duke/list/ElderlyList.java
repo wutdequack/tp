@@ -374,7 +374,8 @@ public class ElderlyList {
     private void printBloodPressure(Elderly elderly) {
         double[] bloodPuressure = elderly.getBloodPressure();
         System.out.printf("Blood pressure of %s is now (%.2f %.2f)%n", elderly.getName(),
-                bloodPuressure[0], bloodPuressure[1]);
+                bloodPuressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
+                bloodPuressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
     }
 
     /**

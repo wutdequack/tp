@@ -19,6 +19,11 @@ public class Parser {
         return userLine.split(" ")[INDEX_OF_KEYWORD];
     }
 
+    /**
+     * Extracts user's choice from user input.
+     *
+     * @return the choice the user keyyed in
+     */
     public static int parseChoiceFromUserInput() {
         int choice;
         try (Scanner sc = new Scanner(System.in)) {
