@@ -41,6 +41,8 @@ import static seedu.duke.common.MagicValues.INDEX_OF_BIRTHDAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE;
 import static seedu.duke.common.MagicValues.GENERAL_CHECKUP;
+import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
+import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.re;
 
