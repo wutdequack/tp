@@ -12,6 +12,10 @@ import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_NOK_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_VIEW_NOK_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_RECORD_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_VIEW_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_VIEW_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_APPOINTMENT_MESSAGE;
@@ -157,10 +161,38 @@ public class TextUi {
     }
 
     /**
+     * Prints the correct format for addnok.
+     */
+    public void printInvalidAddNokMessage() {
+        out.println(INVALID_ADD_NOK_MESSAGE);
+    }
+
+    /**
+     * Prints the correct format for viewnok.
+     */
+    public void printInvalidViewNokMessage() {
+        out.println(INVALID_VIEW_NOK_MESSAGE);
+    }
+
+    /**
      * Prints acknowledgement of record added to user.
      */
     public void printAddRecordMessage() {
         out.println(ADD_RECORD_MESSAGE);
+    }
+
+    /**
+     * Prints the correct format for addrec.
+     */
+    public void printInvalidAddRecordMessage() {
+        out.println(INVALID_ADD_RECORD_MESSAGE);
+    }
+
+    /**
+     * Prints the correct format for viewrec.
+     */
+    public void printInvalidViewRecordMessage() {
+        out.println(INVALID_VIEW_RECORD_MESSAGE);
     }
 
     /**

@@ -11,10 +11,13 @@ import seedu.duke.common.Record;
 import seedu.duke.exceptions.MedicineException;
 import seedu.duke.exceptions.ElderlyException;
 import seedu.duke.exceptions.AppointmentException;
+import seedu.duke.exceptions.NokException;
+import seedu.duke.exceptions.RecordException;
 
 import java.util.Objects;
 
-//import seedu.duke.common.*;
+import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
+import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
 import static seedu.duke.common.MagicValues.NAME_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_MEDICINE_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT_SPLIT;
@@ -217,7 +220,10 @@ public class ElderlyList {
      */
     public void addNok(String userLine) {
         try {
-            String[] paramList = userLine.split(" [nkpear]/");
+            if (!re.isValidAddNok(userLine)) {
+                throw new NokException();
+            }
+            String[] paramList = userLine.split(ADD_NOK_SPLIT);
             assert paramList.length == 7 : "addnok input does not have all required values";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
@@ -227,8 +233,11 @@ public class ElderlyList {
             String nokAddress = paramList[INDEX_OF_NOK_ADDRESS];
             String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
             elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
+            ui.printAddNokMessage();
         } catch (ElderlyException e) {
             ui.printNoSuchElderly();
+        } catch (NokException e) {
+            ui.printInvalidAddNokMessage();
         }
     }
 
@@ -239,13 +248,18 @@ public class ElderlyList {
      */
     public void viewNok(String userLine) {
         try {
-            String[] paramList = userLine.split(" n/");
+            if (!re.isValidViewNok(userLine)) {
+                throw new NokException();
+            }
+            String[] paramList = userLine.split(NAME_SPLIT);
             assert paramList.length == 2 : "Name is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printNextOfKin(elderly);
         } catch (ElderlyException e) {
             ui.printNoSuchElderly();
+        } catch (NokException e) {
+            ui.printInvalidViewNokMessage();
         }
     }
 
@@ -266,15 +280,21 @@ public class ElderlyList {
      */
     public void addRecord(String userLine) {
         try {
-            String[] paramList = userLine.split(" [npa]/");
+            if (!re.isValidAddRecord(userLine)) {
+                throw new RecordException();
+            }
+            String[] paramList = userLine.split(ADD_RECORD_SPLIT);
             assert paramList.length == 4 : "addrec input does not have all required values";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             String elderlyPhoneNumber = paramList[INDEX_OF_ELDERLY_PHONE_NUMBER];
             String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
             elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
+            ui.printAddRecordMessage();
         } catch (ElderlyException e) {
             ui.printNoSuchElderly();
+        } catch (RecordException e) {
+            ui.printInvalidAddRecordMessage();
         }
     }
 
@@ -285,13 +305,18 @@ public class ElderlyList {
      */
     public void viewRecord(String userLine) {
         try {
-            String[] paramList = userLine.split(" n/");
+            if (!re.isValidViewRec(userLine)) {
+                throw new RecordException();
+            }
+            String[] paramList = userLine.split(NAME_SPLIT);
             assert paramList.length == 2 : "Name is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printRecord(elderly);
         } catch (ElderlyException e) {
             ui.printNoSuchElderly();
+        } catch (RecordException e) {
+            ui.printInvalidViewRecordMessage();
         }
     }
 

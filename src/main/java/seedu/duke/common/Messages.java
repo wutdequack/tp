@@ -90,6 +90,17 @@ public class Messages {
     public static final String INVALID_VIEW_MEDICINE_MESSAGE = "View Medicine format: viewmed n/[username]";
 
     /**
+     * Used when invalid addnok is typed.
+     */
+    public static final String INVALID_ADD_NOK_MESSAGE = "Add Next-Of-Kin information format: addnok n/[username] "
+            + "k/[name of next-of-kin] p/[phone number] e/[email] a/[address] r/[relationship]";
+
+    /**
+     * Used when invalid viewnok is typed.
+     */
+    public static final String INVALID_VIEW_NOK_MESSAGE = "View Next-Of-Kin format: viewnok n/[username]";
+
+    /**
      * Used when Next-Of_kin has been added.
      */
     public static final String ADD_NOK_MESSAGE = "Next-of-Kin has been added!";
@@ -98,6 +109,18 @@ public class Messages {
      * Used when record of elderly has been added.
      */
     public static final String ADD_RECORD_MESSAGE = "Record of elderly has been added!";
+
+    /**
+     * Used when invalid addnok is typed.
+     */
+    public static final String INVALID_ADD_RECORD_MESSAGE = "Add Elderly Record Information format: addrec "
+            + "n/[username] p/[phone number] a/[address]";
+
+    /**
+     * Used when invalid viewnok is typed.
+     */
+    public static final String INVALID_VIEW_RECORD_MESSAGE = "View Elderly Record Information format: "
+            + "viewrec n/[username]";
 
     /**
      * Used when vaccination status of the elderly is set to be vaccinated.
