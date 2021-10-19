@@ -111,6 +111,18 @@ public class Messages {
     public static final String ADD_RECORD_MESSAGE = "Record of elderly has been added!";
 
     /**
+     * Used when invalid addnok is typed.
+     */
+    public static final String INVALID_ADD_RECORD_MESSAGE = "Add Elderly Record Information format: addrec "
+            + "n/[username] p/[phone number] a/[address]";
+
+    /**
+     * Used when invalid viewnok is typed.
+     */
+    public static final String INVALID_VIEW_RECORD_MESSAGE = "View Elderly Record Information format: "
+            + "viewrec n/[username]";
+
+    /**
      * Used when vaccination status of the elderly is set to be vaccinated.
      */
     public static final String SET_VACCINATED_MESSAGE = "We have set %s to be vaccinated\r\n";

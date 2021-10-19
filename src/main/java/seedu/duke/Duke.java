@@ -120,7 +120,6 @@ public class Duke {
             break;
         case ADD_RECORD:
             elderlyHelperFunction.addRecord(userLine);
-            ui.printAddRecordMessage();
             break;
         case VIEW_RECORD:
             elderlyHelperFunction.viewRecord(userLine);

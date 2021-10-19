@@ -14,6 +14,8 @@ import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_VIEW_NOK_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_RECORD_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_VIEW_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_VIEW_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_APPOINTMENT_MESSAGE;
@@ -177,6 +179,20 @@ public class TextUi {
      */
     public void printAddRecordMessage() {
         out.println(ADD_RECORD_MESSAGE);
+    }
+
+    /**
+     * Prints the correct format for addrec.
+     */
+    public void printInvalidAddRecordMessage() {
+        out.println(INVALID_ADD_RECORD_MESSAGE);
+    }
+
+    /**
+     * Prints the correct format for viewrec.
+     */
+    public void printInvalidViewRecordMessage() {
+        out.println(INVALID_VIEW_RECORD_MESSAGE);
     }
 
     /**

@@ -39,4 +39,12 @@ public class RegexChecker {
     public boolean isValidViewNok(String userLine) {
         return Pattern.matches("^viewnok n/[a-z0-9]+$", userLine.toLowerCase());
     }
+
+    public boolean isValidAddRecord(String userLine) {
+        return Pattern.matches("^addrec n/[a-z0-9]+ p/[0-9]{8}+ a/[a-z0-9\\s]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidViewRec(String userLine) {
+        return Pattern.matches("^viewrec n/[a-z0-9]+$", userLine.toLowerCase());
+    }
 }

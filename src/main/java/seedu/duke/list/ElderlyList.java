@@ -12,6 +12,7 @@ import seedu.duke.exceptions.MedicineException;
 import seedu.duke.exceptions.ElderlyException;
 import seedu.duke.exceptions.AppointmentException;
 import seedu.duke.exceptions.NokException;
+import seedu.duke.exceptions.RecordException;
 
 import java.util.Objects;
 
@@ -279,6 +280,9 @@ public class ElderlyList {
      */
     public void addRecord(String userLine) {
         try {
+            if(!re.isValidAddRecord(userLine)) {
+                throw new RecordException();
+            }
             String[] paramList = userLine.split(ADD_RECORD_SPLIT);
             assert paramList.length == 4 : "addrec input does not have all required values";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
@@ -286,8 +290,11 @@ public class ElderlyList {
             String elderlyPhoneNumber = paramList[INDEX_OF_ELDERLY_PHONE_NUMBER];
             String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
             elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
+            ui.printAddRecordMessage();
         } catch (ElderlyException e) {
             ui.printNoSuchElderly();
+        } catch (RecordException e) {
+            ui.printInvalidAddRecordMessage();
         }
     }
 
@@ -298,6 +305,9 @@ public class ElderlyList {
      */
     public void viewRecord(String userLine) {
         try {
+            if(!re.isValidViewRec(userLine)) {
+                throw new RecordException();
+            }
             String[] paramList = userLine.split(NAME_SPLIT);
             assert paramList.length == 2 : "Name is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
@@ -305,6 +315,8 @@ public class ElderlyList {
             printRecord(elderly);
         } catch (ElderlyException e) {
             ui.printNoSuchElderly();
+        } catch (RecordException e) {
+            ui.printInvalidViewRecordMessage();
         }
     }
 
