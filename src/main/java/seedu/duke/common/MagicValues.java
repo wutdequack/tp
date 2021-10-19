@@ -61,6 +61,8 @@ public class MagicValues {
     public static final String NAME_SPLIT = " n/";
     public static final String ADD_MEDICINE_SPLIT = " [nmf]/";
     public static final String ADD_APPOINTMENT_SPLIT = " [nldtp]/";
+    public static final String ADD_NOK_SPLIT = " [nkpear]/";
+    public static final String ADD_RECORD_SPLIT = " [npa]/";
 
     public static TextUi ui = new TextUi();
     public static RegexChecker re = new RegexChecker();

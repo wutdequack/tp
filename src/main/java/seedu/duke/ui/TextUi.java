@@ -12,6 +12,8 @@ import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_ADD_NOK_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_VIEW_NOK_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_VIEW_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_APPOINTMENT_MESSAGE;
@@ -154,6 +156,20 @@ public class TextUi {
      */
     public void printAddNokMessage() {
         out.println(ADD_NOK_MESSAGE);
+    }
+
+    /**
+     * Prints the correct format for addnok.
+     */
+    public void printInvalidAddNokMessage() {
+        out.println(INVALID_ADD_NOK_MESSAGE);
+    }
+
+    /**
+     * Prints the correct format for viewnok.
+     */
+    public void printInvalidViewNokMessage() {
+        out.println(INVALID_VIEW_NOK_MESSAGE);
     }
 
     /**

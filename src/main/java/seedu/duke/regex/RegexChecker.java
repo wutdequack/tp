@@ -30,4 +30,12 @@ public class RegexChecker {
     public boolean isValidViewAppointment(String userLine) {
         return Pattern.matches("^viewappt n/[a-z0-9]+$", userLine.toLowerCase());
     }
+
+    public boolean isValidAddNok(String userLine) {
+        return Pattern.matches("^addnok n/[a-z0-9]+ k/[a-z0-9\\s]+ p/[0-9]{8}+ e/[A-Za-z0-9+_.-]+@(.+)+ " +
+                        "a/[a-z0-9\\s]+ r/[a-z0-9]+$", userLine.toLowerCase());
+    }
+    public boolean isValidViewNok(String userLine) {
+        return Pattern.matches("^viewnok n/[a-z0-9]+$", userLine.toLowerCase());
+    }
 }

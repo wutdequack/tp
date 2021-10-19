@@ -27,7 +27,7 @@ public class ElderlyListTest {
         elderlyList.addElderly("addelderly n/limqq369");
         elderlyList.addMedicine("addmed n/limqq369 m/panadol f/once a day");
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
-        elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun street r/son");
+        elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun st r/son");
         //elderlyList.setBirthday("setbirthday n/limqq369 b/1903-06-09");
         //elderlyList.setBloodPressure("setbloodpressure n/limqq369 s/169.0 d/108.0");
         //elderlyList.setVaccinated("setvaccinated n/limqq369");
@@ -182,7 +182,7 @@ public class ElderlyListTest {
             assertEquals("tony", limNoks.getNokName());
             assertEquals("98765432", limNoks.getNokPhoneNumber());
             assertEquals("tony@yahoo.com", limNoks.getNokEmail());
-            assertEquals("123 yishun street", limNoks.getNokAddress());
+            assertEquals("123 yishun st", limNoks.getNokAddress());
             assertEquals("son", limNoks.getNokRelationship());
         } catch (ElderlyException e) {
             System.out.println("error");
