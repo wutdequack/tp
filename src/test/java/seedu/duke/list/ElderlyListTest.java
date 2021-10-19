@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.NextOfKin;
+import seedu.duke.common.Record;
 import seedu.duke.exceptions.ElderlyException;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -20,6 +21,8 @@ public class ElderlyListTest {
     ArrayList<Appointment> limAppointments = new ArrayList<Appointment>();
     ArrayList<NextOfKin> tanNoks = new ArrayList<NextOfKin>();
     ArrayList<NextOfKin> limNoks = new ArrayList<NextOfKin>();
+    ArrayList<Record> tanRecords = new ArrayList<Record>();
+    ArrayList<Record> limRecords = new ArrayList<Record>();
 
     @BeforeEach
     public void setUp() {
@@ -28,6 +31,7 @@ public class ElderlyListTest {
         elderlyList.addMedicine("addmed n/limqq369 m/panadol f/once a day");
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
         elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun st r/son");
+        elderlyList.addRecord("addrec n/limqq369 p/98776542 a/234 bukit merah st");
         //elderlyList.setBirthday("setbirthday n/limqq369 b/1903-06-09");
         //elderlyList.setBloodPressure("setbloodpressure n/limqq369 s/169.0 d/108.0");
         //elderlyList.setVaccinated("setvaccinated n/limqq369");
@@ -184,6 +188,18 @@ public class ElderlyListTest {
             assertEquals("tony@yahoo.com", limNoks.getNokEmail());
             assertEquals("123 yishun st", limNoks.getNokAddress());
             assertEquals("son", limNoks.getNokRelationship());
+        } catch (ElderlyException e) {
+            System.out.println("error");
+        }
+    }
+
+    @Test
+    void addRecordTest() {
+        try {
+            assertEquals(tanRecords, elderlyList.getElderly("johntan123").getRecord());
+            Record limRecords = elderlyList.getElderly("limqq369").getRecord().get(0);
+            assertEquals("98776542", limRecords.getElderlyPhoneNumber());
+            assertEquals("234 bukit merah st", limRecords.getElderlyAddress());
         } catch (ElderlyException e) {
             System.out.println("error");
         }
