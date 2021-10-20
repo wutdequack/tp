@@ -1,5 +1,9 @@
 package seedu.duke.exceptions;
 
-public class InvalidAppointmentFormatException extends Exception {
+import static seedu.duke.common.Messages.INVALID_ADD_APPOINTMENT_MESSAGE;
 
+public class InvalidAppointmentFormatException extends DukeException {
+    public InvalidAppointmentFormatException() {
+        super(INVALID_ADD_APPOINTMENT_MESSAGE);
+    }
 }

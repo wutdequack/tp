@@ -1,5 +1,9 @@
 package seedu.duke.exceptions;
 
-public class InvalidMedicineException extends Exception {
+import static seedu.duke.common.Messages.INVALID_VIEW_MEDICINE_MESSAGE;
 
+public class InvalidMedicineException extends DukeException {
+    public InvalidMedicineException() {
+        super(INVALID_VIEW_MEDICINE_MESSAGE);
+    }
 }
