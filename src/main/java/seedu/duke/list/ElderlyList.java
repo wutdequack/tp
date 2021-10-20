@@ -464,7 +464,7 @@ public class ElderlyList {
     }
 
     /**
-     * Sets the dietary preference of the elderly to be true.
+     * Sets the dietary preference of the elderly according to user's selection.
      *
      * @param userLine Line that has been inputted by user.
      */
@@ -493,7 +493,7 @@ public class ElderlyList {
             assert paramList.length == 2 : "Name is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
-            elderly.printVaccinationStatus();
+            elderly.printDietaryPreference();
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
