@@ -239,6 +239,6 @@ public class TextUi {
      * Prints acknowledgement of dietary preference of elderly added to user.
      */
     public void printDukeException(DukeException dukeException) {
-        out.printf(dukeException.getMessage());
+        out.println(dukeException.getMessage());
     }
 }
