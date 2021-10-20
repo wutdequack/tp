@@ -8,11 +8,12 @@ import seedu.duke.common.Appointment;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
+import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.ElderlyNotFoundException;
-import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
 import seedu.duke.exceptions.InvalidNokFormatException;
 import seedu.duke.exceptions.InvalidMedicineException;
 import seedu.duke.exceptions.InvalidAppointmentFormatException;
+import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -80,8 +81,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             elderlyArrayList.add(new Elderly(elderlyName));
             ui.printAddElderlyMessage();
-        } catch (ElderlyNotFoundException e) {
-            ui.printInvalidAddElderlyMessage();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -103,10 +104,8 @@ public class ElderlyList {
             assert paramList.length == 4 : "addmed input does not have all required values";
             elderly.addMedicine(new Medicine(medicineName, frequency));
             ui.printAddMedicineMessage();
-        } catch (InvalidMedicineException e) {
-            ui.printInvalidAddMedicineMessage();
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -125,10 +124,8 @@ public class ElderlyList {
             assert paramList.length == 2 : "Name is empty";
             Elderly elderly = getElderly(elderlyName);
             printMedicines(elderly);
-        } catch (InvalidMedicineException e) {
-            ui.printInvalidViewMedicineMessage();
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -172,10 +169,8 @@ public class ElderlyList {
             assert paramList.length == 5 || paramList.length == 6 : "addappt input does not have all required values";
             elderly.addAppointment(new Appointment(location, date, time, purpose));
             ui.printAddAppointmentMessage();
-        } catch (InvalidAppointmentFormatException e) {
-            ui.printInvalidAddAppointmentMessage();
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -194,10 +189,8 @@ public class ElderlyList {
             assert paramList.length == 2 : "Name is empty";
             Elderly elderly = getElderly(elderlyName);
             printAppointments(elderly);
-        } catch (InvalidAppointmentFormatException e) {
-            ui.printInvalidViewAppointmentMessage();
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -237,10 +230,8 @@ public class ElderlyList {
             String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
             elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
             ui.printAddNokMessage();
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
-        } catch (InvalidNokFormatException e) {
-            ui.printInvalidAddNokMessage();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -259,10 +250,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printNextOfKin(elderly);
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
-        } catch (InvalidNokFormatException e) {
-            ui.printInvalidViewNokMessage();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -294,10 +283,8 @@ public class ElderlyList {
             String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
             elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
             ui.printAddRecordMessage();
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
-        } catch (InvalidElderlyRecordFormatException e) {
-            ui.printInvalidAddRecordMessage();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -316,10 +303,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printRecord(elderly);
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
-        } catch (InvalidElderlyRecordFormatException e) {
-            ui.printInvalidViewRecordMessage();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -368,8 +353,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printBloodPressure(elderly);
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -413,8 +398,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             printBirthday(elderly);
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -473,8 +458,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printVaccinationStatus();
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
@@ -509,8 +494,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printVaccinationStatus();
-        } catch (ElderlyNotFoundException e) {
-            ui.printNoSuchElderly();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 

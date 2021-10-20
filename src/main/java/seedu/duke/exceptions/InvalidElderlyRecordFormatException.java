@@ -1,4 +1,9 @@
 package seedu.duke.exceptions;
 
-public class InvalidElderlyRecordFormatException extends Exception {
+import static seedu.duke.common.Messages.INVALID_ADD_RECORD_MESSAGE;
+
+public class InvalidElderlyRecordFormatException extends DukeException {
+    public InvalidElderlyRecordFormatException() {
+        super(INVALID_ADD_RECORD_MESSAGE);
+    }
 }

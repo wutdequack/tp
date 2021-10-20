@@ -5,6 +5,7 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 import seedu.duke.common.Elderly;
+import seedu.duke.exceptions.DukeException;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
@@ -232,5 +233,12 @@ public class TextUi {
      */
     public void printSetDietMessage(Elderly elderly) {
         out.printf(SET_DIET_MESSAGE, elderly.getName(), elderly.getDiet());
+    }
+
+    /**
+     * Prints acknowledgement of dietary preference of elderly added to user.
+     */
+    public void printDukeException(DukeException dukeException) {
+        out.println(dukeException.getMessage());
     }
 }
