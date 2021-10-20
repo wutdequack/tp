@@ -8,6 +8,41 @@
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
+### Elderly risk categorisation
+#### Implementation
+The elderly risk categorisation is an addition to the current `Elderly` class. It utilises
+**polymorphism**, creating three subclasses `LowRiskElderly`, `MediumRiskElderly`, `HighRiskElderly`,
+all of which **inherits** from the `Elderly` class. <br>
+Additionally, 2 new classes are implemented:
+- `Hospital` — A class that contains information about a hospital, and contains a list of 
+all its doctors. 
+- `Doctor` — A class that contains information about a doctor
+
+Below is a UML class diagram for the elderly risk categorisation:
+![img.png](img.png)
+
+
+#### How the classes interact with each other
+
+`LowRiskElderly`, `MediumRiskElderly` and `HighRiskElderly` are expected to contain all current 
+attributes and methods that `Elderly` class is supposed to have. 
+
+In addition, `MediumRiskElderly` and `HighRiskElderly` are tagged with extra information,
+specifically `Hospital`, `Conditions` and `NotesOnCare`. `Conditions` is an array string that 
+contains all the conditions the elderly has, while `NotesOnCare` is just a string that sequentially
+lists tips to care for elderly. Each elderly here is tagged to 1 `Hospital`.
+
+Finally, `HighRiskElderly` is also tagged with `Doctor`. Each elderly here is tagged to 1 `Doctor`.
+
+Every `Hospital` has 1 or more `Doctor`, stored in an ArrayList of type `Doctor`. 
+
+#### Design considerations
+
+Since our TP is only intended for one user (i.e. the caretaker in the elderly home), the input of 
+`Hospital` and `Doctor` data should not be done by them. As such, we have made it such that they are
+preset. `Hospital` and `Doctor` data are made to be fixed, as we make the assumption that the
+`Hospital` and `Doctor` that the `MediumRiskElderly` and `HighRiskElderly` are looking for 
+are already there. 
 
 ## Product scope
 Hi, welcome to the Elderly in Your Hood.
