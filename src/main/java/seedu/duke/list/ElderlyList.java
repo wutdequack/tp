@@ -8,7 +8,12 @@ import seedu.duke.common.Appointment;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
-import seedu.duke.exceptions.*;
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.ElderlyNotFoundException;
+import seedu.duke.exceptions.InvalidNokFormatException;
+import seedu.duke.exceptions.InvalidMedicineException;
+import seedu.duke.exceptions.InvalidAppointmentFormatException;
+import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
 
 import java.util.Objects;
 import java.util.Optional;
