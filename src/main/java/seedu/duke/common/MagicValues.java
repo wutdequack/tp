@@ -38,7 +38,8 @@ public class MagicValues {
      * List of constants used in tokenizing user input.
      */
     public static final int INDEX_OF_KEYWORD = 0;
-    public static final int INDEX_OF_ELDERLY_NAME = 1;
+    public static final int INDEX_OF_ELDERLY_USERNAME = 1;
+    public static final int INDEX_OF_ELDERLY_NAME = 2;
     public static final int INDEX_OF_LOCATION = 2;
     public static final int INDEX_OF_MEDICINE_NAME = 2;
     public static final int INDEX_OF_NOK_NAME = 2;
@@ -62,7 +63,7 @@ public class MagicValues {
     public static final int INDEX_OF_SEARCH_MED = 1;
     public static final int INDEX_OF_SEARCH_DIET = 1;
 
-    public static final String NAME_SPLIT = " n/";
+    public static final String NAME_SPLIT = " [un]/";
     public static final String ADD_MEDICINE_SPLIT = " [nmf]/";
     public static final String ADD_APPOINTMENT_SPLIT = " [nldtp]/";
     public static final String ADD_NOK_SPLIT = " [nkpear]/";

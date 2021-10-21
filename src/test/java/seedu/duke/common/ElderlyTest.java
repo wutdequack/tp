@@ -10,12 +10,12 @@ public class ElderlyTest {
 
     @BeforeEach
     public void setUp() {
-        johnTan = new Elderly("johntan123");
+        johnTan = new Elderly("johntan123", "John Tan");
     }
 
     @Test
     void testElderlyDetails() {
-        assertEquals(johnTan.getName(), "johntan123");
+        assertEquals(johnTan.getUsername(), "johntan123");
     }
 
     @Test

@@ -26,8 +26,8 @@ public class ElderlyListTest {
 
     @BeforeEach
     public void setUp() {
-        elderlyList.addElderly("addelderly n/johntan123");
-        elderlyList.addElderly("addelderly n/limqq369");
+        elderlyList.addElderly("addelderly u/johntan123 n/John Tan");
+        elderlyList.addElderly("addelderly u/limqq369 n/Lim Qi Qi");
         elderlyList.addMedicine("addmed n/limqq369 m/panadol f/once a day");
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
         elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun st r/son");
@@ -195,7 +195,7 @@ public class ElderlyListTest {
     void addElderlyTest() {
         final String expectedOutput = "johntan123";
         try {
-            assertEquals(expectedOutput, elderlyList.getElderly("johntan123").getName());
+            assertEquals(expectedOutput, elderlyList.getElderly("johntan123").getUsername());
         } catch (ElderlyNotFoundException e) {
             System.out.println("error");
         }

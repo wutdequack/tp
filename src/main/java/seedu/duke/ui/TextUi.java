@@ -203,21 +203,21 @@ public class TextUi {
      * Prints acknowledgement of Vaccination status added to user.
      */
     public void printSetVaccinationMessage(Elderly elderly) {
-        out.printf(SET_VACCINATED_MESSAGE, elderly.getName());
+        out.printf(SET_VACCINATED_MESSAGE, elderly.getUsername());
     }
 
     /**
      * Prints acknowledgement of birthday added to user.
      */
     public void printSetBirthdayMessage(Elderly elderly) {
-        out.printf(SET_BIRTHDAY_MESSAGE, elderly.getName(), elderly.getBirthday());
+        out.printf(SET_BIRTHDAY_MESSAGE, elderly.getUsername(), elderly.getBirthday());
     }
 
     /**
      * Prints acknowledgement of blood pressure added to user.
      */
     public void printSetBloodPressureMessage(Elderly elderly) {
-        out.printf(SET_BLOOD_PRESSURE_MESSAGE, elderly.getName(),
+        out.printf(SET_BLOOD_PRESSURE_MESSAGE, elderly.getUsername(),
                 elderly.getBloodPressure()[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
                 elderly.getBloodPressure()[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
     }
@@ -235,7 +235,7 @@ public class TextUi {
      * Prints acknowledgement of dietary preference of elderly added to user.
      */
     public void printSetDietMessage(Elderly elderly) {
-        out.printf(SET_DIET_MESSAGE, elderly.getName(), elderly.getDiet());
+        out.printf(SET_DIET_MESSAGE, elderly.getUsername(), elderly.getDiet());
     }
 
     /**

@@ -8,7 +8,7 @@ public class RegexChecker {
     }
 
     public boolean isValidAddElderly(String userLine) {
-        return Pattern.matches("^addelderly n/[a-z0-9]+$", userLine.toLowerCase());
+        return Pattern.matches("^addelderly u/[a-z0-9]+ n/[a-z0-9\\s]+$", userLine.toLowerCase());
     }
 
     public boolean isValidAddMedicine(String userLine) {

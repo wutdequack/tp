@@ -17,10 +17,8 @@ import static seedu.duke.common.Messages.LIST_OF_DIETS;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 
 public class Elderly {
@@ -30,6 +28,7 @@ public class Elderly {
     protected ArrayList<NextOfKin> nextofkins = new ArrayList<NextOfKin>();
     protected ArrayList<Record> records = new ArrayList<Record>();
 
+    protected String username;
     protected String name;
 
     private double[] bloodPressure;
@@ -37,12 +36,17 @@ public class Elderly {
     private Date birthday;
     private DietaryPreference diet;
 
-    public Elderly(String name) {
+    public Elderly(String username, String name) {
+        this.username = username;
         this.name = name;
         diet = DietaryPreference.NOT_SET;
     }
 
-    public String getName() {
+    public String getUsername() {
+        return username;
+    }
+    
+    public String getName () {
         return name;
     }
 
@@ -115,7 +119,7 @@ public class Elderly {
     }
 
     public void printVaccinationStatus() {
-        System.out.printf("%s is currently ", getName());
+        System.out.printf("%s is currently ", getUsername());
         if (!isVaccinated) {
             System.out.printf("not ");
         }
@@ -174,10 +178,10 @@ public class Elderly {
 
     public void printDietaryPreference() {
         if (diet == DietaryPreference.NOT_SET) {
-            System.out.printf("Dietary preference of %s has not been set%n", name);
+            System.out.printf("Dietary preference of %s has not been set%n", username);
             return;
         }
-        System.out.printf("%s is having a %s diet%n", name, getDiet());
+        System.out.printf("%s is having a %s diet%n", username, getDiet());
     }
 
     @Override
@@ -202,18 +206,18 @@ public class Elderly {
                 .map(Objects::toString)
                 .reduce((t, u) -> t + '\n' + u)
                 .orElse("");
-        String vaccinatedString = String.format(VACCINATED_MESSAGE, name,
+        String vaccinatedString = String.format(VACCINATED_MESSAGE, username,
                 isVaccinated ? "Vaccinated" : "Not vaccinated");
-        String birthdayString = String.format(BIRTHDAY_MESSAGE, name,
+        String birthdayString = String.format(BIRTHDAY_MESSAGE, username,
                 birthday == null ? "Not Recorded" : getBirthday());
-        String combinedListofRecordsString = String.format(RECORDS_MESSAGE, name, listOfRecordsString);
+        String combinedListofRecordsString = String.format(RECORDS_MESSAGE, username, listOfRecordsString);
         String combinedlistOfAppointmentsString = String.format(APPOINTMENTS_MESSAGE,
                 listOfAppointmentsString);
         String combinedlistOfMedicinesString = String.format(MEDICINES_MESSAGE,
                 listOfMedicinesString);
-        String combinedlistOfNoksString = String.format(NOKS_MESSAGE, name,
+        String combinedlistOfNoksString = String.format(NOKS_MESSAGE, username,
                 listOfNoksString);
-        return String.format(OVERALL_ELDERLY_MESSAGE, name, vaccinatedString,
+        return String.format(OVERALL_ELDERLY_MESSAGE, username, name, vaccinatedString,
                 birthdayString, combinedListofRecordsString,
                 combinedlistOfAppointmentsString, combinedlistOfMedicinesString, combinedlistOfNoksString);
     }
