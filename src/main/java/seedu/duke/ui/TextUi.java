@@ -12,6 +12,7 @@ import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.DIET_NOT_FOUND_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_VIEW_NOK_MESSAGE;
@@ -250,6 +251,14 @@ public class TextUi {
      */
     public void printMedicineNotFoundMessage(String medicineQueryString) {
         out.println(String.format(MEDICINE_NOT_FOUND_MESSAGE, medicineQueryString));
+    }
+
+    /**
+     * Prints diet query not found message.
+     * @param dietQueryString String containing diet query by user.
+     */
+    public void printDietNotFoundMessage(String dietQueryString) {
+        out.println(String.format(DIET_NOT_FOUND_MESSAGE, dietQueryString));
     }
 
     /**

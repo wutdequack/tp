@@ -51,4 +51,8 @@ public class RegexChecker {
     public boolean isValidFindMed(String userLine) {
         return Pattern.matches("^findbymed m/[a-z0-9]+$", userLine.toLowerCase());
     }
+
+    public boolean isValidFindDiet(String userLine) {
+        return Pattern.matches("^findbydiet d/[a-z0-9]+$", userLine.toLowerCase());
+    }
 }

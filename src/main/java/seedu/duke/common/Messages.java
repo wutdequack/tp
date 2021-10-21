@@ -138,7 +138,7 @@ public class Messages {
     public static final String SET_BLOOD_PRESSURE_MESSAGE = "Blood pressure of %s has been updated to %.2f %.2f!\r\n";
 
     /**
-     * Used when dietary prefrence of the elderly has been updated.
+     * Used when dietary preference of the elderly has been updated.
      */
     public static final String SET_DIET_MESSAGE = "Dietary preference of %s has been set to %s\r\n";
 
@@ -175,11 +175,17 @@ public class Messages {
      */
     public static final String QUERY_RESULTS_INTRO_MESSAGE = "This is the results for the following query: %s";
     public static final String MEDICINE_NOT_FOUND_MESSAGE = "The following medicine (%s) is not found";
+    public static final String DIET_NOT_FOUND_MESSAGE = "The following diet (%s) is not found";
 
     /**
-     * Used when invalid searchbymed is typed.
+     * Used when invalid findbymed is typed.
      */
     public static final String INVALID_FIND_BY_MED_MESSAGE = "Find By Medicine format: findbymed m/[medicine "
             + "name]";
+
+    /**
+     * Used when invalid findbydiet is typed.
+     */
+    public static final String INVALID_FIND_BY_DIET_MESSAGE = "Find By Diet format: findbydiet d/[diet name]";
 
 }
