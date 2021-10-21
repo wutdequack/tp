@@ -10,17 +10,18 @@ public class ElderlyTest {
 
     @BeforeEach
     public void setUp() {
-        johnTan = new Elderly("johntan123");
+        johnTan = new Elderly("johntan123", "John Tan");
     }
 
     @Test
     void testElderlyDetails() {
-        assertEquals(johnTan.getName(), "johntan123");
+        assertEquals(johnTan.getUsername(), "johntan123");
     }
 
     @Test
     void testElderlyToString() {
-        assertEquals(johnTan.toString(), "Elderly Name: johntan123\n"
+        assertEquals(johnTan.toString(), "Elderly Username: johntan123\n"
+                + "Elderly Name: John Tan\n"
                 + "Vaccination status of johntan123: Not vaccinated\n"
                 + "Birthday of johntan123: Not Recorded\n"
                 + "Here are johntan123's records:\n"
@@ -35,7 +36,8 @@ public class ElderlyTest {
                 + "These are NOK(s) attached to johntan123:\n"
                 + "\n");
         johnTan.setVaccinated();
-        assertEquals(johnTan.toString(), "Elderly Name: johntan123\n"
+        assertEquals(johnTan.toString(), "Elderly Username: johntan123\n"
+                + "Elderly Name: John Tan\n"
                 + "Vaccination status of johntan123: Vaccinated\n"
                 + "Birthday of johntan123: Not Recorded\n"
                 + "Here are johntan123's records:\n"

@@ -9,8 +9,9 @@ public class MediumRiskElderly extends Elderly {
     protected ArrayList<String> conditions;
     protected String notesOnCare;
 
-    public MediumRiskElderly(String name, Hospital hospital, ArrayList<String> conditions, String notesOnCare) {
-        super(name);
+    public MediumRiskElderly(String username, String name, Hospital hospital, ArrayList<String> conditions,
+            String notesOnCare) {
+        super(username, name);
         this.hospital = hospital;
         this.conditions = conditions;
         this.notesOnCare = notesOnCare;

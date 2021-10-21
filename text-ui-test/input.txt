@@ -1,5 +1,5 @@
-addelderly n/tan
-addelderly n/lim
+addelderly u/tan n/tan ah kow
+addelderly u/lim n/lim ah seng
 addmed n/tan m/panadol f/once a day
 addmed n/tan m/azheitynine f/every hour
 viewmed n/tan

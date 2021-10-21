@@ -11,9 +11,10 @@ public class HighRiskElderly extends Elderly {
     protected String notesOnCare;
     protected Doctor doctor;
 
-    public HighRiskElderly(String name, Hospital hospital, ArrayList<String> conditions, String notesOnCare,
+    public HighRiskElderly(String username, String name, Hospital hospital, ArrayList<String> conditions,
+            String notesOnCare,
             Doctor doctor) {
-        super(name);
+        super(username, name);
         this.hospital = hospital;
         this.conditions = conditions;
         this.notesOnCare = notesOnCare;
