@@ -276,20 +276,20 @@ public class TextUi {
      * Prints the help menu with relevant syntax.
      */
     public void printHelpMenu() {
-            out.println();
-            out.println(String.join(System.lineSeparator(),
-                    HELP_MENU_INTRO_MESSAGE,
-                    ADD_ELDERLY_FORMAT_MESSAGE,
-                    ADD_MED_FORMAT_MESSAGE,
-                    VIEW_MED_FORMAT_MESSAGE,
-                    ADD_APPOINTMENT_FORMAT_MESSAGE,
-                    VIEW_APPOINTMENT_FORMAT_MESSAGE,
-                    ADD_NOK_FORMAT_MESSAGE,
-                    VIEW_NOK_FORMAT_MESSAGE,
-                    ADD_RECORD_FORMAT_MESSAGE,
-                    VIEW_RECORD_FORMAT_MESSAGE,
-                    LIST_FORMAT_MESSAGE,
-                    BYE_FORMAT_MESSAGE
-                    ));
+        out.println();
+        out.println(String.join(System.lineSeparator(),
+                HELP_MENU_INTRO_MESSAGE,
+                ADD_ELDERLY_FORMAT_MESSAGE,
+                ADD_MED_FORMAT_MESSAGE,
+                VIEW_MED_FORMAT_MESSAGE,
+                ADD_APPOINTMENT_FORMAT_MESSAGE,
+                VIEW_APPOINTMENT_FORMAT_MESSAGE,
+                ADD_NOK_FORMAT_MESSAGE,
+                VIEW_NOK_FORMAT_MESSAGE,
+                ADD_RECORD_FORMAT_MESSAGE,
+                VIEW_RECORD_FORMAT_MESSAGE,
+                LIST_FORMAT_MESSAGE,
+                BYE_FORMAT_MESSAGE
+                ));
     }
 }
