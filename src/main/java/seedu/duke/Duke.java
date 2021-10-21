@@ -4,6 +4,7 @@ package seedu.duke;
 
 import seedu.duke.common.Elderly;
 import seedu.duke.list.ElderlyList;
+import seedu.duke.list.HospitalList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
 
@@ -43,6 +44,7 @@ public class Duke {
     public static Boolean toContinue = true;
 
     private ElderlyList elderlyHelperFunction;
+    private HospitalList hospitalArrayList;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -66,6 +68,8 @@ public class Duke {
         ui = new TextUi();
         elderlyHelperFunction = new ElderlyList();
         ui.printWelcomeMessage();
+        hospitalArrayList = new HospitalList();
+        hospitalArrayList.initHospitals();
     }
 
     /**
