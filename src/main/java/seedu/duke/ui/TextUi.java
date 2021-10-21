@@ -21,6 +21,8 @@ import static seedu.duke.common.Messages.INVALID_VIEW_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_ADD_APPOINTMENT_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_VIEW_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.MEDICINE_NOT_FOUND_MESSAGE;
+import static seedu.duke.common.Messages.QUERY_RESULTS_INTRO_MESSAGE;
 import static seedu.duke.common.Messages.WELCOME_MESSAGE;
 import static seedu.duke.common.Messages.PROMPT_MESSAGE;
 import static seedu.duke.common.Messages.LOGO;
@@ -240,5 +242,21 @@ public class TextUi {
      */
     public void printDukeException(DukeException dukeException) {
         out.println(dukeException.getMessage());
+    }
+
+    /**
+     * Prints medicine query not found message.
+     * @param medicineQueryString String containing medicine query by user.
+     */
+    public void printMedicineNotFoundMessage(String medicineQueryString) {
+        out.println(String.format(MEDICINE_NOT_FOUND_MESSAGE, medicineQueryString));
+    }
+
+    /**
+     * Prints intro message for query results.
+     * @param searchTerm String containing medicine query by user.
+     */
+    public void printQueryResultsIntroString(String searchTerm) {
+        out.println(String.format(QUERY_RESULTS_INTRO_MESSAGE, searchTerm));
     }
 }
