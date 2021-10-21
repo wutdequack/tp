@@ -12,16 +12,19 @@ import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.BYE_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.DIET_NOT_FOUND_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_ADD_MEDICINE_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_ADD_NOK_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_VIEW_NOK_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_ADD_RECORD_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_VIEW_RECORD_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_VIEW_MEDICINE_MESSAGE;
+import static seedu.duke.common.Messages.ADD_MED_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.ADD_NOK_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.HELP_MENU_INTRO_MESSAGE;
+import static seedu.duke.common.Messages.LIST_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.VIEW_NOK_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.ADD_RECORD_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.VIEW_RECORD_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.VIEW_MED_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_ADD_APPOINTMENT_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_VIEW_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.ADD_APPOINTMENT_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.VIEW_APPOINTMENT_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.MEDICINE_NOT_FOUND_MESSAGE;
 import static seedu.duke.common.Messages.QUERY_RESULTS_INTRO_MESSAGE;
 import static seedu.duke.common.Messages.WELCOME_MESSAGE;
@@ -31,7 +34,7 @@ import static seedu.duke.common.Messages.GOODBYE_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_COMMAND_MESSAGE;
 import static seedu.duke.common.Messages.ADD_ELDERLY_MESSAGE;
 import static seedu.duke.common.Messages.NO_SUCH_ELDERLY_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_ADD_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.ADD_ELDERLY_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.SET_VACCINATED_MESSAGE;
 import static seedu.duke.common.Messages.SET_BIRTHDAY_MESSAGE;
 import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
@@ -111,7 +114,7 @@ public class TextUi {
      * Prints the correct format for addelderly.
      */
     public void printInvalidAddElderlyMessage() {
-        out.println(INVALID_ADD_ELDERLY_MESSAGE);
+        out.println(ADD_ELDERLY_FORMAT_MESSAGE);
     }
 
     /**
@@ -125,14 +128,14 @@ public class TextUi {
      * Prints correct format for viewappt.
      */
     public void printInvalidViewAppointmentMessage() {
-        out.println(INVALID_VIEW_APPOINTMENT_MESSAGE);
+        out.println(VIEW_APPOINTMENT_FORMAT_MESSAGE);
     }
 
     /**
      * Prints the correct format for addappt.
      */
     public void printInvalidAddAppointmentMessage() {
-        out.println(INVALID_ADD_APPOINTMENT_MESSAGE);
+        out.println(ADD_APPOINTMENT_FORMAT_MESSAGE);
     }
 
 
@@ -147,14 +150,14 @@ public class TextUi {
      * Prints correct format for viewmed.
      */
     public void printInvalidViewMedicineMessage() {
-        out.println(INVALID_VIEW_MEDICINE_MESSAGE);
+        out.println(VIEW_MED_FORMAT_MESSAGE);
     }
 
     /**
      * Prints the correct format for addmed.
      */
     public void printInvalidAddMedicineMessage() {
-        out.println(INVALID_ADD_MEDICINE_MESSAGE);
+        out.println(ADD_MED_FORMAT_MESSAGE);
     }
 
     /**
@@ -168,14 +171,14 @@ public class TextUi {
      * Prints the correct format for addnok.
      */
     public void printInvalidAddNokMessage() {
-        out.println(INVALID_ADD_NOK_MESSAGE);
+        out.println(ADD_NOK_FORMAT_MESSAGE);
     }
 
     /**
      * Prints the correct format for viewnok.
      */
     public void printInvalidViewNokMessage() {
-        out.println(INVALID_VIEW_NOK_MESSAGE);
+        out.println(VIEW_NOK_FORMAT_MESSAGE);
     }
 
     /**
@@ -189,14 +192,14 @@ public class TextUi {
      * Prints the correct format for addrec.
      */
     public void printInvalidAddRecordMessage() {
-        out.println(INVALID_ADD_RECORD_MESSAGE);
+        out.println(ADD_RECORD_FORMAT_MESSAGE);
     }
 
     /**
      * Prints the correct format for viewrec.
      */
     public void printInvalidViewRecordMessage() {
-        out.println(INVALID_VIEW_RECORD_MESSAGE);
+        out.println(VIEW_RECORD_FORMAT_MESSAGE);
     }
 
     /**
@@ -267,5 +270,26 @@ public class TextUi {
      */
     public void printQueryResultsIntroString(String searchTerm) {
         out.println(String.format(QUERY_RESULTS_INTRO_MESSAGE, searchTerm));
+    }
+
+    /**
+     * Prints the help menu with relevant syntax.
+     */
+    public void printHelpMenu() {
+        out.println();
+        out.println(String.join(System.lineSeparator(),
+                HELP_MENU_INTRO_MESSAGE,
+                ADD_ELDERLY_FORMAT_MESSAGE,
+                ADD_MED_FORMAT_MESSAGE,
+                VIEW_MED_FORMAT_MESSAGE,
+                ADD_APPOINTMENT_FORMAT_MESSAGE,
+                VIEW_APPOINTMENT_FORMAT_MESSAGE,
+                ADD_NOK_FORMAT_MESSAGE,
+                VIEW_NOK_FORMAT_MESSAGE,
+                ADD_RECORD_FORMAT_MESSAGE,
+                VIEW_RECORD_FORMAT_MESSAGE,
+                LIST_FORMAT_MESSAGE,
+                BYE_FORMAT_MESSAGE
+                ));
     }
 }

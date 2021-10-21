@@ -1,10 +1,10 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.INVALID_ADD_NOK_MESSAGE;
+import static seedu.duke.common.Messages.ADD_NOK_FORMAT_MESSAGE;
 
 public class InvalidNokFormatException extends DukeException {
     public InvalidNokFormatException() {
-        super(INVALID_ADD_NOK_MESSAGE);
+        super(ADD_NOK_FORMAT_MESSAGE);
     }
 
 }
