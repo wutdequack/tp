@@ -46,7 +46,7 @@ public class Elderly {
         return username;
     }
     
-    public String getName () {
+    public String getName() {
         return name;
     }
 
