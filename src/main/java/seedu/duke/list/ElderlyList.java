@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import seedu.duke.common.DietaryPreference;
 import seedu.duke.common.Elderly;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.Appointment;
@@ -19,6 +20,7 @@ import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
 
 import java.util.Objects;
 import java.util.Optional;
+import seedu.duke.exceptions.InvalidViewDietException;
 import seedu.duke.exceptions.InvalidViewMedicineException;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
@@ -61,6 +63,7 @@ public class ElderlyList {
 
     protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<Elderly>();
     protected static HashMap<String, HashSet<String>> medicineMapping = new HashMap<>();
+    protected static HashMap<String, HashSet<String>> dietMapping = new HashMap<>();
 
     public ElderlyList() {
     }
@@ -536,12 +539,13 @@ public class ElderlyList {
     }
 
     /**
-     * Builds the map between medicine name and names of elderly.
+     * Builds the different mappings between medicine name, diet preference and names of elderly.
      */
-    public void buildMedicineMapping() {
+    public void updateMappings() {
         // Creation of hashmap to do mapping between medicine and list of elderly that take given medicine
         for (Elderly elderlyObject : elderlyArrayList) {
             String elderlyName = elderlyObject.getName();
+            // Update Medicine Mappings
             for (Medicine medicineObject : elderlyObject.getMedicines()) {
                 String medicineName = medicineObject.getMedicineName();
                 // Create new Medicine name to Elderly name HashSet Mapping if it doesn't exist
@@ -551,6 +555,12 @@ public class ElderlyList {
                 // Append Elderly name to list of medicine mapping
                 medicineMapping.get(medicineName).add(elderlyName);
             }
+            // Update diet mappings
+            String dietPreference = elderlyObject.getDiet();
+            if (!dietMapping.containsKey(dietPreference)) {
+                dietMapping.put(dietPreference, new HashSet<>());
+            }
+            dietMapping.get(dietPreference).add(elderlyName);
         }
     }
 
@@ -563,7 +573,7 @@ public class ElderlyList {
     @SuppressWarnings("UnusedReturnValue")
     public String buildElderlyStringGivenMedicine(String medicineQuery) {
         String resultString = "";
-        buildMedicineMapping();
+        updateMappings();
 
         // Query HashSet for medicine name
         if (medicineMapping.containsKey(medicineQuery)) {
@@ -591,6 +601,49 @@ public class ElderlyList {
             String medicineQuery = parser.getMedicineFromSearchMed(userLine);
             ui.printQueryResultsIntroString(medicineQuery);
             String results = buildElderlyStringGivenMedicine(medicineQuery);
+            System.out.println(results);
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
+
+    /**
+     * Returns a consolidated String of all elderly with a certain diet.
+     *
+     * @param dietQuery String containing diet preference to be looked up.
+     * @return String containing all the elderly names in the system that has given diet preference.
+     */
+    @SuppressWarnings("UnusedReturnValue")
+    public String buildElderlyStringGivenDiet(String dietQuery) {
+        String resultString = "";
+        updateMappings();
+
+        // Query HashSet for diet name
+        if (dietMapping.containsKey(dietQuery)) {
+            // Gets all elderly names as a string
+            resultString = String.join(System.lineSeparator(), dietMapping.get(dietQuery));
+        } else {
+            // Cannot find diet query
+            ui.printDietNotFoundMessage(dietQuery);
+        }
+        return resultString;
+    }
+
+    /**
+     * Prints the list of elderly that is taking the searched diet preference.
+     *
+     * @param userLine String containing diet to be looked up.
+     */
+    public void getElderlyGivenDiet(String userLine) {
+        try {
+            // Check if format is correct
+            if (!re.isValidFindDiet(userLine)) {
+                throw new InvalidViewDietException();
+            }
+
+            String dietQuery = parser.getDietFromSearchMed(userLine);
+            ui.printQueryResultsIntroString(dietQuery);
+            String results = buildElderlyStringGivenMedicine(dietQuery);
             System.out.println(results);
         } catch (DukeException e) {
             ui.printDukeException(e);
