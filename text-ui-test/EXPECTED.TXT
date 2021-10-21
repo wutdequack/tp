@@ -15,14 +15,14 @@
 ||__|||__|||__|||__||               
 |/__\|/__\|/__\|/__\|               
 Welcome admin. Type after the '>' to start.
-> Elderly has been added!
+> Enter risk level. (i.e. l for low, m for med, h for high.)
 > Elderly has been added!
 > Medicine has been added!
 > Medicine has been added!
 > Medicine of tan are shown below:
   1.Medicine Name: panadol, Frequency: once a day
   2.Medicine Name: azheitynine, Frequency: every hour
-> Medicine of lim are shown below:
+> Elderly name you have keyed in does not exist
 > Appointment has been added!
 > Appointment has been added!
 > Appointments of tan are shown below:
