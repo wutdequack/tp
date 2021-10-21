@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import static seedu.duke.common.MagicValues.FIND_BY_DIET;
 import static seedu.duke.common.MagicValues.FIND_BY_MED;
+import static seedu.duke.common.MagicValues.FIND_BY_NAME;
 import static seedu.duke.common.MagicValues.LIST_ELDERLY;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
@@ -170,6 +171,9 @@ public class Duke {
             break;
         case FIND_BY_DIET:
             elderlyHelperFunction.getElderlyGivenDiet(userLine);
+            break;
+        case FIND_BY_NAME:
+            elderlyHelperFunction.getAllElderlyDetailsByName(userLine);
             break;
 
         default:

@@ -5,8 +5,10 @@ import java.util.Scanner;
 import static seedu.duke.common.MagicValues.INDEX_OF_KEYWORD;
 import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_DIET;
 import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_MED;
+import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_NAME;
 import static seedu.duke.common.MagicValues.SEARCH_DIET_SPLIT;
 import static seedu.duke.common.MagicValues.SEARCH_MED_SPLIT;
+import static seedu.duke.common.MagicValues.SEARCH_NAME_SPLIT;
 
 public class Parser {
 
@@ -59,5 +61,18 @@ public class Parser {
         String[] paramList = userLine.split(SEARCH_DIET_SPLIT);
         assert paramList.length == 2 : "findbydiet input does not have all required values";
         return paramList[INDEX_OF_SEARCH_DIET];
+    }
+
+    /**
+     * Gets real name from findbyname query.
+     * Gets real name from findbyname query.
+     * @param userLine String containing command findbyname and search term.
+     * @return String containing real name.
+     */
+    public String getRealNameFromSearchName(String userLine) {
+        // Extract out Real name
+        String[] paramList = userLine.split(SEARCH_NAME_SPLIT);
+        assert paramList.length == 2 : "findbyname input does not have all required values";
+        return paramList[INDEX_OF_SEARCH_NAME];
     }
 }

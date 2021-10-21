@@ -19,6 +19,7 @@ import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
 
 import java.util.Objects;
 import java.util.Optional;
+import seedu.duke.exceptions.InvalidViewByNameException;
 import seedu.duke.exceptions.InvalidViewDietException;
 import seedu.duke.exceptions.InvalidViewMedicineException;
 
@@ -569,7 +570,6 @@ public class ElderlyList {
      * @param medicineQuery String containing medicine to be looked up.
      * @return String containing all the elderly names in the system that takes the medicine.
      */
-    @SuppressWarnings("UnusedReturnValue")
     public String buildElderlyStringGivenMedicine(String medicineQuery) {
         String resultString = "";
         updateMappings();
@@ -612,7 +612,6 @@ public class ElderlyList {
      * @param dietQuery String containing diet preference to be looked up.
      * @return String containing all the elderly names in the system that has given diet preference.
      */
-    @SuppressWarnings("UnusedReturnValue")
     public String buildElderlyStringGivenDiet(String dietQuery) {
         String resultString = "";
         updateMappings();
@@ -630,19 +629,53 @@ public class ElderlyList {
 
     /**
      * Prints the list of elderly that is taking the searched diet preference.
-     *
+     * TODO: Unable to test this function without fix to diet
      * @param userLine String containing diet to be looked up.
      */
     public void getElderlyGivenDiet(String userLine) {
         try {
             // Check if format is correct
             if (!re.isValidFindDiet(userLine)) {
-                throw new InvalidViewDietException();
+                throw new InvalidViewByNameException();
             }
 
             String dietQuery = parser.getDietFromSearchMed(userLine);
             ui.printQueryResultsIntroString(dietQuery);
-            String results = buildElderlyStringGivenMedicine(dietQuery);
+            String results = buildElderlyStringGivenDiet(dietQuery);
+            System.out.println(results);
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
+
+    /**
+     * Returns a consolidated String of all elderly information given real name.
+     *
+     * @param realName String containing real name to be looked out.
+     * @return String containing all the elderly information in the system based on filter.
+     */
+    public String filterElderlyInformationGivenName(String realName) {
+        return elderlyArrayList
+                .stream()
+                .filter((t) -> t.getName().contentEquals(realName))
+                .map(Objects::toString)
+                .reduce((t, u) -> t + '\n' + u)
+                .orElse("");
+    }
+
+    /**
+     * Prints a list of elderly and their details given real name.
+     * @param userLine String containing real name to be looked out.
+     */
+    public void getAllElderlyDetailsByName(String userLine) {
+        try {
+            // Check if format is correct
+            if (!re.isValidFindByName(userLine)) {
+                throw new InvalidViewByNameException();
+            }
+            String realName = parser.getRealNameFromSearchName(userLine);
+            ui.printQueryResultsIntroString(realName);
+            String results = filterElderlyInformationGivenName(realName);
             System.out.println(results);
         } catch (DukeException e) {
             ui.printDukeException(e);
