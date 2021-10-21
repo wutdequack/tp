@@ -20,7 +20,8 @@ public class ElderlyTest {
 
     @Test
     void testElderlyToString() {
-        assertEquals(johnTan.toString(), "Elderly Name: johntan123\n"
+        assertEquals(johnTan.toString(), "Elderly Username: johntan123\n"
+                + "Elderly Name: John Tan\n"
                 + "Vaccination status of johntan123: Not vaccinated\n"
                 + "Birthday of johntan123: Not Recorded\n"
                 + "Here are johntan123's records:\n"
@@ -35,7 +36,8 @@ public class ElderlyTest {
                 + "These are NOK(s) attached to johntan123:\n"
                 + "\n");
         johnTan.setVaccinated();
-        assertEquals(johnTan.toString(), "Elderly Name: johntan123\n"
+        assertEquals(johnTan.toString(), "Elderly Username: johntan123\n"
+                + "Elderly Name: John Tan\n"
                 + "Vaccination status of johntan123: Vaccinated\n"
                 + "Birthday of johntan123: Not Recorded\n"
                 + "Here are johntan123's records:\n"
