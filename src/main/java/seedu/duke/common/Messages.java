@@ -170,4 +170,16 @@ public class Messages {
     public static final String NOKS_MESSAGE = "These are NOK(s) attached to %s:\n%s\n";
     public static final String OVERALL_ELDERLY_MESSAGE = "Elderly Name: %s\n%s\n%s\n%s\n%s\n%s\n%s";
 
+    /**
+     * Used in querying for information.
+     */
+    public static final String QUERY_RESULTS_INTRO_MESSAGE = "This is the results for the following query: %s";
+    public static final String MEDICINE_NOT_FOUND_MESSAGE = "The following medicine (%s) is not found";
+
+    /**
+     * Used when invalid searchbymed is typed.
+     */
+    public static final String INVALID_FIND_BY_MED_MESSAGE = "Find By Medicine format: findbymed m/[medicine "
+            + "name]";
+
 }

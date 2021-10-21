@@ -3,6 +3,8 @@ package seedu.duke.parser;
 import java.util.Scanner;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_KEYWORD;
+import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_MED;
+import static seedu.duke.common.MagicValues.SEARCH_MED_SPLIT;
 
 public class Parser {
 
@@ -22,7 +24,7 @@ public class Parser {
     /**
      * Extracts user's choice from user input.
      *
-     * @return the choice the user keyyed in
+     * @return the choice the user keyed in
      */
     public static int parseChoiceFromUserInput() {
         int choice;
@@ -32,4 +34,15 @@ public class Parser {
         return choice;
     }
 
+    /**
+     * Gets medicine name from searchmed query.
+     * @param userLine String containing command searchbymed and search term.
+     * @return String containing medicine name.
+     */
+    public String getMedicineFromSearchMed(String userLine) {
+        // Extract out medicine name
+        String[] paramList = userLine.split(SEARCH_MED_SPLIT);
+        assert paramList.length == 2 : "searchbymed input does not have all required values";
+        return paramList[INDEX_OF_SEARCH_MED];
+    }
 }

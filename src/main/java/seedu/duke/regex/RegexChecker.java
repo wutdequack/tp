@@ -47,4 +47,8 @@ public class RegexChecker {
     public boolean isValidViewRec(String userLine) {
         return Pattern.matches("^viewrec n/[a-z0-9]+$", userLine.toLowerCase());
     }
+
+    public boolean isValidFindMed(String userLine) {
+        return Pattern.matches("^findbymed m/[a-z0-9]+$", userLine.toLowerCase());
+    }
 }

@@ -1,6 +1,8 @@
 package seedu.duke.list;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import seedu.duke.common.Elderly;
 import seedu.duke.common.Medicine;
@@ -17,9 +19,11 @@ import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
 
 import java.util.Objects;
 import java.util.Optional;
+import seedu.duke.exceptions.InvalidViewMedicineException;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
+import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_MED;
 import static seedu.duke.common.MagicValues.NAME_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_MEDICINE_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT_SPLIT;
@@ -44,6 +48,8 @@ import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE;
 import static seedu.duke.common.MagicValues.GENERAL_CHECKUP;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
+import static seedu.duke.common.MagicValues.SEARCH_MED_SPLIT;
+import static seedu.duke.common.MagicValues.parser;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.re;
 
@@ -54,6 +60,7 @@ public class ElderlyList {
 
 
     protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<Elderly>();
+    protected static HashMap<String, HashSet<String>> medicineMapping = new HashMap<>();
 
     public ElderlyList() {
     }
@@ -521,11 +528,72 @@ public class ElderlyList {
     }
 
     /**
-     * Print current list of elderly along with number of elderly in system.
+     * Prints current list of elderly along with number of elderly in system.
      */
     public void printElderly() {
         System.out.printf(NUMBER_OF_ELDERLY_STRING, getElderlyCount());
         ui.printElderlyList(getConsolidatedStringOfElderly());
     }
 
+    /**
+     * Builds the map between medicine name and names of elderly.
+     */
+    public void buildMedicineMapping() {
+        // Creation of hashmap to do mapping between medicine and list of elderly that take given medicine
+        for (Elderly elderlyObject : elderlyArrayList) {
+            String elderlyName = elderlyObject.getName();
+            for (Medicine medicineObject : elderlyObject.getMedicines()) {
+                String medicineName = medicineObject.getMedicineName();
+                // Create new Medicine name to Elderly name HashSet Mapping if it doesn't exist
+                if (!medicineMapping.containsKey(medicineName)) {
+                    medicineMapping.put(medicineName, new HashSet<>());
+                }
+                // Append Elderly name to list of medicine mapping
+                medicineMapping.get(medicineName).add(elderlyName);
+            }
+        }
+    }
+
+    /**
+     * Returns a consolidated String of all elderly taking a given medicine.
+     *
+     * @param medicineQuery String containing medicine to be looked up.
+     * @return String containing all the elderly names in the system that takes the medicine.
+     */
+    @SuppressWarnings("UnusedReturnValue")
+    public String buildElderlyStringGivenMedicine(String medicineQuery) {
+        String resultString = "";
+        buildMedicineMapping();
+
+        // Query HashSet for medicine name
+        if (medicineMapping.containsKey(medicineQuery)) {
+            // Gets all elderly names as a string
+            resultString = String.join(System.lineSeparator(), medicineMapping.get(medicineQuery));
+        } else {
+            // Cannot find medicine query
+            ui.printMedicineNotFoundMessage(medicineQuery);
+        }
+        return resultString;
+    }
+
+    /**
+     * Prints the list of elderly that is taking the searched medicine.
+     *
+     * @param userLine String containing medicine to be looked up.
+     */
+    public void getElderlyGivenMedicine(String userLine) {
+        try {
+            // Check if format is correct
+            if (!re.isValidFindMed(userLine)) {
+                throw new InvalidViewMedicineException();
+            }
+
+            String medicineQuery = parser.getMedicineFromSearchMed(userLine);
+            ui.printQueryResultsIntroString(medicineQuery);
+            String results = buildElderlyStringGivenMedicine(medicineQuery);
+            System.out.println(results);
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
 }
