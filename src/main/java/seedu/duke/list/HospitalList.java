@@ -1,6 +1,8 @@
 package seedu.duke.list;
 
 import java.util.ArrayList;
+import seedu.duke.common.Medicine;
+import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
 
 public class HospitalList {
@@ -104,6 +106,24 @@ public class HospitalList {
         hospitalArrayList.add(initNgTengFongHospital());
         hospitalArrayList.add(initSingaporeGeneralHospital());
         hospitalArrayList.add(initTanTockSengHospital());
+    }
+
+    public void printHospitalNames() {
+        int counter = 1;
+        System.out.println("List of hospitals are shown below:");
+        for (Hospital hospital : hospitalArrayList) {
+            System.out.format("% 3d.", counter);
+            System.out.println(hospital.getHospitalName());
+            counter++;
+        }
+    }
+
+    public Integer getLength() {
+        return hospitalArrayList.size();
+    }
+
+    public Hospital getHospital(int index) {
+        return hospitalArrayList.get(index);
     }
 
     private Hospital initChangiGeneralHospital() {

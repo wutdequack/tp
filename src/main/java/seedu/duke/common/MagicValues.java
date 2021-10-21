@@ -1,5 +1,6 @@
 package seedu.duke.common;
 
+import seedu.duke.list.HospitalList;
 import seedu.duke.parser.Parser;
 import seedu.duke.ui.TextUi;
 
@@ -81,4 +82,5 @@ public class MagicValues {
     public static TextUi ui = new TextUi();
     public static RegexChecker re = new RegexChecker();
     public static Parser parser = new Parser();
+    public static HospitalList hospitalArrayList = new HospitalList();
 }

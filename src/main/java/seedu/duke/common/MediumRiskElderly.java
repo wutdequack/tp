@@ -6,10 +6,10 @@ import seedu.duke.hospital.Hospital;
 public class MediumRiskElderly extends Elderly {
 
     protected Hospital hospital;
-    protected ArrayList<String> conditions;
+    protected String conditions;
     protected String notesOnCare;
 
-    public MediumRiskElderly(String username, String name, Hospital hospital, ArrayList<String> conditions,
+    public MediumRiskElderly(String username, String name, Hospital hospital, String conditions,
             String notesOnCare) {
         super(username, name);
         this.hospital = hospital;
@@ -21,7 +21,7 @@ public class MediumRiskElderly extends Elderly {
         return hospital;
     }
 
-    public ArrayList<String> getConditions() {
+    public String getConditions() {
         return conditions;
     }
 

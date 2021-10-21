@@ -18,6 +18,9 @@ import static seedu.duke.common.Messages.ADD_MED_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_NOK_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.DELETE_ELDERLY_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.DELETE_ELDERLY_SUCCESSFUL_MESSAGE;
+import static seedu.duke.common.Messages.ENTER_CONDITIONS_MESSAGE;
+import static seedu.duke.common.Messages.ENTER_DOCTOR_MESSAGE;
+import static seedu.duke.common.Messages.ENTER_NOTES_ON_CARE_MESSAGE;
 import static seedu.duke.common.Messages.HELP_MENU_INTRO_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_SEARCH_TERM_MESSAGE;
 import static seedu.duke.common.Messages.LIST_FORMAT_MESSAGE;
@@ -41,6 +44,8 @@ import static seedu.duke.common.Messages.SET_VACCINATED_MESSAGE;
 import static seedu.duke.common.Messages.SET_BIRTHDAY_MESSAGE;
 import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
 import static seedu.duke.common.Messages.SET_DIET_MESSAGE;
+import static seedu.duke.common.Messages.ENTER_RISK_LEVEL_MESSAGE;
+import static seedu.duke.common.Messages.ENTER_HOSPITAL_MESSAGE;
 
 public class TextUi {
     private final Scanner in;
@@ -97,6 +102,42 @@ public class TextUi {
     public void printUnknownCommandMessage() {
         out.println(INVALID_COMMAND_MESSAGE);
     }
+
+    /**
+     * Prints to the screen asking for elderly risk level.
+     */
+    public void printEnterRiskLevelMessage() {
+        out.println(ENTER_RISK_LEVEL_MESSAGE);
+    }
+
+    /**
+     * Prints to the screen asking for hospital choice.
+     */
+    public void printEnterHospitalMessage()  {
+        out.println(ENTER_HOSPITAL_MESSAGE);
+    }
+
+    /**
+     * Prints to the screen asking for conditions.
+     */
+    public void printEnterConditionsMessage()  {
+        out.println(ENTER_CONDITIONS_MESSAGE);
+    }
+
+    /**
+     * Prints to the screen asking for notes on care.
+     */
+    public void printEnterNotesOnCareMessage()  {
+        out.println(ENTER_NOTES_ON_CARE_MESSAGE);
+    }
+
+    /**
+     * Prints to the screen asking for doctor choice.
+     */
+    public void printEnterDoctorMessage()  {
+        out.println(ENTER_DOCTOR_MESSAGE);
+    }
+
 
     /**
      * Prints Add Elderly message to user.
