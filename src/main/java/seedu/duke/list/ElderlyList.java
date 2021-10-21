@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import javax.swing.tree.AbstractLayoutCache;
 import seedu.duke.common.Elderly;
+import seedu.duke.common.HighRiskElderly;
+import seedu.duke.common.LowRiskElderly;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.Appointment;
+import seedu.duke.common.MediumRiskElderly;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
@@ -22,6 +26,8 @@ import java.util.Optional;
 import seedu.duke.exceptions.InvalidViewByNameException;
 import seedu.duke.exceptions.InvalidViewDietException;
 import seedu.duke.exceptions.InvalidViewMedicineException;
+import seedu.duke.hospital.Doctor;
+import seedu.duke.hospital.Hospital;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
@@ -53,6 +59,8 @@ import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY
 import static seedu.duke.common.MagicValues.parser;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.re;
+import static seedu.duke.common.MagicValues.hospitalArrayList;
+
 
 import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 
@@ -81,7 +89,7 @@ public class ElderlyList {
      *
      * @param userLine Line that is inputted by the user.
      */
-    public void addElderly(String userLine) {
+    public void addElderly(String userLine, String riskLevel) {
         try {
             if (!re.isValidAddElderly(userLine)) {
                 throw new ElderlyNotFoundException();
@@ -89,7 +97,36 @@ public class ElderlyList {
             String[] paramList = userLine.split(NAME_SPLIT);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-            elderlyArrayList.add(new Elderly(userName, elderlyName));
+
+            Hospital hospital;
+            Doctor doctor;
+            String conditions;
+            String notesOnCare;
+            if (Objects.equals(riskLevel, "m") || Objects.equals(riskLevel, "h")) {
+                hospitalArrayList.printHospitalNames();
+                //Integer hospitalArrayListLength = hospitalArrayList.getLength();
+                ui.printEnterHospitalMessage();
+                int hospitalIndex = Integer.parseInt(ui.getUserInput());
+                hospital = hospitalArrayList.getHospital(hospitalIndex);
+                ui.printEnterConditionsMessage();
+                conditions = ui.getUserInput();
+                ui.printEnterNotesOnCareMessage();
+                notesOnCare = ui.getUserInput();
+                if (Objects.equals(riskLevel, "h")) {
+                    hospital.printDoctorNames();
+                    ui.printEnterDoctorMessage();
+                    doctor = hospital.getDoctor(Integer.parseInt(ui.getUserInput()));
+                    elderlyArrayList.add(new HighRiskElderly(userName, elderlyName, hospital,
+                            conditions, notesOnCare, doctor));
+                } else {
+                    elderlyArrayList.add(new MediumRiskElderly(userName, elderlyName, hospital,
+                            conditions, notesOnCare));
+                }
+            } else {
+                elderlyArrayList.add(new LowRiskElderly(userName, elderlyName));
+
+            }
+
             ui.printAddElderlyMessage();
         } catch (DukeException e) {
             ui.printDukeException(e);

@@ -36,6 +36,7 @@ import static seedu.duke.common.MagicValues.SET_VACCINATED;
 import static seedu.duke.common.MagicValues.VIEW_VACCINATION;
 import static seedu.duke.common.MagicValues.SET_DIET;
 import static seedu.duke.common.MagicValues.VIEW_DIET;
+import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 
 public class Duke {
@@ -46,7 +47,6 @@ public class Duke {
     public static Boolean toContinue = true;
 
     private ElderlyList elderlyHelperFunction;
-    private HospitalList hospitalArrayList;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -70,7 +70,6 @@ public class Duke {
         ui = new TextUi();
         elderlyHelperFunction = new ElderlyList();
         ui.printWelcomeMessage();
-        hospitalArrayList = new HospitalList();
         hospitalArrayList.initHospitals();
     }
 
@@ -122,7 +121,9 @@ public class Duke {
             elderlyHelperFunction.viewAppointment(userLine);
             break;
         case ADD_ELDERLY:
-            elderlyHelperFunction.addElderly(userLine);
+            ui.printEnterRiskLevelMessage();
+            String riskLevel = ui.getUserInput();
+            elderlyHelperFunction.addElderly(userLine, riskLevel);
             break;
         case ADD_NOK:
             elderlyHelperFunction.addNok(userLine);
