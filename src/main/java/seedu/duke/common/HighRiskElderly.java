@@ -7,11 +7,11 @@ import seedu.duke.hospital.Hospital;
 public class HighRiskElderly extends Elderly {
 
     protected Hospital hospital;
-    protected ArrayList<String> conditions;
+    protected String conditions;
     protected String notesOnCare;
     protected Doctor doctor;
 
-    public HighRiskElderly(String username, String name, Hospital hospital, ArrayList<String> conditions,
+    public HighRiskElderly(String username, String name, Hospital hospital, String conditions,
             String notesOnCare,
             Doctor doctor) {
         super(username, name);
@@ -25,7 +25,7 @@ public class HighRiskElderly extends Elderly {
         return hospital;
     }
 
-    public ArrayList<String> getConditions() {
+    public String getConditions() {
         return conditions;
     }
 

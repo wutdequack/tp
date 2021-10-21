@@ -43,6 +43,32 @@ public class Messages {
     public static final String GOODBYE_MESSAGE = "Bye command has been recognized. Goodbye!";
 
     /**
+     * Used when entering risk level message.
+     */
+    public static final String ENTER_RISK_LEVEL_MESSAGE = "Enter risk level. (i.e. l for low, m for med, h for high.)";
+
+    /**
+     * Used when selecting hospital.
+     */
+    public static final String ENTER_HOSPITAL_MESSAGE = "Enter hospital number choice. (e.g. 1 for Changi General "
+            + "Hospital etc.)";
+
+    /**
+     * Used when inputting conditions.
+     */
+    public static final String ENTER_CONDITIONS_MESSAGE = "Enter elderly condition below. Hit enter when done.";
+
+    /**
+     * Used when inputting notes on care.
+     */
+    public static final String ENTER_NOTES_ON_CARE_MESSAGE = "Enter notes on care below. Hit enter when done.";
+
+    /**
+     * Used when selecting doctor.
+     */
+    public static final String ENTER_DOCTOR_MESSAGE = "Enter doctor number choice. (e.g. 1)";
+
+    /**
      * Used when elderly has been added.
      */
     public static final String ADD_ELDERLY_MESSAGE = "Elderly has been added!";
