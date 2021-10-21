@@ -1,9 +1,9 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.INVALID_FIND_BY_NAME_MESSAGE;
+import static seedu.duke.common.Messages.FIND_BY_NAME_FORMAT_MESSAGE;
 
 public class InvalidViewByNameException extends DukeException {
     public InvalidViewByNameException() {
-        super(INVALID_FIND_BY_NAME_MESSAGE);
+        super(FIND_BY_NAME_FORMAT_MESSAGE);
     }
 }

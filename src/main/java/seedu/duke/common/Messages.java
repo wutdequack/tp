@@ -55,7 +55,7 @@ public class Messages {
     /**
      * Used when invalid addelderly is typed.
      */
-    public static final String INVALID_ADD_ELDERLY_MESSAGE = "Add Elderly format: addelderly n/[username]";
+    public static final String ADD_ELDERLY_FORMAT_MESSAGE = "Add Elderly format: addelderly n/[username]";
 
     /**
      * Used when appointment has been added.
@@ -65,13 +65,13 @@ public class Messages {
     /**
      * Used when invalid addappt is typed.
      */
-    public static final String INVALID_ADD_APPOINTMENT_MESSAGE = "Add Appointment format: addappt n/[username] "
+    public static final String ADD_APPOINTMENT_FORMAT_MESSAGE = "Add Appointment format: addappt n/[username] "
             + "l/[location] d/[date] t/[time] {p/[purpose]}";
 
     /**
      * Used when invalid viewappt is typed.
      */
-    public static final String INVALID_VIEW_APPOINTMENT_MESSAGE = "View Appointment format: viewappt n/[username]";
+    public static final String VIEW_APPOINTMENT_FORMAT_MESSAGE = "View Appointment format: viewappt n/[username]";
 
     /**
      * Used when medicine has been added.
@@ -81,24 +81,24 @@ public class Messages {
     /**
      * Used when invalid addmed is typed.
      */
-    public static final String INVALID_ADD_MEDICINE_MESSAGE = "Add Medicine format: addmed n/[username] m/[medicine "
+    public static final String ADD_MED_FORMAT_MESSAGE = "Add Medicine format: addmed n/[username] m/[medicine "
             + "name] f/[frequency]";
 
     /**
      * Used when invalid viewmed is typed.
      */
-    public static final String INVALID_VIEW_MEDICINE_MESSAGE = "View Medicine format: viewmed n/[username]";
+    public static final String VIEW_MED_FORMAT_MESSAGE = "View Medicine format: viewmed n/[username]";
 
     /**
      * Used when invalid addnok is typed.
      */
-    public static final String INVALID_ADD_NOK_MESSAGE = "Add Next-Of-Kin information format: addnok n/[username] "
+    public static final String ADD_NOK_FORMAT_MESSAGE = "Add Next-Of-Kin information format: addnok n/[username] "
             + "k/[name of next-of-kin] p/[phone number] e/[email] a/[address] r/[relationship]";
 
     /**
      * Used when invalid viewnok is typed.
      */
-    public static final String INVALID_VIEW_NOK_MESSAGE = "View Next-Of-Kin format: viewnok n/[username]";
+    public static final String VIEW_NOK_FORMAT_MESSAGE = "View Next-Of-Kin format: viewnok n/[username]";
 
     /**
      * Used when Next-Of_kin has been added.
@@ -113,13 +113,13 @@ public class Messages {
     /**
      * Used when invalid addnok is typed.
      */
-    public static final String INVALID_ADD_RECORD_MESSAGE = "Add Elderly Record Information format: addrec "
+    public static final String ADD_RECORD_FORMAT_MESSAGE = "Add Elderly Record Information format: addrec "
             + "n/[username] p/[phone number] a/[address]";
 
     /**
      * Used when invalid viewnok is typed.
      */
-    public static final String INVALID_VIEW_RECORD_MESSAGE = "View Elderly Record Information format: "
+    public static final String VIEW_RECORD_FORMAT_MESSAGE = "View Elderly Record Information format: "
             + "viewrec n/[username]";
 
     /**
@@ -181,17 +181,24 @@ public class Messages {
     /**
      * Used when invalid findbymed is typed.
      */
-    public static final String INVALID_FIND_BY_MED_MESSAGE = "Find By Medicine format: findbymed m/[medicine "
+    public static final String FIND_BY_MED_FORMAT_MESSAGE = "Find By Medicine format: findbymed m/[medicine "
             + "name]";
 
     /**
      * Used when invalid findbydiet is typed.
      */
-    public static final String INVALID_FIND_BY_DIET_MESSAGE = "Find By Diet format: findbydiet d/[diet name]";
+    public static final String FIND_BY_DIET_FORMAT_MESSAGE = "Find By Diet format: findbydiet d/[diet name]";
 
     /**
      * Used when invalid findbyname is typed.
      */
-    public static final String INVALID_FIND_BY_NAME_MESSAGE = "Find By Name format: findbyname n/[Real Name]";
+    public static final String FIND_BY_NAME_FORMAT_MESSAGE = "Find By Name format: findbyname n/[Real Name]";
+
+    /**
+     * Used when printing help command messages.
+     */
+    public static final String HELP_MENU_INTRO_MESSAGE = "The following is a list of commands:";
+    public static final String BYE_FORMAT_MESSAGE = "bye - Quits Program";
+    public static final String LIST_FORMAT_MESSAGE = "list - List all elderly in the program";
 
 }

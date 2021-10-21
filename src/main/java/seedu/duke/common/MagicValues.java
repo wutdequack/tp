@@ -33,6 +33,7 @@ public class MagicValues {
     public static final String FIND_BY_MED = "FINDBYMED";
     public static final String FIND_BY_DIET = "FINDBYDIET";
     public static final String FIND_BY_NAME = "FINDBYNAME";
+    public static final String GET_HELP_MENU = "HELP";
 
 
     /**
