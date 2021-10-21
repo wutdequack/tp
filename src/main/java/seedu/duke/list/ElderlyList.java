@@ -717,6 +717,17 @@ public class ElderlyList {
     }
 
     /**
+     * Get a list of all usernames in the system.
+     * @return Array of all usernames.
+     */
+    public Set<String> getAllUserNames() {
+        return elderlyArrayList
+                .stream()
+                .map(Elderly::getUsername)
+                .collect(Collectors.toSet());
+    }
+
+    /**
      * Iterates through Strings and returns first result that has the highest similarities.
      * @param listOfStrings Set of Strings to search from.
      * @param searchTerm String with search term.
@@ -770,22 +781,19 @@ public class ElderlyList {
      * @param userLine String containing username to be deleted from list.
      */
     public void deleteElderlyByUsername(String userLine) {
-        int oldSize;
-        int newSize;
         try {
             // Check if format is correct
             if (!re.isValidDeleteElderlyByUsername(userLine)) {
                 throw new InvalidDeleteElderlyException();
             }
             String userName = parser.getUserNameFromDeleteElderly(userLine);
-            oldSize = elderlyArrayList.size();
-            elderlyArrayList
-                    .removeIf((t) -> t.getUsername().contentEquals(userName));
-            newSize = elderlyArrayList.size();
-            if (oldSize > newSize) {
+            Set<String> allUserNames = getAllUserNames();
+            if (allUserNames.contains(userName)) {
+                elderlyArrayList
+                        .removeIf((t) -> t.getUsername().contentEquals(userName));
                 ui.printDeleteByName(userName);
             } else {
-                ui.printCannotFindQuery(userName);
+                checkSimilarities(allUserNames, userName);
             }
         } catch (DukeException e) {
             ui.printDukeException(e);
