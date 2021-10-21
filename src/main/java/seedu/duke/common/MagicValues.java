@@ -34,6 +34,7 @@ public class MagicValues {
     public static final String FIND_BY_DIET = "FINDBYDIET";
     public static final String FIND_BY_NAME = "FINDBYNAME";
     public static final String GET_HELP_MENU = "HELP";
+    public static final String DELETE_ELDERLY = "DELETEELDERLY";
 
 
     /**
@@ -65,6 +66,7 @@ public class MagicValues {
     public static final int INDEX_OF_SEARCH_MED = 1;
     public static final int INDEX_OF_SEARCH_DIET = 1;
     public static final int INDEX_OF_SEARCH_NAME = 1;
+    public static final int INDEX_OF_USER_NAME = 1;
 
     public static final String NAME_SPLIT = " [un]/";
     public static final String ADD_MEDICINE_SPLIT = " [nmf]/";
@@ -74,6 +76,7 @@ public class MagicValues {
     public static final String SEARCH_MED_SPLIT = " m/";
     public static final String SEARCH_DIET_SPLIT = " d/";
     public static final String SEARCH_NAME_SPLIT = " n/";
+    public static final String DELETE_NAME_SPLIT = " u/";
 
     public static TextUi ui = new TextUi();
     public static RegexChecker re = new RegexChecker();
