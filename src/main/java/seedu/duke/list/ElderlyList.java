@@ -92,7 +92,7 @@ public class ElderlyList {
     public void addElderly(String userLine, String riskLevel) {
         try {
             if (!re.isValidAddElderly(userLine)) {
-                throw new ElderlyNotFoundException();
+                throw new InvalidElderlyRecordFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
