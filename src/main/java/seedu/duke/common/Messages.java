@@ -201,8 +201,6 @@ public class Messages {
      * Used in querying for information.
      */
     public static final String QUERY_RESULTS_INTRO_MESSAGE = "This is the results for the following query: %s";
-    public static final String MEDICINE_NOT_FOUND_MESSAGE = "The following medicine (%s) is not found";
-    public static final String DIET_NOT_FOUND_MESSAGE = "The following diet (%s) is not found";
 
     /**
      * Used when invalid findbymed is typed.
@@ -221,10 +219,25 @@ public class Messages {
     public static final String FIND_BY_NAME_FORMAT_MESSAGE = "Find By Name format: findbyname n/[Real Name]";
 
     /**
+     * Used when invalid deletebyelderly is typed.
+     */
+    public static final String DELETE_ELDERLY_FORMAT_MESSAGE = "Delete format: deleteelderly u/[User Name]";
+
+    /**
      * Used when printing help command messages.
      */
     public static final String HELP_MENU_INTRO_MESSAGE = "The following is a list of commands:";
     public static final String BYE_FORMAT_MESSAGE = "bye - Quits Program";
     public static final String LIST_FORMAT_MESSAGE = "list - List all elderly in the program";
 
+    /**
+     * Used when printing closest match to user query.
+     */
+    public static final String CLOSEST_SEARCH_RESULT_MESSAGE = "I am sorry, did you mean: %s\n";
+    public static final String INVALID_SEARCH_TERM_MESSAGE = "I cannot find %s\n";
+
+    /**
+     * Used when deleting elderly from list.
+     */
+    public static final String DELETE_ELDERLY_SUCCESSFUL_MESSAGE = "%s has been deleted.\n";
 }

@@ -12,6 +12,7 @@ import javax.swing.text.html.Option;
 
 import java.util.Optional;
 
+import static seedu.duke.common.MagicValues.DELETE_ELDERLY;
 import static seedu.duke.common.MagicValues.FIND_BY_DIET;
 import static seedu.duke.common.MagicValues.FIND_BY_MED;
 import static seedu.duke.common.MagicValues.FIND_BY_NAME;
@@ -177,8 +178,8 @@ public class Duke {
         case FIND_BY_NAME:
             elderlyHelperFunction.getAllElderlyDetailsByName(userLine);
             break;
-        case GET_HELP_MENU:
-            ui.printHelpMenu();
+        case DELETE_ELDERLY:
+            elderlyHelperFunction.deleteElderlyByUsername(userLine);
             break;
         default:
             // Command is not recognized

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import javax.swing.tree.AbstractLayoutCache;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import seedu.duke.common.Elderly;
 import seedu.duke.common.HighRiskElderly;
 import seedu.duke.common.LowRiskElderly;
@@ -16,6 +18,7 @@ import seedu.duke.common.Record;
 
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.ElderlyNotFoundException;
+import seedu.duke.exceptions.InvalidDeleteElderlyException;
 import seedu.duke.exceptions.InvalidNokFormatException;
 import seedu.duke.exceptions.InvalidMedicineException;
 import seedu.duke.exceptions.InvalidAppointmentFormatException;
@@ -615,9 +618,6 @@ public class ElderlyList {
         if (medicineMapping.containsKey(medicineQuery)) {
             // Gets all elderly names as a string
             resultString = String.join(System.lineSeparator(), medicineMapping.get(medicineQuery));
-        } else {
-            // Cannot find medicine query
-            ui.printMedicineNotFoundMessage(medicineQuery);
         }
         return resultString;
     }
@@ -637,7 +637,11 @@ public class ElderlyList {
             String medicineQuery = parser.getMedicineFromSearchMed(userLine);
             ui.printQueryResultsIntroString(medicineQuery);
             String results = buildElderlyStringGivenMedicine(medicineQuery);
-            System.out.println(results);
+            if (results.isEmpty()) {
+                checkSimilarities(medicineMapping.keySet(), medicineQuery);
+            } else {
+                System.out.println(results);
+            }
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -657,9 +661,6 @@ public class ElderlyList {
         if (dietMapping.containsKey(dietQuery)) {
             // Gets all elderly names as a string
             resultString = String.join(System.lineSeparator(), dietMapping.get(dietQuery));
-        } else {
-            // Cannot find diet query
-            ui.printDietNotFoundMessage(dietQuery);
         }
         return resultString;
     }
@@ -673,13 +674,17 @@ public class ElderlyList {
         try {
             // Check if format is correct
             if (!re.isValidFindDiet(userLine)) {
-                throw new InvalidViewByNameException();
+                throw new InvalidViewDietException();
             }
 
             String dietQuery = parser.getDietFromSearchMed(userLine);
             ui.printQueryResultsIntroString(dietQuery);
             String results = buildElderlyStringGivenDiet(dietQuery);
-            System.out.println(results);
+            if (results.isEmpty()) {
+                checkSimilarities(dietMapping.keySet(), dietQuery);
+            } else {
+                System.out.println(results);
+            }
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -701,6 +706,42 @@ public class ElderlyList {
     }
 
     /**
+     * Get a list of all the real names in the system.
+     * @return Array of all real names.
+     */
+    public Set<String> getAllRealNames() {
+        return elderlyArrayList
+                .stream()
+                .map(Elderly::getName)
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * Iterates through Strings and returns first result that has the highest similarities.
+     * @param listOfStrings Set of Strings to search from.
+     * @param searchTerm String with search term.
+     */
+    public void checkSimilarities(Set<String> listOfStrings, String searchTerm) {
+        float highestResult = 0;
+        HashMap<Float, String> resultToString = new HashMap<Float, String>();
+        for (String stringInSet : listOfStrings) {
+            float result = re.levenshteinDistance(searchTerm, stringInSet);
+            if (highestResult < result) {
+                highestResult = result;
+            }
+            resultToString.put(result, stringInSet);
+        }
+
+        // Print out closest match if similarity more than 0.80
+        if (highestResult >= 0.80) {
+            ui.printClosestMatch(resultToString.get(highestResult));
+        } else {
+            // Say that you don't understand what the user is looking for
+            ui.printCannotFindQuery(searchTerm);
+        }
+    }
+
+    /**
      * Prints a list of elderly and their details given real name.
      * @param userLine String containing real name to be looked out.
      */
@@ -713,7 +754,39 @@ public class ElderlyList {
             String realName = parser.getRealNameFromSearchName(userLine);
             ui.printQueryResultsIntroString(realName);
             String results = filterElderlyInformationGivenName(realName);
-            System.out.println(results);
+            if (results.isEmpty()) {
+                Set<String> realNameArray = getAllRealNames();
+                checkSimilarities(realNameArray, realName);
+            } else {
+                System.out.println(results);
+            }
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
+
+    /**
+     * Removes elderly from list given username.
+     * @param userLine String containing username to be deleted from list.
+     */
+    public void deleteElderlyByUsername(String userLine) {
+        int oldSize;
+        int newSize;
+        try {
+            // Check if format is correct
+            if (!re.isValidDeleteElderlyByUsername(userLine)) {
+                throw new InvalidDeleteElderlyException();
+            }
+            String userName = parser.getUserNameFromDeleteElderly(userLine);
+            oldSize = elderlyArrayList.size();
+            elderlyArrayList
+                    .removeIf((t) -> t.getUsername().contentEquals(userName));
+            newSize = elderlyArrayList.size();
+            if (oldSize > newSize) {
+                ui.printDeleteByName(userName);
+            } else {
+                ui.printCannotFindQuery(userName);
+            }
         } catch (DukeException e) {
             ui.printDukeException(e);
         }

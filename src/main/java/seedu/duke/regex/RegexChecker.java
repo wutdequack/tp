@@ -1,5 +1,7 @@
 package seedu.duke.regex;
 
+import static java.lang.Math.min;
+
 import java.util.regex.Pattern;
 
 public class RegexChecker {
@@ -58,5 +60,53 @@ public class RegexChecker {
 
     public boolean isValidFindByName(String userLine) {
         return Pattern.matches("^findbyname n/[a-z0-9\\s]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidDeleteElderlyByUsername(String userLine) {
+        return Pattern.matches("^deleteelderly u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    /**
+     * Takes 2 strings and compare the distance(similarity) between them.
+     * @param firstString First String to be compared.
+     * @param secondString Second String to be compared.
+     * @return Float containing the ratio of similarity between the two strings.
+     */
+    public float levenshteinDistance(String firstString, String secondString) {
+        float result = 0;
+        int numberRows = firstString.length() + 1;
+        int numberCols = secondString.length() + 1;
+        int[][] levDistanceArray = new int[numberRows][numberCols];
+
+        // Distance between row/column 0 and another with value i is i
+        for (int i = 1; i < numberRows; ++i) {
+            for (int j = 1; j < numberCols; ++j) {
+                levDistanceArray[i][0] = i;
+                levDistanceArray[0][j] = j;
+            }
+        }
+
+        // Iterate through the rest to see the cost
+        int cost;
+        int colIndex;
+        int rowIndex = 1;
+        for (colIndex = 1; colIndex < numberCols; ++colIndex) {
+            for (rowIndex = 1; rowIndex < numberRows; ++rowIndex) {
+                if (firstString.charAt(rowIndex - 1) == secondString.charAt(colIndex - 1)) {
+                    cost = 0;
+                } else {
+                    cost = 2;
+                }
+                int deletionCost = levDistanceArray[rowIndex - 1][colIndex] + 1;
+                int insertionCost = levDistanceArray[rowIndex][colIndex - 1] + 1;
+                int subCost = levDistanceArray[rowIndex - 1][colIndex - 1] + cost;
+                levDistanceArray[rowIndex][colIndex] = min(min(deletionCost, insertionCost), subCost);
+            }
+        }
+
+        float totalLengthOfString = firstString.length() + secondString.length();
+        result = (totalLengthOfString - levDistanceArray[rowIndex - 1][colIndex - 1]) / totalLengthOfString;
+
+        return result;
     }
 }

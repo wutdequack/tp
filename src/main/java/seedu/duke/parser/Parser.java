@@ -2,10 +2,12 @@ package seedu.duke.parser;
 
 import java.util.Scanner;
 
+import static seedu.duke.common.MagicValues.DELETE_NAME_SPLIT;
 import static seedu.duke.common.MagicValues.INDEX_OF_KEYWORD;
 import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_DIET;
 import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_MED;
 import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_NAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_USER_NAME;
 import static seedu.duke.common.MagicValues.SEARCH_DIET_SPLIT;
 import static seedu.duke.common.MagicValues.SEARCH_MED_SPLIT;
 import static seedu.duke.common.MagicValues.SEARCH_NAME_SPLIT;
@@ -52,7 +54,6 @@ public class Parser {
 
     /**
      * Gets diet preference from findbydiet query.
-     * Gets diet preference from findbydiet query.
      * @param userLine String containing command findbydiet and search term.
      * @return String containing diet preference.
      */
@@ -65,7 +66,6 @@ public class Parser {
 
     /**
      * Gets real name from findbyname query.
-     * Gets real name from findbyname query.
      * @param userLine String containing command findbyname and search term.
      * @return String containing real name.
      */
@@ -74,5 +74,17 @@ public class Parser {
         String[] paramList = userLine.split(SEARCH_NAME_SPLIT);
         assert paramList.length == 2 : "findbyname input does not have all required values";
         return paramList[INDEX_OF_SEARCH_NAME];
+    }
+
+    /**
+     * Gets username from deleteelderly query.
+     * @param userLine String containing command deleteelderly and search term.
+     * @return String containing username.
+     */
+    public String getUserNameFromDeleteElderly(String userLine) {
+        // Extract out username
+        String[] paramList = userLine.split(DELETE_NAME_SPLIT);
+        assert paramList.length == 2 : "deleteelderly input does not have all required values";
+        return paramList[INDEX_OF_USER_NAME];
     }
 }

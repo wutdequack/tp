@@ -13,13 +13,16 @@ import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
 import static seedu.duke.common.Messages.BYE_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.DIET_NOT_FOUND_MESSAGE;
+import static seedu.duke.common.Messages.CLOSEST_SEARCH_RESULT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_MED_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_NOK_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.DELETE_ELDERLY_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.DELETE_ELDERLY_SUCCESSFUL_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_CONDITIONS_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_DOCTOR_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_NOTES_ON_CARE_MESSAGE;
 import static seedu.duke.common.Messages.HELP_MENU_INTRO_MESSAGE;
+import static seedu.duke.common.Messages.INVALID_SEARCH_TERM_MESSAGE;
 import static seedu.duke.common.Messages.LIST_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.VIEW_NOK_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_RECORD_FORMAT_MESSAGE;
@@ -28,7 +31,6 @@ import static seedu.duke.common.Messages.VIEW_MED_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.VIEW_APPOINTMENT_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.MEDICINE_NOT_FOUND_MESSAGE;
 import static seedu.duke.common.Messages.QUERY_RESULTS_INTRO_MESSAGE;
 import static seedu.duke.common.Messages.WELCOME_MESSAGE;
 import static seedu.duke.common.Messages.PROMPT_MESSAGE;
@@ -290,22 +292,6 @@ public class TextUi {
     }
 
     /**
-     * Prints medicine query not found message.
-     * @param medicineQueryString String containing medicine query by user.
-     */
-    public void printMedicineNotFoundMessage(String medicineQueryString) {
-        out.println(String.format(MEDICINE_NOT_FOUND_MESSAGE, medicineQueryString));
-    }
-
-    /**
-     * Prints diet query not found message.
-     * @param dietQueryString String containing diet query by user.
-     */
-    public void printDietNotFoundMessage(String dietQueryString) {
-        out.println(String.format(DIET_NOT_FOUND_MESSAGE, dietQueryString));
-    }
-
-    /**
      * Prints intro message for query results.
      * @param searchTerm String containing medicine query by user.
      */
@@ -329,8 +315,33 @@ public class TextUi {
                 VIEW_NOK_FORMAT_MESSAGE,
                 ADD_RECORD_FORMAT_MESSAGE,
                 VIEW_RECORD_FORMAT_MESSAGE,
+                DELETE_ELDERLY_FORMAT_MESSAGE,
                 LIST_FORMAT_MESSAGE,
                 BYE_FORMAT_MESSAGE
                 ));
+    }
+
+    /**
+     * Print the closest match to what the user query.
+     * @param closestMatch String containing closest match.
+     */
+    public void printClosestMatch(String closestMatch) {
+        out.printf(CLOSEST_SEARCH_RESULT_MESSAGE, closestMatch);
+    }
+
+    /**
+     * Print that you don't know what the user is querying for.
+     * @param searchTerm String containing search Term.
+     */
+    public void printCannotFindQuery(String searchTerm) {
+        out.printf(INVALID_SEARCH_TERM_MESSAGE, searchTerm);
+    }
+
+    /**
+     * Print that you have deleted from the arrayList.
+     * @param searchTerm String containing search Term.
+     */
+    public void printDeleteByName(String searchTerm) {
+        out.printf(DELETE_ELDERLY_SUCCESSFUL_MESSAGE, searchTerm);
     }
 }
