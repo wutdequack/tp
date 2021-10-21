@@ -189,4 +189,9 @@ public class Messages {
      */
     public static final String INVALID_FIND_BY_DIET_MESSAGE = "Find By Diet format: findbydiet d/[diet name]";
 
+    /**
+     * Used when invalid findbyname is typed.
+     */
+    public static final String INVALID_FIND_BY_NAME_MESSAGE = "Find By Name format: findbyname n/[Real Name]";
+
 }

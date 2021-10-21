@@ -55,4 +55,8 @@ public class RegexChecker {
     public boolean isValidFindDiet(String userLine) {
         return Pattern.matches("^findbydiet d/[a-z0-9]+$", userLine.toLowerCase());
     }
+
+    public boolean isValidFindByName(String userLine) {
+        return Pattern.matches("^findbyname n/[a-z0-9\\s]+$", userLine.toLowerCase());
+    }
 }
