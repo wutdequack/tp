@@ -25,4 +25,8 @@ public class Hospital {
         System.out.println("print all doctors lmao");
     }
 
+    public void addDoctor(String name, Integer number) {
+        doctorArrayList.add(new Doctor(name, number));
+    }
+
 }
