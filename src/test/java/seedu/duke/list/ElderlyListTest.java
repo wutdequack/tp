@@ -26,8 +26,8 @@ public class ElderlyListTest {
 
     @BeforeEach
     public void setUp() {
-        elderlyList.addElderly("addelderly u/johntan123 n/John Tan", "l");
-        elderlyList.addElderly("addelderly u/limqq369 n/Lim Qi Qi", "l");
+        elderlyList.addElderly("addelderly u/johntan123 n/John Tan", "L");
+        elderlyList.addElderly("addelderly u/limqq369 n/Lim Qi Qi", "L");
         elderlyList.addMedicine("addmed n/limqq369 m/panadol f/once a day");
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
         elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun st r/son");
@@ -278,6 +278,6 @@ public class ElderlyListTest {
 
     @Test
     void findByMedTest() {
-        assertEquals(elderlyList.buildElderlyStringGivenMedicine("panadol"), "");
+        assertEquals(elderlyList.buildElderlyStringGivenMedicine("panadol"), "limqq369");
     }
 }

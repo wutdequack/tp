@@ -181,6 +181,8 @@ public class Duke {
         case DELETE_ELDERLY:
             elderlyHelperFunction.deleteElderlyByUsername(userLine);
             break;
+        case GET_HELP_MENU:
+            ui.printHelpMenu();
         default:
             // Command is not recognized
             // assert keyword.equals("a") : "Nothing has been input";
