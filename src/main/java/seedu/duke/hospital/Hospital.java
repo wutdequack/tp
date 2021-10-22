@@ -7,20 +7,32 @@ public class Hospital {
     private Integer number;
     protected ArrayList<Doctor> doctorArrayList = new ArrayList<Doctor>();
 
-
     public Hospital(String name, Integer number) {
         this.name = name;
         this.number = number;
     }
 
+    /**
+     * Returns the hospital's name.
+     *
+     * @return Name of the hospital.
+     */
     public String getHospitalName() {
         return name;
     }
 
+    /**
+     * Returns the hospital's number.
+     *
+     * @return Number of the hospital.
+     */
     public Integer getHospitalNumber() {
         return number;
     }
 
+    /**
+     * Prints all the doctors' name in this hospital.
+     */
     public void printDoctorNames() {
         int counter = 1;
         System.out.println("List of " + getHospitalName() + " doctors are shown below:");
@@ -31,14 +43,22 @@ public class Hospital {
         }
     }
 
+    /**
+     * Returns the doctor in doctorArrayList given the index.
+     *
+     * @param doctorIndex Index of doctor.
+     * @return Doctor instance of given index is returned.
+     */
     public Doctor getDoctor(int doctorIndex) {
         return doctorArrayList.get(doctorIndex);
     }
 
-    public ArrayList<Doctor> getDoctors() {
-        return doctorArrayList;
-    }
-
+    /**
+     * Creates new instance of Doctor and adds him into doctorArrayList.
+     *
+     * @param name Name of doctor.
+     * @param number Number of doctor.
+     */
     public void addDoctor(String name, Integer number) {
         doctorArrayList.add(new Doctor(name, number));
     }

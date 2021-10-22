@@ -10,10 +10,20 @@ public class Medicine {
         this.frequency = frequency;
     }
 
+    /**
+     * Returns the medicine's name.
+     *
+     * @return Name of the medicine.
+     */
     public String getMedicineName() {
         return medicineName;
     }
 
+    /**
+     * Returns the medicine's frequency.
+     *
+     * @return Frequency of the medicine.
+     */
     public String getFrequency() {
         return frequency;
     }

@@ -278,6 +278,6 @@ public class ElderlyListTest {
 
     @Test
     void findByMedTest() {
-        assertEquals(elderlyList.buildElderlyStringGivenMedicine("panadol"), "limqq369");
+        assertEquals(elderlyList.buildElderlyStringGivenMedicine("panadol"), "");
     }
 }

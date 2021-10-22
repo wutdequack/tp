@@ -7,7 +7,9 @@ import seedu.duke.hospital.Hospital;
 
 public class HospitalList {
 
-    // Hospital variables
+    /**
+     * Constants for hospital variables: name and number.
+     */
     public static final String CHANGI_GENERAL_HOSPITAL = "changi general hospital";
     public static final Integer CHANGI_GENERAL_HOSPITAL_NUMBER = 67888833;
     public static final String KHOO_TECK_PUAT_HOSPITAL = "khoo teck puat hospital";
@@ -21,7 +23,9 @@ public class HospitalList {
     public static final String TAN_TOCK_SENG_HOSPITAL = "tan tock seng hospital";
     public static final Integer TAN_TOCK_SENG_HOSPITAL_NUMBER = 62566011;
 
-    //Changi General Hospital doctor variables
+    /**
+     * Constants for Changi General Hospital doctor variables: name and number.
+     */
     public static final String MA_XUEGANG = "ma xuegang";
     public static final Integer MA_XUEGANG_NUMBER = 97587759;
     public static final String XIE_FANG = "xie fang";
@@ -33,7 +37,9 @@ public class HospitalList {
     public static final String HAN_GUANTING = "han guanting";
     public static final Integer HAN_GUANTING_NUMBER = 95674975;
 
-    //Khoo Teck Puat Hospital doctor variables
+    /**
+     * Constants for Khoo Teck Puat Hospital doctor variables: name and number.
+     */
     public static final String ADRIAN_VERGIL = "adrian vergil";
     public static final Integer ADRIAN_VERGIL_NUMBER = 88129931;
     public static final String JOLINE_DEAN = "joline dean";
@@ -45,7 +51,9 @@ public class HospitalList {
     public static final String ADITI_NITYA = "aditi nitya";
     public static final Integer ADITI_NITYA_NUMBER = 91208702;
 
-    //National University Hospital doctor variables
+    /**
+     * Constants for National University Hospital doctor variables: name and number.
+     */
     public static final String DWAIN_WONG = "dwain wong";
     public static final Integer DWAIN_WONG_NUMBER = 98105561;
     public static final String LIM_QINGCHEN = "lim qingchen";
@@ -57,7 +65,9 @@ public class HospitalList {
     public static final String LORIE_PANG = "lorie pang";
     public static final Integer LORIE_PANG_NUMBER = 88235081;
 
-    //Ng Teng Fong Hospital doctor variables
+    /**
+     * Constants for Ng Teng Fong Hospital doctor variables: name and number.
+     */
     public static final String SUN_GENGXIN = "sun gengxin";
     public static final Integer SUN_GENGXIN_NUMBER = 98770442;
     public static final String DAI_JIA = "dai jia";
@@ -69,7 +79,9 @@ public class HospitalList {
     public static final String FU_JING = "fu jing";
     public static final Integer FU_JING_NUMBER = 99444710;
 
-    //Singapore General Hospital doctor variables
+    /**
+     * Constants for Singapore General Hospital doctor variables: name and number.
+     */
     public static final String NILOFER_SIDDHI = "nilofer siddhi";
     public static final Integer NILOFER_SIDDHI_NUMBER = 92834168;
     public static final String TARAN_NIRMALA = "taran nirmala";
@@ -81,7 +93,9 @@ public class HospitalList {
     public static final String TAN_CAILIN = "tan cailin";
     public static final Integer TAN_CAILIN_NUMBER = 99897593;
 
-    //Tan Tock Seng Hospital doctor variables
+    /**
+     * Constants for Tan Tock Seng Hospital doctor variables: name and number.
+     */
     public static final String MARALYN_HARSHA = "maralyn harsha";
     public static final Integer MARALYN_HARSHA_NUMBER = 99026440;
     public static final String STACE_FANG = "stace fang";
@@ -93,12 +107,17 @@ public class HospitalList {
     public static final String WOLF_EMMET = "wolf emmet";
     public static final Integer WOLF_EMMET_NUMBER = 89490406;
 
-
+    /**
+     * Array list of all hospitals.
+     */
     protected ArrayList<Hospital> hospitalArrayList = new ArrayList<Hospital>();
 
     public HospitalList() {
     }
 
+    /**
+     * Initialises hospitalArrayList array based on constants.
+     */
     public void initHospitals() {
         hospitalArrayList.add(initChangiGeneralHospital());
         hospitalArrayList.add(initKhooTeckPuatHospital());
@@ -108,6 +127,9 @@ public class HospitalList {
         hospitalArrayList.add(initTanTockSengHospital());
     }
 
+    /**
+     * Prints all hospital names.
+     */
     public void printHospitalNames() {
         int counter = 1;
         System.out.println("List of hospitals are shown below:");
@@ -118,14 +140,26 @@ public class HospitalList {
         }
     }
 
+    /**
+     * Prints length of hospitalArrayList.
+     */
     public Integer getLength() {
         return hospitalArrayList.size();
     }
 
+    /**
+     * Returns the hospital in hospitalArrayList given the index.
+     *
+     * @param index Index of hospital.
+     * @return Hospital instance of given index is returned.
+     */
     public Hospital getHospital(int index) {
         return hospitalArrayList.get(index);
     }
 
+    /**
+     * Initialises Changi General Hospital variables based on constants.
+     */
     private Hospital initChangiGeneralHospital() {
         Hospital changiGeneralHospital = new Hospital(CHANGI_GENERAL_HOSPITAL, CHANGI_GENERAL_HOSPITAL_NUMBER);
         changiGeneralHospital.addDoctor(MA_XUEGANG, MA_XUEGANG_NUMBER);
@@ -136,6 +170,9 @@ public class HospitalList {
         return changiGeneralHospital;
     }
 
+    /**
+     * Initialises Khoo Teck Puat Hospital variables based on constants.
+     */
     private Hospital initKhooTeckPuatHospital() {
         Hospital khooTeckPuatHospital = new Hospital(KHOO_TECK_PUAT_HOSPITAL, KHOO_TECK_PUAT_HOSPITAL_NUMBER);
         khooTeckPuatHospital.addDoctor(ADRIAN_VERGIL, ADRIAN_VERGIL_NUMBER);
@@ -146,6 +183,9 @@ public class HospitalList {
         return khooTeckPuatHospital;
     }
 
+    /**
+     * Initialises National University Hospital variables based on constants.
+     */
     private Hospital initNationalUniversityHospital() {
         Hospital nationalUniversityHospital = new Hospital(NATIONAL_UNIVERSITY_HOSPITAL,
                 NATIONAL_UNIVERSITY_HOSPITAL_NUMBER);
@@ -157,6 +197,9 @@ public class HospitalList {
         return nationalUniversityHospital;
     }
 
+    /**
+     * Initialises Ng Teng Fong Hospital variables based on constants.
+     */
     private Hospital initNgTengFongHospital() {
         Hospital ngTengFongHospital = new Hospital(NG_TENG_FONG_GENERAL_HOSPITAL, NG_TENG_FONG_GENERAL_HOSPITAL_NUMBER);
         ngTengFongHospital.addDoctor(SUN_GENGXIN, SUN_GENGXIN_NUMBER);
@@ -167,6 +210,9 @@ public class HospitalList {
 
     }
 
+    /**
+     * Initialises Singapore General Hospital variables based on constants.
+     */
     private Hospital initSingaporeGeneralHospital() {
         Hospital singaporeGeneralHospital = new Hospital(SINGAPORE_GENERAL_HOSPITAL, SINGAPORE_GENERAL_HOSPITAL_NUMBER);
         singaporeGeneralHospital.addDoctor(NILOFER_SIDDHI, NILOFER_SIDDHI_NUMBER);
@@ -177,6 +223,9 @@ public class HospitalList {
         return singaporeGeneralHospital;
     }
 
+    /**
+     * Initialises Tan Tock Seng Hospital variables based on constants.
+     */
     private Hospital initTanTockSengHospital() {
         Hospital tanTockSengHospital = new Hospital(TAN_TOCK_SENG_HOSPITAL, TAN_TOCK_SENG_HOSPITAL_NUMBER);
         tanTockSengHospital.addDoctor(MARALYN_HARSHA, MARALYN_HARSHA_NUMBER);
