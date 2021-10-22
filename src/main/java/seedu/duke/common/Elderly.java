@@ -42,18 +42,38 @@ public class Elderly {
         diet = DietaryPreference.NOT_SET;
     }
 
+    /**
+     * Returns the elderly's username.
+     *
+     * @return Username of the elderly.
+     */
     public String getUsername() {
         return username;
     }
-    
+
+    /**
+     * Returns the elderly's name.
+     *
+     * @return Name of the elderly.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Adds a medicine to elderly's medicine ArrayList.
+     *
+     * @param medicine Medicine to be added.
+     */
     public void addMedicine(Medicine medicine) {
         medicines.add(medicine);
     }
 
+    /**
+     * Adds an appointment to elderly's appointment ArrayList.
+     *
+     * @param appointment Appointment to be added.
+     */
     public void addAppointment(Appointment appointment) {
         appointments.add(appointment);
     }
@@ -66,10 +86,20 @@ public class Elderly {
         records.add(record);
     }
 
+    /**
+     * Returns the elderly's medicine ArrayList.
+     *
+     * @return Medicine ArrayList of the elderly.
+     */
     public ArrayList<Medicine> getMedicines() {
         return medicines;
     }
 
+    /**
+     * Returns the elderly's appointment ArrayList.
+     *
+     * @return Appointment ArrayList of the elderly.
+     */
     public ArrayList<Appointment> getAppointments() {
         return appointments;
     }

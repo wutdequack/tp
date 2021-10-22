@@ -14,18 +14,38 @@ public class Appointment {
         this.purpose = purpose;
     }
 
+    /**
+     * Returns the appointment's location.
+     *
+     * @return Location of the appointment.
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     * Returns the appointment's date.
+     *
+     * @return Date of the appointment.
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     * Returns the appointment's time.
+     *
+     * @return Time of the appointment.
+     */
     public String getTime() {
         return time;
     }
 
+    /**
+     * Returns the appointment's purpose.
+     *
+     * @return Purpose of the appointment.
+     */
     public String getPurpose() {
         return purpose;
     }

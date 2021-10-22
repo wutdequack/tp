@@ -36,6 +36,9 @@ public class MagicValues {
     public static final String FIND_BY_NAME = "FINDBYNAME";
     public static final String GET_HELP_MENU = "HELP";
     public static final String DELETE_ELDERLY = "DELETEELDERLY";
+    public static final String LOW = "L";
+    public static final String MEDIUM = "M";
+    public static final String HIGH = "H";
 
 
     /**

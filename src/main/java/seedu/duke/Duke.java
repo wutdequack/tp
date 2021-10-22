@@ -123,7 +123,7 @@ public class Duke {
             break;
         case ADD_ELDERLY:
             ui.printEnterRiskLevelMessage();
-            String riskLevel = ui.getUserInput();
+            String riskLevel = ui.getUserInput().toUpperCase();
             elderlyHelperFunction.addElderly(userLine, riskLevel);
             break;
         case ADD_NOK:

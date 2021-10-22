@@ -34,7 +34,10 @@ import seedu.duke.hospital.Hospital;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
+import static seedu.duke.common.MagicValues.HIGH;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_USERNAME;
+import static seedu.duke.common.MagicValues.LOW;
+import static seedu.duke.common.MagicValues.MEDIUM;
 import static seedu.duke.common.MagicValues.NAME_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_MEDICINE_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT_SPLIT;
@@ -88,9 +91,10 @@ public class ElderlyList {
     }
 
     /**
-     * Adds the elderly into the elderly array list.
+     * Adds the elderly into the elderly array list, together with risk level and additional info if required.
      *
      * @param userLine Line that is inputted by the user.
+     * @param riskLevel Risk level of elderly. i.e. "l" if low, "m" if medium, "h" if high.
      */
     public void addElderly(String userLine, String riskLevel) {
         try {
@@ -105,7 +109,7 @@ public class ElderlyList {
             Doctor doctor;
             String conditions;
             String notesOnCare;
-            if (Objects.equals(riskLevel, "m") || Objects.equals(riskLevel, "h")) {
+            if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
                 hospitalArrayList.printHospitalNames();
                 //Integer hospitalArrayListLength = hospitalArrayList.getLength();
                 ui.printEnterHospitalMessage();
@@ -115,17 +119,17 @@ public class ElderlyList {
                 conditions = ui.getUserInput();
                 ui.printEnterNotesOnCareMessage();
                 notesOnCare = ui.getUserInput();
-                if (Objects.equals(riskLevel, "h")) {
+                if (Objects.equals(riskLevel, HIGH)) {
                     hospital.printDoctorNames();
                     ui.printEnterDoctorMessage();
                     doctor = hospital.getDoctor(Integer.parseInt(ui.getUserInput()));
                     elderlyArrayList.add(new HighRiskElderly(userName, elderlyName, hospital,
                             conditions, notesOnCare, doctor));
-                } else {
+                } else if (Objects.equals(riskLevel, MEDIUM)) {
                     elderlyArrayList.add(new MediumRiskElderly(userName, elderlyName, hospital,
                             conditions, notesOnCare));
                 }
-            } else {
+            } else if (Objects.equals(riskLevel, LOW)) {
                 elderlyArrayList.add(new LowRiskElderly(userName, elderlyName));
 
             }
