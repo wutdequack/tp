@@ -224,6 +224,11 @@ public class Messages {
     public static final String DELETE_ELDERLY_FORMAT_MESSAGE = "Delete format: deleteelderly u/[User Name]";
 
     /**
+     * Used when invalid deletebyelderly is typed.
+     */
+    public static final String STORE_FORMAT_MESSAGE = "Store format: store fp/[file path]";
+
+    /**
      * Used when printing help command messages.
      */
     public static final String HELP_MENU_INTRO_MESSAGE = "The following is a list of commands:";

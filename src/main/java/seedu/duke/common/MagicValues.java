@@ -2,6 +2,7 @@ package seedu.duke.common;
 
 import seedu.duke.list.HospitalList;
 import seedu.duke.parser.Parser;
+import seedu.duke.storage.Storage;
 import seedu.duke.ui.TextUi;
 
 import seedu.duke.regex.RegexChecker;
@@ -36,9 +37,11 @@ public class MagicValues {
     public static final String FIND_BY_NAME = "FINDBYNAME";
     public static final String GET_HELP_MENU = "HELP";
     public static final String DELETE_ELDERLY = "DELETEELDERLY";
+    public static final String STORE_INTO_FILE = "STORE";
     public static final String LOW = "L";
     public static final String MEDIUM = "M";
     public static final String HIGH = "H";
+    public static final String DEFAULT_FILE_PATH = "data.json";
 
 
     /**
@@ -71,6 +74,7 @@ public class MagicValues {
     public static final int INDEX_OF_SEARCH_DIET = 1;
     public static final int INDEX_OF_SEARCH_NAME = 1;
     public static final int INDEX_OF_USER_NAME = 1;
+    public static final int INDEX_OF_FILE_PATH = 1;
 
     public static final String NAME_SPLIT = " [un]/";
     public static final String ADD_MEDICINE_SPLIT = " [nmf]/";
@@ -81,6 +85,7 @@ public class MagicValues {
     public static final String SEARCH_DIET_SPLIT = " d/";
     public static final String SEARCH_NAME_SPLIT = " n/";
     public static final String DELETE_NAME_SPLIT = " u/";
+    public static final String STORE_FILE_SPLIT = " fp/";
 
     public static TextUi ui = new TextUi();
     public static RegexChecker re = new RegexChecker();

@@ -66,6 +66,10 @@ public class RegexChecker {
         return Pattern.matches("^deleteelderly u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
+    public boolean isValidStoreFileFromFilePath(String userLine) {
+        return Pattern.matches("^store fp/[/a-z0-9.\\\\]+$", userLine.toLowerCase());
+    }
+
     /**
      * Takes 2 strings and compare the distance(similarity) between them.
      * @param firstString First String to be compared.
