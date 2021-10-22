@@ -121,6 +121,12 @@ public class Messages {
     public static final String ADD_NOK_FORMAT_MESSAGE = "Add Next-Of-Kin information format: addnok n/[username] "
             + "k/[name of next-of-kin] p/[phone number] e/[email] a/[address] r/[relationship]";
 
+    public static final String DELETE_NOK_FORMAT_MESSAGE = "Delete Next-Of-Kin information format: deletenok "
+            + "u/[username] n/[name of next-of-kin]";
+
+    public static final String DELETE_MEDICINE_FORMAT_MESSAGE = "Delete medicine format: deletemed "
+            + "u/[username] m/[name of medicine]";
+
     /**
      * Used when invalid viewnok is typed.
      */
@@ -130,6 +136,7 @@ public class Messages {
      * Used when Next-Of_kin has been added.
      */
     public static final String ADD_NOK_MESSAGE = "Next-of-Kin has been added!";
+
 
     /**
      * Used when record of elderly has been added.

@@ -28,6 +28,8 @@ import static seedu.duke.common.MagicValues.VIEW_MEDICINE;
 import static seedu.duke.common.MagicValues.ADD_NOK;
 import static seedu.duke.common.MagicValues.ADD_RECORD;
 import static seedu.duke.common.MagicValues.VIEW_NOK;
+import static seedu.duke.common.MagicValues.DELETE_NOK;
+import static seedu.duke.common.MagicValues.DELETE_MEDICINE;
 import static seedu.duke.common.MagicValues.VIEW_RECORD;
 import static seedu.duke.common.MagicValues.VIEW_BLOOD_PRESSURE;
 import static seedu.duke.common.MagicValues.SET_BLOOD_PRESSURE;
@@ -181,8 +183,14 @@ public class Duke {
         case DELETE_ELDERLY:
             elderlyHelperFunction.deleteElderlyByUsername(userLine);
             break;
+        case DELETE_MEDICINE:
+            elderlyHelperFunction.deleteMedicine(userLine);
+            break;
         case GET_HELP_MENU:
             ui.printHelpMenu();
+            break;
+        case DELETE_NOK:
+            elderlyHelperFunction.deleteNextOfKin(userLine);
             break;
         default:
             // Command is not recognized
