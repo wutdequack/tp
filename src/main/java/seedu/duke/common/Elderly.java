@@ -1,5 +1,8 @@
 package seedu.duke.common;
 
+import seedu.duke.exceptions.InvalidDeleteMedFormatException;
+import seedu.duke.exceptions.InvalidDeleteNokFormatException;
+import seedu.duke.exceptions.InvalidNokFormatException;
 import seedu.duke.parser.Parser;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
@@ -18,7 +21,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.Optional;
 
 
 public class Elderly {
@@ -81,6 +86,33 @@ public class Elderly {
     public void addNok(NextOfKin nextofkin) {
         nextofkins.add(nextofkin);
     }
+
+    public Optional<NextOfKin> removeNok(String nextofkin) {
+        NextOfKin deleteNok;
+        for (NextOfKin nok : nextofkins) {
+            String currentNokName = nok.nokName.toLowerCase();
+            if (currentNokName.contentEquals(nextofkin.toLowerCase())) {
+                deleteNok = nok;
+                nextofkins.remove(nok);
+                return Optional.of(deleteNok);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public Optional<Medicine> removeMedicine(String medName) {
+        Medicine deleteMed;
+        for (Medicine med : medicines) {
+            String currentMedName = med.medicineName.toLowerCase();
+            if (currentMedName.contentEquals(medName.toLowerCase())) {
+                deleteMed = med;
+                medicines.remove(med);
+                return Optional.of(deleteMed);
+            }
+        }
+        return Optional.empty();
+    }
+
 
     public void addRecord(Record record) {
         records.add(record);

@@ -19,6 +19,8 @@ public class MagicValues {
     public static final String VIEW_APPOINTMENT = "VIEWAPPT";
     public static final String ADD_ELDERLY = "ADDELDERLY";
     public static final String ADD_NOK = "ADDNOK";
+    public static final String DELETE_NOK = "DELETENOK";
+    public static final String DELETE_MEDICINE = "DELETEMED";
     public static final String VIEW_NOK = "VIEWNOK";
     public static final String ADD_RECORD = "ADDREC";
     public static final String VIEW_RECORD = "VIEWREC";
@@ -81,6 +83,9 @@ public class MagicValues {
     public static final String SEARCH_DIET_SPLIT = " d/";
     public static final String SEARCH_NAME_SPLIT = " n/";
     public static final String DELETE_NAME_SPLIT = " u/";
+    public static final String DELETE_NOK_SPLIT = " [un]/";
+    public static final String DELETE_MED_SPLIT = " [um]/";
+
 
     public static TextUi ui = new TextUi();
     public static RegexChecker re = new RegexChecker();

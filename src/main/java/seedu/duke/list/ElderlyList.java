@@ -19,6 +19,8 @@ import seedu.duke.common.Record;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.ElderlyNotFoundException;
 import seedu.duke.exceptions.InvalidDeleteElderlyException;
+import seedu.duke.exceptions.InvalidDeleteMedFormatException;
+import seedu.duke.exceptions.InvalidDeleteNokFormatException;
 import seedu.duke.exceptions.InvalidNokFormatException;
 import seedu.duke.exceptions.InvalidMedicineException;
 import seedu.duke.exceptions.InvalidAppointmentFormatException;
@@ -34,6 +36,8 @@ import seedu.duke.hospital.Hospital;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
+import static seedu.duke.common.MagicValues.DELETE_NOK_SPLIT;
+import static seedu.duke.common.MagicValues.DELETE_MED_SPLIT;
 import static seedu.duke.common.MagicValues.HIGH;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_USERNAME;
 import static seedu.duke.common.MagicValues.LOW;
@@ -289,6 +293,7 @@ public class ElderlyList {
         }
     }
 
+
     /**
      * Views the Next-Of_kin information of the elderly based on input.
      *
@@ -317,6 +322,59 @@ public class ElderlyList {
     public void printNextOfKin(Elderly elderly) {
         System.out.println("Details of " + elderly.getUsername() + " Next-of-Kin are shown below:");
         System.out.println(elderly.getNextOfKin());
+    }
+
+    public void deleteNextOfKin(String userLine) {
+        try {
+            if(!re.isValidDeleteNok(userLine)) {
+                throw new InvalidDeleteNokFormatException();
+            }
+            String[] paramList = userLine.split(DELETE_NOK_SPLIT);
+            assert paramList.length == 2 : "Username is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            String nokName = paramList[INDEX_OF_NOK_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            Optional<NextOfKin> deletedNok = elderly.removeNok(nokName);
+            deletedNok.ifPresentOrElse(this::printDeletedNextOfKin, this::printNoNok);
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
+
+
+    public void printDeletedNextOfKin(NextOfKin deletedNok) {
+        System.out.println("These details are now deleted:");
+        System.out.println(deletedNok);
+    }
+
+    public void printNoNok() {
+        System.out.println("No Next-Of-Kin found");
+    }
+
+    public void deleteMedicine(String userLine) {
+        try {
+            if(!re.isValidDeleteMedicine(userLine)) {
+                throw new InvalidDeleteMedFormatException();
+            }
+            String[] paramList = userLine.split(DELETE_MED_SPLIT);
+            assert paramList.length == 2 : "Username is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            String medName = paramList[INDEX_OF_MEDICINE_NAME];
+            Elderly elderly = getElderly(elderlyName);
+            Optional<Medicine> deletedMed = elderly.removeMedicine(medName);
+            deletedMed.ifPresentOrElse(this::printDeletedMedicine, this::printNoMed);
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
+
+    public void printNoMed() {
+        System.out.println("No Medicine found");
+    }
+
+    public void printDeletedMedicine(Medicine deletedMed) {
+        System.out.println("These medicine details are now deleted:");
+        System.out.println(deletedMed);
     }
 
     /**
