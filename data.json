@@ -1,0 +1,22 @@
+[
+  {
+    "medicines": [],
+    "appointments": [],
+    "nextofkins": [],
+    "records": [],
+    "username": "jontan123",
+    "name": "jon tan",
+    "isVaccinated": false,
+    "diet": "NOT_SET"
+  },
+  {
+    "medicines": [],
+    "appointments": [],
+    "nextofkins": [],
+    "records": [],
+    "username": "helloworld",
+    "name": "hello world",
+    "isVaccinated": false,
+    "diet": "NOT_SET"
+  }
+]

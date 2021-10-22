@@ -344,4 +344,12 @@ public class TextUi {
     public void printDeleteByName(String searchTerm) {
         out.printf(DELETE_ELDERLY_SUCCESSFUL_MESSAGE, searchTerm);
     }
+
+    /**
+     * Prints exception message.
+     * @param e Exception that has been thrown
+     */
+    public void printExceptionMessage(Exception e) {
+        out.println(e.getMessage());
+    }
 }
