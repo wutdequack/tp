@@ -183,6 +183,7 @@ public class Duke {
             break;
         case GET_HELP_MENU:
             ui.printHelpMenu();
+            break;
         default:
             // Command is not recognized
             // assert keyword.equals("a") : "Nothing has been input";
