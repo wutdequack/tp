@@ -50,6 +50,14 @@ public class RegexChecker {
         return Pattern.matches("^viewrec n/[a-z0-9]+$", userLine.toLowerCase());
     }
 
+    public boolean isValidDeleteNok(String userLine) {
+        return Pattern.matches("^deletenok u/[a-z0-9]+ n/[a-z0-9\\s]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidDeleteMedicine(String userLine) {
+        return Pattern.matches("^deletemed u/[a-z0-9]+ m/[a-z0-9\\s]+$", userLine.toLowerCase());
+    }
+
     public boolean isValidFindMed(String userLine) {
         return Pattern.matches("^findbymed m/[a-z0-9]+$", userLine.toLowerCase());
     }
