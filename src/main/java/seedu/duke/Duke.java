@@ -196,6 +196,7 @@ public class Duke {
             break;
         case STORE_INTO_FILE:
             storage.storeFromFilePath(userLine);
+            break;
         case DELETE_NOK:
             elderlyHelperFunction.deleteNextOfKin(userLine);
             break;
