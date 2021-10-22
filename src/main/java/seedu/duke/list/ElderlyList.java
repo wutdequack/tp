@@ -326,7 +326,7 @@ public class ElderlyList {
 
     public void deleteNextOfKin(String userLine) {
         try {
-            if(!re.isValidDeleteNok(userLine)) {
+            if (!re.isValidDeleteNok(userLine)) {
                 throw new InvalidDeleteNokFormatException();
             }
             String[] paramList = userLine.split(DELETE_NOK_SPLIT);
@@ -353,7 +353,7 @@ public class ElderlyList {
 
     public void deleteMedicine(String userLine) {
         try {
-            if(!re.isValidDeleteMedicine(userLine)) {
+            if (!re.isValidDeleteMedicine(userLine)) {
                 throw new InvalidDeleteMedFormatException();
             }
             String[] paramList = userLine.split(DELETE_MED_SPLIT);
