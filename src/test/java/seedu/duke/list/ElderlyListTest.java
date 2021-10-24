@@ -12,9 +12,10 @@ import seedu.duke.exceptions.ElderlyNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.duke.common.MagicValues.DEFAULT_FILE_PATH;
 
 public class ElderlyListTest {
-    ElderlyList elderlyList = new ElderlyList();
+    ElderlyList elderlyList = new ElderlyList(DEFAULT_FILE_PATH);
     ArrayList<Medicine> tanMedicines = new ArrayList<Medicine>();
     ArrayList<Medicine> limMedicines = new ArrayList<Medicine>();
     ArrayList<Appointment> tanAppointments = new ArrayList<Appointment>();

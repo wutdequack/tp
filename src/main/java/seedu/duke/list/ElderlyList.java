@@ -1,5 +1,12 @@
 package seedu.duke.list;
 
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,13 +28,25 @@ import seedu.duke.exceptions.ElderlyNotFoundException;
 import seedu.duke.exceptions.InvalidDeleteElderlyException;
 import seedu.duke.exceptions.InvalidDeleteMedFormatException;
 import seedu.duke.exceptions.InvalidDeleteNokFormatException;
+import seedu.duke.exceptions.InvalidLoadFromFilePathException;
 import seedu.duke.exceptions.InvalidNokFormatException;
 import seedu.duke.exceptions.InvalidMedicineException;
 import seedu.duke.exceptions.InvalidAppointmentFormatException;
 import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
 
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.File;
+import java.io.IOException;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonWriter;
+import com.google.gson.GsonBuilder;
 import java.util.Objects;
 import java.util.Optional;
+import com.google.gson.JsonSyntaxException;
+import seedu.duke.exceptions.InvalidStoreToFilePathException;
 import seedu.duke.exceptions.InvalidViewByNameException;
 import seedu.duke.exceptions.InvalidViewDietException;
 import seedu.duke.exceptions.InvalidViewMedicineException;
@@ -40,6 +59,8 @@ import static seedu.duke.common.MagicValues.DELETE_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.DELETE_MED_SPLIT;
 import static seedu.duke.common.MagicValues.HIGH;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_USERNAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_FILE_PATH;
+import static seedu.duke.common.MagicValues.LOAD_FILE_SPLIT;
 import static seedu.duke.common.MagicValues.LOW;
 import static seedu.duke.common.MagicValues.MEDIUM;
 import static seedu.duke.common.MagicValues.NAME_SPLIT;
@@ -66,12 +87,14 @@ import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE;
 import static seedu.duke.common.MagicValues.GENERAL_CHECKUP;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
+import static seedu.duke.common.MagicValues.STORE_FILE_SPLIT;
 import static seedu.duke.common.MagicValues.parser;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.re;
 import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 
+import static seedu.duke.common.Messages.FILE_WRONG_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 
 
@@ -82,7 +105,12 @@ public class ElderlyList {
     protected static HashMap<String, HashSet<String>> medicineMapping = new HashMap<>();
     protected static HashMap<String, HashSet<String>> dietMapping = new HashMap<>();
 
-    public ElderlyList() {
+    private String filePath;
+    private Gson gson;
+
+    public ElderlyList(String filePath) {
+        this.filePath = filePath;
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
     /**
@@ -859,6 +887,75 @@ public class ElderlyList {
             }
         } catch (DukeException e) {
             ui.printDukeException(e);
+        }
+    }
+
+    /**
+     * Store program's data as JSON into a file using given filepath.
+     * @param userLine String containing store command and filepath.
+     */
+    public void storeFromFilePath(String userLine) {
+        try {
+            // Checks if the command is issued correctly
+            if (!re.isValidStoreFileFromFilePath(userLine)) {
+                throw new InvalidStoreToFilePathException();
+            }
+
+            String[] paramList = userLine.split(STORE_FILE_SPLIT);
+            this.filePath = paramList[INDEX_OF_FILE_PATH];
+
+            // Writes to file path and overwrites all contents if it doesn't exist
+            FileWriter fw = new FileWriter(this.filePath);
+            JsonWriter jw = gson.newJsonWriter(fw);
+            gson.toJson(gson.toJsonTree(elderlyArrayList), jw);
+            fw.close();
+        } catch (DukeException | IOException e) {
+            ui.printExceptionMessage(e);
+        }
+    }
+
+    /**
+     * Returns if file exists based on a given filepath.
+     * @param filePath String of the absolute/relative filepath.
+     * @return Boolean value.
+     */
+    private boolean checkIfFileExists(String filePath) {
+        return new File(filePath).exists();
+    }
+
+    /**
+     * Load program's data JSON from a file using the given filepath.
+     * @param userLine String containing load command and filepath.
+     */
+    public void loadFromFilePath(String userLine) {
+        try {
+            // Checks if the command is issued correctly
+            if (!re.isValidLoadFileFromFilePath(userLine)) {
+                throw new InvalidLoadFromFilePathException();
+            }
+
+            String[] paramList = userLine.split(LOAD_FILE_SPLIT);
+            String filePath = paramList[INDEX_OF_FILE_PATH];
+
+            // Checks if file exists
+            if (checkIfFileExists(filePath)) {
+                this.filePath = filePath;
+                ui.printFileExists(filePath);
+            } else {
+                // File does not exist, leave program
+                ui.printFileDoesNotExists(filePath);
+                return;
+            }
+
+            // Reads from file path and loads back into elderly list
+            FileReader fr = new FileReader(this.filePath);
+            JsonReader jr = gson.newJsonReader(fr);
+            elderlyArrayList = gson.fromJson(jr, new TypeToken<ArrayList<Elderly>>(){}.getType());
+            fr.close();
+        } catch (DukeException | IOException e) {
+            ui.printExceptionMessage(e);
+        } catch (JsonSyntaxException wrongFormatException) {
+            ui.printWrongFileSyntax();
         }
     }
 }

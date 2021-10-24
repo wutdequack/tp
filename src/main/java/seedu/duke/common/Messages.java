@@ -231,9 +231,14 @@ public class Messages {
     public static final String DELETE_ELDERLY_FORMAT_MESSAGE = "Delete format: deleteelderly u/[User Name]";
 
     /**
-     * Used when invalid deletebyelderly is typed.
+     * Used when invalid store command is typed.
      */
     public static final String STORE_FORMAT_MESSAGE = "Store format: store fp/[file path]";
+
+    /**
+     * Used when invalid load command is typed.
+     */
+    public static final String LOAD_FORMAT_MESSAGE = "Load format: load fp/[file path]";
 
     /**
      * Used when printing help command messages.
@@ -252,4 +257,15 @@ public class Messages {
      * Used when deleting elderly from list.
      */
     public static final String DELETE_ELDERLY_SUCCESSFUL_MESSAGE = "%s has been deleted.\n";
+
+    /**
+     * Used when checking if file exists.
+     */
+    public static final String FILE_EXISTS_MESSAGE = "%s exists. Loading from file!\n";
+    public static final String FILE_DOES_NOT_EXISTS_MESSAGE = "%s does not exists.\nTry again!\n";
+
+    /**
+     * Used when file format is wrong.
+     */
+    public static final String FILE_WRONG_FORMAT_MESSAGE = "File is in the wrong format, could not load!";
 }

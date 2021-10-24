@@ -75,7 +75,11 @@ public class RegexChecker {
     }
 
     public boolean isValidStoreFileFromFilePath(String userLine) {
-        return Pattern.matches("^store fp/[/a-z0-9.\\\\]+$", userLine.toLowerCase());
+        return Pattern.matches("^store fp/[/a-z0-9.\\\\]+.json$", userLine.toLowerCase());
+    }
+
+    public boolean isValidLoadFileFromFilePath(String userLine) {
+        return Pattern.matches("^load fp/[/a-z0-9.\\\\]+.json$", userLine.toLowerCase());
     }
 
     /**

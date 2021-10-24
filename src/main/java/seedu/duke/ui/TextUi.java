@@ -21,6 +21,9 @@ import static seedu.duke.common.Messages.DELETE_ELDERLY_SUCCESSFUL_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_CONDITIONS_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_DOCTOR_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_NOTES_ON_CARE_MESSAGE;
+import static seedu.duke.common.Messages.FILE_DOES_NOT_EXISTS_MESSAGE;
+import static seedu.duke.common.Messages.FILE_EXISTS_MESSAGE;
+import static seedu.duke.common.Messages.FILE_WRONG_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.HELP_MENU_INTRO_MESSAGE;
 import static seedu.duke.common.Messages.INVALID_SEARCH_TERM_MESSAGE;
 import static seedu.duke.common.Messages.LIST_FORMAT_MESSAGE;
@@ -351,5 +354,28 @@ public class TextUi {
      */
     public void printExceptionMessage(Exception e) {
         out.println(e.getMessage());
+    }
+
+    /**
+     * Prints that the given file path exists.
+     * @param newFilePath String containing the filepath.
+     */
+    public void printFileExists(String newFilePath) {
+        out.printf(FILE_EXISTS_MESSAGE, newFilePath);
+    }
+
+    /**
+     * Prints that the given file path does not exist.
+     * @param newFilePath String containing the new filepath.
+     */
+    public void printFileDoesNotExists(String newFilePath) {
+        out.printf(FILE_DOES_NOT_EXISTS_MESSAGE, newFilePath);
+    }
+
+    /**
+     * Prints that the file is in the wrong file format.
+     */
+    public void printWrongFileSyntax() {
+        out.println(FILE_WRONG_FORMAT_MESSAGE);
     }
 }
