@@ -5,7 +5,6 @@ package seedu.duke;
 import seedu.duke.common.Elderly;
 import seedu.duke.list.ElderlyList;
 import seedu.duke.list.HospitalList;
-import seedu.duke.storage.Storage;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
 
@@ -20,6 +19,7 @@ import static seedu.duke.common.MagicValues.FIND_BY_MED;
 import static seedu.duke.common.MagicValues.FIND_BY_NAME;
 import static seedu.duke.common.MagicValues.GET_HELP_MENU;
 import static seedu.duke.common.MagicValues.LIST_ELDERLY;
+import static seedu.duke.common.MagicValues.LOAD_FROM_FILE;
 import static seedu.duke.common.MagicValues.STORE_INTO_FILE;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT;
@@ -53,7 +53,6 @@ public class Duke {
     public static Boolean toContinue = true;
 
     private ElderlyList elderlyHelperFunction;
-    private Storage storage;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -75,8 +74,7 @@ public class Duke {
      */
     private void start() {
         ui = new TextUi();
-        elderlyHelperFunction = new ElderlyList();
-        storage = new Storage(DEFAULT_FILE_PATH, elderlyHelperFunction);
+        elderlyHelperFunction = new ElderlyList(DEFAULT_FILE_PATH);
         ui.printWelcomeMessage();
         hospitalArrayList.initHospitals();
     }
@@ -195,7 +193,10 @@ public class Duke {
             ui.printHelpMenu();
             break;
         case STORE_INTO_FILE:
-            storage.storeFromFilePath(userLine);
+            elderlyHelperFunction.storeFromFilePath(userLine);
+            break;
+        case LOAD_FROM_FILE:
+            elderlyHelperFunction.loadFromFilePath(userLine);
             break;
         case DELETE_NOK:
             elderlyHelperFunction.deleteNextOfKin(userLine);

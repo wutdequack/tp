@@ -2,7 +2,6 @@ package seedu.duke.common;
 
 import seedu.duke.list.HospitalList;
 import seedu.duke.parser.Parser;
-import seedu.duke.storage.Storage;
 import seedu.duke.ui.TextUi;
 
 import seedu.duke.regex.RegexChecker;
@@ -40,6 +39,7 @@ public class MagicValues {
     public static final String GET_HELP_MENU = "HELP";
     public static final String DELETE_ELDERLY = "DELETEELDERLY";
     public static final String STORE_INTO_FILE = "STORE";
+    public static final String LOAD_FROM_FILE = "LOAD";
     public static final String LOW = "L";
     public static final String MEDIUM = "M";
     public static final String HIGH = "H";
@@ -88,6 +88,7 @@ public class MagicValues {
     public static final String SEARCH_NAME_SPLIT = " n/";
     public static final String DELETE_NAME_SPLIT = " u/";
     public static final String STORE_FILE_SPLIT = " fp/";
+    public static final String LOAD_FILE_SPLIT = " fp/";
     public static final String DELETE_NOK_SPLIT = " [un]/";
     public static final String DELETE_MED_SPLIT = " [um]/";
 
