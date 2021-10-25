@@ -80,6 +80,7 @@ public class MagicValues {
     public static final int INDEX_OF_SEARCH_NAME = 1;
     public static final int INDEX_OF_USER_NAME = 1;
     public static final int INDEX_OF_FILE_PATH = 1;
+    public static final int INPUT_OFFSET = 1;
 
     public static final String NAME_SPLIT = " [un]/";
     public static final String ADD_MEDICINE_SPLIT = " [nmf]/";

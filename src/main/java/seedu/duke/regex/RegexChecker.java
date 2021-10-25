@@ -9,6 +9,14 @@ public class RegexChecker {
     public RegexChecker() {
     }
 
+    public boolean isValidHospitalIndex(String userLine) {
+        return Pattern.matches("^[1-6]$", userLine);
+    }
+
+    public boolean isValidDoctorIndex(String userLine) {
+        return Pattern.matches("^[1-5]$", userLine);
+    }
+
     public boolean isValidAddElderly(String userLine) {
         return Pattern.matches("^addelderly u/[a-z0-9]+ n/[a-z0-9\\s]+$", userLine.toLowerCase());
     }

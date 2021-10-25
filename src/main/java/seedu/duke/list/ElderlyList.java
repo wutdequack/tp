@@ -23,8 +23,10 @@ import seedu.duke.common.MediumRiskElderly;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
+import seedu.duke.exceptions.DoctorIndexException;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.ElderlyNotFoundException;
+import seedu.duke.exceptions.HospitalIndexException;
 import seedu.duke.exceptions.InvalidAddMedicineFormatException;
 import seedu.duke.exceptions.InvalidAddNokFormatException;
 import seedu.duke.exceptions.InvalidAddRecordFormatException;
@@ -71,6 +73,7 @@ import static seedu.duke.common.MagicValues.INDEX_OF_DELETE_DATE;
 import static seedu.duke.common.MagicValues.INDEX_OF_DELETE_TIME;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_USERNAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_FILE_PATH;
+import static seedu.duke.common.MagicValues.INPUT_OFFSET;
 import static seedu.duke.common.MagicValues.LOAD_FILE_SPLIT;
 import static seedu.duke.common.MagicValues.LOW;
 import static seedu.duke.common.MagicValues.MEDIUM;
@@ -147,25 +150,27 @@ public class ElderlyList {
             String[] paramList = userLine.split(NAME_SPLIT);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
-
-            Hospital hospital;
-            Doctor doctor;
-            String conditions;
-            String notesOnCare;
             if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
                 hospitalArrayList.printHospitalNames();
-                //Integer hospitalArrayListLength = hospitalArrayList.getLength();
                 ui.printEnterHospitalMessage();
-                int hospitalIndex = Integer.parseInt(ui.getUserInput());
-                hospital = hospitalArrayList.getHospital(hospitalIndex);
+                String stringHospitalIndex = ui.getUserInput();
+                if (!re.isValidHospitalIndex(stringHospitalIndex)) {
+                    throw new HospitalIndexException();
+                }
+                int hospitalIndex = Integer.parseInt(stringHospitalIndex) - INPUT_OFFSET;
+                Hospital hospital = hospitalArrayList.getHospital(hospitalIndex);
                 ui.printEnterConditionsMessage();
-                conditions = ui.getUserInput();
+                String conditions = ui.getUserInput();
                 ui.printEnterNotesOnCareMessage();
-                notesOnCare = ui.getUserInput();
+                String notesOnCare = ui.getUserInput();
                 if (Objects.equals(riskLevel, HIGH)) {
                     hospital.printDoctorNames();
                     ui.printEnterDoctorMessage();
-                    doctor = hospital.getDoctor(Integer.parseInt(ui.getUserInput()));
+                    String stringDoctorIndex = ui.getUserInput();
+                    if (!re.isValidDoctorIndex(stringDoctorIndex)) {
+                        throw new DoctorIndexException();
+                    }
+                    Doctor doctor = hospital.getDoctor(Integer.parseInt(stringDoctorIndex) - INPUT_OFFSET);
                     elderlyArrayList.add(new HighRiskElderly(userName, elderlyName, hospital,
                             conditions, notesOnCare, doctor));
                 } else if (Objects.equals(riskLevel, MEDIUM)) {
@@ -174,9 +179,7 @@ public class ElderlyList {
                 }
             } else if (Objects.equals(riskLevel, LOW)) {
                 elderlyArrayList.add(new LowRiskElderly(userName, elderlyName));
-
             }
-
             ui.printAddElderlyMessage();
         } catch (DukeException e) {
             ui.printDukeException(e);
