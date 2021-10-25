@@ -60,6 +60,7 @@ import seedu.duke.exceptions.InvalidViewMedicineException;
 import seedu.duke.exceptions.InvalidViewMedicineFormatException;
 import seedu.duke.exceptions.InvalidViewNokFormatException;
 import seedu.duke.exceptions.InvalidViewRecordFormatException;
+import seedu.duke.exceptions.RiskLevelException;
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
 
@@ -146,6 +147,9 @@ public class ElderlyList {
         try {
             if (!re.isValidAddElderly(userLine)) {
                 throw new InvalidElderlyFormatException();
+            }
+            if (!re.isValidRiskLevel(riskLevel)) {
+                throw new RiskLevelException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];

@@ -9,6 +9,10 @@ public class RegexChecker {
     public RegexChecker() {
     }
 
+    public boolean isValidRiskLevel(String userLine) {
+        return Pattern.matches("^[LMH]$", userLine);
+    }
+
     public boolean isValidHospitalIndex(String userLine) {
         return Pattern.matches("^[1-6]$", userLine);
     }

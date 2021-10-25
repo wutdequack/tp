@@ -48,6 +48,12 @@ public class Messages {
     public static final String ENTER_RISK_LEVEL_MESSAGE = "Enter risk level. (i.e. l for low, m for med, h for high.)";
 
     /**
+     * Used when selected risk level is invalid.
+     */
+    public static final String INVALID_RISK_LEVEL_MESSAGE = "Risk level keyed in is invalid. Please select "
+            + "from given options (l, m, h) only. Please redo addelderly command.";
+
+    /**
      * Used when selecting hospital.
      */
     public static final String ENTER_HOSPITAL_MESSAGE = "Enter hospital number choice. (e.g. 1 for Changi General "
