@@ -2,7 +2,6 @@ package seedu.duke.common;
 
 import seedu.duke.exceptions.InvalidDeleteMedFormatException;
 import seedu.duke.exceptions.InvalidDeleteNokFormatException;
-import seedu.duke.exceptions.InvalidNokFormatException;
 import seedu.duke.parser.Parser;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
