@@ -127,6 +127,9 @@ public class Messages {
     public static final String DELETE_MEDICINE_FORMAT_MESSAGE = "Delete medicine format: deletemed "
             + "u/[username] m/[name of medicine]";
 
+    public static final String DELETE_APPOINTMENT_FORMAT_MESSAGE = "Delete appointment format: deleteappt "
+            + "u/[username] d/[date] t/[time]";
+
     /**
      * Used when invalid viewnok is typed.
      */

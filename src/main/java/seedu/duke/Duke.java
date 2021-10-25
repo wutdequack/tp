@@ -33,6 +33,7 @@ import static seedu.duke.common.MagicValues.ADD_RECORD;
 import static seedu.duke.common.MagicValues.VIEW_NOK;
 import static seedu.duke.common.MagicValues.DELETE_NOK;
 import static seedu.duke.common.MagicValues.DELETE_MEDICINE;
+import static seedu.duke.common.MagicValues.DELETE_APPOINTMENT;
 import static seedu.duke.common.MagicValues.VIEW_RECORD;
 import static seedu.duke.common.MagicValues.VIEW_BLOOD_PRESSURE;
 import static seedu.duke.common.MagicValues.SET_BLOOD_PRESSURE;
@@ -200,6 +201,9 @@ public class Duke {
             break;
         case DELETE_NOK:
             elderlyHelperFunction.deleteNextOfKin(userLine);
+            break;
+        case DELETE_APPOINTMENT:
+            elderlyHelperFunction.deleteAppointment(userLine);
             break;
         default:
             // Command is not recognized

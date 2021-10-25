@@ -58,6 +58,10 @@ public class RegexChecker {
         return Pattern.matches("^deletemed u/[a-z0-9]+ m/[a-z0-9\\s]+$", userLine.toLowerCase());
     }
 
+    public boolean isValidDeleteAppointment(String userLine) {
+        return Pattern.matches("^deleteappt u/[a-z0-9]+ d/[0-9]{8} t/[0-9]{4}$", userLine.toLowerCase());
+    }
+
     public boolean isValidFindMed(String userLine) {
         return Pattern.matches("^findbymed m/[a-z0-9]+$", userLine.toLowerCase());
     }
