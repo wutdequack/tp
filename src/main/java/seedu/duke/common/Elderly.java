@@ -2,7 +2,6 @@ package seedu.duke.common;
 
 import seedu.duke.exceptions.InvalidDeleteMedFormatException;
 import seedu.duke.exceptions.InvalidDeleteNokFormatException;
-import seedu.duke.exceptions.InvalidNokFormatException;
 import seedu.duke.parser.Parser;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
@@ -113,6 +112,19 @@ public class Elderly {
         return Optional.empty();
     }
 
+    public Optional<Appointment> removeAppointment(String deleteDate, String deleteTime) {
+        Appointment deleteAppt;
+        for (Appointment appt : appointments) {
+            String currentDate = appt.date;
+            String currentTime = appt.time;
+            if (currentDate.contentEquals(deleteDate) && currentTime.contentEquals(deleteTime)) {
+                deleteAppt = appt;
+                appointments.remove(appt);
+                return Optional.of(deleteAppt);
+            }
+        }
+        return Optional.empty();
+    }
 
     public void addRecord(Record record) {
         records.add(record);

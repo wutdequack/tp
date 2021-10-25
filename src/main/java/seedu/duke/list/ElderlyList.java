@@ -27,14 +27,19 @@ import seedu.duke.exceptions.DoctorIndexException;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.ElderlyNotFoundException;
 import seedu.duke.exceptions.HospitalIndexException;
+import seedu.duke.exceptions.InvalidAddMedicineFormatException;
+import seedu.duke.exceptions.InvalidAddNokFormatException;
+import seedu.duke.exceptions.InvalidAddRecordFormatException;
+import seedu.duke.exceptions.InvalidDeleteApptFormatException;
 import seedu.duke.exceptions.InvalidDeleteElderlyException;
 import seedu.duke.exceptions.InvalidDeleteMedFormatException;
 import seedu.duke.exceptions.InvalidDeleteNokFormatException;
+import seedu.duke.exceptions.InvalidElderlyFormatException;
 import seedu.duke.exceptions.InvalidLoadFromFilePathException;
-import seedu.duke.exceptions.InvalidNokFormatException;
-import seedu.duke.exceptions.InvalidMedicineException;
-import seedu.duke.exceptions.InvalidAppointmentFormatException;
-import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
+import seedu.duke.exceptions.InvalidViewMedicineFormatException;
+import seedu.duke.exceptions.InvalidAddAppointmentFormatException;
+import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
+
 
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -52,14 +57,20 @@ import seedu.duke.exceptions.InvalidStoreToFilePathException;
 import seedu.duke.exceptions.InvalidViewByNameException;
 import seedu.duke.exceptions.InvalidViewDietException;
 import seedu.duke.exceptions.InvalidViewMedicineException;
+import seedu.duke.exceptions.InvalidViewMedicineFormatException;
+import seedu.duke.exceptions.InvalidViewNokFormatException;
+import seedu.duke.exceptions.InvalidViewRecordFormatException;
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
+import static seedu.duke.common.MagicValues.DELETE_APPOINTMENT_SPLIT;
 import static seedu.duke.common.MagicValues.DELETE_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.DELETE_MED_SPLIT;
 import static seedu.duke.common.MagicValues.HIGH;
+import static seedu.duke.common.MagicValues.INDEX_OF_DELETE_DATE;
+import static seedu.duke.common.MagicValues.INDEX_OF_DELETE_TIME;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_USERNAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_FILE_PATH;
 import static seedu.duke.common.MagicValues.INPUT_OFFSET;
@@ -134,14 +145,13 @@ public class ElderlyList {
     public void addElderly(String userLine, String riskLevel) {
         try {
             if (!re.isValidAddElderly(userLine)) {
-                throw new InvalidElderlyRecordFormatException();
+                throw new InvalidElderlyFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
                 hospitalArrayList.printHospitalNames();
-                Integer hospitalArrayListLength = hospitalArrayList.getLength();
                 ui.printEnterHospitalMessage();
                 String stringHospitalIndex = ui.getUserInput();
                 if (!re.isValidHospitalIndex(stringHospitalIndex)) {
@@ -184,7 +194,7 @@ public class ElderlyList {
     public void addMedicine(String userLine) {
         try {
             if (!re.isValidAddMedicine(userLine)) {
-                throw new InvalidMedicineException();
+                throw new InvalidAddMedicineFormatException();
             }
             String[] paramList = userLine.split(ADD_MEDICINE_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -207,7 +217,7 @@ public class ElderlyList {
     public void viewMedicine(String userLine) {
         try {
             if (!re.isValidViewMedicine(userLine)) {
-                throw new InvalidMedicineException();
+                throw new InvalidViewMedicineFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -242,7 +252,7 @@ public class ElderlyList {
     public void addAppointment(String userLine) {
         try {
             if (!re.isValidAddAppointment(userLine)) {
-                throw new InvalidAppointmentFormatException();
+                throw new InvalidAddAppointmentFormatException();
             }
             String[] paramList = userLine.split(ADD_APPOINTMENT_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -272,7 +282,7 @@ public class ElderlyList {
     public void viewAppointment(String userLine) {
         try {
             if (!re.isValidViewAppointment(userLine)) {
-                throw new InvalidAppointmentFormatException();
+                throw new InvalidViewAppointmentFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -282,6 +292,32 @@ public class ElderlyList {
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
+    }
+
+    public void deleteAppointment(String userLine) {
+        try {
+            if (!re.isValidDeleteAppointment(userLine)) {
+                throw new InvalidDeleteApptFormatException();
+            }
+            String[] paramList = userLine.split(DELETE_APPOINTMENT_SPLIT);
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            String date = paramList[INDEX_OF_DELETE_DATE];
+            String time = paramList[INDEX_OF_DELETE_TIME];
+            Elderly elderly = getElderly(elderlyName);
+            Optional<Appointment> deletedAppt = elderly.removeAppointment(date, time);
+            deletedAppt.ifPresentOrElse(this::printDeletedAppointment, this::printNoAppointment);
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
+
+    public void printDeletedAppointment(Appointment deletedAppt) {
+        System.out.println("These appointment details are now deleted:");
+        System.out.println(deletedAppt);
+    }
+
+    public void printNoAppointment() {
+        System.out.println("No Appointment found");
     }
 
     /**
@@ -307,7 +343,7 @@ public class ElderlyList {
     public void addNok(String userLine) {
         try {
             if (!re.isValidAddNok(userLine)) {
-                throw new InvalidNokFormatException();
+                throw new InvalidAddNokFormatException();
             }
             String[] paramList = userLine.split(ADD_NOK_SPLIT);
             assert paramList.length == 7 : "addnok input does not have all required values";
@@ -334,7 +370,7 @@ public class ElderlyList {
     public void viewNok(String userLine) {
         try {
             if (!re.isValidViewNok(userLine)) {
-                throw new InvalidNokFormatException();
+                throw new InvalidViewNokFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             assert paramList.length == 2 : "Username is empty";
@@ -417,7 +453,7 @@ public class ElderlyList {
     public void addRecord(String userLine) {
         try {
             if (!re.isValidAddRecord(userLine)) {
-                throw new InvalidElderlyRecordFormatException();
+                throw new InvalidAddRecordFormatException();
             }
             String[] paramList = userLine.split(ADD_RECORD_SPLIT);
             assert paramList.length == 4 : "addrec input does not have all required values";
@@ -440,7 +476,7 @@ public class ElderlyList {
     public void viewRecord(String userLine) {
         try {
             if (!re.isValidViewRec(userLine)) {
-                throw new InvalidElderlyRecordFormatException();
+                throw new InvalidViewRecordFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             assert paramList.length == 2 : "Username is empty";
