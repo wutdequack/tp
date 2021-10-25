@@ -113,6 +113,19 @@ public class Elderly {
         return Optional.empty();
     }
 
+    public Optional<Appointment> removeAppointment(String deleteDate, String deleteTime) {
+        Appointment deleteAppt;
+        for (Appointment appt : appointments) {
+            String currentDate = appt.date;
+            String currentTime = appt.time;
+            if (currentDate.contentEquals(deleteDate) && currentTime.contentEquals(deleteTime)) {
+                deleteAppt = appt;
+                appointments.remove(appt);
+                return Optional.of(deleteAppt);
+            }
+        }
+        return Optional.empty();
+    }
 
     public void addRecord(Record record) {
         records.add(record);

@@ -21,6 +21,7 @@ public class MagicValues {
     public static final String ADD_NOK = "ADDNOK";
     public static final String DELETE_NOK = "DELETENOK";
     public static final String DELETE_MEDICINE = "DELETEMED";
+    public static final String DELETE_APPOINTMENT = "DELETEAPPT";
     public static final String VIEW_NOK = "VIEWNOK";
     public static final String ADD_RECORD = "ADDREC";
     public static final String VIEW_RECORD = "VIEWREC";
@@ -54,9 +55,11 @@ public class MagicValues {
     public static final int INDEX_OF_ELDERLY_NAME = 2;
     public static final int INDEX_OF_LOCATION = 2;
     public static final int INDEX_OF_MEDICINE_NAME = 2;
+    public static final int INDEX_OF_DELETE_DATE = 2;
     public static final int INDEX_OF_NOK_NAME = 2;
     public static final int INDEX_OF_ELDERLY_PHONE_NUMBER = 2;
     public static final int INDEX_OF_DATE = 3;
+    public static final int INDEX_OF_DELETE_TIME = 3;
     public static final int INDEX_OF_FREQUENCY = 3;
     public static final int INDEX_OF_NOK_PHONE_NUMBER = 3;
     public static final int INDEX_OF_ELDERLY_ADDRESS = 3;
@@ -91,6 +94,8 @@ public class MagicValues {
     public static final String LOAD_FILE_SPLIT = " fp/";
     public static final String DELETE_NOK_SPLIT = " [un]/";
     public static final String DELETE_MED_SPLIT = " [um]/";
+    public static final String DELETE_APPOINTMENT_SPLIT = " [udt]/";
+
 
 
     public static TextUi ui = new TextUi();

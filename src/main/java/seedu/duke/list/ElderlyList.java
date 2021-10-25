@@ -25,12 +25,14 @@ import seedu.duke.common.Record;
 
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.ElderlyNotFoundException;
+import seedu.duke.exceptions.InvalidAddMedicineFormatException;
+import seedu.duke.exceptions.InvalidDeleteApptFormatException;
 import seedu.duke.exceptions.InvalidDeleteElderlyException;
 import seedu.duke.exceptions.InvalidDeleteMedFormatException;
 import seedu.duke.exceptions.InvalidDeleteNokFormatException;
 import seedu.duke.exceptions.InvalidLoadFromFilePathException;
 import seedu.duke.exceptions.InvalidNokFormatException;
-import seedu.duke.exceptions.InvalidMedicineException;
+import seedu.duke.exceptions.InvalidViewMedicineFormatException;
 import seedu.duke.exceptions.InvalidAppointmentFormatException;
 import seedu.duke.exceptions.InvalidElderlyRecordFormatException;
 
@@ -50,14 +52,18 @@ import seedu.duke.exceptions.InvalidStoreToFilePathException;
 import seedu.duke.exceptions.InvalidViewByNameException;
 import seedu.duke.exceptions.InvalidViewDietException;
 import seedu.duke.exceptions.InvalidViewMedicineException;
+import seedu.duke.exceptions.InvalidViewMedicineFormatException;
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
+import static seedu.duke.common.MagicValues.DELETE_APPOINTMENT_SPLIT;
 import static seedu.duke.common.MagicValues.DELETE_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.DELETE_MED_SPLIT;
 import static seedu.duke.common.MagicValues.HIGH;
+import static seedu.duke.common.MagicValues.INDEX_OF_DELETE_DATE;
+import static seedu.duke.common.MagicValues.INDEX_OF_DELETE_TIME;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_USERNAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_FILE_PATH;
 import static seedu.duke.common.MagicValues.LOAD_FILE_SPLIT;
@@ -180,7 +186,7 @@ public class ElderlyList {
     public void addMedicine(String userLine) {
         try {
             if (!re.isValidAddMedicine(userLine)) {
-                throw new InvalidMedicineException();
+                throw new InvalidAddMedicineFormatException();
             }
             String[] paramList = userLine.split(ADD_MEDICINE_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -203,7 +209,7 @@ public class ElderlyList {
     public void viewMedicine(String userLine) {
         try {
             if (!re.isValidViewMedicine(userLine)) {
-                throw new InvalidMedicineException();
+                throw new InvalidViewMedicineFormatException();
             }
             String[] paramList = userLine.split(NAME_SPLIT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -278,6 +284,32 @@ public class ElderlyList {
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
+    }
+
+    public void deleteAppointment(String userLine) {
+        try {
+            if (!re.isValidDeleteAppointment(userLine)) {
+                throw new InvalidDeleteApptFormatException();
+            }
+            String[] paramList = userLine.split(DELETE_APPOINTMENT_SPLIT);
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            String date = paramList[INDEX_OF_DELETE_DATE];
+            String time = paramList[INDEX_OF_DELETE_TIME];
+            Elderly elderly = getElderly(elderlyName);
+            Optional<Appointment> deletedAppt = elderly.removeAppointment(date, time);
+            deletedAppt.ifPresentOrElse(this::printDeletedAppointment, this::printNoAppointment);
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
+
+    public void printDeletedAppointment(Appointment deletedAppt) {
+        System.out.println("These appointment details are now deleted:");
+        System.out.println(deletedAppt);
+    }
+
+    public void printNoAppointment() {
+        System.out.println("No Appointment found");
     }
 
     /**
