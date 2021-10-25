@@ -54,6 +54,18 @@ public class Messages {
             + "Hospital etc.)";
 
     /**
+     * Used when selected hospital index is invalid.
+     */
+    public static final String INVALID_HOSPITAL_INDEX_MESSAGE = "Hospital index keyed in is invalid. Please select "
+            + "from given options (1 - 6) only. Please redo addelderly command.";
+
+    /**
+     * Used when selected doctor index is invalid.
+     */
+    public static final String INVALID_DOCTOR_INDEX_MESSAGE = "Doctor index keyed in is invalid. Please select "
+            + "from given options (1 - 5) only. Please redo addelderly command.";
+
+    /**
      * Used when inputting conditions.
      */
     public static final String ENTER_CONDITIONS_MESSAGE = "Enter elderly condition below. Hit enter when done.";
