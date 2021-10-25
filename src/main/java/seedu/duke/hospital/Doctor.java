@@ -27,4 +27,8 @@ public class Doctor {
     public Integer getDoctorNumber() {
         return number;
     }
+
+    public String toString() {
+        return String.format("%s (Doctor Name)\n%s (Doctor Number)", getDoctorName(), getDoctorNumber());
+    }
 }

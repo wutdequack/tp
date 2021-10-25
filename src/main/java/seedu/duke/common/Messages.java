@@ -224,6 +224,12 @@ public class Messages {
     public static final String NOKS_MESSAGE = "These are NOK(s) attached to %s:\n%s\n";
     public static final String OVERALL_ELDERLY_MESSAGE = "Elderly Username: %s\nElderly Name: %s\n"
             + "%s\n%s\n%s\n%s\n%s\n%s";
+    public static final String LOW_RISK_ELDERLY_MESSAGE = "Elderly Username: %s\nElderly Name: %s\n"
+            + "Risk Level : LOW\n%s\n%s\n%s\n%s\n%s\n%s";
+    public static final String MEDIUM_RISK_ELDERLY_MESSAGE = "Elderly Username: %s\nElderly Name: %s\n"
+            + "Risk Level : MEDIUM\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
+    public static final String HIGH_RISK_ELDERLY_MESSAGE = "Elderly Username: %s\nElderly Name: %s\n"
+            + "Risk Level : HIGH\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
 
     /**
      * Used in querying for information.

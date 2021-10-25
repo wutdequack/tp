@@ -63,5 +63,8 @@ public class Hospital {
         doctorArrayList.add(new Doctor(name, number));
     }
 
+    public String toString() {
+        return String.format("%s (Hospital Name)\n%s (Hospital Number)", getHospitalName(), getHospitalNumber());
+    }
 
 }

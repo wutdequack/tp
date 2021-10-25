@@ -56,7 +56,7 @@ closest possible search result in the store of the program.
 
 #### Details of solution
 We used a concept known as [Levenshtein Distance](https://medium.com/@ethannam/understanding-the-levenshtein-distance-equation-for-beginners-c4285a5604f0) 
-to check the similiarities between 2 strings. 
+to check the similarities between 2 strings. 
 
 For brevity, I will attempt to explain the concept here. In essence, it checks what are the number 
 of edits made at position `i` of 2 strings. This can be better illustrated with an example. 
