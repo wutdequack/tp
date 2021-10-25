@@ -35,10 +35,10 @@ public class Elderly {
     protected String username;
     protected String name;
 
-    private double[] bloodPressure;
-    private boolean isVaccinated;
-    private Date birthday;
-    private DietaryPreference diet;
+    protected double[] bloodPressure;
+    protected boolean isVaccinated;
+    protected Date birthday;
+    protected DietaryPreference diet;
 
     public Elderly(String username, String name) {
         this.username = username;
