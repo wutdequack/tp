@@ -194,7 +194,7 @@ public class Elderly {
     }
 
     public void printVaccinationStatus() {
-        System.out.printf("%s is currently ", getUsername());
+        System.out.printf("%s is currently ", name);
         if (!isVaccinated) {
             System.out.printf("not ");
         }
@@ -253,10 +253,10 @@ public class Elderly {
 
     public void printDietaryPreference() {
         if (diet == DietaryPreference.NOT_SET) {
-            System.out.printf("Dietary preference of %s has not been set%n", username);
+            System.out.printf("Dietary preference of %s has not been set%n", name);
             return;
         }
-        System.out.printf("%s is having a %s diet%n", username, getDiet());
+        System.out.printf("%s is having a %s diet%n", name, getDiet());
     }
 
     private void updateMedicalHistory(StringBuffer newMedicalHistory) {
@@ -277,7 +277,7 @@ public class Elderly {
     }
 
     public void printMedicalHistory() {
-        System.out.printf("%s's medical history:%n%s%n", username, medicalHistory);
+        System.out.printf("%s's medical history:%n%s%n", name, medicalHistory);
     }
 
     public Elderly deleteMedicalHistory() {
