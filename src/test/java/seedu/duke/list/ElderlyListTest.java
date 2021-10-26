@@ -33,9 +33,9 @@ public class ElderlyListTest {
         elderlyList.addAppointment("addappt n/limqq369 l/khoo teck puat hospital d/01012021 t/0900");
         elderlyList.addNok("addnok n/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun st r/son");
         elderlyList.addRecord("addrec n/limqq369 p/98776542 a/234 bukit merah st");
-        elderlyList.setBirthday("setbirthday n/limqq369 b/1903-06-09");
-        elderlyList.setBloodPressure("setbloodpressure n/limqq369 s/169.0 d/108.0");
-        elderlyList.setVaccinated("setvaccinated n/limqq369");
+        elderlyList.setBirthday("setbirthday u/limqq369 b/1903-06-09");
+        elderlyList.setBloodPressure("setbloodpressure u/limqq369 s/169.0 d/108.0");
+        elderlyList.setVaccinated("setvaccinated u/limqq369");
     }
 
     @Test
