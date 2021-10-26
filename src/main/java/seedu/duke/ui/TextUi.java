@@ -289,7 +289,7 @@ public class TextUi {
     }
 
     /**
-     * Prints acknowledgement of the medical history of the elderly is updated
+     * Prints acknowledgement of the medical history of the elderly is updated.
      */
     public void printAddMedicalHistoryMessage(Elderly elderly) {
         out.printf(SET_MEDICAL_HISTORY_MESSAGE,elderly.getUsername());

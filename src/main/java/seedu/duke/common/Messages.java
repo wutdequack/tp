@@ -214,7 +214,7 @@ public class Messages {
             + "3. Vegan%n4. Beef free%n5. Diabetes%n6. No restriction%n";
 
     /**
-     * Used to prompt user to key in medical history
+     * Used to prompt user to key in medical history.
      */
     public static final String KEY_IN_MEDICAL_HISTORY_PROMPT = "Please key in your medical history%n";
 
