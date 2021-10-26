@@ -12,6 +12,7 @@ import static seedu.duke.common.Messages.RECORDS_MESSAGE;
 import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
 import static seedu.duke.common.Messages.LIST_OF_DIETS;
 import static seedu.duke.common.Messages.KEY_IN_MEDICAL_HISTORY_PROMPT;
+import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.MagicValues.ui;
 
 import java.text.ParseException;
@@ -277,6 +278,16 @@ public class Elderly {
 
     public void printMedicalHistory() {
         System.out.printf("%s's medical history:%n%s%n", username, medicalHistory);
+    }
+
+    public Elderly deleteMedicalHistory() {
+        System.out.printf(DELETE_MEDICAL_HISTORY_PROMPT, name);
+        String confirmationMessage = ui.getUserInput();
+        if (!confirmationMessage.equalsIgnoreCase("Y")) {
+            return null;
+        }
+        medicalHistory = new String();
+        return this;
     }
 
 
