@@ -315,6 +315,7 @@ public class ElderlyList {
             Elderly elderly = getElderly(elderlyName);
             Optional<Appointment> deletedAppt = elderly.removeAppointment(date, time);
             deletedAppt.ifPresentOrElse(this::printDeletedAppointment, this::printNoAppointment);
+            System.gc();
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -413,6 +414,7 @@ public class ElderlyList {
             Elderly elderly = getElderly(elderlyName);
             Optional<NextOfKin> deletedNok = elderly.removeNok(nokName);
             deletedNok.ifPresentOrElse(this::printDeletedNextOfKin, this::printNoNok);
+            System.gc();
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -440,6 +442,7 @@ public class ElderlyList {
             Elderly elderly = getElderly(elderlyName);
             Optional<Medicine> deletedMed = elderly.removeMedicine(medName);
             deletedMed.ifPresentOrElse(this::printDeletedMedicine, this::printNoMed);
+            System.gc();
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -992,6 +995,7 @@ public class ElderlyList {
             if (allUserNames.contains(userName)) {
                 elderlyArrayList
                         .removeIf((t) -> t.getUsername().contentEquals(userName));
+                System.gc();
                 ui.printDeleteByName(userName);
             } else {
                 checkSimilarities(allUserNames, userName);
