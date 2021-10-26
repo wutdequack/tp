@@ -218,6 +218,7 @@ public class Duke {
         case DELETE_MEDICAL_HISTORY:
             targetElderly =  elderlyHelperFunction.deleteMedicalHistory(userLine);
             targetElderly.ifPresentOrElse(ui::printDeleteMedicalHistoryMessage, ui::printNoSuchElderly);
+            break;
         default:
             // Command is not recognized
             // assert keyword.equals("a") : "Nothing has been input";

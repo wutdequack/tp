@@ -226,7 +226,8 @@ public class Messages {
     /**
      * Used to prompt user to confirm their deletion operation on medical history.
      */
-    public static final String DELETE_MEDICAL_HISTORY_PROMPT = "Are you sure you want to delete the medical history of %s? (Y/N)%n";
+    public static final String DELETE_MEDICAL_HISTORY_PROMPT = 
+            "Are you sure you want to delete the medical history of %s? (Y/N)%n";
 
     /**
      * Used when invalid elderly name is given.
