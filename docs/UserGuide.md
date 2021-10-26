@@ -13,6 +13,14 @@
         - [Adding an appointment to an elderly : `addappt`](#adding-appointment-to-an-elderly-addappt)
         - [Viewing medicine of an elderly : `viewmed`](#viewing-medicine-of-an-elderly-viewmed)
         - [Viewing appointments of an elderly : `viewappt`](#viewing-appointments-of-an-elderly-viewappt)
+        - [Setting dietary preference `setdiet`](#Set dietary preference `setdiet`)
+        - [Viewing dietary preference `viewdiet`](#View dietary preference `viewdiet`)
+        - [Setting birthday `setbirthday`](#Set birthday `setbirthday`)
+        - [Viewing birthday `viewbirthday`](#View birthday `viewbirthday`)
+        - [Setting blood pressure`setbloodpressure`](#Set blood pressure`setbloodpressure`)
+        - [Viewing blood pressure `viewbloodpressure`](#View blood pressure `viewbloodpressure`)
+        - [Setting to be vaccinated `setvaccinatd`](#Set to be vaccinated `setvaccinatd`)
+        - [View vaccination status `viewvaccination`](#View vaccination status `viewvaccination`)
     - [Table of commands](#Command Summary)
     - [Reference](#reference)
 
@@ -142,6 +150,160 @@ Example of usage:
 `todo n/Write the rest of the User Guide d/next week`
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+
+### Set dietary preference `setdiet`
+
+Sets the dietary preference of the given elderly
+
+Format: `setdiet u/USER_NAME`
+
+Example of usage:
+
+`setdiet u/304`
+
+Expected output:
+```
+Select the possible diet of the elderly
+1. Halal
+2. Vegetarian
+3. Vegan
+4. Beef free
+5. Diabetes
+6. No restriction
+```
+User input: `2`
+
+Expected output:
+```
+Dietary preference of NickTan has been set to Vegetarian
+```
+
+
+### View dietary preference `viewdiet`
+
+Views the dietary preference of the given elderly
+
+Format: `setdiet u/USER_NAME`
+
+Example of usage:
+
+`viewdiet u/304`
+
+Expected output:
+```
+NickTan is having a Vegetarian diet
+```
+
+
+### Set birthday `setbirthday`
+
+Sets the birthday of the given elderly
+
+Format: 
+
+`setbirthday u/USER_NAME b/BIRHTDAY`
+
+* BIRTHDAY are in the format of YYYY-MM-DD
+
+Example of usage:
+
+`setbirthday u/123 b/1959-10-29`
+
+Expected output:
+
+```
+Birthday of NickTan has been set to 1959-10-29
+```
+
+
+### View birthday `viewbirthday`
+
+Views the birthday of the given elderly
+
+Format: 
+
+`viewbirthday u/USER_NAME`
+
+Example of usage:
+
+`viewbirthday u/123`
+
+Expected output:
+
+```
+Birthday of NickTan is 1959-10-29
+```
+
+### Set blood pressure`setbloodpressure`
+
+Sets the most recently measured blood pressure of the elderly
+
+Format: 
+`setbloodpressure u/USER_NAME s/SYSTOLIC_PRESSURE d/DIATOLIC PRESSURE`
+
+Example of usage:
+
+`setbloodpressure u/123 s/120.0 d/80.0`
+
+Expected output:
+
+```
+Blood pressure of NickTan has been updated to 120.00 80.00!
+```
+
+### View blood pressure `viewbloodpressure`
+
+Views the most recently measured blood pressure of the given elderly
+
+Format: 
+
+`viewbloodpressure u/USER_NAME`
+
+Example of usage:
+
+`viewbloodpressure u/123`
+
+Expected output:
+
+```
+Blood pressure of NickTan is now (120.00 80.00)
+```
+
+### Set to be vaccinated `setvaccinatd`
+
+Sets the vaccination status of the given elderly to be vaccinated
+
+Format:
+
+`setvaccinated u/USER_NAME`
+
+Example of usage:
+
+`setvaccinated u/123`
+
+Expected output:
+
+```
+We have set NickTan to be vaccinated
+```
+
+### View vaccination status `viewvaccination`
+
+Views the vaccination status of the elderly
+
+Format:
+
+`viewvaccination u/USER_NAME`
+
+Example of usage:
+
+`viewvaccination u/123`
+
+Expected output:
+
+```
+NickTan is currently vaccinated.
+```
 
 ## FAQ
 
