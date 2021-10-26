@@ -42,7 +42,7 @@ Format: `addelderly u/USERNAME n/NAME`
 
 Example of usage:
 
-` addelderly u/johntan123 n/John Tan`
+`addelderly u/johntan123 n/John Tan`
 
 ```
 > addelderly u/johntan123 n/John Tan

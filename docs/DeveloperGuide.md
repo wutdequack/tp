@@ -162,18 +162,38 @@ elderly they are assisting.
 
 {Describe the value proposition: what problem does it solve?}
 
+
+Helpers in elderly care homes are often flooded with information. Different elderly has different conditions, and require so many 
+methods of care. Traditionally, information are stored as hardcopy in the forms of placards are information books. 
+However, with our program, we plan to centralise the different information each elderly has, and allow the helper, a fast typer, 
+to add and retrieve elderly information with ease. This increases productivity. 
+
 ## User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+|v1.0|helper|add elderly| keep track of the list of all elderly|
+|v1.0|helper|store hospital appointment dates|keep track of all hospital appointment dates for each elderly|
+|v1.0|helper|view hospital appointment dates|view all the hospital appointment dates for each elderly|
+|v1.0|helper|store elderly medicine types|keep track of the medicine for each elderly|
+|v1.0|helper|view elderly medicine types|ensure that the elderly will take the right medicine on time|
+|v2.0|helper|categorise elderly by risk level|pay more attention to elderly of higher risk|
+|v2.0|helper|add hospital information to medium and high risk elderly|store hospital information specific to the elderly|
+|v2.0|helper|view hospital information to medium and high risk elderly|utilise hospital information during emergency|
+|v2.0|helper|add conditions of medium and high risk elderly|to keep track of conditions specific to the elderly|
+|v2.0|helper|view conditions of medium and high risk elderly|view the conditions of the elderly|
+|v2.0|helper|add notes on care of medium and high risk elderly|so that other helpers can render assistance specific to the elderly|
+|v2.0|helper|view notes on care of medium and high risk elderly|take notes on how to care for the elderly|
+|v2.0|helper|add doctor information to high risk elderly|store doctor information specific to the elderly|
+|v2.0|helper|view doctor information to high risk elderly|utilise doctor information during emergency|
+
 
 ## Non-Functional Requirements
 
 {Give non-functional requirements}
 1. The product is not required to ensure that the dosage of medicine keyed are safe.
 2. The product should work on both 32-bit and 64-bit system.
+3. This version of product does not allow for addition of hospital and doctors.
 
 ## Glossary
 
