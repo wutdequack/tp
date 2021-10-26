@@ -15,6 +15,7 @@ import static seedu.duke.common.Messages.OVERALL_ELDERLY_MESSAGE;
 import static seedu.duke.common.Messages.RECORDS_MESSAGE;
 import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
 import static seedu.duke.common.Messages.LIST_OF_DIETS;
+import static seedu.duke.common.MagicValues.ui;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -224,7 +225,7 @@ public class Elderly {
 
     public void setDiet() {
         System.out.printf(LIST_OF_DIETS);
-        int choice = Parser.parseChoiceFromUserInput();
+        int choice = Integer.parseInt(ui.getUserInput());
         switch (choice) {
         case 1:
             diet = DietaryPreference.HALAL;
