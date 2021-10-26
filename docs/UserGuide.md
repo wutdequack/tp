@@ -13,7 +13,14 @@
         - [Adding an appointment to an elderly : `addappt`](#adding-appointment-to-an-elderly-addappt)
         - [Viewing medicine of an elderly : `viewmed`](#viewing-medicine-of-an-elderly-viewmed)
         - [Viewing appointments of an elderly : `viewappt`](#viewing-appointments-of-an-elderly-viewappt)
-        - 
+        - [Setting dietary preference `setdiet`](#Set dietary preference `setdiet`)
+        - [Viewing dietary preference `viewdiet`](#View dietary preference `viewdiet`)
+        - [Setting birthday `setbirthday`](#Set birthday `setbirthday`)
+        - [Viewing birthday `viewbirthday`](#View birthday `viewbirthday`)
+        - [Setting blood pressure`setbloodpressure`](#Set blood pressure`setbloodpressure`)
+        - [Viewing blood pressure `viewbloodpressure`](#View blood pressure `viewbloodpressure`)
+        - [Setting to be vaccinated `setvaccinatd`](#Set to be vaccinated `setvaccinatd`)
+        - [View vaccination status `viewvaccination`](#View vaccination status `viewvaccination`)
     - [Table of commands](#Command Summary)
     - [Reference](#reference)
 
@@ -227,7 +234,7 @@ Expected output:
 Birthday of NickTan is 1959-10-29
 ```
 
-### Set blood pressure
+### Set blood pressure`setbloodpressure`
 
 Sets the most recently measured blood pressure of the elderly
 
