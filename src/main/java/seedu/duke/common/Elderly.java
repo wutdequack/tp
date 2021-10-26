@@ -1,9 +1,5 @@
 package seedu.duke.common;
 
-import seedu.duke.exceptions.InvalidDeleteMedFormatException;
-import seedu.duke.exceptions.InvalidDeleteNokFormatException;
-import seedu.duke.parser.Parser;
-
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.LENGTH_OF_BLOOS_PRESSURE_ARRAY;
@@ -15,13 +11,13 @@ import static seedu.duke.common.Messages.OVERALL_ELDERLY_MESSAGE;
 import static seedu.duke.common.Messages.RECORDS_MESSAGE;
 import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
 import static seedu.duke.common.Messages.LIST_OF_DIETS;
+import static seedu.duke.common.Messages.KEY_IN_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.MagicValues.ui;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -41,9 +37,12 @@ public class Elderly {
     protected Date birthday;
     protected DietaryPreference diet;
 
+    protected String medicalHistory;
+
     public Elderly(String username, String name) {
         this.username = username;
         this.name = name;
+        medicalHistory = new String();
         diet = DietaryPreference.NOT_SET;
     }
 
@@ -258,6 +257,28 @@ public class Elderly {
         }
         System.out.printf("%s is having a %s diet%n", username, getDiet());
     }
+
+    private void updateMedicalHistory(StringBuffer newMedicalHistory) {
+        medicalHistory = newMedicalHistory.toString();
+    }
+
+    public void setMedicalHistory() {
+        String currentHistory = medicalHistory;
+        System.out.printf(KEY_IN_MEDICAL_HISTORY_PROMPT);
+        String addedHistory = ui.getUserInput();
+        StringBuffer currentHistoryStringBuffer = new StringBuffer();
+        currentHistoryStringBuffer.append(currentHistory);
+        if (!currentHistory.isEmpty()) {
+            currentHistoryStringBuffer.append("\r\n");
+        }
+        currentHistoryStringBuffer.append(addedHistory);
+        updateMedicalHistory(currentHistoryStringBuffer);
+    }
+
+    public void printMedicalHistory() {
+        System.out.printf("%s's medical history:%n%s%n", username, medicalHistory);
+    }
+
 
     @Override
     public String toString() {
