@@ -196,6 +196,11 @@ public class Messages {
      */
     public static final String SET_DIET_MESSAGE = "Dietary preference of %s has been set to %s\r\n";
 
+    /**
+     * Used when dietary preference of the elderly has been updated.
+     */
+    public static final String SET_MEDICAL_HISTORY_MESSAGE = "Medical history of %s has been updated\r\n";
+
 
     /**
      * Used when counting number of elderly for list.
@@ -207,6 +212,11 @@ public class Messages {
      */
     public static final String LIST_OF_DIETS = "Select the possible diet of the elderly%n1. Halal%n2. Vegetarian%n"
             + "3. Vegan%n4. Beef free%n5. Diabetes%n6. No restriction%n";
+
+    /**
+     * Used to prompt user to key in medical history.
+     */
+    public static final String KEY_IN_MEDICAL_HISTORY_PROMPT = "Please key in your medical history%n";
 
     /**
      * Used when invalid elderly name is given.

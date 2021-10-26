@@ -49,6 +49,7 @@ import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
 import static seedu.duke.common.Messages.SET_DIET_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_RISK_LEVEL_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_HOSPITAL_MESSAGE;
+import static seedu.duke.common.Messages.SET_MEDICAL_HISTORY_MESSAGE;
 
 public class TextUi {
     private final Scanner in;
@@ -285,6 +286,13 @@ public class TextUi {
      */
     public void printSetDietMessage(Elderly elderly) {
         out.printf(SET_DIET_MESSAGE, elderly.getUsername(), elderly.getDiet());
+    }
+
+    /**
+     * Prints acknowledgement of the medical history of the elderly is updated.
+     */
+    public void printAddMedicalHistoryMessage(Elderly elderly) {
+        out.printf(SET_MEDICAL_HISTORY_MESSAGE,elderly.getUsername());
     }
 
     /**

@@ -683,6 +683,43 @@ public class ElderlyList {
         }
     }
 
+    /**
+     * Add medical history of the elderly according to user's selection.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public Optional<Elderly> addMedicalHistory(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        assert paramList.length == 2 : "setdiet input does not have all required values";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+        Elderly elderly;
+        try {
+            elderly = getElderly(elderlyName);
+            elderly.setMedicalHistory();
+            return Optional.of(elderly);
+        } catch (ElderlyNotFoundException e) {
+            return Optional.empty();
+        }
+    }
+
+    /**
+     * Prints the dietary preference of the elderly.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public void viewMedicalHistory(String userLine) {
+        try {
+            String[] paramList = userLine.split(" n/");
+            assert paramList.length == 2 : "Username is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            Elderly elderly = getElderly(elderlyName);
+            elderly.printMedicalHistory();
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
+    }
+
+
 
     /**
      * Get the number of elderly in the current list.
