@@ -3,6 +3,7 @@ package seedu.duke.list;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -43,15 +44,19 @@ import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
 
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
+
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.GsonBuilder;
+
 import java.util.Objects;
 import java.util.Optional;
+
 import com.google.gson.JsonSyntaxException;
 import seedu.duke.exceptions.InvalidStoreToFilePathException;
 import seedu.duke.exceptions.InvalidViewByNameException;
@@ -140,7 +145,7 @@ public class ElderlyList {
     /**
      * Adds the elderly into the elderly array list, together with risk level and additional info if required.
      *
-     * @param userLine Line that is inputted by the user.
+     * @param userLine  Line that is inputted by the user.
      * @param riskLevel Risk level of elderly. i.e. "l" if low, "m" if medium, "h" if high.
      */
     public void addElderly(String userLine, String riskLevel) {
@@ -690,7 +695,7 @@ public class ElderlyList {
      */
     public Optional<Elderly> addMedicalHistory(String userLine) {
         String[] paramList = userLine.split(" n/");
-        assert paramList.length == 2 : "setdiet input does not have all required values";
+        assert paramList.length == 2 : "addmedicalhistory input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
         Elderly elderly;
         try {
@@ -719,6 +724,25 @@ public class ElderlyList {
         }
     }
 
+    /**
+     * Delete medical history of the elderly according to user's selection.
+     *
+     * @param userLine Line that has been inputted by user.
+     */
+    public Optional<Elderly> deleteMedicalHistory(String userLine) {
+        String[] paramList = userLine.split(" n/");
+        assert paramList.length == 2 : "deletemedicalhistor input does not have all required values";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+        Elderly elderly;
+        Elderly returningElderly;
+        try {
+            elderly = getElderly(elderlyName);
+            returningElderly = elderly.deleteMedicalHistory();
+            return Optional.of(returningElderly);
+        } catch (ElderlyNotFoundException e) {
+            return Optional.empty();
+        }
+    }
 
 
     /**
@@ -839,6 +863,7 @@ public class ElderlyList {
     /**
      * Prints the list of elderly that is taking the searched diet preference.
      * TODO: Unable to test this function without fix to diet
+     *
      * @param userLine String containing diet to be looked up.
      */
     public void getElderlyGivenDiet(String userLine) {
@@ -878,6 +903,7 @@ public class ElderlyList {
 
     /**
      * Get a list of all the real names in the system.
+     *
      * @return Array of all real names.
      */
     public Set<String> getAllRealNames() {
@@ -889,6 +915,7 @@ public class ElderlyList {
 
     /**
      * Get a list of all usernames in the system.
+     *
      * @return Array of all usernames.
      */
     public Set<String> getAllUserNames() {
@@ -900,8 +927,9 @@ public class ElderlyList {
 
     /**
      * Iterates through Strings and returns first result that has the highest similarities.
+     *
      * @param listOfStrings Set of Strings to search from.
-     * @param searchTerm String with search term.
+     * @param searchTerm    String with search term.
      */
     public void checkSimilarities(Set<String> listOfStrings, String searchTerm) {
         float highestResult = 0;
@@ -925,6 +953,7 @@ public class ElderlyList {
 
     /**
      * Prints a list of elderly and their details given real name.
+     *
      * @param userLine String containing real name to be looked out.
      */
     public void getAllElderlyDetailsByName(String userLine) {
@@ -949,6 +978,7 @@ public class ElderlyList {
 
     /**
      * Removes elderly from list given username.
+     *
      * @param userLine String containing username to be deleted from list.
      */
     public void deleteElderlyByUsername(String userLine) {
@@ -973,6 +1003,7 @@ public class ElderlyList {
 
     /**
      * Store program's data as JSON into a file using given filepath.
+     *
      * @param userLine String containing store command and filepath.
      */
     public void storeFromFilePath(String userLine) {
@@ -997,6 +1028,7 @@ public class ElderlyList {
 
     /**
      * Returns if file exists based on a given filepath.
+     *
      * @param filePath String of the absolute/relative filepath.
      * @return Boolean value.
      */
@@ -1006,6 +1038,7 @@ public class ElderlyList {
 
     /**
      * Load program's data JSON from a file using the given filepath.
+     *
      * @param userLine String containing load command and filepath.
      */
     public void loadFromFilePath(String userLine) {
@@ -1031,7 +1064,8 @@ public class ElderlyList {
             // Reads from file path and loads back into elderly list
             FileReader fr = new FileReader(this.filePath);
             JsonReader jr = gson.newJsonReader(fr);
-            elderlyArrayList = gson.fromJson(jr, new TypeToken<ArrayList<Elderly>>(){}.getType());
+            elderlyArrayList = gson.fromJson(jr, new TypeToken<ArrayList<Elderly>>() {
+            }.getType());
             fr.close();
         } catch (DukeException | IOException e) {
             ui.printExceptionMessage(e);

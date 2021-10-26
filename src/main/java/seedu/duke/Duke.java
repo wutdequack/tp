@@ -45,6 +45,7 @@ import static seedu.duke.common.MagicValues.SET_DIET;
 import static seedu.duke.common.MagicValues.VIEW_DIET;
 import static seedu.duke.common.MagicValues.ADD_MEDICAL_HISTORY;
 import static seedu.duke.common.MagicValues.VIEW_MEDICAL_HISTORY;
+import static seedu.duke.common.MagicValues.DELETE_MEDICAL_HISTORY;
 import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 
@@ -214,6 +215,9 @@ public class Duke {
         case VIEW_MEDICAL_HISTORY:
             elderlyHelperFunction.viewMedicalHistory(userLine);
             break;
+        case DELETE_MEDICAL_HISTORY:
+            targetElderly =  elderlyHelperFunction.deleteMedicalHistory(userLine);
+            targetElderly.ifPresentOrElse(ui::printDeleteMedicalHistoryMessage, ui::printNoSuchElderly);
         default:
             // Command is not recognized
             // assert keyword.equals("a") : "Nothing has been input";
