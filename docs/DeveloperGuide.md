@@ -99,6 +99,47 @@ each other. This will include words like `sitting` and `kitten` for example. Thi
 inaccurate suggestions. However, since this is **not a key function** and is only meant to be a 
 complementary tool, **it will not be a major problem**.
 
+### Addition of Next-of-Kin and Record Classes
+#### Implementation
+
+The `Elderly` class interacts with two classes, which is `Next-of-Kin` class and `Record` class. As can
+be seen by the association between the three classes, the `Elderly` class stores `Next-of-Kin` and `Record`
+as ArrayLists in its attributes.
+- `Next-of-Kin` class stores the contact information of the Next-of-Kin, such as name, phone number,
+  email, address and relationship to the Elderly
+- `Record` stores the details of the Elderly, such as the elderly phone number and address
+
+This information in both classes is then stored in `Elderly` class.
+
+UML Diagram of the interaction between classes is shown below :
+![Screenshot](https://user-images.githubusercontent.com/70097982/138797711-e0545ea3-c0bd-48fc-9e28-48a2814e255f.png)
+
+#### Interaction of Classes
+`Elderly` class will interact with `Next-of-kin` class through the use of `addNok()` function. This function will
+add and store the Next-of-Kin information into the given elderly. It is possible to store more than
+one Next-of-Kin information per elderly, as the information will all be stored in an Array List. This is to
+cater to the possibility that the elderly has more than one point of contact. Multiple points of contact is also
+extremely useful for the user as it increases the possibility to reach an emergency contact and
+ensure a higher sense of security for the elderly.
+This Next-of-Kin information can be retrieved at any point by using the `viewNok()` function.
+
+`Elderly` class also interacts with the `Next-of-Kin` class through the use of `removeNok()` function. This function
+deletes the particular Next-of-Kin information stored in the `Elderly` class, as specified by the user. The Array List
+will no longer reflect the deleted Next-of-Kin information, likewise `viewNok()` will not have this information stored as well.
+
+Interaction of the `Record` class is also similar to the previous interaction. However, the elderly information is
+now stored instead. Similarly, `addRecord()` function is called to store the details of the elderly and `viewRecord()`
+is used to view the details that are stored.
+
+#### Future Implementation and Considerations
+
+`removeRecord()` function has not been implemented yet as it is deemed to be **not critical** in this current phase.
+However, it is a large possibility that the elderly would have a change in their phone number and address. In this current
+implementation, it is **still possible** for the user to input the new details, as the details are stored in an Array List.
+However, it is not the most ideal solution as there might be too many details which can be confusing for the user.
+Moreover, there is no indication to show which is the current details that is accurate. Hence, this function should be
+implemented in the future to help improve the usability and convenience of the overall user experience.
+
 ## Product scope
 Hi, welcome to the Elderly in Your Hood.
 It is a product to empower service personnel to 
