@@ -287,6 +287,7 @@ public class Elderly {
             return null;
         }
         medicalHistory = new String();
+        System.gc();
         return this;
     }
 
