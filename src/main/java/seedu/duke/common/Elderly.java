@@ -224,7 +224,7 @@ public class Elderly {
 
     public void setDiet() {
         System.out.printf(LIST_OF_DIETS);
-        int choice = Parser.parseChoiceFromUserInput();
+        int choice = Integer.parseInt(ui.getUserInput());
         switch (choice) {
         case 1:
             diet = DietaryPreference.HALAL;
