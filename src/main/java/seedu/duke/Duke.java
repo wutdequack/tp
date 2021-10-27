@@ -43,6 +43,9 @@ import static seedu.duke.common.MagicValues.SET_VACCINATED;
 import static seedu.duke.common.MagicValues.VIEW_VACCINATION;
 import static seedu.duke.common.MagicValues.SET_DIET;
 import static seedu.duke.common.MagicValues.VIEW_DIET;
+import static seedu.duke.common.MagicValues.ADD_MEDICAL_HISTORY;
+import static seedu.duke.common.MagicValues.VIEW_MEDICAL_HISTORY;
+import static seedu.duke.common.MagicValues.DELETE_MEDICAL_HISTORY;
 import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 
@@ -204,6 +207,17 @@ public class Duke {
             break;
         case DELETE_APPOINTMENT:
             elderlyHelperFunction.deleteAppointment(userLine);
+            break;
+        case ADD_MEDICAL_HISTORY:
+            targetElderly =  elderlyHelperFunction.addMedicalHistory(userLine);
+            targetElderly.ifPresentOrElse(ui::printAddMedicalHistoryMessage, ui::printNoSuchElderly);
+            break;
+        case VIEW_MEDICAL_HISTORY:
+            elderlyHelperFunction.viewMedicalHistory(userLine);
+            break;
+        case DELETE_MEDICAL_HISTORY:
+            targetElderly =  elderlyHelperFunction.deleteMedicalHistory(userLine);
+            targetElderly.ifPresentOrElse(ui::printDeleteMedicalHistoryMessage, ui::printNoSuchElderly);
             break;
         default:
             // Command is not recognized

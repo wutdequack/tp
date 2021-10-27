@@ -49,6 +49,8 @@ import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
 import static seedu.duke.common.Messages.SET_DIET_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_RISK_LEVEL_MESSAGE;
 import static seedu.duke.common.Messages.ENTER_HOSPITAL_MESSAGE;
+import static seedu.duke.common.Messages.SET_MEDICAL_HISTORY_MESSAGE;
+import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_MESSAGE;
 
 public class TextUi {
     private final Scanner in;
@@ -116,28 +118,28 @@ public class TextUi {
     /**
      * Prints to the screen asking for hospital choice.
      */
-    public void printEnterHospitalMessage()  {
+    public void printEnterHospitalMessage() {
         out.println(ENTER_HOSPITAL_MESSAGE);
     }
 
     /**
      * Prints to the screen asking for conditions.
      */
-    public void printEnterConditionsMessage()  {
+    public void printEnterConditionsMessage() {
         out.println(ENTER_CONDITIONS_MESSAGE);
     }
 
     /**
      * Prints to the screen asking for notes on care.
      */
-    public void printEnterNotesOnCareMessage()  {
+    public void printEnterNotesOnCareMessage() {
         out.println(ENTER_NOTES_ON_CARE_MESSAGE);
     }
 
     /**
      * Prints to the screen asking for doctor choice.
      */
-    public void printEnterDoctorMessage()  {
+    public void printEnterDoctorMessage() {
         out.println(ENTER_DOCTOR_MESSAGE);
     }
 
@@ -252,21 +254,21 @@ public class TextUi {
      * Prints acknowledgement of Vaccination status added to user.
      */
     public void printSetVaccinationMessage(Elderly elderly) {
-        out.printf(SET_VACCINATED_MESSAGE, elderly.getUsername());
+        out.printf(SET_VACCINATED_MESSAGE, elderly.getName());
     }
 
     /**
      * Prints acknowledgement of birthday added to user.
      */
     public void printSetBirthdayMessage(Elderly elderly) {
-        out.printf(SET_BIRTHDAY_MESSAGE, elderly.getUsername(), elderly.getBirthday());
+        out.printf(SET_BIRTHDAY_MESSAGE, elderly.getName(), elderly.getBirthday());
     }
 
     /**
      * Prints acknowledgement of blood pressure added to user.
      */
     public void printSetBloodPressureMessage(Elderly elderly) {
-        out.printf(SET_BLOOD_PRESSURE_MESSAGE, elderly.getUsername(),
+        out.printf(SET_BLOOD_PRESSURE_MESSAGE, elderly.getName(),
                 elderly.getBloodPressure()[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
                 elderly.getBloodPressure()[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
     }
@@ -284,7 +286,21 @@ public class TextUi {
      * Prints acknowledgement of dietary preference of elderly added to user.
      */
     public void printSetDietMessage(Elderly elderly) {
-        out.printf(SET_DIET_MESSAGE, elderly.getUsername(), elderly.getDiet());
+        out.printf(SET_DIET_MESSAGE, elderly.getName(), elderly.getDiet());
+    }
+
+    /**
+     * Prints acknowledgement of the medical history of the elderly is updated.
+     */
+    public void printAddMedicalHistoryMessage(Elderly elderly) {
+        out.printf(SET_MEDICAL_HISTORY_MESSAGE, elderly.getName());
+    }
+
+    /**
+     * Prints acknowledgement of the medical history of the elderly is updated.
+     */
+    public void printDeleteMedicalHistoryMessage(Elderly elderly) {
+        out.printf(DELETE_MEDICAL_HISTORY_MESSAGE, elderly.getName());
     }
 
     /**
@@ -296,6 +312,7 @@ public class TextUi {
 
     /**
      * Prints intro message for query results.
+     *
      * @param searchTerm String containing medicine query by user.
      */
     public void printQueryResultsIntroString(String searchTerm) {
@@ -321,11 +338,12 @@ public class TextUi {
                 DELETE_ELDERLY_FORMAT_MESSAGE,
                 LIST_FORMAT_MESSAGE,
                 BYE_FORMAT_MESSAGE
-                ));
+        ));
     }
 
     /**
      * Print the closest match to what the user query.
+     *
      * @param closestMatch String containing closest match.
      */
     public void printClosestMatch(String closestMatch) {
@@ -334,6 +352,7 @@ public class TextUi {
 
     /**
      * Print that you don't know what the user is querying for.
+     *
      * @param searchTerm String containing search Term.
      */
     public void printCannotFindQuery(String searchTerm) {
@@ -342,6 +361,7 @@ public class TextUi {
 
     /**
      * Print that you have deleted from the arrayList.
+     *
      * @param searchTerm String containing search Term.
      */
     public void printDeleteByName(String searchTerm) {
@@ -350,6 +370,7 @@ public class TextUi {
 
     /**
      * Prints exception message.
+     *
      * @param e Exception that has been thrown
      */
     public void printExceptionMessage(Exception e) {
@@ -358,6 +379,7 @@ public class TextUi {
 
     /**
      * Prints that the given file path exists.
+     *
      * @param newFilePath String containing the filepath.
      */
     public void printFileExists(String newFilePath) {
@@ -366,6 +388,7 @@ public class TextUi {
 
     /**
      * Prints that the given file path does not exist.
+     *
      * @param newFilePath String containing the new filepath.
      */
     public void printFileDoesNotExists(String newFilePath) {

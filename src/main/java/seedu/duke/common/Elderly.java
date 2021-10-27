@@ -1,9 +1,5 @@
 package seedu.duke.common;
 
-import seedu.duke.exceptions.InvalidDeleteMedFormatException;
-import seedu.duke.exceptions.InvalidDeleteNokFormatException;
-import seedu.duke.parser.Parser;
-
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.LENGTH_OF_BLOOS_PRESSURE_ARRAY;
@@ -15,12 +11,14 @@ import static seedu.duke.common.Messages.OVERALL_ELDERLY_MESSAGE;
 import static seedu.duke.common.Messages.RECORDS_MESSAGE;
 import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
 import static seedu.duke.common.Messages.LIST_OF_DIETS;
+import static seedu.duke.common.Messages.KEY_IN_MEDICAL_HISTORY_PROMPT;
+import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_PROMPT;
+import static seedu.duke.common.MagicValues.ui;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -40,9 +38,12 @@ public class Elderly {
     protected Date birthday;
     protected DietaryPreference diet;
 
+    protected String medicalHistory;
+
     public Elderly(String username, String name) {
         this.username = username;
         this.name = name;
+        medicalHistory = new String();
         diet = DietaryPreference.NOT_SET;
     }
 
@@ -193,7 +194,7 @@ public class Elderly {
     }
 
     public void printVaccinationStatus() {
-        System.out.printf("%s is currently ", getUsername());
+        System.out.printf("%s is currently ", name);
         if (!isVaccinated) {
             System.out.printf("not ");
         }
@@ -224,7 +225,7 @@ public class Elderly {
 
     public void setDiet() {
         System.out.printf(LIST_OF_DIETS);
-        int choice = Parser.parseChoiceFromUserInput();
+        int choice = Integer.parseInt(ui.getUserInput());
         switch (choice) {
         case 1:
             diet = DietaryPreference.HALAL;
@@ -252,11 +253,44 @@ public class Elderly {
 
     public void printDietaryPreference() {
         if (diet == DietaryPreference.NOT_SET) {
-            System.out.printf("Dietary preference of %s has not been set%n", username);
+            System.out.printf("Dietary preference of %s has not been set%n", name);
             return;
         }
-        System.out.printf("%s is having a %s diet%n", username, getDiet());
+        System.out.printf("%s is having a %s diet%n", name, getDiet());
     }
+
+    private void updateMedicalHistory(StringBuffer newMedicalHistory) {
+        medicalHistory = newMedicalHistory.toString();
+    }
+
+    public void setMedicalHistory() {
+        String currentHistory = medicalHistory;
+        System.out.printf(KEY_IN_MEDICAL_HISTORY_PROMPT);
+        String addedHistory = ui.getUserInput();
+        StringBuffer currentHistoryStringBuffer = new StringBuffer();
+        currentHistoryStringBuffer.append(currentHistory);
+        if (!currentHistory.isEmpty()) {
+            currentHistoryStringBuffer.append("\r\n");
+        }
+        currentHistoryStringBuffer.append(addedHistory);
+        updateMedicalHistory(currentHistoryStringBuffer);
+    }
+
+    public void printMedicalHistory() {
+        System.out.printf("%s's medical history:%n%s%n", name, medicalHistory);
+    }
+
+    public Elderly deleteMedicalHistory() {
+        System.out.printf(DELETE_MEDICAL_HISTORY_PROMPT, name);
+        String confirmationMessage = ui.getUserInput();
+        if (!confirmationMessage.equalsIgnoreCase("Y")) {
+            return null;
+        }
+        medicalHistory = new String();
+        System.gc();
+        return this;
+    }
+
 
     @Override
     public String toString() {

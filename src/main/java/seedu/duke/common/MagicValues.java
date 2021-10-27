@@ -22,6 +22,9 @@ public class MagicValues {
     public static final String DELETE_NOK = "DELETENOK";
     public static final String DELETE_MEDICINE = "DELETEMED";
     public static final String DELETE_APPOINTMENT = "DELETEAPPT";
+    public static final String ADD_MEDICAL_HISTORY = "ADDMEDICALHISTORY";
+    public static final String VIEW_MEDICAL_HISTORY = "VIEWMEDICALHISTORY";
+    public static final String DELETE_MEDICAL_HISTORY = "DELETEMEDICALHISTORY";
     public static final String VIEW_NOK = "VIEWNOK";
     public static final String ADD_RECORD = "ADDREC";
     public static final String VIEW_RECORD = "VIEWREC";
