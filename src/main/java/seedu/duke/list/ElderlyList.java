@@ -89,6 +89,7 @@ import static seedu.duke.common.MagicValues.ADD_MEDICINE_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT_SPLIT;
 import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_RISK_LEVEL;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_ADDRESS;
 import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
 import static seedu.duke.common.MagicValues.INDEX_OF_LOCATION;
@@ -148,20 +149,20 @@ public class ElderlyList {
     /**
      * Adds the elderly into the elderly array list, together with risk level and additional info if required.
      *
-     * @param userLine  Line that is inputted by the user.
-     * @param riskLevel Risk level of elderly. i.e. "l" if low, "m" if medium, "h" if high.
+     * @param userLine Line that is inputted by the user.
      */
-    public void addElderly(String userLine, String riskLevel) {
+    public void addElderly(String userLine) {
         try {
             if (!re.isValidAddElderly(userLine)) {
                 throw new InvalidElderlyFormatException();
             }
-            if (!re.isValidRiskLevel(riskLevel)) {
-                throw new RiskLevelException();
-            }
             String[] paramList = userLine.split(NAME_SPLIT);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            String riskLevel = paramList[INDEX_OF_RISK_LEVEL].toUpperCase();
+            if (!re.isValidRiskLevel(riskLevel)) {
+                throw new RiskLevelException();
+            }
             if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
                 hospitalArrayList.printHospitalNames();
                 ui.printEnterHospitalMessage();
