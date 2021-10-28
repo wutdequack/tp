@@ -22,6 +22,7 @@ import static seedu.duke.common.Messages.KEY_IN_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.MagicValues.ui;
 
+import com.google.gson.annotations.SerializedName;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
