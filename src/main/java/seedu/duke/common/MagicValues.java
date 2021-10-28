@@ -85,6 +85,12 @@ public class MagicValues {
     public static final int INDEX_OF_USER_NAME = 1;
     public static final int INDEX_OF_FILE_PATH = 1;
     public static final int INPUT_OFFSET = 1;
+    public static final int INPUT_HALAL = 1;
+    public static final int INPUT_VEGETARIAN = 2;
+    public static final int INPUT_VEGAN = 3;
+    public static final int INPUT_BEEF_FREE = 4;
+    public static final int INPUT_DIABETES = 5;
+    public static final int INPUT_NO_RESTRICTIONS = 6;
 
     public static final String NAME_SPLIT = " [unr]/";
     public static final String ADD_MEDICINE_SPLIT = " [nmf]/";
