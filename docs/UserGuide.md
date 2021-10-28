@@ -43,10 +43,12 @@
 Adds an elderly to take care of. Risk level of elderly will be asked for, followed by additional
 information if needed (according to risk level)
 
-Format: `addelderly u/USERNAME n/NAME`
+Format: `addelderly u/USERNAME n/NAME r/RISK_LEVEL`
 
 * The `USERNAME` only can contain characters or numbers.
 * The `NAME` only can contain characters or whitespaces.
+* The `RISK_LEVEL` can only be "l", "m", "h" which stands for
+low-level risk, medium-level risk and high-level risk respectively.
 
 Example of usage:
 
