@@ -42,16 +42,7 @@ import seedu.duke.exceptions.InvalidAddAppointmentFormatException;
 import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
 
 
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.File;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonWriter;
 import com.google.gson.GsonBuilder;
 
 import java.util.Objects;
@@ -62,7 +53,6 @@ import seedu.duke.exceptions.InvalidStoreToFilePathException;
 import seedu.duke.exceptions.InvalidViewByNameException;
 import seedu.duke.exceptions.InvalidViewDietException;
 import seedu.duke.exceptions.InvalidViewMedicineException;
-import seedu.duke.exceptions.InvalidViewMedicineFormatException;
 import seedu.duke.exceptions.InvalidViewNokFormatException;
 import seedu.duke.exceptions.InvalidViewRecordFormatException;
 import seedu.duke.exceptions.RiskLevelException;
@@ -115,7 +105,6 @@ import static seedu.duke.common.MagicValues.re;
 import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 
-import static seedu.duke.common.Messages.FILE_WRONG_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 
 
@@ -668,7 +657,7 @@ public class ElderlyList {
         Elderly elderly;
         try {
             elderly = getElderly(elderlyName);
-            elderly.setDiet();
+            elderly.setDietByUserChoice();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
             return Optional.empty();

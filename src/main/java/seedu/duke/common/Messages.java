@@ -142,6 +142,8 @@ public class Messages {
     public static final String DELETE_NOK_FORMAT_MESSAGE = "Delete Next-Of-Kin information format: deletenok "
             + "u/[username] n/[name of next-of-kin]";
 
+    public static final String INVALID_DIET_INPUT_MESSAGE = "The diet you have keyyed in is invalid!";
+
     public static final String DELETE_MEDICINE_FORMAT_MESSAGE = "Delete medicine format: deletemed "
             + "u/[username] m/[name of medicine]";
 
@@ -205,6 +207,11 @@ public class Messages {
      * Used when dietary preference of the elderly has been updated.
      */
     public static final String DELETE_MEDICAL_HISTORY_MESSAGE = "Medical history of %s has been deleted\r\n";
+
+    /**
+     * Used when dietary preference of the elderly has been updated.
+     */
+    public static final String ERROR_IN_DIET_INDEX_MESSAGE = "Wrong index of diet is keyed in.\r\n";
 
 
     /**

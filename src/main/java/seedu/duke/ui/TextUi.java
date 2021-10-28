@@ -32,6 +32,7 @@ import static seedu.duke.common.Messages.ADD_RECORD_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.VIEW_RECORD_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.VIEW_MED_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.ERROR_IN_DIET_INDEX_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.VIEW_APPOINTMENT_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.QUERY_RESULTS_INTRO_MESSAGE;
@@ -315,6 +316,13 @@ public class TextUi {
      */
     public void printGeneralException(Exception exception) {
         out.println(exception.getMessage());
+    }
+
+    /**
+     * Prints the error message of the caught general exception.
+     */
+    public void printErrorInDietIndex() {
+        out.println(ERROR_IN_DIET_INDEX_MESSAGE);
     }
 
     /**
