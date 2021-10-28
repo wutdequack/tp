@@ -89,8 +89,13 @@ public class Duke {
         // Continue Running Loop until bye is called
         while (toContinue) {
             // Gets user input
-            String userInput = ui.getUserInput();
-            executeCommand(userInput);
+            try {
+                String userInput = ui.getUserInput();
+                executeCommand(userInput);
+            } catch (Exception e) {
+                ui.printGeneralException(e);
+                // todo - logger here!
+            }
         }
     }
 
