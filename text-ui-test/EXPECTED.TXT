@@ -30,14 +30,6 @@ Enter hospital number choice. (e.g. 1 for Changi General Hospital etc.)
 > Elderly has been added!
 > Medicine has been added!
 > Medicine has been added!
-> Select the possible diet of the elderly
-1. Halal
-2. Vegetarian
-3. Vegan
-4. Beef free
-5. Diabetes
-6. No restriction
-> Dietary preference of lim ah seng has been set to No restriction
 > Medicine of tan are shown below:
   1.Medicine Name: panadol, Frequency: once a day
   2.Medicine Name: azheitynine, Frequency: every hour
