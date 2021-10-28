@@ -150,15 +150,15 @@ public class ElderlyList {
      */
     public void addElderly(String userLine) {
         try {
+            if (!re.isValidAddElderly(userLine)) {
+                throw new InvalidElderlyFormatException();
+            }
             String[] paramList = userLine.split(NAME_SPLIT);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             String riskLevel = paramList[INDEX_OF_RISK_LEVEL].toUpperCase();
             if (!re.isValidRiskLevel(riskLevel)) {
                 throw new RiskLevelException();
-            }
-            if (!re.isValidAddElderly(userLine)) {
-                throw new InvalidElderlyFormatException();
             }
             if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
                 hospitalArrayList.printHospitalNames();

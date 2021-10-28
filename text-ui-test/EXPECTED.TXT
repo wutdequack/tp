@@ -15,11 +15,12 @@
 ||__|||__|||__|||__||               
 |/__\|/__\|/__\|/__\|               
 Welcome admin. Type after the '>' to start.
-> Enter risk level. (i.e. l for low, m for med, h for high.)
-> Risk level keyed in is invalid. Please select from given options (l, m, h) only. Please redo addelderly command.
+Add Elderly format: addelderly u/[username] n/[real name]
+Elderly has been added!
 > Elderly name you have keyed in does not exist
 > Elderly name you have keyed in does not exist
 > Elderly name you have keyed in does not exist
+Medicine of lim are shown below:
 > Elderly name you have keyed in does not exist
 > Elderly name you have keyed in does not exist
 > Elderly name you have keyed in does not exist
