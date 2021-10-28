@@ -1,7 +1,13 @@
 addelderly u/tan n/tan ah kow
+addelderly u/tan n/tan bo jiao r/m
+5
+cataract
+remind to relax his eyes when gazed into newspaper for long
 addelderly u/lim n/lim ah seng r/l
 addmed n/tan m/panadol f/once a day
 addmed n/tan m/azheitynine f/every hour
+setdiet u/lim
+6
 viewmed n/tan
 viewmed n/lim
 addappt n/tan l/ktph d/01012021 t/1000 p/eyecheckup
