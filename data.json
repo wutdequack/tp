@@ -1,22 +1,98 @@
 [
   {
+    "hospital": {
+      "name": "tan tock seng hospital",
+      "number": 62566011,
+      "doctorArrayList": [
+        {
+          "name": "maralyn harsha",
+          "number": 99026440
+        },
+        {
+          "name": "stace fang",
+          "number": 91074243
+        },
+        {
+          "name": "chantelle jia",
+          "number": 80463166
+        },
+        {
+          "name": "yasmin ang",
+          "number": 81338150
+        },
+        {
+          "name": "wolf emmet",
+          "number": 89490406
+        }
+      ]
+    },
+    "conditions": "dead",
+    "notesOnCare": "deader",
+    "doctor": {
+      "name": "wolf emmet",
+      "number": 89490406
+    },
     "medicines": [],
     "appointments": [],
     "nextofkins": [],
     "records": [],
-    "username": "jontan123",
-    "name": "jon tan",
+    "username": "high",
+    "name": "high high",
     "isVaccinated": false,
-    "diet": "NOT_SET"
+    "diet": "NOT_SET",
+    "medicalHistory": "",
+    "type": "seedu.duke.common.HighRiskElderly"
+  },
+  {
+    "hospital": {
+      "name": "singapore general hospital",
+      "number": 62223322,
+      "doctorArrayList": [
+        {
+          "name": "nilofer siddhi",
+          "number": 92834168
+        },
+        {
+          "name": "taran nirmala",
+          "number": 90877889
+        },
+        {
+          "name": "paxton jerrod",
+          "number": 94424161
+        },
+        {
+          "name": "piers coleman",
+          "number": 99350450
+        },
+        {
+          "name": "tan cailin",
+          "number": 99897593
+        }
+      ]
+    },
+    "conditions": "deader",
+    "notesOnCare": "deadddddd",
+    "medicines": [],
+    "appointments": [],
+    "nextofkins": [],
+    "records": [],
+    "username": "medium",
+    "name": "medium medium",
+    "isVaccinated": false,
+    "diet": "NOT_SET",
+    "medicalHistory": "",
+    "type": "seedu.duke.common.MediumRiskElderly"
   },
   {
     "medicines": [],
     "appointments": [],
     "nextofkins": [],
     "records": [],
-    "username": "helloworld",
-    "name": "hello world",
+    "username": "low",
+    "name": "low low",
     "isVaccinated": false,
-    "diet": "NOT_SET"
+    "diet": "NOT_SET",
+    "medicalHistory": "",
+    "type": "seedu.duke.common.LowRiskElderly"
   }
 ]
