@@ -1,6 +1,8 @@
 # User Guide
 
+
 ## Introduction
+
 
 {Give a product intro}
 
@@ -52,12 +54,11 @@ low-level risk, medium-level risk and high-level risk respectively.
 
 Example of usage:
 
-`addelderly u/johntan123 n/John Tan`
+
+`addelderly u/johntan123 n/John Tan r/h`
 
 ```
 > addelderly u/johntan123 n/John Tan
-Enter risk level. (i.e. l for low, m for med, h for high.)
-> h
 List of hospitals are shown below:
 1.changi general hospital
 2.khoo teck puat hospital
@@ -307,7 +308,9 @@ Expected output:
 NickTan is currently vaccinated.
 ```
 
+
 ## FAQ
+
 
 **Q**: AddMed does not seem to work? 
 
@@ -336,3 +339,4 @@ Of course, you are welcome to upgrade this to make it more scalable! :D
 
 ## Reference
 The template of the User Guide is followed by [AddressBook Level 3 (AB3) User Guide](https://se-education.org/addressbook-level3/UserGuide.html#editing-a-person--edit).
+
