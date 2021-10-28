@@ -319,7 +319,7 @@ public class TextUi {
     }
 
     /**
-     * Prints the error message of the caught general exception.
+     * Prints the error message when the index is out of range for the given diets plans.
      */
     public void printErrorInDietIndex() {
         out.println(ERROR_IN_DIET_INDEX_MESSAGE);
