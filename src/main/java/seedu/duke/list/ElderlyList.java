@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 import seedu.duke.common.Elderly;
 import seedu.duke.common.HighRiskElderly;
+import seedu.duke.common.JsonDeserializerWithInheritance;
 import seedu.duke.common.LowRiskElderly;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.Appointment;
@@ -120,7 +121,9 @@ public class ElderlyList {
 
     public ElderlyList(String filePath) {
         this.filePath = filePath;
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this.gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Elderly.class, new JsonDeserializerWithInheritance<Elderly>()).create();
     }
 
     /**
@@ -1058,8 +1061,7 @@ public class ElderlyList {
             // Reads from file path and loads back into elderly list
             FileReader fr = new FileReader(this.filePath);
             JsonReader jr = gson.newJsonReader(fr);
-            elderlyArrayList = gson.fromJson(jr, new TypeToken<ArrayList<Elderly>>() {
-            }.getType());
+            elderlyArrayList = gson.fromJson(jr, new TypeToken<ArrayList<Elderly>>(){}.getType());
             fr.close();
         } catch (DukeException | IOException e) {
             ui.printExceptionMessage(e);

@@ -22,7 +22,6 @@ import static seedu.duke.common.Messages.KEY_IN_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.MagicValues.ui;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,11 +48,15 @@ public class Elderly {
 
     protected String medicalHistory;
 
+    @SerializedName("type")
+    private String typeName;
+
     public Elderly(String username, String name) {
         this.username = username;
         this.name = name;
         medicalHistory = new String();
         diet = DietaryPreference.NOT_SET;
+        typeName = getClass().getName();
     }
 
     /**
