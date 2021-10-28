@@ -1,7 +1,6 @@
 package seedu.duke;
 
 
-
 import seedu.duke.common.Elderly;
 import seedu.duke.list.ElderlyList;
 import seedu.duke.list.HospitalList;
@@ -131,9 +130,7 @@ public class Duke {
             elderlyHelperFunction.viewAppointment(userLine);
             break;
         case ADD_ELDERLY:
-            ui.printEnterRiskLevelMessage();
-            String riskLevel = ui.getUserInput().toUpperCase();
-            elderlyHelperFunction.addElderly(userLine, riskLevel);
+            elderlyHelperFunction.addElderly(userLine);
             break;
         case ADD_NOK:
             elderlyHelperFunction.addNok(userLine);
@@ -209,14 +206,14 @@ public class Duke {
             elderlyHelperFunction.deleteAppointment(userLine);
             break;
         case ADD_MEDICAL_HISTORY:
-            targetElderly =  elderlyHelperFunction.addMedicalHistory(userLine);
+            targetElderly = elderlyHelperFunction.addMedicalHistory(userLine);
             targetElderly.ifPresentOrElse(ui::printAddMedicalHistoryMessage, ui::printNoSuchElderly);
             break;
         case VIEW_MEDICAL_HISTORY:
             elderlyHelperFunction.viewMedicalHistory(userLine);
             break;
         case DELETE_MEDICAL_HISTORY:
-            targetElderly =  elderlyHelperFunction.deleteMedicalHistory(userLine);
+            targetElderly = elderlyHelperFunction.deleteMedicalHistory(userLine);
             targetElderly.ifPresentOrElse(ui::printDeleteMedicalHistoryMessage, ui::printNoSuchElderly);
             break;
         default:

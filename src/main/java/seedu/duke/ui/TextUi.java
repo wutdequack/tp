@@ -304,10 +304,17 @@ public class TextUi {
     }
 
     /**
-     * Prints acknowledgement of dietary preference of elderly added to user.
+     * Prints the error message of the caught Duke exception.
      */
     public void printDukeException(DukeException dukeException) {
         out.println(dukeException.getMessage());
+    }
+
+    /**
+     * Prints the error message of the caught general exception.
+     */
+    public void printGeneralException(Exception exception) {
+        out.println(exception.getMessage());
     }
 
     /**
