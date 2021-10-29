@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import seedu.duke.common.Elderly;
 import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.InvalidInputException;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
@@ -312,17 +313,17 @@ public class TextUi {
     }
 
     /**
+     * Prints the error message of the caught invalid input exception.
+     */
+    public void printInvalidInputException(InvalidInputException invalidInputException) {
+        out.println("Invalid input detected " + invalidInputException.getMessage());
+    }
+
+    /**
      * Prints the error message of the caught general exception.
      */
     public void printGeneralException(Exception exception) {
         out.println(exception.getMessage());
-    }
-
-    /**
-     * Prints the error message when the index is out of range for the given diets plans.
-     */
-    public void printErrorInDietIndex() {
-        out.println(ERROR_IN_DIET_INDEX_MESSAGE);
     }
 
     /**
