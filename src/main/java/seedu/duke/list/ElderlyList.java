@@ -41,7 +41,16 @@ import seedu.duke.exceptions.InvalidLoadFromFilePathException;
 import seedu.duke.exceptions.InvalidViewMedicineFormatException;
 import seedu.duke.exceptions.InvalidAddAppointmentFormatException;
 import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
-
+import seedu.duke.exceptions.InvalidStoreToFilePathException;
+import seedu.duke.exceptions.InvalidViewByNameException;
+import seedu.duke.exceptions.InvalidViewDietException;
+import seedu.duke.exceptions.InvalidViewMedicineException;
+import seedu.duke.exceptions.InvalidViewNokFormatException;
+import seedu.duke.exceptions.InvalidViewRecordFormatException;
+import seedu.duke.exceptions.InvalidRiskLevelException;
+import seedu.duke.exceptions.InvalidInputException;
+import seedu.duke.hospital.Doctor;
+import seedu.duke.hospital.Hospital;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,15 +59,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 import com.google.gson.JsonSyntaxException;
-import seedu.duke.exceptions.InvalidStoreToFilePathException;
-import seedu.duke.exceptions.InvalidViewByNameException;
-import seedu.duke.exceptions.InvalidViewDietException;
-import seedu.duke.exceptions.InvalidViewMedicineException;
-import seedu.duke.exceptions.InvalidViewNokFormatException;
-import seedu.duke.exceptions.InvalidViewRecordFormatException;
-import seedu.duke.exceptions.RiskLevelException;
-import seedu.duke.hospital.Doctor;
-import seedu.duke.hospital.Hospital;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
@@ -112,12 +112,12 @@ import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 public class ElderlyList {
 
 
-    protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<Elderly>();
+    protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<>();
     protected static HashMap<String, HashSet<String>> medicineMapping = new HashMap<>();
     protected static HashMap<String, HashSet<String>> dietMapping = new HashMap<>();
 
     private String filePath;
-    private Gson gson;
+    private final Gson gson;
 
     public ElderlyList(String filePath) {
         this.filePath = filePath;
@@ -1044,7 +1044,7 @@ public class ElderlyList {
             fw.close();
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
-        } catch (DukeException | IOException e) {
+        } catch (IOException e) {
             ui.printExceptionMessage(e);
         }
     }
@@ -1092,7 +1092,7 @@ public class ElderlyList {
             fr.close();
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
-        } catch (DukeException | IOException e) {
+        } catch (IOException e) {
             ui.printExceptionMessage(e);
         } catch (JsonSyntaxException wrongFormatException) {
             ui.printWrongFileSyntax();
