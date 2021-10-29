@@ -316,7 +316,7 @@ public class TextUi {
      * Prints the error message of the caught invalid input exception.
      */
     public void printInvalidInputException(InvalidInputException invalidInputException) {
-        out.println("Invalid input detected " + invalidInputException.getMessage());
+        out.printf("Invalid input detected %n%s", invalidInputException.getMessage());
     }
 
     /**
