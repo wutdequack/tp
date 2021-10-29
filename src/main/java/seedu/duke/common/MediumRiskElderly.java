@@ -13,14 +13,14 @@ import static seedu.duke.common.Messages.NOKS_MESSAGE;
 import static seedu.duke.common.Messages.RECORDS_MESSAGE;
 import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
 
-public class MediumRiskElderly extends Elderly implements Hospitalisable{
+public class MediumRiskElderly extends Elderly implements Hospitalisable {
 
     protected Hospital hospital;
     protected String conditions;
     protected String notesOnCare;
 
     public MediumRiskElderly(String username, String name, Hospital hospital, String conditions,
-            String notesOnCare) {
+                             String notesOnCare) {
         super(username, name);
         this.hospital = hospital;
         this.conditions = conditions;
