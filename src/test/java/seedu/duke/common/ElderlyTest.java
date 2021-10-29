@@ -10,7 +10,7 @@ public class ElderlyTest {
 
     @BeforeEach
     public void setUp() {
-        johnTan = new Elderly("johntan123", "John Tan");
+        johnTan = new LowRiskElderly("johntan123", "John Tan");
     }
 
     @Test
