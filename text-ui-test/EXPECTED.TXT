@@ -16,7 +16,8 @@
 |/__\|/__\|/__\|/__\|               
 Welcome admin. Type after the '>' to start.
 > Invalid input detected 
-Correct input format: Add Elderly format: addelderly u/[username] n/[real name]> List of hospitals are shown below:
+Correct input format: Add Elderly format: addelderly u/[username] n/[real name] r/[risk level]
+> List of hospitals are shown below:
   1.changi general hospital
   2.khoo teck puat hospital
   3.national university hospital

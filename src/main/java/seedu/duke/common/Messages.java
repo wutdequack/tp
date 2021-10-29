@@ -99,7 +99,8 @@ public class Messages {
     /**
      * Used when invalid addelderly is typed.
      */
-    public static final String ADD_ELDERLY_FORMAT_MESSAGE = "Add Elderly format: addelderly u/[username] n/[real name]";
+    public static final String ADD_ELDERLY_FORMAT_MESSAGE =
+            "Add Elderly format: addelderly u/[username] n/[real name] r/[risk level]";
 
     /**
      * Used when appointment has been added.
@@ -141,8 +142,6 @@ public class Messages {
 
     public static final String DELETE_NOK_FORMAT_MESSAGE = "Delete Next-Of-Kin information format: deletenok "
             + "u/[username] n/[name of next-of-kin]";
-
-    public static final String INVALID_DIET_INPUT_MESSAGE = "The diet you have keyyed in is invalid!";
 
     public static final String DELETE_MEDICINE_FORMAT_MESSAGE = "Delete medicine format: deletemed "
             + "u/[username] m/[name of medicine]";

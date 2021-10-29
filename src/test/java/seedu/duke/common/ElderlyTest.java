@@ -10,7 +10,7 @@ public class ElderlyTest {
 
     @BeforeEach
     public void setUp() {
-        johnTan = new Elderly("johntan123", "John Tan");
+        johnTan = new LowRiskElderly("johntan123", "John Tan");
     }
 
     @Test
@@ -22,6 +22,7 @@ public class ElderlyTest {
     void testElderlyToString() {
         assertEquals(johnTan.toString(), "Elderly Username: johntan123\n"
                 + "Elderly Name: John Tan\n"
+                + "Risk Level : LOW\n"
                 + "Vaccination status of johntan123: Not vaccinated\n"
                 + "Birthday of johntan123: Not Recorded\n"
                 + "Here are johntan123's records:\n"
@@ -38,6 +39,7 @@ public class ElderlyTest {
         johnTan.setVaccinated();
         assertEquals(johnTan.toString(), "Elderly Username: johntan123\n"
                 + "Elderly Name: John Tan\n"
+                + "Risk Level : LOW\n"
                 + "Vaccination status of johntan123: Vaccinated\n"
                 + "Birthday of johntan123: Not Recorded\n"
                 + "Here are johntan123's records:\n"

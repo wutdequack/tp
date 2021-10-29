@@ -36,7 +36,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 
-public class Elderly {
+public abstract class Elderly {
 
     protected ArrayList<Medicine> medicines = new ArrayList<Medicine>();
     protected ArrayList<Appointment> appointments = new ArrayList<Appointment>();
