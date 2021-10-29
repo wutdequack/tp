@@ -209,7 +209,7 @@ public class Messages {
     public static final String DELETE_MEDICAL_HISTORY_MESSAGE = "Medical history of %s has been deleted\r\n";
 
     /**
-     * Used when printing the error of the index out of range for the given diets plans.
+     * Used for the exception message of the index out of range for the given diets plans.
      */
     public static final String ERROR_IN_DIET_INDEX_MESSAGE = "Wrong index of diet is keyed in.\r\n";
 

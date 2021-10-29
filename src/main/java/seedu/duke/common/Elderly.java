@@ -23,6 +23,10 @@ import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.MagicValues.ui;
 
 import com.google.gson.annotations.SerializedName;
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.InvalidDietIndexException;
+import seedu.duke.exceptions.InvalidInputException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -230,7 +234,6 @@ public class Elderly {
         case NOT_SET:
             return "Not set";
         default:
-            // to be handled by exception later
             return "Error";
         }
     }
@@ -239,17 +242,15 @@ public class Elderly {
         System.out.printf(LIST_OF_DIETS);
         int choice = Integer.parseInt(ui.getUserInput());
         Optional<DietaryPreference> dietaryPreference = getDietFromChoice(choice);
-        dietaryPreference.ifPresentOrElse(this.setDiet(dietaryPreference.get()), ui::printErrorInDietIndex);
-    }
-
-    private Consumer<? super DietaryPreference> setDiet(DietaryPreference diet) {
-        this.diet = diet;
-        return new Consumer<DietaryPreference>() {
-            @Override
-            public void accept(DietaryPreference dietaryPreference) {
-                return;
+        try {
+            if (dietaryPreference.isPresent()) {
+                this.diet = dietaryPreference.get();
+            } else {
+                throw new InvalidDietIndexException();
             }
-        };
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
     }
 
     private Optional<DietaryPreference> getDietFromChoice(int choice) {
