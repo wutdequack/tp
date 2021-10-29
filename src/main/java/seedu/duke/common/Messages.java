@@ -99,7 +99,7 @@ public class Messages {
     /**
      * Used when invalid addelderly is typed.
      */
-    public static final String ADD_ELDERLY_FORMAT_MESSAGE = "Add Elderly format: addelderly u/[username] n/[real name]";
+    public static final String ADD_ELDERLY_FORMAT_MESSAGE = "Add Elderly format: addelderly u/[username] n/[real name] r/[risk level]";
 
     /**
      * Used when appointment has been added.

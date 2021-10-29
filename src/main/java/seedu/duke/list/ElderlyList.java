@@ -417,7 +417,7 @@ public class ElderlyList {
                 throw new InvalidDeleteNokFormatException();
             }
             String[] paramList = userLine.split(DELETE_NOK_SPLIT);
-            assert paramList.length == 2 : "Username is empty";
+            assert paramList.length == 3 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String nokName = paramList[INDEX_OF_NOK_NAME];
             Elderly elderly = getElderly(elderlyName);
@@ -447,7 +447,7 @@ public class ElderlyList {
                 throw new InvalidDeleteMedFormatException();
             }
             String[] paramList = userLine.split(DELETE_MED_SPLIT);
-            assert paramList.length == 2 : "Username is empty";
+            assert paramList.length == 3 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String medName = paramList[INDEX_OF_MEDICINE_NAME];
             Elderly elderly = getElderly(elderlyName);
@@ -953,7 +953,7 @@ public class ElderlyList {
      */
     public void checkSimilarities(Set<String> listOfStrings, String searchTerm) {
         float highestResult = 0;
-        HashMap<Float, String> resultToString = new HashMap<Float, String>();
+        HashMap<Float, String> resultToString = new HashMap<>();
         for (String stringInSet : listOfStrings) {
             float result = re.levenshteinDistance(searchTerm, stringInSet);
             if (highestResult < result) {
