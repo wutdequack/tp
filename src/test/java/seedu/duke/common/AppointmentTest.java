@@ -1,15 +1,15 @@
 package seedu.duke.common;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class AppointmentTest {
-    Appointment generalAppointment;
+    static Appointment generalAppointment;
 
-    @BeforeEach
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         generalAppointment = new Appointment("khoo teck puat hospital", "01012021",
                 "0900", "general checkup");
     }

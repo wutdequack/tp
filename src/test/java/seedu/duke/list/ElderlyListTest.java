@@ -2,6 +2,7 @@ package seedu.duke.list;
 
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Appointment;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.common.MagicValues.DEFAULT_FILE_PATH;
 
 public class ElderlyListTest {
-    ElderlyList elderlyList = new ElderlyList(DEFAULT_FILE_PATH);
+    static ElderlyList elderlyList = new ElderlyList(DEFAULT_FILE_PATH);
     ArrayList<Medicine> tanMedicines = new ArrayList<Medicine>();
     ArrayList<Medicine> limMedicines = new ArrayList<Medicine>();
     ArrayList<Appointment> tanAppointments = new ArrayList<Appointment>();
@@ -25,8 +26,8 @@ public class ElderlyListTest {
     ArrayList<Record> tanRecords = new ArrayList<Record>();
     ArrayList<Record> limRecords = new ArrayList<Record>();
 
-    @BeforeEach
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         elderlyList.addElderly("addelderly u/johntan123 n/John Tan r/l");
         elderlyList.addElderly("addelderly u/limqq369 n/Lim Qi Qi r/l");
         elderlyList.addMedicine("addmed u/limqq369 m/panadol f/once a day");

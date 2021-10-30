@@ -1,15 +1,16 @@
 package seedu.duke.common;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class NextOfKinTest {
-    NextOfKin nextOfKin;
+    static NextOfKin nextOfKin;
 
-    @BeforeEach
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         nextOfKin = new NextOfKin("tony lim", "92334500", "tonylim@yahoo.com",
                 "23 yishun block 234", "son");
     }
