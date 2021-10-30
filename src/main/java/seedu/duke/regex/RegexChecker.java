@@ -105,7 +105,7 @@ public class RegexChecker {
      * @return Float containing the ratio of similarity between the two strings.
      */
     public float levenshteinDistance(String firstString, String secondString) {
-        float result = 0;
+        float result;
         int numberRows = firstString.length() + 1;
         int numberCols = secondString.length() + 1;
         int[][] levDistanceArray = new int[numberRows][numberCols];

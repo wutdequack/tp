@@ -316,8 +316,8 @@ public class ElderlyList {
             String date = paramList[INDEX_OF_DELETE_DATE];
             String time = paramList[INDEX_OF_DELETE_TIME];
             Elderly elderly = getElderly(elderlyName);
-            Optional<Appointment> deletedAppt = elderly.removeAppointment(date, time);
-            deletedAppt.ifPresentOrElse(this::printDeletedAppointment, this::printNoAppointment);
+            Optional<Appointment> deletedAppointment = elderly.removeAppointment(date, time);
+            deletedAppointment.ifPresentOrElse(this::printDeletedAppointment, this::printNoAppointment);
             System.gc();
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
@@ -326,9 +326,9 @@ public class ElderlyList {
         }
     }
 
-    public void printDeletedAppointment(Appointment deletedAppt) {
+    public void printDeletedAppointment(Appointment deletedAppointment) {
         System.out.println("These appointment details are now deleted:");
-        System.out.println(deletedAppt);
+        System.out.println(deletedAppointment);
     }
 
     public void printNoAppointment() {
@@ -568,10 +568,10 @@ public class ElderlyList {
     }
 
     private void printBloodPressure(Elderly elderly) {
-        double[] bloodPuressure = elderly.getBloodPressure();
+        double[] bloodPressure = elderly.getBloodPressure();
         System.out.printf("Blood pressure of %s is now (%.2f %.2f)%n", elderly.getUsername(),
-                bloodPuressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
-                bloodPuressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
+                bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
+                bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
     }
 
     /**
@@ -962,7 +962,7 @@ public class ElderlyList {
             resultToString.put(result, stringInSet);
         }
 
-        // Print out closest match if similarity more than 0.80
+        // Print out the closest match if similarity more than 0.80
         if (highestResult >= 0.80) {
             ui.printClosestMatch(resultToString.get(highestResult));
         } else {
