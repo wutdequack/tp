@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import seedu.duke.common.Elderly;
 import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.InvalidInputException;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
@@ -32,6 +33,7 @@ import static seedu.duke.common.Messages.ADD_RECORD_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.VIEW_RECORD_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.VIEW_MED_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
+import static seedu.duke.common.Messages.ERROR_IN_DIET_INDEX_MESSAGE;
 import static seedu.duke.common.Messages.ADD_APPOINTMENT_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.VIEW_APPOINTMENT_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.QUERY_RESULTS_INTRO_MESSAGE;
@@ -304,10 +306,24 @@ public class TextUi {
     }
 
     /**
-     * Prints acknowledgement of dietary preference of elderly added to user.
+     * Prints the error message of the caught Duke exception.
      */
     public void printDukeException(DukeException dukeException) {
         out.println(dukeException.getMessage());
+    }
+
+    /**
+     * Prints the error message of the caught invalid input exception.
+     */
+    public void printInvalidInputException(InvalidInputException invalidInputException) {
+        out.printf("Invalid input detected %n%s%n", invalidInputException.getMessage());
+    }
+
+    /**
+     * Prints the error message of the caught general exception.
+     */
+    public void printGeneralException(Exception exception) {
+        out.println(exception.getMessage());
     }
 
     /**

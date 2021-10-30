@@ -1,26 +1,28 @@
 # User Guide
 
+
 ## Introduction
+
 
 {Give a product intro}
 
 - [Duke User Guide](#duke-user-guide)
     - [Quick Start](#Quick Start)
     - [Features](#Features)
-        - [Adding a todo : `todo`](#adding-a-todo--todo)
         - [Adding an elderly : `addelderly`](#adding-an-elderly-addelderly)
         - [Adding a medicine to an elderly : `addmed`](#adding-medicine-to-an-elderly-addmed)
         - [Adding an appointment to an elderly : `addappt`](#adding-appointment-to-an-elderly-addappt)
         - [Viewing medicine of an elderly : `viewmed`](#viewing-medicine-of-an-elderly-viewmed)
         - [Viewing appointments of an elderly : `viewappt`](#viewing-appointments-of-an-elderly-viewappt)
-        - [Setting dietary preference `setdiet`](#Set dietary preference `setdiet`)
-        - [Viewing dietary preference `viewdiet`](#View dietary preference `viewdiet`)
-        - [Setting birthday `setbirthday`](#Set birthday `setbirthday`)
-        - [Viewing birthday `viewbirthday`](#View birthday `viewbirthday`)
-        - [Setting blood pressure`setbloodpressure`](#Set blood pressure`setbloodpressure`)
-        - [Viewing blood pressure `viewbloodpressure`](#View blood pressure `viewbloodpressure`)
-        - [Setting to be vaccinated `setvaccinatd`](#Set to be vaccinated `setvaccinatd`)
-        - [View vaccination status `viewvaccination`](#View vaccination status `viewvaccination`)
+        - [Setting dietary preference `setdiet`](#set-dietary-preference-setdiet)
+        - [Viewing dietary preference `viewdiet`](#view-dietary-preference-viewdiet)
+        - [Setting birthday `setbirthday`](#set-birthday-setbirthday)
+        - [Viewing birthday `viewbirthday`](#view-birthday-viewbirthday)
+        - [Setting blood pressure`setbloodpressure`](#set-blood-pressuresetbloodpressure)
+        - [Viewing blood pressure `viewbloodpressure`](#view-blood-pressure-viewbloodpressure)
+        - [Setting to be vaccinated `setvaccinatd`](#set-to-be-vaccinated-setvaccinatd)
+        - [View vaccination status `viewvaccination`](#view-blood-pressure-viewbloodpressure)
+        - [Terminating `bye`](#terminating-bye)
     - [Table of commands](#Command Summary)
     - [Reference](#reference)
 
@@ -43,19 +45,20 @@
 Adds an elderly to take care of. Risk level of elderly will be asked for, followed by additional
 information if needed (according to risk level)
 
-Format: `addelderly u/USERNAME n/NAME`
+Format: `addelderly u/USERNAME n/NAME r/RISK_LEVEL`
 
 * The `USERNAME` only can contain characters or numbers.
 * The `NAME` only can contain characters or whitespaces.
+* The `RISK_LEVEL` can only be "l", "m", "h" which stands for
+low-level risk, medium-level risk and high-level risk respectively.
 
 Example of usage:
 
-`addelderly u/johntan123 n/John Tan`
+
+`addelderly u/johntan123 n/John Tan r/h`
 
 ```
 > addelderly u/johntan123 n/John Tan
-Enter risk level. (i.e. l for low, m for med, h for high.)
-> h
 List of hospitals are shown below:
 1.changi general hospital
 2.khoo teck puat hospital
@@ -137,19 +140,6 @@ Example of usage:
 
 `bye`
 
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
-
-Format: `todo n/TODO_NAME d/DEADLINE`
-
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
-
-Example of usage: 
-
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
 ### Set dietary preference `setdiet`
 
@@ -305,7 +295,9 @@ Expected output:
 NickTan is currently vaccinated.
 ```
 
+
 ## FAQ
+
 
 **Q**: AddMed does not seem to work? 
 
@@ -322,8 +314,6 @@ Of course, you are welcome to upgrade this to make it more scalable! :D
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
-
 |Command|Format|
 |---|---|
 |Add elderly |`addelderly u/USERNAME n/NAME`|
@@ -331,6 +321,18 @@ Of course, you are welcome to upgrade this to make it more scalable! :D
 |Add appointment |`addappt n/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`|
 |View medicine |`viewmed n/USERNAME`|
 |View appointment |`viewappt n/USERNAME`|
+|Set diet |`setdiet u/USER_NAME`|
+|View dietary preference |`viewdiet u/USER_NAME`|
+|Set birthday |`setbirthday u/USER_NAME b/BIRHTDAY`|
+|View birthday |`viewbirthday u/USER_NAME`|
+|Set blood pressure |`setbloodpressure u/USER_NAME s/SYSTOLIC_PRESSURE d/DIATOLIC PRESSURE`|
+|View blood pressure |`viewbloodpressure u/USER_NAME`|
+|Set vaccination status |`setvaccinated u/USER_NAME`|
+|View vaccination status |`viewvaccination u/USER_NAME`|
+
+
+
 
 ## Reference
 The template of the User Guide is followed by [AddressBook Level 3 (AB3) User Guide](https://se-education.org/addressbook-level3/UserGuide.html#editing-a-person--edit).
+

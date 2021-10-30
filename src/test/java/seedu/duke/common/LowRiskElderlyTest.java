@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class ElderlyTest {
-    Elderly johnTan;
+public class LowRiskElderlyTest {
+    LowRiskElderly johnTan;
 
     @BeforeEach
     public void setUp() {

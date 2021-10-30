@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 import seedu.duke.common.Elderly;
 import seedu.duke.common.HighRiskElderly;
+import seedu.duke.common.JsonDeserializerWithInheritance;
 import seedu.duke.common.LowRiskElderly;
 import seedu.duke.common.Medicine;
 import seedu.duke.common.Appointment;
@@ -40,34 +41,24 @@ import seedu.duke.exceptions.InvalidLoadFromFilePathException;
 import seedu.duke.exceptions.InvalidViewMedicineFormatException;
 import seedu.duke.exceptions.InvalidAddAppointmentFormatException;
 import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
-
-
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.File;
-import java.io.IOException;
+import seedu.duke.exceptions.InvalidStoreToFilePathException;
+import seedu.duke.exceptions.InvalidViewByNameException;
+import seedu.duke.exceptions.InvalidViewDietException;
+import seedu.duke.exceptions.InvalidViewMedicineException;
+import seedu.duke.exceptions.InvalidViewNokFormatException;
+import seedu.duke.exceptions.InvalidViewRecordFormatException;
+import seedu.duke.exceptions.InvalidRiskLevelException;
+import seedu.duke.exceptions.InvalidInputException;
+import seedu.duke.hospital.Doctor;
+import seedu.duke.hospital.Hospital;
 
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonWriter;
 import com.google.gson.GsonBuilder;
 
 import java.util.Objects;
 import java.util.Optional;
 
 import com.google.gson.JsonSyntaxException;
-import seedu.duke.exceptions.InvalidStoreToFilePathException;
-import seedu.duke.exceptions.InvalidViewByNameException;
-import seedu.duke.exceptions.InvalidViewDietException;
-import seedu.duke.exceptions.InvalidViewMedicineException;
-import seedu.duke.exceptions.InvalidViewMedicineFormatException;
-import seedu.duke.exceptions.InvalidViewNokFormatException;
-import seedu.duke.exceptions.InvalidViewRecordFormatException;
-import seedu.duke.exceptions.RiskLevelException;
-import seedu.duke.hospital.Doctor;
-import seedu.duke.hospital.Hospital;
 
 import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
@@ -88,6 +79,7 @@ import static seedu.duke.common.MagicValues.ADD_MEDICINE_SPLIT;
 import static seedu.duke.common.MagicValues.ADD_APPOINTMENT_SPLIT;
 import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
+import static seedu.duke.common.MagicValues.INDEX_OF_RISK_LEVEL;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_ADDRESS;
 import static seedu.duke.common.MagicValues.INDEX_OF_FREQUENCY;
 import static seedu.duke.common.MagicValues.INDEX_OF_LOCATION;
@@ -114,23 +106,24 @@ import static seedu.duke.common.MagicValues.re;
 import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 
-import static seedu.duke.common.Messages.FILE_WRONG_FORMAT_MESSAGE;
 import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
 
 
 public class ElderlyList {
 
 
-    protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<Elderly>();
+    protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<>();
     protected static HashMap<String, HashSet<String>> medicineMapping = new HashMap<>();
     protected static HashMap<String, HashSet<String>> dietMapping = new HashMap<>();
 
     private String filePath;
-    private Gson gson;
+    private final Gson gson;
 
     public ElderlyList(String filePath) {
         this.filePath = filePath;
-        this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this.gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Elderly.class, new JsonDeserializerWithInheritance<Elderly>()).create();
     }
 
     /**
@@ -145,20 +138,20 @@ public class ElderlyList {
     /**
      * Adds the elderly into the elderly array list, together with risk level and additional info if required.
      *
-     * @param userLine  Line that is inputted by the user.
-     * @param riskLevel Risk level of elderly. i.e. "l" if low, "m" if medium, "h" if high.
+     * @param userLine Line that is inputted by the user.
      */
-    public void addElderly(String userLine, String riskLevel) {
+    public void addElderly(String userLine) {
         try {
             if (!re.isValidAddElderly(userLine)) {
                 throw new InvalidElderlyFormatException();
             }
-            if (!re.isValidRiskLevel(riskLevel)) {
-                throw new RiskLevelException();
-            }
             String[] paramList = userLine.split(NAME_SPLIT);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            String riskLevel = paramList[INDEX_OF_RISK_LEVEL].toUpperCase();
+            if (!re.isValidRiskLevel(riskLevel)) {
+                throw new InvalidRiskLevelException();
+            }
             if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
                 hospitalArrayList.printHospitalNames();
                 ui.printEnterHospitalMessage();
@@ -190,6 +183,8 @@ public class ElderlyList {
                 elderlyArrayList.add(new LowRiskElderly(userName, elderlyName));
             }
             ui.printAddElderlyMessage();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -213,6 +208,8 @@ public class ElderlyList {
             assert paramList.length == 4 : "addmed input does not have all required values";
             elderly.addMedicine(new Medicine(medicineName, frequency));
             ui.printAddMedicineMessage();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -233,6 +230,8 @@ public class ElderlyList {
             assert paramList.length == 2 : "Username is empty";
             Elderly elderly = getElderly(elderlyName);
             printMedicines(elderly);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -278,6 +277,8 @@ public class ElderlyList {
             assert paramList.length == 5 || paramList.length == 6 : "addappt input does not have all required values";
             elderly.addAppointment(new Appointment(location, date, time, purpose));
             ui.printAddAppointmentMessage();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -298,6 +299,8 @@ public class ElderlyList {
             assert paramList.length == 2 : "Username is empty";
             Elderly elderly = getElderly(elderlyName);
             printAppointments(elderly);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -316,6 +319,8 @@ public class ElderlyList {
             Optional<Appointment> deletedAppt = elderly.removeAppointment(date, time);
             deletedAppt.ifPresentOrElse(this::printDeletedAppointment, this::printNoAppointment);
             System.gc();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -366,6 +371,8 @@ public class ElderlyList {
             String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
             elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
             ui.printAddNokMessage();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -387,6 +394,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             printNextOfKin(elderly);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -408,13 +417,15 @@ public class ElderlyList {
                 throw new InvalidDeleteNokFormatException();
             }
             String[] paramList = userLine.split(DELETE_NOK_SPLIT);
-            assert paramList.length == 2 : "Username is empty";
+            assert paramList.length == 3 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String nokName = paramList[INDEX_OF_NOK_NAME];
             Elderly elderly = getElderly(elderlyName);
             Optional<NextOfKin> deletedNok = elderly.removeNok(nokName);
             deletedNok.ifPresentOrElse(this::printDeletedNextOfKin, this::printNoNok);
             System.gc();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -436,13 +447,15 @@ public class ElderlyList {
                 throw new InvalidDeleteMedFormatException();
             }
             String[] paramList = userLine.split(DELETE_MED_SPLIT);
-            assert paramList.length == 2 : "Username is empty";
+            assert paramList.length == 3 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String medName = paramList[INDEX_OF_MEDICINE_NAME];
             Elderly elderly = getElderly(elderlyName);
             Optional<Medicine> deletedMed = elderly.removeMedicine(medName);
             deletedMed.ifPresentOrElse(this::printDeletedMedicine, this::printNoMed);
             System.gc();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -475,6 +488,8 @@ public class ElderlyList {
             String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
             elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
             ui.printAddRecordMessage();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -495,6 +510,8 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             printRecord(elderly);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -667,7 +684,7 @@ public class ElderlyList {
         Elderly elderly;
         try {
             elderly = getElderly(elderlyName);
-            elderly.setDiet();
+            elderly.setDietByUserChoice();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
             return Optional.empty();
@@ -840,8 +857,8 @@ public class ElderlyList {
             } else {
                 System.out.println(results);
             }
-        } catch (DukeException e) {
-            ui.printDukeException(e);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         }
     }
 
@@ -884,8 +901,8 @@ public class ElderlyList {
             } else {
                 System.out.println(results);
             }
-        } catch (DukeException e) {
-            ui.printDukeException(e);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         }
     }
 
@@ -936,7 +953,7 @@ public class ElderlyList {
      */
     public void checkSimilarities(Set<String> listOfStrings, String searchTerm) {
         float highestResult = 0;
-        HashMap<Float, String> resultToString = new HashMap<Float, String>();
+        HashMap<Float, String> resultToString = new HashMap<>();
         for (String stringInSet : listOfStrings) {
             float result = re.levenshteinDistance(searchTerm, stringInSet);
             if (highestResult < result) {
@@ -974,8 +991,8 @@ public class ElderlyList {
             } else {
                 System.out.println(results);
             }
-        } catch (DukeException e) {
-            ui.printDukeException(e);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         }
     }
 
@@ -1000,8 +1017,8 @@ public class ElderlyList {
             } else {
                 checkSimilarities(allUserNames, userName);
             }
-        } catch (DukeException e) {
-            ui.printDukeException(e);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         }
     }
 
@@ -1025,7 +1042,9 @@ public class ElderlyList {
             JsonWriter jw = gson.newJsonWriter(fw);
             gson.toJson(gson.toJsonTree(elderlyArrayList), jw);
             fw.close();
-        } catch (DukeException | IOException e) {
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        } catch (IOException e) {
             ui.printExceptionMessage(e);
         }
     }
@@ -1071,7 +1090,9 @@ public class ElderlyList {
             elderlyArrayList = gson.fromJson(jr, new TypeToken<ArrayList<Elderly>>() {
             }.getType());
             fr.close();
-        } catch (DukeException | IOException e) {
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        } catch (IOException e) {
             ui.printExceptionMessage(e);
         } catch (JsonSyntaxException wrongFormatException) {
             ui.printWrongFileSyntax();

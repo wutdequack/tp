@@ -14,7 +14,7 @@ import static seedu.duke.common.Messages.NOKS_MESSAGE;
 import static seedu.duke.common.Messages.RECORDS_MESSAGE;
 import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
 
-public class HighRiskElderly extends Elderly {
+public class HighRiskElderly extends Elderly implements Hospitalisable {
 
     protected Hospital hospital;
     protected String conditions;
@@ -22,8 +22,8 @@ public class HighRiskElderly extends Elderly {
     protected Doctor doctor;
 
     public HighRiskElderly(String username, String name, Hospital hospital, String conditions,
-            String notesOnCare,
-            Doctor doctor) {
+                           String notesOnCare,
+                           Doctor doctor) {
         super(username, name);
         this.hospital = hospital;
         this.conditions = conditions;
@@ -31,14 +31,17 @@ public class HighRiskElderly extends Elderly {
         this.doctor = doctor;
     }
 
+    @Override
     public Hospital getHospital() {
         return hospital;
     }
 
+    @Override
     public String getConditions() {
         return conditions;
     }
 
+    @Override
     public String getNotesOnCare() {
         return notesOnCare;
     }

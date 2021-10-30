@@ -3,6 +3,13 @@ package seedu.duke.common;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.LENGTH_OF_BLOOS_PRESSURE_ARRAY;
+import static seedu.duke.common.MagicValues.INPUT_HALAL;
+import static seedu.duke.common.MagicValues.INPUT_VEGETARIAN;
+import static seedu.duke.common.MagicValues.INPUT_VEGAN;
+import static seedu.duke.common.MagicValues.INPUT_BEEF_FREE;
+import static seedu.duke.common.MagicValues.INPUT_DIABETES;
+import static seedu.duke.common.MagicValues.INPUT_NO_RESTRICTIONS;
+
 import static seedu.duke.common.Messages.APPOINTMENTS_MESSAGE;
 import static seedu.duke.common.Messages.BIRTHDAY_MESSAGE;
 import static seedu.duke.common.Messages.MEDICINES_MESSAGE;
@@ -15,15 +22,21 @@ import static seedu.duke.common.Messages.KEY_IN_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.MagicValues.ui;
 
+import com.google.gson.annotations.SerializedName;
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.InvalidDietIndexException;
+import seedu.duke.exceptions.InvalidInputException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 
-public class Elderly {
+public abstract class Elderly {
 
     protected ArrayList<Medicine> medicines = new ArrayList<Medicine>();
     protected ArrayList<Appointment> appointments = new ArrayList<Appointment>();
@@ -40,11 +53,15 @@ public class Elderly {
 
     protected String medicalHistory;
 
+    @SerializedName("type")
+    private String typeName;
+
     public Elderly(String username, String name) {
         this.username = username;
         this.name = name;
         medicalHistory = new String();
         diet = DietaryPreference.NOT_SET;
+        typeName = getClass().getName();
     }
 
     /**
@@ -184,8 +201,7 @@ public class Elderly {
         try {
             this.birthday = simpleDateFormat.parse(birthday);
         } catch (ParseException e) {
-            System.out.println("Error in parsing");
-            // todo : to be handled later
+            ui.printGeneralException(e);
         }
     }
 
@@ -218,36 +234,41 @@ public class Elderly {
         case NOT_SET:
             return "Not set";
         default:
-            // to be handled by exception later
             return "Error";
         }
     }
 
-    public void setDiet() {
+    public void setDietByUserChoice() {
         System.out.printf(LIST_OF_DIETS);
         int choice = Integer.parseInt(ui.getUserInput());
+        Optional<DietaryPreference> dietaryPreference = getDietFromChoice(choice);
+        try {
+            if (dietaryPreference.isPresent()) {
+                this.diet = dietaryPreference.get();
+            } else {
+                throw new InvalidDietIndexException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
+    }
+
+    private Optional<DietaryPreference> getDietFromChoice(int choice) {
         switch (choice) {
-        case 1:
-            diet = DietaryPreference.HALAL;
-            break;
-        case 2:
-            diet = DietaryPreference.VEGETARIAN;
-            break;
-        case 3:
-            diet = DietaryPreference.VEGAN;
-            break;
-        case 4:
-            diet = DietaryPreference.BEEF_FREE;
-            break;
-        case 5:
-            diet = DietaryPreference.DIABETES;
-            break;
-        case 6:
-            diet = DietaryPreference.NO_RESTRICTION;
-            break;
+        case INPUT_HALAL:
+            return Optional.of(DietaryPreference.HALAL);
+        case INPUT_VEGETARIAN:
+            return Optional.of(DietaryPreference.VEGETARIAN);
+        case INPUT_VEGAN:
+            return Optional.of(DietaryPreference.VEGAN);
+        case INPUT_BEEF_FREE:
+            return Optional.of(DietaryPreference.BEEF_FREE);
+        case INPUT_DIABETES:
+            return Optional.of(DietaryPreference.DIABETES);
+        case INPUT_NO_RESTRICTIONS:
+            return Optional.of(DietaryPreference.NO_RESTRICTION);
         default:
-            // to be handled by exception later
-            System.out.println("Wrong input");
+            return Optional.empty();
         }
     }
 

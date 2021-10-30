@@ -99,7 +99,8 @@ public class Messages {
     /**
      * Used when invalid addelderly is typed.
      */
-    public static final String ADD_ELDERLY_FORMAT_MESSAGE = "Add Elderly format: addelderly u/[username] n/[real name]";
+    public static final String ADD_ELDERLY_FORMAT_MESSAGE =
+            "Add Elderly format: addelderly u/[username] n/[real name] r/[risk level]";
 
     /**
      * Used when appointment has been added.
@@ -205,6 +206,11 @@ public class Messages {
      * Used when dietary preference of the elderly has been updated.
      */
     public static final String DELETE_MEDICAL_HISTORY_MESSAGE = "Medical history of %s has been deleted\r\n";
+
+    /**
+     * Used for the exception message of the index out of range for the given diets plans.
+     */
+    public static final String ERROR_IN_DIET_INDEX_MESSAGE = "Wrong index of diet is keyed in.\r\n";
 
 
     /**

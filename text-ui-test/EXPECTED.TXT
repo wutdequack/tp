@@ -15,13 +15,29 @@
 ||__|||__|||__|||__||               
 |/__\|/__\|/__\|/__\|               
 Welcome admin. Type after the '>' to start.
-> Enter risk level. (i.e. l for low, m for med, h for high.)
-> Risk level keyed in is invalid. Please select from given options (l, m, h) only. Please redo addelderly command.
-> Elderly name you have keyed in does not exist
-> Elderly name you have keyed in does not exist
-> Elderly name you have keyed in does not exist
-> Elderly name you have keyed in does not exist
-> Elderly name you have keyed in does not exist
-> Elderly name you have keyed in does not exist
-> Elderly name you have keyed in does not exist
+> Invalid input detected 
+Correct input format: Add Elderly format: addelderly u/[username] n/[real name] r/[risk level]
+> List of hospitals are shown below:
+  1.changi general hospital
+  2.khoo teck puat hospital
+  3.national university hospital
+  4.ng teng feng general hospital
+  5.singapore general hospital
+  6.tan tock seng hospital
+Enter hospital number choice. (e.g. 1 for Changi General Hospital etc.)
+> Enter elderly condition below. Hit enter when done.
+> Enter notes on care below. Hit enter when done.
+> Elderly has been added!
+> Elderly has been added!
+> Medicine has been added!
+> Medicine has been added!
+> Medicine of tan are shown below:
+  1.Medicine Name: panadol, Frequency: once a day
+  2.Medicine Name: azheitynine, Frequency: every hour
+> Medicine of lim are shown below:
+> Appointment has been added!
+> Appointment has been added!
+> Appointments of tan are shown below:
+  1.Location: ktph, Date: 01012021, Time: 1000, Purpose of Visit: eyecheckup
+  2.Location: ktph, Date: 02022021, Time: 1500, Purpose of Visit: general checkup
 > Bye command has been recognized. Goodbye!
