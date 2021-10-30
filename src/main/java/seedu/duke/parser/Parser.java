@@ -1,16 +1,14 @@
 package seedu.duke.parser;
 
-import java.util.Scanner;
-
-import static seedu.duke.common.MagicValues.DELETE_NAME_SPLIT;
+import static seedu.duke.common.MagicValues.SPLIT_DELETE_NAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_KEYWORD;
 import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_DIET;
 import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_MED;
 import static seedu.duke.common.MagicValues.INDEX_OF_SEARCH_NAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_USER_NAME;
-import static seedu.duke.common.MagicValues.SEARCH_DIET_SPLIT;
-import static seedu.duke.common.MagicValues.SEARCH_MED_SPLIT;
-import static seedu.duke.common.MagicValues.SEARCH_NAME_SPLIT;
+import static seedu.duke.common.MagicValues.SPLIT_SEARCH_DIET;
+import static seedu.duke.common.MagicValues.SPLIT_SEARCH_MED;
+import static seedu.duke.common.MagicValues.SPLIT_SEARCH_NAME;
 
 public class Parser {
 
@@ -34,7 +32,7 @@ public class Parser {
      */
     public String getMedicineFromSearchMed(String userLine) {
         // Extract out medicine name
-        String[] paramList = userLine.split(SEARCH_MED_SPLIT);
+        String[] paramList = userLine.split(SPLIT_SEARCH_MED);
         assert paramList.length == 2 : "findbymed input does not have all required values";
         return paramList[INDEX_OF_SEARCH_MED];
     }
@@ -46,7 +44,7 @@ public class Parser {
      */
     public String getDietFromSearchMed(String userLine) {
         // Extract out diet name
-        String[] paramList = userLine.split(SEARCH_DIET_SPLIT);
+        String[] paramList = userLine.split(SPLIT_SEARCH_DIET);
         assert paramList.length == 2 : "findbydiet input does not have all required values";
         return paramList[INDEX_OF_SEARCH_DIET];
     }
@@ -58,7 +56,7 @@ public class Parser {
      */
     public String getRealNameFromSearchName(String userLine) {
         // Extract out Real name
-        String[] paramList = userLine.split(SEARCH_NAME_SPLIT);
+        String[] paramList = userLine.split(SPLIT_SEARCH_NAME);
         assert paramList.length == 2 : "findbyname input does not have all required values";
         return paramList[INDEX_OF_SEARCH_NAME];
     }
@@ -70,7 +68,7 @@ public class Parser {
      */
     public String getUserNameFromDeleteElderly(String userLine) {
         // Extract out username
-        String[] paramList = userLine.split(DELETE_NAME_SPLIT);
+        String[] paramList = userLine.split(SPLIT_DELETE_NAME);
         assert paramList.length == 2 : "deleteelderly input does not have all required values";
         return paramList[INDEX_OF_USER_NAME];
     }

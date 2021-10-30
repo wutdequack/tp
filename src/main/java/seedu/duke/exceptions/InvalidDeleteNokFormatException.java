@@ -1,10 +1,10 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.DELETE_NOK_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_DELETE_NOK_FORMAT;
 
 public class InvalidDeleteNokFormatException extends InvalidInputException {
     public InvalidDeleteNokFormatException() {
-        super(DELETE_NOK_FORMAT_MESSAGE);
+        super(MESSAGE_DELETE_NOK_FORMAT);
     }
 
 }

@@ -1,9 +1,9 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.ADD_ELDERLY_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY_FORMAT;
 
 public class InvalidElderlyFormatException extends InvalidInputException {
     public InvalidElderlyFormatException() {
-        super(ADD_ELDERLY_FORMAT_MESSAGE);
+        super(MESSAGE_ADD_ELDERLY_FORMAT);
     }
 }

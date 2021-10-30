@@ -1,9 +1,9 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.DELETE_MEDICINE_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_DELETE_MEDICINE_FORMAT;
 
 public class InvalidDeleteMedFormatException extends InvalidInputException {
     public InvalidDeleteMedFormatException() {
-        super(DELETE_MEDICINE_FORMAT_MESSAGE);
+        super(MESSAGE_DELETE_MEDICINE_FORMAT);
     }
 }

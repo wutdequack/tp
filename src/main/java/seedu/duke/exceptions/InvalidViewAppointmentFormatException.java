@@ -1,9 +1,9 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.VIEW_APPOINTMENT_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_VIEW_APPOINTMENT_FORMAT;
 
 public class InvalidViewAppointmentFormatException extends InvalidInputException {
     public InvalidViewAppointmentFormatException() {
-        super(VIEW_APPOINTMENT_FORMAT_MESSAGE);
+        super(MESSAGE_VIEW_APPOINTMENT_FORMAT);
     }
 }

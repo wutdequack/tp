@@ -1,10 +1,10 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.LOAD_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_LOAD_FORMAT;
 
 public class InvalidLoadFromFilePathException extends InvalidInputException {
     public InvalidLoadFromFilePathException() {
-        super(LOAD_FORMAT_MESSAGE);
+        super(MESSAGE_LOAD_FORMAT);
     }
 
 }

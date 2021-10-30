@@ -10,16 +10,16 @@ import static seedu.duke.common.MagicValues.INPUT_BEEF_FREE;
 import static seedu.duke.common.MagicValues.INPUT_DIABETES;
 import static seedu.duke.common.MagicValues.INPUT_NO_RESTRICTIONS;
 
-import static seedu.duke.common.Messages.APPOINTMENTS_MESSAGE;
-import static seedu.duke.common.Messages.BIRTHDAY_MESSAGE;
-import static seedu.duke.common.Messages.MEDICINES_MESSAGE;
-import static seedu.duke.common.Messages.NOKS_MESSAGE;
-import static seedu.duke.common.Messages.OVERALL_ELDERLY_MESSAGE;
-import static seedu.duke.common.Messages.RECORDS_MESSAGE;
-import static seedu.duke.common.Messages.VACCINATED_MESSAGE;
-import static seedu.duke.common.Messages.LIST_OF_DIETS;
-import static seedu.duke.common.Messages.KEY_IN_MEDICAL_HISTORY_PROMPT;
-import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_PROMPT;
+import static seedu.duke.common.Messages.MESSAGE_APPOINTMENTS;
+import static seedu.duke.common.Messages.MESSAGE_BIRTHDAY;
+import static seedu.duke.common.Messages.MESSAGE_MEDICINES;
+import static seedu.duke.common.Messages.MESSAGE_NOKS;
+import static seedu.duke.common.Messages.MESSAGE_OVERALL_ELDERLY;
+import static seedu.duke.common.Messages.MESSAGE_RECORDS;
+import static seedu.duke.common.Messages.MESSAGE_VACCINATED;
+import static seedu.duke.common.Messages.PROMPT_LIST_OF_DIETS;
+import static seedu.duke.common.Messages.PROMPT_KEY_IN_MEDICAL_HISTORY;
+import static seedu.duke.common.Messages.PROMPT_DELETE_MEDICAL_HISTORY;
 import static seedu.duke.common.MagicValues.ui;
 
 import com.google.gson.annotations.SerializedName;
@@ -237,7 +237,7 @@ public abstract class Elderly {
     }
 
     public void setDietByUserChoice() {
-        System.out.printf(LIST_OF_DIETS);
+        System.out.printf(PROMPT_LIST_OF_DIETS);
         int choice = Integer.parseInt(ui.getUserInput());
         Optional<DietaryPreference> dietaryPreference = getDietFromChoice(choice);
         try {
@@ -284,7 +284,7 @@ public abstract class Elderly {
 
     public void setMedicalHistory() {
         String currentHistory = medicalHistory;
-        System.out.printf(KEY_IN_MEDICAL_HISTORY_PROMPT);
+        System.out.printf(PROMPT_KEY_IN_MEDICAL_HISTORY);
         String addedHistory = ui.getUserInput();
         StringBuffer currentHistoryStringBuffer = new StringBuffer();
         currentHistoryStringBuffer.append(currentHistory);
@@ -300,7 +300,7 @@ public abstract class Elderly {
     }
 
     public Elderly deleteMedicalHistory() {
-        System.out.printf(DELETE_MEDICAL_HISTORY_PROMPT, name);
+        System.out.printf(PROMPT_DELETE_MEDICAL_HISTORY, name);
         String confirmationMessage = ui.getUserInput();
         if (!confirmationMessage.equalsIgnoreCase("Y")) {
             return null;
@@ -333,18 +333,18 @@ public abstract class Elderly {
                 .map(Objects::toString)
                 .reduce((t, u) -> t + '\n' + u)
                 .orElse("");
-        String vaccinatedString = String.format(VACCINATED_MESSAGE, username,
+        String vaccinatedString = String.format(MESSAGE_VACCINATED, username,
                 isVaccinated ? "Vaccinated" : "Not vaccinated");
-        String birthdayString = String.format(BIRTHDAY_MESSAGE, username,
+        String birthdayString = String.format(MESSAGE_BIRTHDAY, username,
                 birthday == null ? "Not Recorded" : getBirthday());
-        String combinedListofRecordsString = String.format(RECORDS_MESSAGE, username, listOfRecordsString);
-        String combinedListOfAppointmentsString = String.format(APPOINTMENTS_MESSAGE,
+        String combinedListofRecordsString = String.format(MESSAGE_RECORDS, username, listOfRecordsString);
+        String combinedListOfAppointmentsString = String.format(MESSAGE_APPOINTMENTS,
                 listOfAppointmentsString);
-        String combinedListOfMedicinesString = String.format(MEDICINES_MESSAGE,
+        String combinedListOfMedicinesString = String.format(MESSAGE_MEDICINES,
                 listOfMedicinesString);
-        String combinedListOfNoksString = String.format(NOKS_MESSAGE, username,
+        String combinedListOfNoksString = String.format(MESSAGE_NOKS, username,
                 listOfNoksString);
-        return String.format(OVERALL_ELDERLY_MESSAGE, username, name, vaccinatedString,
+        return String.format(MESSAGE_OVERALL_ELDERLY, username, name, vaccinatedString,
                 birthdayString, combinedListofRecordsString,
                 combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString);
     }

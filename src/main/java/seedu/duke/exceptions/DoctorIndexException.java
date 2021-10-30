@@ -1,10 +1,10 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.INVALID_DOCTOR_INDEX_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_DOCTOR_INDEX;
 
 public class DoctorIndexException extends DukeException {
     public DoctorIndexException() {
-        super(INVALID_DOCTOR_INDEX_MESSAGE);
+        super(MESSAGE_INVALID_DOCTOR_INDEX);
     }
 
 }

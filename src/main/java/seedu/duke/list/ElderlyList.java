@@ -60,23 +60,23 @@ import java.util.Optional;
 
 import com.google.gson.JsonSyntaxException;
 
-import static seedu.duke.common.MagicValues.ADD_NOK_SPLIT;
-import static seedu.duke.common.MagicValues.ADD_RECORD_SPLIT;
-import static seedu.duke.common.MagicValues.DELETE_APPOINTMENT_SPLIT;
-import static seedu.duke.common.MagicValues.DELETE_NOK_SPLIT;
-import static seedu.duke.common.MagicValues.DELETE_MED_SPLIT;
+import static seedu.duke.common.MagicValues.SPLIT_ADD_NOK;
+import static seedu.duke.common.MagicValues.SPLIT_ADD_RECORD;
+import static seedu.duke.common.MagicValues.SPLIT_DELETE_APPOINTMENT;
+import static seedu.duke.common.MagicValues.SPLIT_DELETE_NOK;
+import static seedu.duke.common.MagicValues.SPLIT_DELETE_MED;
 import static seedu.duke.common.MagicValues.HIGH;
 import static seedu.duke.common.MagicValues.INDEX_OF_DELETE_DATE;
 import static seedu.duke.common.MagicValues.INDEX_OF_DELETE_TIME;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_USERNAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_FILE_PATH;
 import static seedu.duke.common.MagicValues.INPUT_OFFSET;
-import static seedu.duke.common.MagicValues.LOAD_FILE_SPLIT;
+import static seedu.duke.common.MagicValues.SPLIT_LOAD_FILE;
 import static seedu.duke.common.MagicValues.LOW;
 import static seedu.duke.common.MagicValues.MEDIUM;
-import static seedu.duke.common.MagicValues.NAME_SPLIT;
-import static seedu.duke.common.MagicValues.ADD_MEDICINE_SPLIT;
-import static seedu.duke.common.MagicValues.ADD_APPOINTMENT_SPLIT;
+import static seedu.duke.common.MagicValues.SPLIT_NAME;
+import static seedu.duke.common.MagicValues.SPLIT_ADD_MEDICINE;
+import static seedu.duke.common.MagicValues.SPLIT_ADD_APPOINTMENT;
 import static seedu.duke.common.MagicValues.INDEX_OF_DATE;
 import static seedu.duke.common.MagicValues.INDEX_OF_ELDERLY_NAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_RISK_LEVEL;
@@ -99,22 +99,23 @@ import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE;
 import static seedu.duke.common.MagicValues.GENERAL_CHECKUP;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
-import static seedu.duke.common.MagicValues.STORE_FILE_SPLIT;
+import static seedu.duke.common.MagicValues.SIMILARITY_INDEX;
+import static seedu.duke.common.MagicValues.SPLIT_STORE_FILE;
 import static seedu.duke.common.MagicValues.parser;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.re;
 import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 
-import static seedu.duke.common.Messages.NUMBER_OF_ELDERLY_STRING;
+import static seedu.duke.common.Messages.MESSAGE_NUMBER_OF_ELDERLY;
 
 
 public class ElderlyList {
 
 
     protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<>();
-    protected static HashMap<String, HashSet<String>> medicineMapping = new HashMap<>();
-    protected static HashMap<String, HashSet<String>> dietMapping = new HashMap<>();
+    protected static HashMap<String, HashSet<String>> medicineMappings = new HashMap<>();
+    protected static HashMap<String, HashSet<String>> dietMappings = new HashMap<>();
 
     private String filePath;
     private final Gson gson;
@@ -145,7 +146,7 @@ public class ElderlyList {
             if (!re.isValidAddElderly(userLine)) {
                 throw new InvalidElderlyFormatException();
             }
-            String[] paramList = userLine.split(NAME_SPLIT);
+            String[] paramList = userLine.split(SPLIT_NAME);
             String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
             String riskLevel = paramList[INDEX_OF_RISK_LEVEL].toUpperCase();
@@ -200,7 +201,7 @@ public class ElderlyList {
             if (!re.isValidAddMedicine(userLine)) {
                 throw new InvalidAddMedicineFormatException();
             }
-            String[] paramList = userLine.split(ADD_MEDICINE_SPLIT);
+            String[] paramList = userLine.split(SPLIT_ADD_MEDICINE);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             String medicineName = paramList[INDEX_OF_MEDICINE_NAME];
@@ -225,7 +226,7 @@ public class ElderlyList {
             if (!re.isValidViewMedicine(userLine)) {
                 throw new InvalidViewMedicineFormatException();
             }
-            String[] paramList = userLine.split(NAME_SPLIT);
+            String[] paramList = userLine.split(SPLIT_NAME);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             assert paramList.length == 2 : "Username is empty";
             Elderly elderly = getElderly(elderlyName);
@@ -243,12 +244,11 @@ public class ElderlyList {
      * @param elderly The elderly in question.
      */
     private void printMedicines(Elderly elderly) {
-        int counter = 1;
+        ArrayList<Medicine> medicineList = elderly.getMedicines();
         System.out.println("Medicine of " + elderly.getUsername() + " are shown below:");
-        for (Medicine medicine : elderly.getMedicines()) {
-            System.out.format("% 3d.", counter);
-            System.out.println(medicine);
-            counter++;
+        for (int index = 1; index <= medicineList.size(); ++index) {
+            System.out.format("% 3d.", index);
+            System.out.println(medicineList.get(index - 1));
         }
     }
 
@@ -262,7 +262,7 @@ public class ElderlyList {
             if (!re.isValidAddAppointment(userLine)) {
                 throw new InvalidAddAppointmentFormatException();
             }
-            String[] paramList = userLine.split(ADD_APPOINTMENT_SPLIT);
+            String[] paramList = userLine.split(SPLIT_ADD_APPOINTMENT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             String location = paramList[INDEX_OF_LOCATION];
@@ -294,7 +294,7 @@ public class ElderlyList {
             if (!re.isValidViewAppointment(userLine)) {
                 throw new InvalidViewAppointmentFormatException();
             }
-            String[] paramList = userLine.split(NAME_SPLIT);
+            String[] paramList = userLine.split(SPLIT_NAME);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             assert paramList.length == 2 : "Username is empty";
             Elderly elderly = getElderly(elderlyName);
@@ -311,7 +311,7 @@ public class ElderlyList {
             if (!re.isValidDeleteAppointment(userLine)) {
                 throw new InvalidDeleteApptFormatException();
             }
-            String[] paramList = userLine.split(DELETE_APPOINTMENT_SPLIT);
+            String[] paramList = userLine.split(SPLIT_DELETE_APPOINTMENT);
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String date = paramList[INDEX_OF_DELETE_DATE];
             String time = paramList[INDEX_OF_DELETE_TIME];
@@ -360,7 +360,7 @@ public class ElderlyList {
             if (!re.isValidAddNok(userLine)) {
                 throw new InvalidAddNokFormatException();
             }
-            String[] paramList = userLine.split(ADD_NOK_SPLIT);
+            String[] paramList = userLine.split(SPLIT_ADD_NOK);
             assert paramList.length == 7 : "addnok input does not have all required values";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
@@ -389,7 +389,7 @@ public class ElderlyList {
             if (!re.isValidViewNok(userLine)) {
                 throw new InvalidViewNokFormatException();
             }
-            String[] paramList = userLine.split(NAME_SPLIT);
+            String[] paramList = userLine.split(SPLIT_NAME);
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
@@ -416,7 +416,7 @@ public class ElderlyList {
             if (!re.isValidDeleteNok(userLine)) {
                 throw new InvalidDeleteNokFormatException();
             }
-            String[] paramList = userLine.split(DELETE_NOK_SPLIT);
+            String[] paramList = userLine.split(SPLIT_DELETE_NOK);
             assert paramList.length == 3 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String nokName = paramList[INDEX_OF_NOK_NAME];
@@ -446,7 +446,7 @@ public class ElderlyList {
             if (!re.isValidDeleteMedicine(userLine)) {
                 throw new InvalidDeleteMedFormatException();
             }
-            String[] paramList = userLine.split(DELETE_MED_SPLIT);
+            String[] paramList = userLine.split(SPLIT_DELETE_MED);
             assert paramList.length == 3 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String medName = paramList[INDEX_OF_MEDICINE_NAME];
@@ -480,7 +480,7 @@ public class ElderlyList {
             if (!re.isValidAddRecord(userLine)) {
                 throw new InvalidAddRecordFormatException();
             }
-            String[] paramList = userLine.split(ADD_RECORD_SPLIT);
+            String[] paramList = userLine.split(SPLIT_ADD_RECORD);
             assert paramList.length == 4 : "addrec input does not have all required values";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
@@ -505,7 +505,7 @@ public class ElderlyList {
             if (!re.isValidViewRec(userLine)) {
                 throw new InvalidViewRecordFormatException();
             }
-            String[] paramList = userLine.split(NAME_SPLIT);
+            String[] paramList = userLine.split(SPLIT_NAME);
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
@@ -789,7 +789,7 @@ public class ElderlyList {
      * Prints current list of elderly along with number of elderly in system.
      */
     public void printElderly() {
-        System.out.printf(NUMBER_OF_ELDERLY_STRING, getElderlyCount());
+        System.out.printf(MESSAGE_NUMBER_OF_ELDERLY, getElderlyCount());
         ui.printElderlyList(getConsolidatedStringOfElderly());
     }
 
@@ -804,18 +804,18 @@ public class ElderlyList {
             for (Medicine medicineObject : elderlyObject.getMedicines()) {
                 String medicineName = medicineObject.getMedicineName();
                 // Create new Medicine name to Elderly name HashSet Mapping if it doesn't exist
-                if (!medicineMapping.containsKey(medicineName)) {
-                    medicineMapping.put(medicineName, new HashSet<>());
+                if (!medicineMappings.containsKey(medicineName)) {
+                    medicineMappings.put(medicineName, new HashSet<>());
                 }
                 // Append Elderly name to list of medicine mapping
-                medicineMapping.get(medicineName).add(elderlyName);
+                medicineMappings.get(medicineName).add(elderlyName);
             }
             // Update diet mappings
             String dietPreference = elderlyObject.getDiet();
-            if (!dietMapping.containsKey(dietPreference)) {
-                dietMapping.put(dietPreference, new HashSet<>());
+            if (!dietMappings.containsKey(dietPreference)) {
+                dietMappings.put(dietPreference, new HashSet<>());
             }
-            dietMapping.get(dietPreference).add(elderlyName);
+            dietMappings.get(dietPreference).add(elderlyName);
         }
     }
 
@@ -830,9 +830,9 @@ public class ElderlyList {
         updateMappings();
 
         // Query HashSet for medicine name
-        if (medicineMapping.containsKey(medicineQuery)) {
+        if (medicineMappings.containsKey(medicineQuery)) {
             // Gets all elderly names as a string
-            resultString = String.join(System.lineSeparator(), medicineMapping.get(medicineQuery));
+            resultString = String.join(System.lineSeparator(), medicineMappings.get(medicineQuery));
         }
         return resultString;
     }
@@ -853,7 +853,7 @@ public class ElderlyList {
             ui.printQueryResultsIntroString(medicineQuery);
             String results = buildElderlyStringGivenMedicine(medicineQuery);
             if (results.isEmpty()) {
-                checkSimilarities(medicineMapping.keySet(), medicineQuery);
+                checkSimilarities(medicineMappings.keySet(), medicineQuery);
             } else {
                 System.out.println(results);
             }
@@ -873,9 +873,9 @@ public class ElderlyList {
         updateMappings();
 
         // Query HashSet for diet name
-        if (dietMapping.containsKey(dietQuery)) {
+        if (dietMappings.containsKey(dietQuery)) {
             // Gets all elderly names as a string
-            resultString = String.join(System.lineSeparator(), dietMapping.get(dietQuery));
+            resultString = String.join(System.lineSeparator(), dietMappings.get(dietQuery));
         }
         return resultString;
     }
@@ -897,7 +897,7 @@ public class ElderlyList {
             ui.printQueryResultsIntroString(dietQuery);
             String results = buildElderlyStringGivenDiet(dietQuery);
             if (results.isEmpty()) {
-                checkSimilarities(dietMapping.keySet(), dietQuery);
+                checkSimilarities(dietMappings.keySet(), dietQuery);
             } else {
                 System.out.println(results);
             }
@@ -963,7 +963,7 @@ public class ElderlyList {
         }
 
         // Print out the closest match if similarity more than 0.80
-        if (highestResult >= 0.80) {
+        if (highestResult >= SIMILARITY_INDEX) {
             ui.printClosestMatch(resultToString.get(highestResult));
         } else {
             // Say that you don't understand what the user is looking for
@@ -1034,7 +1034,7 @@ public class ElderlyList {
                 throw new InvalidStoreToFilePathException();
             }
 
-            String[] paramList = userLine.split(STORE_FILE_SPLIT);
+            String[] paramList = userLine.split(SPLIT_STORE_FILE);
             this.filePath = paramList[INDEX_OF_FILE_PATH];
 
             // Writes to file path and overwrites all contents if it doesn't exist
@@ -1071,7 +1071,7 @@ public class ElderlyList {
                 throw new InvalidLoadFromFilePathException();
             }
 
-            String[] paramList = userLine.split(LOAD_FILE_SPLIT);
+            String[] paramList = userLine.split(SPLIT_LOAD_FILE);
             String filePath = paramList[INDEX_OF_FILE_PATH];
 
             // Checks if file exists

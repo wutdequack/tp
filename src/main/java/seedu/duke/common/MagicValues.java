@@ -92,20 +92,22 @@ public class MagicValues {
     public static final int INPUT_DIABETES = 5;
     public static final int INPUT_NO_RESTRICTIONS = 6;
 
-    public static final String NAME_SPLIT = " [unr]/";
-    public static final String ADD_MEDICINE_SPLIT = " [umf]/";
-    public static final String ADD_APPOINTMENT_SPLIT = " [uldtp]/";
-    public static final String ADD_NOK_SPLIT = " [ukpear]/";
-    public static final String ADD_RECORD_SPLIT = " [upa]/";
-    public static final String SEARCH_MED_SPLIT = " m/";
-    public static final String SEARCH_DIET_SPLIT = " d/";
-    public static final String SEARCH_NAME_SPLIT = " n/";
-    public static final String DELETE_NAME_SPLIT = " u/";
-    public static final String STORE_FILE_SPLIT = " fp/";
-    public static final String LOAD_FILE_SPLIT = " fp/";
-    public static final String DELETE_NOK_SPLIT = " [un]/";
-    public static final String DELETE_MED_SPLIT = " [um]/";
-    public static final String DELETE_APPOINTMENT_SPLIT = " [udt]/";
+    public static final double SIMILARITY_INDEX = 0.8;
+
+    public static final String SPLIT_NAME = " [unr]/";
+    public static final String SPLIT_ADD_MEDICINE = " [umf]/";
+    public static final String SPLIT_ADD_APPOINTMENT = " [uldtp]/";
+    public static final String SPLIT_ADD_NOK = " [ukpear]/";
+    public static final String SPLIT_ADD_RECORD = " [upa]/";
+    public static final String SPLIT_SEARCH_MED = " m/";
+    public static final String SPLIT_SEARCH_DIET = " d/";
+    public static final String SPLIT_SEARCH_NAME = " n/";
+    public static final String SPLIT_DELETE_NAME = " u/";
+    public static final String SPLIT_STORE_FILE = " fp/";
+    public static final String SPLIT_LOAD_FILE = " fp/";
+    public static final String SPLIT_DELETE_NOK = " [un]/";
+    public static final String SPLIT_DELETE_MED = " [um]/";
+    public static final String SPLIT_DELETE_APPOINTMENT = " [udt]/";
 
 
 

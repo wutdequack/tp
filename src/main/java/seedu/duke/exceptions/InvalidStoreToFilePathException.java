@@ -1,10 +1,10 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.STORE_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_STORE_FORMAT;
 
 public class InvalidStoreToFilePathException extends InvalidInputException {
     public InvalidStoreToFilePathException() {
-        super(STORE_FORMAT_MESSAGE);
+        super(MESSAGE_STORE_FORMAT);
     }
 
 }
