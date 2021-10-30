@@ -1,6 +1,5 @@
 package seedu.duke.common;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import seedu.duke.hospital.Hospital;
@@ -69,18 +68,18 @@ public class MediumRiskElderly extends Elderly implements Hospitalisable {
         String birthdayString = String.format(BIRTHDAY_MESSAGE, username,
                 birthday == null ? "Not Recorded" : getBirthday());
         String combinedListofRecordsString = String.format(RECORDS_MESSAGE, username, listOfRecordsString);
-        String combinedlistOfAppointmentsString = String.format(APPOINTMENTS_MESSAGE,
+        String combinedListOfAppointmentsString = String.format(APPOINTMENTS_MESSAGE,
                 listOfAppointmentsString);
-        String combinedlistOfMedicinesString = String.format(MEDICINES_MESSAGE,
+        String combinedListOfMedicinesString = String.format(MEDICINES_MESSAGE,
                 listOfMedicinesString);
-        String combinedlistOfNoksString = String.format(NOKS_MESSAGE, username,
+        String combinedListOfNoksString = String.format(NOKS_MESSAGE, username,
                 listOfNoksString);
         String hospital = String.format("Hospital Details :\n%s\n", getHospital());
         String conditions = String.format("Conditions of elderly %s : %s\n", username, getConditions());
         String notesOnCare = String.format("Notes on care for %s : %s\n", username, getNotesOnCare());
         return String.format(MEDIUM_RISK_ELDERLY_MESSAGE, username, name, vaccinatedString,
                 birthdayString, combinedListofRecordsString,
-                combinedlistOfAppointmentsString, combinedlistOfMedicinesString, combinedlistOfNoksString, hospital,
+                combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString, hospital,
                 conditions, notesOnCare);
     }
 

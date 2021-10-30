@@ -23,7 +23,6 @@ import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_PROMPT;
 import static seedu.duke.common.MagicValues.ui;
 
 import com.google.gson.annotations.SerializedName;
-import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.InvalidDietIndexException;
 import seedu.duke.exceptions.InvalidInputException;
 
@@ -33,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 
 public abstract class Elderly {
@@ -83,7 +81,7 @@ public abstract class Elderly {
     }
 
     /**
-     * Adds a medicine to elderly's medicine ArrayList.
+     * Adds a medicine to the elderly's medicine ArrayList.
      *
      * @param medicine Medicine to be added.
      */
@@ -131,14 +129,14 @@ public abstract class Elderly {
     }
 
     public Optional<Appointment> removeAppointment(String deleteDate, String deleteTime) {
-        Appointment deleteAppt;
-        for (Appointment appt : appointments) {
-            String currentDate = appt.date;
-            String currentTime = appt.time;
+        Appointment deletedAppointment;
+        for (Appointment appointment : appointments) {
+            String currentDate = appointment.date;
+            String currentTime = appointment.time;
             if (currentDate.contentEquals(deleteDate) && currentTime.contentEquals(deleteTime)) {
-                deleteAppt = appt;
-                appointments.remove(appt);
-                return Optional.of(deleteAppt);
+                deletedAppointment = appointment;
+                appointments.remove(appointment);
+                return Optional.of(deletedAppointment);
             }
         }
         return Optional.empty();
@@ -340,15 +338,15 @@ public abstract class Elderly {
         String birthdayString = String.format(BIRTHDAY_MESSAGE, username,
                 birthday == null ? "Not Recorded" : getBirthday());
         String combinedListofRecordsString = String.format(RECORDS_MESSAGE, username, listOfRecordsString);
-        String combinedlistOfAppointmentsString = String.format(APPOINTMENTS_MESSAGE,
+        String combinedListOfAppointmentsString = String.format(APPOINTMENTS_MESSAGE,
                 listOfAppointmentsString);
-        String combinedlistOfMedicinesString = String.format(MEDICINES_MESSAGE,
+        String combinedListOfMedicinesString = String.format(MEDICINES_MESSAGE,
                 listOfMedicinesString);
-        String combinedlistOfNoksString = String.format(NOKS_MESSAGE, username,
+        String combinedListOfNoksString = String.format(NOKS_MESSAGE, username,
                 listOfNoksString);
         return String.format(OVERALL_ELDERLY_MESSAGE, username, name, vaccinatedString,
                 birthdayString, combinedListofRecordsString,
-                combinedlistOfAppointmentsString, combinedlistOfMedicinesString, combinedlistOfNoksString);
+                combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString);
     }
 }
 
