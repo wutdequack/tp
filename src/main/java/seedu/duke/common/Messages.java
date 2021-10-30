@@ -259,14 +259,14 @@ public class Messages {
     public static final String MESSAGE_APPOINTMENTS = "[*] Here is the list of upcoming appointments:\n%s\n";
     public static final String MESSAGE_MEDICINES = "[*] This is the list of medicine(s):\n%s\n";
     public static final String MESSAGE_NOKS = "[*] These are NOK(s) attached to %s:\n%s\n";
-    public static final String MESSAGE_OVERALL_ELDERLY = "Elderly Username: %s\nElderly Name: %s\n"
+    public static final String MESSAGE_OVERALL_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
             + "%s\n%s\n%s\n%s\n%s\n%s";
-    public static final String MESSAGE_LOW_RISK_ELDERLY = "Elderly Username: %s\nElderly Name: %s\n"
-            + "Risk Level : LOW\n%s\n%s\n%s\n%s\n%s\n%s";
-    public static final String MESSAGE_MEDIUM_RISK_ELDERLY = "Elderly Username: %s\nElderly Name: %s\n"
-            + "Risk Level : MEDIUM\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
-    public static final String MESSAGE_HIGH_RISK_ELDERLY = "Elderly Username: %s\nElderly Name: %s\n"
-            + "Risk Level : HIGH\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
+    public static final String MESSAGE_LOW_RISK_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
+            + "[*] Risk Level : LOW\n%s\n%s\n%s\n%s\n%s\n%s";
+    public static final String MESSAGE_MEDIUM_RISK_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
+            + "[*] Risk Level : MEDIUM\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
+    public static final String MESSAGE_HIGH_RISK_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
+            + "[*] Risk Level : HIGH\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
 
     /**
      * Used in querying for information.

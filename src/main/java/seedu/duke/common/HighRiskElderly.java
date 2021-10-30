@@ -82,10 +82,10 @@ public class HighRiskElderly extends Elderly implements Hospitalisable {
                 listOfMedicinesString);
         String combinedListOfNoksString = String.format(MESSAGE_NOKS, username,
                 listOfNoksString);
-        String hospital = String.format("Hospital Details :\n%s\n", getHospital());
-        String conditions = String.format("Conditions of elderly %s : %s\n", username, getConditions());
-        String notesOnCare = String.format("Notes on care for %s : %s\n", username, getNotesOnCare());
-        String doctor = String.format("Doctors for %s :\n%s\n", username, getDoctor());
+        String hospital = String.format("[*] Hospital Details :\n%s\n", getHospital());
+        String conditions = String.format("[*] Conditions of elderly %s : %s\n", username, getConditions());
+        String notesOnCare = String.format("[*] Notes on care for %s : %s\n", username, getNotesOnCare());
+        String doctor = String.format("[*] Doctors for %s :\n%s\n", username, getDoctor());
         return String.format(MESSAGE_HIGH_RISK_ELDERLY, username, name, vaccinatedString,
                 birthdayString, combinedListofRecordsString,
                 combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString, hospital,

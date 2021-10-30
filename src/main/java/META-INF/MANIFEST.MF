@@ -1,4 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: C:\Users\owins\OneDrive\Documents\CS2113\TP\tp\src\main\java
- \seedu\duke\Duke.java
+Main-Class: seedu.duke.Duke
 
