@@ -36,10 +36,10 @@ import java.util.Optional;
 
 public abstract class Elderly {
 
-    protected ArrayList<Medicine> medicines = new ArrayList<Medicine>();
-    protected ArrayList<Appointment> appointments = new ArrayList<Appointment>();
-    protected ArrayList<NextOfKin> nextofkins = new ArrayList<NextOfKin>();
-    protected ArrayList<Record> records = new ArrayList<Record>();
+    protected ArrayList<Medicine> medicines = new ArrayList<>();
+    protected ArrayList<Appointment> appointments = new ArrayList<>();
+    protected ArrayList<NextOfKin> nextofkins = new ArrayList<>();
+    protected ArrayList<Record> records = new ArrayList<>();
 
     protected String username;
     protected String name;

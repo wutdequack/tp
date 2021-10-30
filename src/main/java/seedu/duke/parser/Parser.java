@@ -28,19 +28,6 @@ public class Parser {
     }
 
     /**
-     * Extracts user's choice from user input.
-     *
-     * @return the choice the user keyed in
-     */
-    public static int parseChoiceFromUserInput() {
-        int choice;
-        try (Scanner sc = new Scanner(System.in)) {
-            choice = Integer.parseInt(sc.nextLine());
-        }
-        return choice;
-    }
-
-    /**
      * Gets medicine name from findbymed query.
      * @param userLine String containing command findbymed and search term.
      * @return String containing medicine name.
