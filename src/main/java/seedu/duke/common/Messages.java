@@ -262,7 +262,7 @@ public class Messages {
     /**
      * Used in querying for information.
      */
-    public static final String QUERY_RESULTS_INTRO_MESSAGE = "This is the results for the following query: %s";
+    public static final String QUERY_RESULTS_INTRO_MESSAGE = "This is the results for the following query: %s%n";
 
     /**
      * Used when invalid findbymed is typed.
@@ -303,7 +303,7 @@ public class Messages {
     public static final String LIST_FORMAT_MESSAGE = "list - List all elderly in the program";
 
     /**
-     * Used when printing closest match to user query.
+     * Used when printing the closest match to user query.
      */
     public static final String CLOSEST_SEARCH_RESULT_MESSAGE = "I am sorry, did you mean: %s\n";
     public static final String INVALID_SEARCH_TERM_MESSAGE = "I cannot find %s\n";

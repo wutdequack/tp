@@ -89,7 +89,7 @@ public class TextUi {
     public String getUserInput() {
         out.print(PROMPT_MESSAGE);
         String input = in.nextLine();
-        // Keep getting input until its not empty
+        // Keep getting input until it is not empty
         while (input.trim().isEmpty()) {
             input = in.nextLine();
         }
@@ -332,7 +332,7 @@ public class TextUi {
      * @param searchTerm String containing medicine query by user.
      */
     public void printQueryResultsIntroString(String searchTerm) {
-        out.println(String.format(QUERY_RESULTS_INTRO_MESSAGE, searchTerm));
+        out.printf(QUERY_RESULTS_INTRO_MESSAGE, searchTerm);
     }
 
     /**
@@ -360,7 +360,7 @@ public class TextUi {
     /**
      * Print the closest match to what the user query.
      *
-     * @param closestMatch String containing closest match.
+     * @param closestMatch String containing the closest match.
      */
     public void printClosestMatch(String closestMatch) {
         out.printf(CLOSEST_SEARCH_RESULT_MESSAGE, closestMatch);
