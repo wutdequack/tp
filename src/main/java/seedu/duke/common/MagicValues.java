@@ -93,10 +93,10 @@ public class MagicValues {
     public static final int INPUT_NO_RESTRICTIONS = 6;
 
     public static final String NAME_SPLIT = " [unr]/";
-    public static final String ADD_MEDICINE_SPLIT = " [nmf]/";
-    public static final String ADD_APPOINTMENT_SPLIT = " [nldtp]/";
-    public static final String ADD_NOK_SPLIT = " [nkpear]/";
-    public static final String ADD_RECORD_SPLIT = " [npa]/";
+    public static final String ADD_MEDICINE_SPLIT = " [umf]/";
+    public static final String ADD_APPOINTMENT_SPLIT = " [uldtp]/";
+    public static final String ADD_NOK_SPLIT = " [ukpear]/";
+    public static final String ADD_RECORD_SPLIT = " [upa]/";
     public static final String SEARCH_MED_SPLIT = " m/";
     public static final String SEARCH_DIET_SPLIT = " d/";
     public static final String SEARCH_NAME_SPLIT = " n/";
