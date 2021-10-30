@@ -1,10 +1,10 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.INVALID_RISK_LEVEL_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_RISK_LEVEL;
 
 public class InvalidRiskLevelException extends DukeException {
     public InvalidRiskLevelException() {
-        super(INVALID_RISK_LEVEL_MESSAGE);
+        super(MESSAGE_INVALID_RISK_LEVEL);
     }
 
 }

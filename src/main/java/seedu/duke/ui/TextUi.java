@@ -10,49 +10,48 @@ import seedu.duke.exceptions.InvalidInputException;
 
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
-import static seedu.duke.common.Messages.ADD_NOK_MESSAGE;
-import static seedu.duke.common.Messages.ADD_RECORD_MESSAGE;
-import static seedu.duke.common.Messages.ADD_MEDICINE_MESSAGE;
-import static seedu.duke.common.Messages.BYE_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.CLOSEST_SEARCH_RESULT_MESSAGE;
-import static seedu.duke.common.Messages.ADD_MED_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.ADD_NOK_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.DELETE_ELDERLY_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.DELETE_ELDERLY_SUCCESSFUL_MESSAGE;
-import static seedu.duke.common.Messages.ENTER_CONDITIONS_MESSAGE;
-import static seedu.duke.common.Messages.ENTER_DOCTOR_MESSAGE;
-import static seedu.duke.common.Messages.ENTER_NOTES_ON_CARE_MESSAGE;
-import static seedu.duke.common.Messages.FILE_DOES_NOT_EXISTS_MESSAGE;
-import static seedu.duke.common.Messages.FILE_EXISTS_MESSAGE;
-import static seedu.duke.common.Messages.FILE_WRONG_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.HELP_MENU_INTRO_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_SEARCH_TERM_MESSAGE;
-import static seedu.duke.common.Messages.LIST_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.VIEW_NOK_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.ADD_RECORD_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.VIEW_RECORD_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.VIEW_MED_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.ADD_APPOINTMENT_MESSAGE;
-import static seedu.duke.common.Messages.ERROR_IN_DIET_INDEX_MESSAGE;
-import static seedu.duke.common.Messages.ADD_APPOINTMENT_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.VIEW_APPOINTMENT_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.QUERY_RESULTS_INTRO_MESSAGE;
-import static seedu.duke.common.Messages.WELCOME_MESSAGE;
-import static seedu.duke.common.Messages.PROMPT_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_ADD_NOK;
+import static seedu.duke.common.Messages.MESSAGE_ADD_RECORD;
+import static seedu.duke.common.Messages.MESSAGE_ADD_MEDICINE;
+import static seedu.duke.common.Messages.MESSAGE_BYE_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_CLOSEST_SEARCH_RESULT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_MED_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_NOK_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_DELETE_ELDERLY_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_DELETE_ELDERLY_SUCCESSFUL;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_CONDITIONS;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_DOCTOR;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_NOTES_ON_CARE;
+import static seedu.duke.common.Messages.MESSAGE_FILE_DOES_NOT_EXISTS;
+import static seedu.duke.common.Messages.MESSAGE_FILE_EXISTS;
+import static seedu.duke.common.Messages.MESSAGE_FILE_WRONG_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_HELP_MENU_INTRO;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_SEARCH_TERM;
+import static seedu.duke.common.Messages.MESSAGE_LIST_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_VIEW_NOK_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_RECORD_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_VIEW_RECORD_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_VIEW_MED_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_APPOINTMENT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_APPOINTMENT_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_VIEW_APPOINTMENT_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_QUERY_RESULTS_INTRO;
+import static seedu.duke.common.Messages.MESSAGE_WELCOME;
+import static seedu.duke.common.Messages.MESSAGE_PROMPT;
 import static seedu.duke.common.Messages.LOGO;
-import static seedu.duke.common.Messages.GOODBYE_MESSAGE;
-import static seedu.duke.common.Messages.INVALID_COMMAND_MESSAGE;
-import static seedu.duke.common.Messages.ADD_ELDERLY_MESSAGE;
-import static seedu.duke.common.Messages.NO_SUCH_ELDERLY_MESSAGE;
-import static seedu.duke.common.Messages.ADD_ELDERLY_FORMAT_MESSAGE;
-import static seedu.duke.common.Messages.SET_VACCINATED_MESSAGE;
-import static seedu.duke.common.Messages.SET_BIRTHDAY_MESSAGE;
-import static seedu.duke.common.Messages.SET_BLOOD_PRESSURE_MESSAGE;
-import static seedu.duke.common.Messages.SET_DIET_MESSAGE;
-import static seedu.duke.common.Messages.ENTER_RISK_LEVEL_MESSAGE;
-import static seedu.duke.common.Messages.ENTER_HOSPITAL_MESSAGE;
-import static seedu.duke.common.Messages.SET_MEDICAL_HISTORY_MESSAGE;
-import static seedu.duke.common.Messages.DELETE_MEDICAL_HISTORY_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_GOODBYE;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
+import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY;
+import static seedu.duke.common.Messages.MESSAGE_NO_SUCH_ELDERLY;
+import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_SET_VACCINATED;
+import static seedu.duke.common.Messages.MESSAGE_SET_BIRTHDAY;
+import static seedu.duke.common.Messages.MESSAGE_SET_BLOOD_PRESSURE;
+import static seedu.duke.common.Messages.MESSAGE_SET_DIET;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_RISK_LEVEL;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_HOSPITAL;
+import static seedu.duke.common.Messages.MESSAGE_SET_MEDICAL_HISTORY;
+import static seedu.duke.common.Messages.MESSAGE_DELETE_MEDICAL_HISTORY;
 
 public class TextUi {
     private final Scanner in;
@@ -78,7 +77,7 @@ public class TextUi {
      */
     public void printWelcomeMessage() {
         out.println(LOGO);
-        out.println(WELCOME_MESSAGE);
+        out.println(MESSAGE_WELCOME);
     }
 
     /**
@@ -87,7 +86,7 @@ public class TextUi {
      * @return Line entered by the user.
      */
     public String getUserInput() {
-        out.print(PROMPT_MESSAGE);
+        out.print(MESSAGE_PROMPT);
         String input = in.nextLine();
         // Keep getting input until it is not empty
         while (input.trim().isEmpty()) {
@@ -100,49 +99,49 @@ public class TextUi {
      * Prints Goodbye message to user.
      */
     public void printGoodByeMessage() {
-        out.println(GOODBYE_MESSAGE);
+        out.println(MESSAGE_GOODBYE);
     }
 
     /**
      * Prints to the screen that you don't understand the commands.
      */
     public void printUnknownCommandMessage() {
-        out.println(INVALID_COMMAND_MESSAGE);
+        out.println(MESSAGE_INVALID_COMMAND);
     }
 
     /**
      * Prints to the screen asking for elderly risk level.
      */
     public void printEnterRiskLevelMessage() {
-        out.println(ENTER_RISK_LEVEL_MESSAGE);
+        out.println(MESSAGE_ENTER_RISK_LEVEL);
     }
 
     /**
      * Prints to the screen asking for hospital choice.
      */
     public void printEnterHospitalMessage() {
-        out.println(ENTER_HOSPITAL_MESSAGE);
+        out.println(MESSAGE_ENTER_HOSPITAL);
     }
 
     /**
      * Prints to the screen asking for conditions.
      */
     public void printEnterConditionsMessage() {
-        out.println(ENTER_CONDITIONS_MESSAGE);
+        out.println(MESSAGE_ENTER_CONDITIONS);
     }
 
     /**
      * Prints to the screen asking for notes on care.
      */
     public void printEnterNotesOnCareMessage() {
-        out.println(ENTER_NOTES_ON_CARE_MESSAGE);
+        out.println(MESSAGE_ENTER_NOTES_ON_CARE);
     }
 
     /**
      * Prints to the screen asking for doctor choice.
      */
     public void printEnterDoctorMessage() {
-        out.println(ENTER_DOCTOR_MESSAGE);
+        out.println(MESSAGE_ENTER_DOCTOR);
     }
 
 
@@ -150,42 +149,42 @@ public class TextUi {
      * Prints Add Elderly message to user.
      */
     public void printAddElderlyMessage() {
-        out.println(ADD_ELDERLY_MESSAGE);
+        out.println(MESSAGE_ADD_ELDERLY);
     }
 
     /**
      * Prints that the elderly name given is not in system.
      */
     public void printNoSuchElderly() {
-        out.println(NO_SUCH_ELDERLY_MESSAGE);
+        out.println(MESSAGE_NO_SUCH_ELDERLY);
     }
 
     /**
      * Prints the correct format for addelderly.
      */
     public void printInvalidAddElderlyMessage() {
-        out.println(ADD_ELDERLY_FORMAT_MESSAGE);
+        out.println(MESSAGE_ADD_ELDERLY_FORMAT);
     }
 
     /**
      * Prints acknowledgement of appointment added to user.
      */
     public void printAddAppointmentMessage() {
-        out.println(ADD_APPOINTMENT_MESSAGE);
+        out.println(MESSAGE_ADD_APPOINTMENT);
     }
 
     /**
      * Prints correct format for viewappt.
      */
     public void printInvalidViewAppointmentMessage() {
-        out.println(VIEW_APPOINTMENT_FORMAT_MESSAGE);
+        out.println(MESSAGE_VIEW_APPOINTMENT_FORMAT);
     }
 
     /**
      * Prints the correct format for addappt.
      */
     public void printInvalidAddAppointmentMessage() {
-        out.println(ADD_APPOINTMENT_FORMAT_MESSAGE);
+        out.println(MESSAGE_ADD_APPOINTMENT_FORMAT);
     }
 
 
@@ -193,84 +192,84 @@ public class TextUi {
      * Prints acknowledgement of medicine added to user.
      */
     public void printAddMedicineMessage() {
-        out.println(ADD_MEDICINE_MESSAGE);
+        out.println(MESSAGE_ADD_MEDICINE);
     }
 
     /**
      * Prints correct format for viewmed.
      */
     public void printInvalidViewMedicineMessage() {
-        out.println(VIEW_MED_FORMAT_MESSAGE);
+        out.println(MESSAGE_VIEW_MED_FORMAT);
     }
 
     /**
      * Prints the correct format for addmed.
      */
     public void printInvalidAddMedicineMessage() {
-        out.println(ADD_MED_FORMAT_MESSAGE);
+        out.println(MESSAGE_ADD_MED_FORMAT);
     }
 
     /**
      * Prints acknowledgement of NOK added to user.
      */
     public void printAddNokMessage() {
-        out.println(ADD_NOK_MESSAGE);
+        out.println(MESSAGE_ADD_NOK);
     }
 
     /**
      * Prints the correct format for addnok.
      */
     public void printInvalidAddNokMessage() {
-        out.println(ADD_NOK_FORMAT_MESSAGE);
+        out.println(MESSAGE_ADD_NOK_FORMAT);
     }
 
     /**
      * Prints the correct format for viewnok.
      */
     public void printInvalidViewNokMessage() {
-        out.println(VIEW_NOK_FORMAT_MESSAGE);
+        out.println(MESSAGE_VIEW_NOK_FORMAT);
     }
 
     /**
      * Prints acknowledgement of record added to user.
      */
     public void printAddRecordMessage() {
-        out.println(ADD_RECORD_MESSAGE);
+        out.println(MESSAGE_ADD_RECORD);
     }
 
     /**
      * Prints the correct format for addrec.
      */
     public void printInvalidAddRecordMessage() {
-        out.println(ADD_RECORD_FORMAT_MESSAGE);
+        out.println(MESSAGE_ADD_RECORD_FORMAT);
     }
 
     /**
      * Prints the correct format for viewrec.
      */
     public void printInvalidViewRecordMessage() {
-        out.println(VIEW_RECORD_FORMAT_MESSAGE);
+        out.println(MESSAGE_VIEW_RECORD_FORMAT);
     }
 
     /**
      * Prints acknowledgement of Vaccination status added to user.
      */
     public void printSetVaccinationMessage(Elderly elderly) {
-        out.printf(SET_VACCINATED_MESSAGE, elderly.getName());
+        out.printf(MESSAGE_SET_VACCINATED, elderly.getName());
     }
 
     /**
      * Prints acknowledgement of birthday added to user.
      */
     public void printSetBirthdayMessage(Elderly elderly) {
-        out.printf(SET_BIRTHDAY_MESSAGE, elderly.getName(), elderly.getBirthday());
+        out.printf(MESSAGE_SET_BIRTHDAY, elderly.getName(), elderly.getBirthday());
     }
 
     /**
      * Prints acknowledgement of blood pressure added to user.
      */
     public void printSetBloodPressureMessage(Elderly elderly) {
-        out.printf(SET_BLOOD_PRESSURE_MESSAGE, elderly.getName(),
+        out.printf(MESSAGE_SET_BLOOD_PRESSURE, elderly.getName(),
                 elderly.getBloodPressure()[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
                 elderly.getBloodPressure()[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
     }
@@ -288,21 +287,21 @@ public class TextUi {
      * Prints acknowledgement of dietary preference of elderly added to user.
      */
     public void printSetDietMessage(Elderly elderly) {
-        out.printf(SET_DIET_MESSAGE, elderly.getName(), elderly.getDiet());
+        out.printf(MESSAGE_SET_DIET, elderly.getName(), elderly.getDiet());
     }
 
     /**
      * Prints acknowledgement of the medical history of the elderly is updated.
      */
     public void printAddMedicalHistoryMessage(Elderly elderly) {
-        out.printf(SET_MEDICAL_HISTORY_MESSAGE, elderly.getName());
+        out.printf(MESSAGE_SET_MEDICAL_HISTORY, elderly.getName());
     }
 
     /**
      * Prints acknowledgement of the medical history of the elderly is updated.
      */
     public void printDeleteMedicalHistoryMessage(Elderly elderly) {
-        out.printf(DELETE_MEDICAL_HISTORY_MESSAGE, elderly.getName());
+        out.printf(MESSAGE_DELETE_MEDICAL_HISTORY, elderly.getName());
     }
 
     /**
@@ -332,7 +331,7 @@ public class TextUi {
      * @param searchTerm String containing medicine query by user.
      */
     public void printQueryResultsIntroString(String searchTerm) {
-        out.printf(QUERY_RESULTS_INTRO_MESSAGE, searchTerm);
+        out.printf(MESSAGE_QUERY_RESULTS_INTRO, searchTerm);
     }
 
     /**
@@ -341,19 +340,19 @@ public class TextUi {
     public void printHelpMenu() {
         out.println();
         out.println(String.join(System.lineSeparator(),
-                HELP_MENU_INTRO_MESSAGE,
-                ADD_ELDERLY_FORMAT_MESSAGE,
-                ADD_MED_FORMAT_MESSAGE,
-                VIEW_MED_FORMAT_MESSAGE,
-                ADD_APPOINTMENT_FORMAT_MESSAGE,
-                VIEW_APPOINTMENT_FORMAT_MESSAGE,
-                ADD_NOK_FORMAT_MESSAGE,
-                VIEW_NOK_FORMAT_MESSAGE,
-                ADD_RECORD_FORMAT_MESSAGE,
-                VIEW_RECORD_FORMAT_MESSAGE,
-                DELETE_ELDERLY_FORMAT_MESSAGE,
-                LIST_FORMAT_MESSAGE,
-                BYE_FORMAT_MESSAGE
+                MESSAGE_HELP_MENU_INTRO,
+                MESSAGE_ADD_ELDERLY_FORMAT,
+                MESSAGE_ADD_MED_FORMAT,
+                MESSAGE_VIEW_MED_FORMAT,
+                MESSAGE_ADD_APPOINTMENT_FORMAT,
+                MESSAGE_VIEW_APPOINTMENT_FORMAT,
+                MESSAGE_ADD_NOK_FORMAT,
+                MESSAGE_VIEW_NOK_FORMAT,
+                MESSAGE_ADD_RECORD_FORMAT,
+                MESSAGE_VIEW_RECORD_FORMAT,
+                MESSAGE_DELETE_ELDERLY_FORMAT,
+                MESSAGE_LIST_FORMAT,
+                MESSAGE_BYE_FORMAT
         ));
     }
 
@@ -363,7 +362,7 @@ public class TextUi {
      * @param closestMatch String containing the closest match.
      */
     public void printClosestMatch(String closestMatch) {
-        out.printf(CLOSEST_SEARCH_RESULT_MESSAGE, closestMatch);
+        out.printf(MESSAGE_CLOSEST_SEARCH_RESULT, closestMatch);
     }
 
     /**
@@ -372,7 +371,7 @@ public class TextUi {
      * @param searchTerm String containing search Term.
      */
     public void printCannotFindQuery(String searchTerm) {
-        out.printf(INVALID_SEARCH_TERM_MESSAGE, searchTerm);
+        out.printf(MESSAGE_INVALID_SEARCH_TERM, searchTerm);
     }
 
     /**
@@ -381,7 +380,7 @@ public class TextUi {
      * @param searchTerm String containing search Term.
      */
     public void printDeleteByName(String searchTerm) {
-        out.printf(DELETE_ELDERLY_SUCCESSFUL_MESSAGE, searchTerm);
+        out.printf(MESSAGE_DELETE_ELDERLY_SUCCESSFUL, searchTerm);
     }
 
     /**
@@ -399,7 +398,7 @@ public class TextUi {
      * @param newFilePath String containing the filepath.
      */
     public void printFileExists(String newFilePath) {
-        out.printf(FILE_EXISTS_MESSAGE, newFilePath);
+        out.printf(MESSAGE_FILE_EXISTS, newFilePath);
     }
 
     /**
@@ -408,13 +407,13 @@ public class TextUi {
      * @param newFilePath String containing the new filepath.
      */
     public void printFileDoesNotExists(String newFilePath) {
-        out.printf(FILE_DOES_NOT_EXISTS_MESSAGE, newFilePath);
+        out.printf(MESSAGE_FILE_DOES_NOT_EXISTS, newFilePath);
     }
 
     /**
      * Prints that the file is in the wrong file format.
      */
     public void printWrongFileSyntax() {
-        out.println(FILE_WRONG_FORMAT_MESSAGE);
+        out.println(MESSAGE_FILE_WRONG_FORMAT);
     }
 }

@@ -1,10 +1,10 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.INVALID_HOSPITAL_INDEX_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_HOSPITAL_INDEX;
 
 public class HospitalIndexException extends DukeException {
     public HospitalIndexException() {
-        super(INVALID_HOSPITAL_INDEX_MESSAGE);
+        super(MESSAGE_INVALID_HOSPITAL_INDEX);
     }
 
 }

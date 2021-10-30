@@ -1,9 +1,9 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.FIND_BY_MED_FORMAT_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_FIND_BY_MED_FORMAT;
 
 public class InvalidViewMedicineException extends InvalidInputException {
     public InvalidViewMedicineException() {
-        super(FIND_BY_MED_FORMAT_MESSAGE);
+        super(MESSAGE_FIND_BY_MED_FORMAT);
     }
 }

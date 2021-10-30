@@ -1,10 +1,10 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.NO_SUCH_ELDERLY_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_NO_SUCH_ELDERLY;
 
 public class ElderlyNotFoundException extends DukeException {
     public ElderlyNotFoundException() {
-        super(NO_SUCH_ELDERLY_MESSAGE);
+        super(MESSAGE_NO_SUCH_ELDERLY);
     }
 
 }

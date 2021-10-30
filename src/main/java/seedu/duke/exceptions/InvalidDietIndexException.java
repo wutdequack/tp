@@ -1,9 +1,9 @@
 package seedu.duke.exceptions;
 
-import static seedu.duke.common.Messages.ERROR_IN_DIET_INDEX_MESSAGE;
+import static seedu.duke.common.Messages.MESSAGE_ERROR_IN_DIET_INDEX;
 
 public class InvalidDietIndexException extends InvalidInputException {
     public InvalidDietIndexException() {
-        super(ERROR_IN_DIET_INDEX_MESSAGE);
+        super(MESSAGE_ERROR_IN_DIET_INDEX);
     }
 }

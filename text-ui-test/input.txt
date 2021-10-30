@@ -4,11 +4,11 @@ addelderly u/tan n/tan bo jiao r/m
 cataract
 remind to relax his eyes when gazed into newspaper for long
 addelderly u/lim n/lim ah seng r/l
-addmed n/tan m/panadol f/once a day
-addmed n/tan m/azheitynine f/every hour
-viewmed n/tan
-viewmed n/lim
-addappt n/tan l/ktph d/01012021 t/1000 p/eyecheckup
-addappt n/tan l/ktph d/02022021 t/1500
-viewappt n/tan
+addmed u/tan m/panadol f/once a day
+addmed u/tan m/azheitynine f/every hour
+viewmed u/tan
+viewmed u/lim
+addappt u/tan l/ktph d/01012021 t/1000 p/eyecheckup
+addappt u/tan l/ktph d/02022021 t/1500
+viewappt u/tan
 bye
