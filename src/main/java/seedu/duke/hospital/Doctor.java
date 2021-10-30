@@ -2,8 +2,8 @@ package seedu.duke.hospital;
 
 public class Doctor {
 
-    private String name;
-    private Integer number;
+    private final String name;
+    private final Integer number;
 
     public Doctor(String name, Integer number) {
         this.name = name;
