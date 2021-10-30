@@ -41,7 +41,7 @@ public abstract class Elderly {
     protected ArrayList<NextOfKin> nextofkins = new ArrayList<>();
     protected ArrayList<Record> records = new ArrayList<>();
 
-    protected String username;
+    protected final String username;
     protected String name;
 
     protected double[] bloodPressure;
@@ -102,11 +102,11 @@ public abstract class Elderly {
         nextofkins.add(nextofkin);
     }
 
-    public Optional<NextOfKin> removeNok(String nextofkin) {
+    public Optional<NextOfKin> removeNok(String nextOfkin) {
         NextOfKin deleteNok;
         for (NextOfKin nok : nextofkins) {
             String currentNokName = nok.nokName.toLowerCase();
-            if (currentNokName.contentEquals(nextofkin.toLowerCase())) {
+            if (currentNokName.contentEquals(nextOfkin.toLowerCase())) {
                 deleteNok = nok;
                 nextofkins.remove(nok);
                 return Optional.of(deleteNok);
