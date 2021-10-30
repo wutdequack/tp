@@ -138,14 +138,14 @@ public class ElderlyList {
     }
 
     /**
-     * Checks in current list if current elderly exists.
-     * @param inputElderlyName String containing elderly name to check with
+     * Checks in current list if current elderly username exists.
+     * @param inputElderlyName String containing elderly username to check with
      * @return Boolean value if elderly exists in array list
      */
     private boolean elderlyExists(String inputElderlyName) {
         return elderlyArrayList
                 .stream()
-                .anyMatch(s -> s.getName().equals(inputElderlyName));
+                .anyMatch(s -> s.getUsername().equals(inputElderlyName));
     }
 
     /**
@@ -165,8 +165,8 @@ public class ElderlyList {
             if (!re.isValidRiskLevel(riskLevel)) {
                 throw new InvalidRiskLevelException();
             }
-            // If Elderly exists, reject addition
-            if (!elderlyExists(elderlyName)) {
+            // If Elderly username exists, reject addition
+            if (elderlyExists(userName)) {
                 throw new DuplicateElderlyException();
             }
             if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
