@@ -3,8 +3,8 @@ package seedu.duke.hospital;
 import java.util.ArrayList;
 
 public class Hospital {
-    private String name;
-    private Integer number;
+    private final String name;
+    private final Integer number;
     protected ArrayList<Doctor> doctorArrayList = new ArrayList<Doctor>();
 
     public Hospital(String name, Integer number) {
