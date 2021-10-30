@@ -27,6 +27,7 @@ import seedu.duke.common.Record;
 
 import seedu.duke.exceptions.DoctorIndexException;
 import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.DuplicateElderlyException;
 import seedu.duke.exceptions.ElderlyNotFoundException;
 import seedu.duke.exceptions.HospitalIndexException;
 import seedu.duke.exceptions.InvalidAddMedicineFormatException;
@@ -137,6 +138,17 @@ public class ElderlyList {
     }
 
     /**
+     * Checks in current list if current elderly exists.
+     * @param inputElderlyName String containing elderly name to check with
+     * @return Boolean value if elderly exists in array list
+     */
+    private boolean elderlyExists(String inputElderlyName) {
+        return elderlyArrayList
+                .stream()
+                .anyMatch(s -> s.getName().equals(inputElderlyName));
+    }
+
+    /**
      * Adds the elderly into the elderly array list, together with risk level and additional info if required.
      *
      * @param userLine Line that is inputted by the user.
@@ -152,6 +164,10 @@ public class ElderlyList {
             String riskLevel = paramList[INDEX_OF_RISK_LEVEL].toUpperCase();
             if (!re.isValidRiskLevel(riskLevel)) {
                 throw new InvalidRiskLevelException();
+            }
+            // If Elderly exists, reject addition
+            if (!elderlyExists(elderlyName)) {
+                throw new DuplicateElderlyException();
             }
             if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
                 hospitalArrayList.printHospitalNames();
