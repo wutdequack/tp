@@ -120,6 +120,10 @@ public class Messages {
      */
     public static final String MESSAGE_ADD_APPOINTMENT = "[*] Appointment has been added!";
 
+    public static final String MESSAGE_INVALID_DATE = "[*] Date is invalid!";
+
+    public static final String MESSAGE_INVALID_TIME = "[*] Time is invalid!";
+
     /**
      * Used when invalid addappt is typed.
      */
