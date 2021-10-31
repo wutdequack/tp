@@ -73,30 +73,16 @@ implemented in the future to help improve the usability and convenience of the o
 
 Below is the Sequence Diagram for creating new objects which will be stored in `ElderlyList` Class
 
-![Screenshot](https://user-images.githubusercontent.com/70097982/139526145-d7799397-e8b9-4a8d-a914-ce686d9d80c4.png)
-1. When the Add Command is entered by the user, the addCommand() function is invoked in `ElderlyList` class.
-2. `ElderlyList` object will invoke getElderly() to get the relevant elderly to add the information provided by the user.
-3. `ElderlyList` class then calls addCommand() on `Elderly` object.
-4. `CommandResult` object is then created and the information entered by the user will be stored in the object when 
-CommandResult() constructor is invoked.
-5. `Elderly` object then invokes printAddComandResultMessage() to `TextUi` class, which prints the relevant 
-acknowledgement message that there is a new `CommandResult` object created.
+![Screenshot](https://user-images.githubusercontent.com/70097982/139586495-45934bf6-b33e-416d-9d52-065a209f86ee.png)
+
 
 ### Deletion of Objects Stored in ElderlyList Class
 #### Design and Implementation
 
 Below is the Sequence Diagram for deletion of objects which are stored in `ElderlyList` class
 
-![Screenshot](https://user-images.githubusercontent.com/70097982/139526370-2ef14eed-97b1-4aaa-bb95-d81ed7d8b00a.png)
-1. When the Delete Command is entered by the user, the deleteCommand() function in `ElderlyList` class is invoked.
-2. `ElderlyList` object will then invoke getElderly() which will return the relevant elderly that the user has 
-specified.
-3. `ElderlyList` object then invokes removeResult() function which finds the specified result in the `CommandResult` 
-object that is specified by the user.
-4. The deletedResult will be returned to `ElderlyList` object, before the `CommandResult` object is deleted.
-5. If the deletedResult is not empty (ifPresent is true), printDeletedResult() function in `ElderlyList` object is 
-invoked.
-6. Else the deletedResult is empty, printNoResult() will be invoked instead.
+![Screenshot](https://user-images.githubusercontent.com/70097982/139586603-43812b5e-6c50-4ee5-8d8e-492925c3101b.png)
+
 
 ### Elderly risk categorisation
 #### Implementation
