@@ -118,7 +118,7 @@ Example of usage:
 ### Viewing medicine of an elderly: `viewmed`
 Views all medicine of an existing elderly.
 
-Format: `viewmed n/USERNAME`
+Format: `viewmed u/USERNAME`
 
 * The `USERNAME`  only can contain characters or numbers.
 
@@ -321,10 +321,10 @@ Of course, you are welcome to upgrade this to make it more scalable! :D
 |Command|Format|
 |---|---|
 |Add elderly |`addelderly u/USERNAME n/NAME`|
-|Add medicine |`addmed n/USERNAME m/MEDICINE_NAME f/FREQUENCY`|
-|Add appointment |`addappt n/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`|
-|View medicine |`viewmed n/USERNAME`|
-|View appointment |`viewappt n/USERNAME`|
+|Add medicine |`addmed u/USERNAME m/MEDICINE_NAME f/FREQUENCY`|
+|Add appointment |`addappt u/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`|
+|View medicine |`viewmed u/USERNAME`|
+|View appointment |`viewappt u/USERNAME`|
 |Set diet |`setdiet u/USER_NAME`|
 |View dietary preference |`viewdiet u/USER_NAME`|
 |Set birthday |`setbirthday u/USER_NAME b/BIRHTDAY`|
