@@ -32,6 +32,7 @@ import static seedu.duke.common.Messages.MESSAGE_DELETE_MEDICINE_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_NOK_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_DELETION_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_ENTER_CONDITIONS;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_DATE;
 import static seedu.duke.common.Messages.MESSAGE_ENTER_DOCTOR;
 import static seedu.duke.common.Messages.MESSAGE_ENTER_NOTES_ON_CARE;
 import static seedu.duke.common.Messages.MESSAGE_FILE_DOES_NOT_EXISTS;
@@ -68,6 +69,7 @@ import static seedu.duke.common.Messages.MESSAGE_PROMPT;
 import static seedu.duke.common.Messages.LOGO;
 import static seedu.duke.common.Messages.MESSAGE_GOODBYE;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_TIME;
 import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY;
 import static seedu.duke.common.Messages.MESSAGE_NO_SUCH_ELDERLY;
 import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY_FORMAT;
@@ -198,6 +200,14 @@ public class TextUi {
      */
     public void printAddAppointmentMessage() {
         out.println(MESSAGE_ADD_APPOINTMENT);
+    }
+
+    public void printInvalidDateMessage() {
+        out.println(MESSAGE_INVALID_DATE);
+    }
+
+    public void printInvalidTimeMessage() {
+        out.println(MESSAGE_INVALID_TIME);
     }
 
     /**
