@@ -911,7 +911,7 @@ Of course, you are welcome to upgrade this to make it more scalable! :D
 |Help |`help`|
 |Bye |`bye`|
 |Find elderly by medication taken |`findbymed m/MEDICINE_NAME`|
-|Find elderly by dietary preference |`findbydiet m/DIET`|
+|Find elderly by dietary preference |`findbydiet d/DIET`|
 |Get elderly records given real name |`findbyname n/NAME`|
 |Delete elderly |`deleteelderly u/USERNAME`|
 |Delete medicine |`deletemed u/USERNAME m/MEDICINE_NAME`|
