@@ -1,5 +1,6 @@
 package seedu.duke.common;
 
+import static seedu.duke.common.MagicValues.DEFAULT_FILE_PATH;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.LENGTH_OF_BLOOS_PRESSURE_ARRAY;
@@ -10,10 +11,12 @@ import static seedu.duke.common.MagicValues.INPUT_BEEF_FREE;
 import static seedu.duke.common.MagicValues.INPUT_DIABETES;
 import static seedu.duke.common.MagicValues.INPUT_NO_RESTRICTIONS;
 
+import static seedu.duke.common.MagicValues.VALUE_DEFAULT_BP;
 import static seedu.duke.common.Messages.MESSAGE_APPOINTMENTS;
 import static seedu.duke.common.Messages.MESSAGE_BIRTHDAY;
 import static seedu.duke.common.Messages.MESSAGE_MEDICINES;
 import static seedu.duke.common.Messages.MESSAGE_NOKS;
+import static seedu.duke.common.Messages.MESSAGE_NO_BLOOD_PRESSURE;
 import static seedu.duke.common.Messages.MESSAGE_OVERALL_ELDERLY;
 import static seedu.duke.common.Messages.MESSAGE_RECORDS;
 import static seedu.duke.common.Messages.MESSAGE_VACCINATED;
@@ -44,7 +47,7 @@ public abstract class Elderly {
     protected final String username;
     protected String name;
 
-    protected Integer[] bloodPressure;
+    protected Integer[] bloodPressure = new Integer[2];
     protected boolean isVaccinated;
     protected Date birthday;
     protected DietaryPreference diet;
@@ -60,6 +63,8 @@ public abstract class Elderly {
         medicalHistory = new String();
         diet = DietaryPreference.NOT_SET;
         typeName = getClass().getName();
+        bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY] = VALUE_DEFAULT_BP;
+        bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY] = VALUE_DEFAULT_BP;
     }
 
     /**
@@ -186,8 +191,8 @@ public abstract class Elderly {
         isVaccinated = true;
     }
 
-    public void updateVaccinationStatus(boolean vaccinated) {
-        isVaccinated = vaccinated;
+    public Boolean isBloodPressureSet() {
+        return bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY] != VALUE_DEFAULT_BP;
     }
 
     public boolean isVaccinated() {
@@ -333,6 +338,14 @@ public abstract class Elderly {
                 .map(Objects::toString)
                 .reduce((t, u) -> t + '\n' + u)
                 .orElse("");
+        String bloodPressureString = "";
+        if (!isBloodPressureSet()) {
+            bloodPressureString = String.format(MESSAGE_NO_BLOOD_PRESSURE, name);
+        } else {
+            bloodPressureString =  String.format("Blood pressure of %s is now (%d %d)%n", name,
+                    bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
+                    bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
+        }
         String vaccinatedString = String.format(MESSAGE_VACCINATED, username,
                 isVaccinated ? "Vaccinated" : "Not vaccinated");
         String birthdayString = String.format(MESSAGE_BIRTHDAY, username,
@@ -344,7 +357,7 @@ public abstract class Elderly {
                 listOfMedicinesString);
         String combinedListOfNoksString = String.format(MESSAGE_NOKS, username,
                 listOfNoksString);
-        return String.format(MESSAGE_OVERALL_ELDERLY, username, name, vaccinatedString,
+        return String.format(MESSAGE_OVERALL_ELDERLY, username, name, vaccinatedString, bloodPressureString,
                 birthdayString, combinedListofRecordsString,
                 combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString);
     }

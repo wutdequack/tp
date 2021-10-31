@@ -103,13 +103,16 @@ import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.SIMILARITY_INDEX;
 import static seedu.duke.common.MagicValues.SPLIT_STORE_FILE;
+import static seedu.duke.common.MagicValues.VALUE_DEFAULT_BP;
 import static seedu.duke.common.MagicValues.parser;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.re;
 import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 
+import static seedu.duke.common.Messages.MESSAGE_NO_BLOOD_PRESSURE;
 import static seedu.duke.common.Messages.MESSAGE_NUMBER_OF_ELDERLY;
+import static seedu.duke.common.Messages.MESSAGE_SET_BLOOD_PRESSURE;
 
 
 public class ElderlyList {
@@ -632,9 +635,13 @@ public class ElderlyList {
 
     private void printBloodPressure(Elderly elderly) {
         Integer[] bloodPressure = elderly.getBloodPressure();
-        System.out.printf("Blood pressure of %s is now (%d %d)%n", elderly.getUsername(),
-                bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
-                bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
+        if (!elderly.isBloodPressureSet()) {
+            System.out.printf(MESSAGE_NO_BLOOD_PRESSURE, elderly.getName());
+        } else {
+            System.out.printf("Blood pressure of %s is now (%d %d)%n", elderly.getName(),
+                    bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
+                    bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
+        }
     }
 
     /**

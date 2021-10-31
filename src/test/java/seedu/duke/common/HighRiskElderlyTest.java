@@ -32,10 +32,11 @@ public class HighRiskElderlyTest {
 
     @Test
     void testElderlyToString() {
-        assertEquals(hotchic31.toString(), "[*] Elderly Username: yqt69\n"
+        assertEquals(hotchic31.toString(), "[*] Risk Level : HIGH\n"
+                + "[*] Elderly Username: yqt69\n"
                 + "[*] Elderly Name: Yang Qing Ting\n"
-                + "[*] Risk Level : HIGH\n"
                 + "[*] Vaccination status of yqt69: Not vaccinated\n"
+                + "[*] Blood pressure of Yang Qing Ting has not yet been set!\n\n"
                 + "[*] Birthday of yqt69: Not Recorded\n"
                 + "[*] Here are yqt69's records:\n"
                 + "\n"
@@ -55,7 +56,7 @@ public class HighRiskElderlyTest {
                 + "\n"
                 + "[*] Conditions of elderly yqt69 : amnesia, lung cancer\n"
                 + "\n"
-                + "[*] Doctors for yqt69 :\n"
+                + "[*] Doctor for yqt69 :\n"
                 + "peter gang (Doctor Name)\n"
                 + "94501442 (Doctor Number)\n"
                 + "\n"
