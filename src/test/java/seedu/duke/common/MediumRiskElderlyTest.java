@@ -28,10 +28,11 @@ public class MediumRiskElderlyTest {
 
     @Test
     void testElderlyToString() {
-        assertEquals(hotchic31.toString(), "[*] Elderly Username: hotchic31\n"
+        assertEquals(hotchic31.toString(), "[*] Risk Level : MEDIUM\n"
+                + "[*] Elderly Username: hotchic31\n"
                 + "[*] Elderly Name: Owin Soh\n"
-                + "[*] Risk Level : MEDIUM\n"
                 + "[*] Vaccination status of hotchic31: Not vaccinated\n"
+                + "[*] Blood pressure of Owin Soh has not yet been set!\n\n"
                 + "[*] Birthday of hotchic31: Not Recorded\n"
                 + "[*] Here are hotchic31's records:\n"
                 + "\n"

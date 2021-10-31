@@ -58,7 +58,7 @@ public class Messages {
      * Used when invalid set blood pressure.
      */
     public static final String MESSAGE_INVALID_SET_BLOOD_PRESSURE = "[!] Set blood "
-            + "pressure format: setbloodpressure u/[username] s/[systolic pressure] d/[diastolic pressure]";
+            + "pressure format: setbloodpressure u/USERNAME s/SYSTOLIC_PRESSURE d/DIASTOLIC_PRESSURE";
 
     /**
      * Used when duplicate elderly name is found in database.
@@ -113,7 +113,7 @@ public class Messages {
      * Used when invalid addelderly is typed.
      */
     public static final String MESSAGE_ADD_ELDERLY_FORMAT =
-            "[*] Add Elderly format: addelderly u/[username] n/[real name] r/[risk level]";
+            "[*] Add Elderly format: addelderly u/USERNAME n/NAME r/RISK_LEVEL";
 
     /**
      * Used when appointment has been added.
@@ -123,13 +123,13 @@ public class Messages {
     /**
      * Used when invalid addappt is typed.
      */
-    public static final String MESSAGE_ADD_APPOINTMENT_FORMAT = "[*] Add Appointment format: addappt u/[username] "
-            + "l/[location] d/[date] t/[time] {p/[purpose]}";
+    public static final String MESSAGE_ADD_APPOINTMENT_FORMAT = "[*] Add Appointment format: addappt u/USERNAME "
+            + "l/LOCATION d/DATE t/TIME p/[PURPOSE]";
 
     /**
      * Used when invalid viewappt is typed.
      */
-    public static final String MESSAGE_VIEW_APPOINTMENT_FORMAT = "[*] View Appointment format: viewappt u/[username]";
+    public static final String MESSAGE_VIEW_APPOINTMENT_FORMAT = "[*] View Appointment format: viewappt u/USERNAME";
 
     /**
      * Used when medicine has been added.
@@ -139,33 +139,36 @@ public class Messages {
     /**
      * Used when invalid addmed is typed.
      */
-    public static final String MESSAGE_ADD_MED_FORMAT = "[*] Add Medicine format: addmed u/[username] m/[medicine "
-            + "name] f/[frequency]";
+    public static final String MESSAGE_ADD_MED_FORMAT = "[*] Add Medicine format: addmed u/USERNAME m/MEDICINE_NAME"
+            + " f/FREQUENCY";
 
     /**
      * Used when invalid viewmed is typed.
      */
-    public static final String MESSAGE_VIEW_MED_FORMAT = "[*] View Medicine format: viewmed u/[username]";
+    public static final String MESSAGE_VIEW_MED_FORMAT = "[*] View Medicine format: viewmed u/USERNAME";
 
     /**
      * Used when invalid addnok is typed.
      */
-    public static final String MESSAGE_ADD_NOK_FORMAT = "[*] Add Next-Of-Kin information format: addnok u/[username] "
-            + "k/[name of next-of-kin] p/[phone number] e/[email] a/[address] r/[relationship]";
+    public static final String MESSAGE_ADD_NOK_FORMAT = "[*] Add Next-Of-Kin information format: addnok u/USERNAME "
+            + "k/NOKNAME p/NOKPHONE e/NOKEMAIL a/NOKADDR r/NOKRSHIP";
 
     public static final String MESSAGE_DELETE_NOK_FORMAT = "[*] Delete Next-Of-Kin information format: deletenok "
-            + "u/[username] n/[name of next-of-kin]";
+            + "u/USERNAME n/NOKNAME";
 
     public static final String MESSAGE_DELETE_MEDICINE_FORMAT = "[*] Delete medicine format: deletemed "
-            + "u/[username] m/[name of medicine]";
+            + "u/USERNAME m/MEDICINE_NAME";
 
     public static final String MESSAGE_DELETE_APPOINTMENT_FORMAT = "[*] Delete appointment format: deleteappt "
-            + "u/[username] d/[date] t/[time]";
+            + "u/USERNAME d/DATE t/TIME";
+
+    public static final String MESSAGE_DELETE_MEDHISTORY_FORMAT = "[*] Delete medical history format: "
+            + "deletemedicalhistory u/USERNAME";
 
     /**
      * Used when invalid viewnok is typed.
      */
-    public static final String MESSAGE_VIEW_NOK_FORMAT = "[*] View Next-Of-Kin format: viewnok u/[username]";
+    public static final String MESSAGE_VIEW_NOK_FORMAT = "[*] View Next-Of-Kin format: viewnok u/USERNAME";
 
     /**
      * Used when Next-Of_kin has been added.
@@ -182,13 +185,75 @@ public class Messages {
      * Used when invalid addnok is typed.
      */
     public static final String MESSAGE_ADD_RECORD_FORMAT = "[*] Add Elderly Record Information format: addrec "
-            + "u/[username] p/[phone number] a/[address]";
+            + "u/USERNAME p/PHONENUMBER a/HOMEADDRESS";
 
     /**
-     * Used when invalid viewnok is typed.
+     * Used when invalid addmedicalhistory.
+     */
+    public static final String MESSAGE_ADD_MEDHISTORY_FORMAT = "[*] Add Medical History format: addmedicalhistory "
+            + "u/USERNAME";
+
+    /**
+     * Format of setbirthday.
+     */
+    public static final String MESSAGE_ADD_BIRTHDAY_FORMAT = "[*] Set Birthday format: setbirthday "
+            + "u/USERNAME b/BIRTHDAY";
+
+    /**
+     * Format of setvaccination.
+     */
+    public static final String MESSAGE_ADD_VACCINATION_FORMAT = "[*] Set Vaccination format: setvaccination "
+            + "u/USERNAME";
+
+    /**
+     * Format of setdiet.
+     */
+    public static final String MESSAGE_ADD_DIET_FORMAT = "[*] Set Diet format: setdiet "
+            + "u/USERNAME";
+
+    /**
+     * Format of setbloodpressure.
+     */
+    public static final String MESSAGE_ADD_BP_FORMAT = "[*] Set Blood Pressure format: setbloodpressure "
+            + "u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC_PRESSURE";
+
+
+
+    /**
+     * Used when invalid viewrecord is typed.
      */
     public static final String MESSAGE_VIEW_RECORD_FORMAT = "[*] View Elderly Record Information format: "
-            + "viewrec u/[username]";
+            + "viewrec u/USERNAME";
+
+    /**
+     * Used for format of viewmedicalhistory.
+     */
+    public static final String MESSAGE_VIEW_MEDHISTORY_FORMAT = "[*] View Medical History format: "
+            + "viewmedicalhistory u/USERNAME";
+
+    /**
+     * Used for format of viewbirthday.
+     */
+    public static final String MESSAGE_VIEW_BIRTHDAY_FORMAT = "[*] View Birthday format: "
+            + "viewbirthday u/USERNAME";
+
+    /**
+     * Used for format of viewvaccination.
+     */
+    public static final String MESSAGE_VIEW_VACCINATION_FORMAT = "[*] View Vaccination format: "
+            + "viewvaccination u/USERNAME";
+
+    /**
+     * Used for format of viewdiet.
+     */
+    public static final String MESSAGE_VIEW_DIET_FORMAT = "[*] View Diet format: "
+            + "viewdiet u/USERNAME";
+
+    /**
+     * Used for format of viewbloodpressure.
+     */
+    public static final String MESSAGE_VIEW_BP_FORMAT = "[*] View Blood Pressure format: "
+            + "viewbloodpressure u/USERNAME";
 
     /**
      * Used when vaccination status of the elderly is set to be vaccinated.
@@ -204,7 +269,12 @@ public class Messages {
      * Used when blood pressure of the elderly has been updated.
      */
     public static final String MESSAGE_SET_BLOOD_PRESSURE = "[*] Blood pressure of %s has been updated to "
-            + "%d %d!\r\n";
+            + "%d %d!\n";
+
+    /**
+     * Used when blood pressure of the elderly has not been set.
+     */
+    public static final String MESSAGE_NO_BLOOD_PRESSURE = "[*] Blood pressure of %s has not yet been set!\n";
 
     /**
      * Used when dietary preference of the elderly has been updated.
@@ -266,13 +336,10 @@ public class Messages {
     public static final String MESSAGE_MEDICINES = "[*] This is the list of medicine(s):\n%s\n";
     public static final String MESSAGE_NOKS = "[*] These are NOK(s) attached to %s:\n%s\n";
     public static final String MESSAGE_OVERALL_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
-            + "%s\n%s\n%s\n%s\n%s\n%s";
-    public static final String MESSAGE_LOW_RISK_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
-            + "[*] Risk Level : LOW\n%s\n%s\n%s\n%s\n%s\n%s";
-    public static final String MESSAGE_MEDIUM_RISK_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
-            + "[*] Risk Level : MEDIUM\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
-    public static final String MESSAGE_HIGH_RISK_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
-            + "[*] Risk Level : HIGH\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
+            + "%s\n%s\n%s\n%s\n%s\n%s\n%s";
+    public static final String MESSAGE_LOW_RISK_ELDERLY = "[*] Risk Level : LOW\n%s";
+    public static final String MESSAGE_MEDIUM_RISK_ELDERLY = "[*] Risk Level : MEDIUM\n%s\n%s\n%s\n%s";
+    public static final String MESSAGE_HIGH_RISK_ELDERLY = "[*] Risk Level : HIGH\n%s\n%s\n%s\n%s\n%s";
 
     /**
      * Used in querying for information.
@@ -282,39 +349,50 @@ public class Messages {
     /**
      * Used when invalid findbymed is typed.
      */
-    public static final String MESSAGE_FIND_BY_MED_FORMAT = "[*] Find By Medicine format: findbymed m/[medicine "
-            + "name]";
+    public static final String MESSAGE_FIND_BY_MED_FORMAT = "[*] Find By Medicine format: findbymed m/MEDICINE_NAME";
 
     /**
      * Used when invalid findbydiet is typed.
      */
-    public static final String MESSAGE_FIND_BY_DIET_FORMAT = "[*] Find By Diet format: findbydiet d/[diet name]";
+    public static final String MESSAGE_FIND_BY_DIET_FORMAT = "[*] Find By Diet format: findbydiet d/DIET";
 
     /**
      * Used when invalid findbyname is typed.
      */
-    public static final String MESSAGE_FIND_BY_NAME_FORMAT = "[*] Find By Name format: findbyname n/[Real Name]";
+    public static final String MESSAGE_FIND_BY_NAME_FORMAT = "[*] Find By Name format: findbyname n/NAME";
 
     /**
      * Used when invalid deletebyelderly is typed.
      */
-    public static final String MESSAGE_DELETE_ELDERLY_FORMAT = "[*] Delete format: deleteelderly u/[User Name]";
+    public static final String MESSAGE_DELETE_ELDERLY_FORMAT = "[*] Delete format: deleteelderly u/USERNAME";
 
     /**
      * Used when invalid store command is typed.
      */
-    public static final String MESSAGE_STORE_FORMAT = "[*] Store format: store fp/[file path]";
+    public static final String MESSAGE_STORE_FORMAT = "[*] Store format: store fp/FILE";
 
     /**
      * Used when invalid load command is typed.
      */
-    public static final String MESSAGE_LOAD_FORMAT = "[*] Load format: load fp/[file path]";
+    public static final String MESSAGE_LOAD_FORMAT = "[*] Load format: load fp/FILE";
 
     /**
      * Used when printing help command messages.
      */
-    public static final String MESSAGE_HELP_MENU_INTRO = "[*] The following is a list of commands:";
+    public static final String MESSAGE_HELP_MENU = "[*] The following is a list of commands:\nMisc. Commands\n\n%s\n"
+            + "Creation Commands\n\n%s\n"
+            + "Reading Commands\n\n%s\n"
+            + "Filter Commands\n\n%s\n"
+            + "Delete Commands\n\n%s\n"
+            + "File I/O Commands\n\n%s\n";
+    public static final String MESSAGE_CREATION_FORMAT = "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n";
+    public static final String MESSAGE_READING_FORMAT = "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n";
+    public static final String MESSAGE_FILTER_FORMAT = "%s\n%s\n%s\n";
+    public static final String MESSAGE_DELETION_FORMAT = "%s\n%s\n%s\n%s\n%s\n";
+    public static final String MESSAGE_FILE_IO_FORMAT = "%s\n%s\n";
+    public static final String MESSAGE_MISC_FORMAT = "%s\n%s\n%s\n";
     public static final String MESSAGE_BYE_FORMAT = "bye - Quits Program";
+    public static final String MESSAGE_HELP_FORMAT = "help - Prints this help menu";
     public static final String MESSAGE_LIST_FORMAT = "list - List all elderly in the program";
 
     /**

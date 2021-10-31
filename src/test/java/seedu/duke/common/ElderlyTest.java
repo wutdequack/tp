@@ -21,10 +21,11 @@ public class ElderlyTest {
 
     @Test
     void testElderlyToString() {
-        assertEquals(johnTan.toString(), "[*] Elderly Username: johntan123\n"
+        assertEquals(johnTan.toString(), "[*] Risk Level : LOW\n"
+                + "[*] Elderly Username: johntan123\n"
                 + "[*] Elderly Name: John Tan\n"
-                + "[*] Risk Level : LOW\n"
                 + "[*] Vaccination status of johntan123: Not vaccinated\n"
+                + "[*] Blood pressure of John Tan has not yet been set!\n\n"
                 + "[*] Birthday of johntan123: Not Recorded\n"
                 + "[*] Here are johntan123's records:\n"
                 + "\n"
@@ -38,10 +39,11 @@ public class ElderlyTest {
                 + "[*] These are NOK(s) attached to johntan123:\n"
                 + "\n");
         johnTan.setVaccinated();
-        assertEquals(johnTan.toString(), "[*] Elderly Username: johntan123\n"
+        assertEquals(johnTan.toString(), "[*] Risk Level : LOW\n"
+                + "[*] Elderly Username: johntan123\n"
                 + "[*] Elderly Name: John Tan\n"
-                + "[*] Risk Level : LOW\n"
                 + "[*] Vaccination status of johntan123: Vaccinated\n"
+                + "[*] Blood pressure of John Tan has not yet been set!\n\n"
                 + "[*] Birthday of johntan123: Not Recorded\n"
                 + "[*] Here are johntan123's records:\n"
                 + "\n"

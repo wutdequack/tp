@@ -32,7 +32,7 @@ public class MagicValues {
     public static final String VIEW_BIRTHDAY = "VIEWBIRTHDAY";
     public static final String SET_BLOOD_PRESSURE = "SETBLOODPRESSURE";
     public static final String VIEW_BLOOD_PRESSURE = "VIEWBLOODPRESSURE";
-    public static final String SET_VACCINATED = "SETVACCINATED";
+    public static final String SET_VACCINATED = "SETVACCINATION";
     public static final String VIEW_VACCINATION = "VIEWVACCINATION";
     public static final String UPDATE_VACCINATATION_STATUS = "UPDATEVACCINATIONSTATUS";
     public static final String SET_DIET = "SETDIET";
@@ -91,6 +91,7 @@ public class MagicValues {
     public static final int INPUT_BEEF_FREE = 4;
     public static final int INPUT_DIABETES = 5;
     public static final int INPUT_NO_RESTRICTIONS = 6;
+    public static final int VALUE_DEFAULT_BP = -1;
 
     public static final double SIMILARITY_INDEX = 0.8;
 
