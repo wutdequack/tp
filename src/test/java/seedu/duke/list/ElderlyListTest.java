@@ -35,7 +35,7 @@ public class ElderlyListTest {
         elderlyList.addNok("addnok u/limqq369 k/tony p/98765432 e/tony@yahoo.com a/123 yishun st r/son");
         elderlyList.addRecord("addrec u/limqq369 p/98776542 a/234 bukit merah st");
         elderlyList.setBirthday("setbirthday u/limqq369 b/1903-06-09");
-        elderlyList.setBloodPressure("setbloodpressure u/limqq369 s/169.0 d/108.0");
+        elderlyList.setBloodPressure("setbloodpressure u/limqq369 s/169 d/108");
         elderlyList.setVaccinated("setvaccinated u/limqq369");
     }
 
@@ -270,7 +270,7 @@ public class ElderlyListTest {
     @Test
     void bloodPressureTest() {
         try {
-            final double[] expectedOutput = new double[]{169.0, 108.0};
+            final Integer[] expectedOutput = new Integer[]{169, 108};
             assertArrayEquals(expectedOutput,
                     elderlyList.getElderly("limqq369").getBloodPressure());
         } catch (ElderlyNotFoundException e) {

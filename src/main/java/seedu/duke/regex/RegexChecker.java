@@ -98,6 +98,10 @@ public class RegexChecker {
         return Pattern.matches("^load fp/[/a-z0-9.\\\\]+.json$", userLine.toLowerCase());
     }
 
+    public boolean isValidSetBloodPressure(String userLine) {
+        return Pattern.matches("^setbloodpressure u/[a-z0-9]+ s/[0-9]{2,3} d/[0-9]{2,3}$", userLine.toLowerCase());
+    }
+
     /**
      * Takes 2 strings and compare the distance(similarity) between them.
      * @param firstString First String to be compared.

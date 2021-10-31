@@ -39,6 +39,7 @@ import seedu.duke.exceptions.InvalidDeleteMedFormatException;
 import seedu.duke.exceptions.InvalidDeleteNokFormatException;
 import seedu.duke.exceptions.InvalidElderlyFormatException;
 import seedu.duke.exceptions.InvalidLoadFromFilePathException;
+import seedu.duke.exceptions.InvalidSetBloodPressureException;
 import seedu.duke.exceptions.InvalidViewMedicineFormatException;
 import seedu.duke.exceptions.InvalidAddAppointmentFormatException;
 import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
@@ -584,8 +585,8 @@ public class ElderlyList {
     }
 
     private void printBloodPressure(Elderly elderly) {
-        double[] bloodPressure = elderly.getBloodPressure();
-        System.out.printf("Blood pressure of %s is now (%.2f %.2f)%n", elderly.getUsername(),
+        Integer[] bloodPressure = elderly.getBloodPressure();
+        System.out.printf("Blood pressure of %s is now (%d %d)%n", elderly.getUsername(),
                 bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
                 bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
     }
@@ -595,19 +596,22 @@ public class ElderlyList {
      *
      * @param userLine Line that has been inputted by user.
      */
-    public Optional<Elderly> setBloodPressure(String userLine) {
-        String[] paramList = userLine.split(" [usd]/");
-        assert paramList.length == 4 : "setbloodpressure input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
-        double systolicPressure = Double.parseDouble(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
-        double diastolicPressure = Double.parseDouble(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
-        Elderly elderly;
+    public void setBloodPressure(String userLine) {
         try {
+            if (!re.isValidSetBloodPressure(userLine)) {
+                throw new InvalidSetBloodPressureException();
+            }
+            String[] paramList = userLine.split(" [usd]/");
+            assert paramList.length == 4 : "setbloodpressure input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            Integer systolicPressure = Integer.parseInt(paramList[INDEX_OF_SYSTOLIC_PRESSURE]);
+            Integer diastolicPressure = Integer.parseInt(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
+            Elderly elderly;
             elderly = getElderly(elderlyName);
             elderly.setBloodPressure(systolicPressure, diastolicPressure);
-            return Optional.of(elderly);
-        } catch (ElderlyNotFoundException e) {
-            return Optional.empty();
+            ui.printSetBloodPressureMessage(elderly);
+        } catch (DukeException e) {
+            ui.printDukeException(e);
         }
     }
 
