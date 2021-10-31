@@ -49,10 +49,13 @@ Format: `addelderly u/USERNAME n/NAME r/RISK_LEVEL`
 
 * The `USERNAME` only can contain characters or numbers.
 * The `NAME` only can contain characters or whitespaces.
-* The `RISK_LEVEL` can only be "l", "m", "h" which stands for
+* The `RISK_LEVEL` can only be `l`, `m`, `h` which stands for
 low-level risk, medium-level risk and high-level risk respectively.
+* `l` risk level does not require additional information.
+* `m` risk level requires `hospital`, `conditions` and `notesOnCare` information
+* `h` risk level requires `hospital`, `conditions`, `notesOnCare` and `doctor` information.
 
-Example of usage:
+Example of usage (for `h` risk level elderly):
 
 
 `addelderly u/johntan123 n/John Tan r/h`
@@ -104,7 +107,8 @@ Format: `addappt n/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`
 * The `LOCATION` can be in a natural language format.
 * The `DATE` only can contain 8 numbers, in the format DDMMYYYY.
 * The `TIME` only can contain 4 numbers, in the format hhmm.
-* The `PURPOSE` can be in a natural language format.
+* The `PURPOSE` can be in a natural language format. Take note that this argument is optional, and
+is defaulted to `general checkup` if unassigned.
 
 Example of usage:
 
@@ -233,12 +237,12 @@ Format:
 
 Example of usage:
 
-`setbloodpressure u/123 s/120.0 d/80.0`
+`setbloodpressure u/123 s/120 d/80`
 
 Expected output:
 
 ```
-Blood pressure of NickTan has been updated to 120.00 80.00!
+Blood pressure of NickTan has been updated to 120 80!
 ```
 
 ### View blood pressure `viewbloodpressure`
@@ -256,7 +260,7 @@ Example of usage:
 Expected output:
 
 ```
-Blood pressure of NickTan is now (120.00 80.00)
+Blood pressure of NickTan is now (120 80)
 ```
 
 ### Set to be vaccinated `setvaccinatd`
