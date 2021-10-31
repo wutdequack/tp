@@ -170,35 +170,18 @@ public class ElderlyList {
             if (elderlyExists(userName)) {
                 throw new DuplicateElderlyException();
             }
-            if (Objects.equals(riskLevel, MEDIUM) || Objects.equals(riskLevel, HIGH)) {
-                hospitalArrayList.printHospitalNames();
-                ui.printEnterHospitalMessage();
-                String stringHospitalIndex = ui.getUserInput();
-                if (!re.isValidHospitalIndex(stringHospitalIndex)) {
-                    throw new HospitalIndexException();
-                }
-                int hospitalIndex = Integer.parseInt(stringHospitalIndex) - INPUT_OFFSET;
-                Hospital hospital = hospitalArrayList.getHospital(hospitalIndex);
-                ui.printEnterConditionsMessage();
-                String conditions = ui.getUserInput();
-                ui.printEnterNotesOnCareMessage();
-                String notesOnCare = ui.getUserInput();
-                if (Objects.equals(riskLevel, HIGH)) {
-                    hospital.printDoctorNames();
-                    ui.printEnterDoctorMessage();
-                    String stringDoctorIndex = ui.getUserInput();
-                    if (!re.isValidDoctorIndex(stringDoctorIndex)) {
-                        throw new DoctorIndexException();
-                    }
-                    Doctor doctor = hospital.getDoctor(Integer.parseInt(stringDoctorIndex) - INPUT_OFFSET);
-                    elderlyArrayList.add(new HighRiskElderly(userName, elderlyName, hospital,
-                            conditions, notesOnCare, doctor));
-                } else if (Objects.equals(riskLevel, MEDIUM)) {
-                    elderlyArrayList.add(new MediumRiskElderly(userName, elderlyName, hospital,
-                            conditions, notesOnCare));
-                }
-            } else if (Objects.equals(riskLevel, LOW)) {
-                elderlyArrayList.add(new LowRiskElderly(userName, elderlyName));
+            switch (riskLevel) {
+            case LOW:
+                addLowRiskElderly(userName, elderlyName);
+                break;
+            case MEDIUM:
+                addMediumRiskElderly(userName, elderlyName);
+                break;
+            case HIGH:
+                addHighRiskElderly(userName, elderlyName);
+                break;
+            default:
+                break;
             }
             ui.printAddElderlyMessage();
         } catch (InvalidInputException e) {
@@ -206,6 +189,69 @@ public class ElderlyList {
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
+    }
+
+    /**
+     * Adds the elderly as a low risk elderly.
+     *
+     * @param userName username of elderly.
+     * @param elderlyName name of elderly.
+     */
+    private void addLowRiskElderly(String userName, String elderlyName) {
+        elderlyArrayList.add(new LowRiskElderly(userName, elderlyName));
+    }
+
+    /**
+     * Adds the elderly as a medium risk elderly.
+     *
+     * @param userName username of elderly.
+     * @param elderlyName name of elderly.
+     */
+    private void addMediumRiskElderly(String userName, String elderlyName) throws HospitalIndexException {
+        hospitalArrayList.printHospitalNames();
+        ui.printEnterHospitalMessage();
+        String stringHospitalIndex = ui.getUserInput();
+        if (!re.isValidHospitalIndex(stringHospitalIndex)) {
+            throw new HospitalIndexException();
+        }
+        int hospitalIndex = Integer.parseInt(stringHospitalIndex) - INPUT_OFFSET;
+        Hospital hospital = hospitalArrayList.getHospital(hospitalIndex);
+        ui.printEnterConditionsMessage();
+        String conditions = ui.getUserInput();
+        ui.printEnterNotesOnCareMessage();
+        String notesOnCare = ui.getUserInput();
+        elderlyArrayList.add(new MediumRiskElderly(userName, elderlyName, hospital, conditions, notesOnCare));
+    }
+
+    /**
+     * Adds the elderly as a high risk elderly.
+     *
+     * @param userName username of elderly.
+     * @param elderlyName name of elderly.
+     */
+    private void addHighRiskElderly(String userName, String elderlyName) throws HospitalIndexException,
+            DoctorIndexException {
+        hospitalArrayList.printHospitalNames();
+        ui.printEnterHospitalMessage();
+        String stringHospitalIndex = ui.getUserInput();
+        if (!re.isValidHospitalIndex(stringHospitalIndex)) {
+            throw new HospitalIndexException();
+        }
+        int hospitalIndex = Integer.parseInt(stringHospitalIndex) - INPUT_OFFSET;
+        Hospital hospital = hospitalArrayList.getHospital(hospitalIndex);
+        ui.printEnterConditionsMessage();
+        final String conditions = ui.getUserInput();
+        ui.printEnterNotesOnCareMessage();
+        final String notesOnCare = ui.getUserInput();
+        hospital.printDoctorNames();
+        ui.printEnterDoctorMessage();
+        String stringDoctorIndex = ui.getUserInput();
+        if (!re.isValidDoctorIndex(stringDoctorIndex)) {
+            throw new DoctorIndexException();
+        }
+        Doctor doctor = hospital.getDoctor(Integer.parseInt(stringDoctorIndex) - INPUT_OFFSET);
+        elderlyArrayList.add(new HighRiskElderly(userName, elderlyName, hospital,
+                conditions, notesOnCare, doctor));
     }
 
     /**
