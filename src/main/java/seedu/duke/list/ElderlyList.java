@@ -1,5 +1,6 @@
 package seedu.duke.list;
 
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -1163,11 +1164,14 @@ public class ElderlyList {
             elderlyArrayList = gson.fromJson(jr, new TypeToken<ArrayList<Elderly>>() {
             }.getType());
             fr.close();
+
+            // Check if the toStrings are null
+            getConsolidatedStringOfElderly();
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
         } catch (IOException e) {
             ui.printExceptionMessage(e);
-        } catch (JsonSyntaxException wrongFormatException) {
+        } catch (JsonParseException | NullPointerException wrongFormatException) {
             ui.printWrongFileSyntax();
         }
     }
