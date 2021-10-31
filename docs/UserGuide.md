@@ -40,6 +40,7 @@ needs, vitals and appointments with the various hospitals.
         - [View dietary preference `viewdiet`](#view-dietary-preference-viewdiet)
         - [View blood pressure `viewbloodpressure`](#view-blood-pressure-viewbloodpressure)
         - [List all elderly in the system: `list`](#list-all-elderly-in-the-system-list)
+        - [Show help menu: `help`](#show-help-menu-help)
         - [Terminating: `bye`](#terminating-bye)
         - [Find which elderly is taking what medication: `findbymed`](#find-which-elderly-is-taking-what-medication-findbymed)
         - [Find which elderly is on what kind of diet: `findbydiet`](#find-which-elderly-is-on-what-kind-of-diet-findbydiet)
@@ -51,6 +52,7 @@ needs, vitals and appointments with the various hospitals.
         - [Delete previous medication history information from elderly: `deletemedicalhistory`](#delete-previous-medication-history-information-from-elderly-deletemedicalhistory)
         - [Store data in system into a file: `store`](#store-data-in-system-into-a-file-store)
         - [Load data from file into the system: `load`](#load-data-from-file-into-the-system-load)
+    - [Auto Suggestions Feature](#auto-suggestions-feature)
     - [FAQ](#faq)
     - [Table of commands](#command-summary)
     - [Reference](#reference)
@@ -340,7 +342,7 @@ Expected output:
 Sets the most recently measured blood pressure of the elderly
 
 Format:
-`setbloodpressure u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC PRESSURE`
+`setbloodpressure u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC_PRESSURE`
 
 * The `USERNAME` only can contain characters or numbers.
 * The `SYSTOLIC_PRESSURE` is an integer.
@@ -582,6 +584,70 @@ adrian vergil (Doctor Name)
 [*] These are NOK(s) attached to owintoh456:
 ```
 
+### Show help menu: `help`
+Shows the help menu with the appropriate syntax.
+
+Format: `help`
+
+Example of usage:
+
+`help`
+
+```
+> help
+
+[*] The following is a list of commands:
+Misc. Commands
+
+list - List all elderly in the program
+help - Prints this help menu
+bye - Quits Program
+
+Creation Commands
+
+[*] Add Elderly format: addelderly u/USERNAME n/NAME r/RISK_LEVEL
+[*] Add Medicine format: addmed u/USERNAME m/MEDICINE_NAME f/FREQUENCY
+[*] Add Appointment format: addappt u/USERNAME l/LOCATION d/DATE t/TIME p/[PURPOSE]
+[*] Add Next-Of-Kin information format: addnok u/USERNAME k/NOKNAME p/NOKPHONE e/NOKEMAIL a/NOKADDR r/NOKRSHIP
+[*] Add Elderly Record Information format: addrec u/USERNAME p/PHONENUMBER a/HOMEADDRESS
+[*] Add Medical History format: addmedicalhistory u/USERNAME
+[*] Set Birthday format: setbirthday u/USERNAME b/BIRTHDAY
+[*] Set Vaccination format: setvaccination u/USERNAME
+[*] Set Diet format: setdiet u/USERNAME
+[*] Set Blood Pressure format: setbloodpressure u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC_PRESSURE
+
+Reading Commands
+
+[*] View Medicine format: viewmed u/USERNAME
+[*] View Appointment format: viewappt u/USERNAME
+[*] View Next-Of-Kin format: viewnok u/USERNAME
+[*] View Elderly Record Information format: viewrec u/USERNAME
+[*] View Medical History format: viewmedicalhistory u/USERNAME
+[*] View Birthday format: viewbirthday u/USERNAME
+[*] View Vaccination format: viewvaccination u/USERNAME
+[*] View Diet format: viewdiet u/USERNAME
+[*] View Blood Pressure format: viewbloodpressure u/USERNAME
+
+Filter Commands
+
+[*] Find By Medicine format: findbymed m/MEDICINE_NAME
+[*] Find By Diet format: findbydiet d/DIET
+[*] Find By Name format: findbyname n/NAME
+
+Delete Commands
+
+[*] Delete format: deleteelderly u/USERNAME
+[*] Delete medicine format: deletemed u/USERNAME m/MEDICINE_NAME
+[*] Delete appointment format: deleteappt u/USERNAME d/DATE t/TIME
+[*] Delete Next-Of-Kin information format: deletenok u/USERNAME n/NOKNAME
+[*] Delete medical history format: deletemedicalhistory u/USERNAME
+
+File I/O Commands
+
+[*] Store format: store fp/FILE
+[*] Load format: load fp/FILE
+```
+
 ### Terminating: `bye`
 Terminates the current session.
 
@@ -784,6 +850,20 @@ Example of usage:
 [*] data.json exists. Loading from file!
 ```
 
+## Auto-suggestions feature
+For all the filter functions like `findbyname` and `deleteelderly`, the autosuggestions feature has been activated. If there is a match close to the query string that exists in the database, it will prompt you. 
+
+Example: 
+
+There exists an elderly called `johntan123`. A `deleteelderly` command is issued to delete an elderly with the username of `johntoh123`. 
+
+```
+> deleteelderly u/johntoh123
+[*] I am sorry, did you mean: johntan123
+```
+
+The system will look in the system and suggest `johntan123` as the possible query term that the user should input. It will however **not execute the command to delete ** `johntan123`.
+
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?
@@ -811,18 +891,35 @@ Of course, you are welcome to upgrade this to make it more scalable! :D
 |Add elderly |`addelderly u/USERNAME n/NAME`|
 |Add medicine |`addmed u/USERNAME m/MEDICINE_NAME f/FREQUENCY`|
 |Add appointment |`addappt u/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`|
+|Add nok |`addnok u/USERNAME k/NOKNAME p/NOKPHONE e/NOKEMAIL a/NOKADDR r/NOKRSHIP`|
+|Add record |`addrec u/USERNAME p/PHONENUMBER a/HOMEADDRESS`|
+|Add medical history |`addmedicalhistory u/USERNAME`|
+|Set birthday |`setbirthday u/USERNAME b/BIRHTDAY`|
+|Set vaccination status |`setvaccination u/USERNAME`|
+|Set dietary preference |`setdiet u/USER_NAME`|
+|Set blood pressure |`setbloodpressure u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC_PRESSURE`|
 |View medicine |`viewmed u/USERNAME`|
 |View appointment |`viewappt u/USERNAME`|
-|Set diet |`setdiet u/USER_NAME`|
-|View dietary preference |`viewdiet u/USER_NAME`|
-|Set birthday |`setbirthday u/USER_NAME b/BIRHTDAY`|
-|View birthday |`viewbirthday u/USER_NAME`|
-|Set blood pressure |`setbloodpressure u/USER_NAME s/SYSTOLIC_PRESSURE d/DIATOLIC PRESSURE`|
-|View blood pressure |`viewbloodpressure u/USER_NAME`|
-|Set vaccination status |`setvaccination u/USER_NAME`|
-|View vaccination status |`viewvaccination u/USER_NAME`|
-
-TODO: UPDATE THIS
+|View nok |`viewnok u/USERNAME`|
+|View record |`viewrec u/USERNAME`|
+|View medical history |`viewmedicalhistory u/USERNAME`|
+|View birthday |`viewbirthday u/USERNAME`|
+|View vaccination status |`viewvaccination u/USERNAME`|
+|View dietary preference |`viewdiet u/USERNAME`|
+|View blood pressure |`viewbloodpressure u/USERNAME`|
+|List |`list`|
+|Help |`help`|
+|Bye |`bye`|
+|Find elderly by medication taken |`findbymed m/MEDICINE_NAME`|
+|Find elderly by dietary preference |`findbydiet m/DIET`|
+|Get elderly records given real name |`findbyname n/NAME`|
+|Delete elderly |`deleteelderly u/USERNAME`|
+|Delete medicine |`deletemed u/USERNAME m/MEDICINE_NAME`|
+|Delete appointment |`deleteappt u/USERNAME d/DATE t/TIME`|
+|Delete nok |`deletenok u/USERNAME n/NOKNAME`|
+|Delete medical history |`deletemedicalhistory u/USERNAME`|
+|Store |`store fp/FILENAME`|
+|Load |`load fp/FILENAME`|
 
 
 ## Reference
