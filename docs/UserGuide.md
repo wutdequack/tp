@@ -61,7 +61,7 @@ Example of usage (for `h` risk level elderly):
 `addelderly u/johntan123 n/John Tan r/h`
 
 ```
-> addelderly u/johntan123 n/John Tan
+> addelderly u/johntan123 n/John Tan r/h
 List of hospitals are shown below:
 1.changi general hospital
 2.khoo teck puat hospital
@@ -88,7 +88,7 @@ Enter doctor number choice. (e.g. 1)
 ### Adding medicine to an elderly: `addmed`
 Adds a medicine to an existing elderly.
 
-Format: `addmed n/USERNAME m/MEDICINE_NAME f/FREQUENCY`
+Format: `addmed u/USERNAME m/MEDICINE_NAME f/FREQUENCY`
 
 * The `USERNAME`  only can contain characters or numbers.
 * The `MEDICINE_NAME` cannot contain punctuation.
@@ -96,12 +96,12 @@ Format: `addmed n/USERNAME m/MEDICINE_NAME f/FREQUENCY`
 
 Example of usage:
 
-`addmed n/johntan123 m/paracetamol f/once a day`
+`addmed u/johntan123 m/paracetamol f/once a day`
 
 ### Adding appointment to an elderly: `addappt`
 Adds an appointment to an existing elderly.
 
-Format: `addappt n/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`
+Format: `addappt u/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`
 
 * The `USERNAME`  only can contain characters or numbers.
 * The `LOCATION` can be in a natural language format.
@@ -112,8 +112,8 @@ is defaulted to `general checkup` if unassigned.
 
 Example of usage:
 
-`addappt n/johntan123 l/khoo teck puat hospital d/02012021 t/1000`
-`addappt n/johntan123 l/khoo teck puat hospital d/05032021 t/1500 p/eye checkup`
+`addappt u/johntan123 l/khoo teck puat hospital d/02012021 t/1000`
+`addappt u/johntan123 l/khoo teck puat hospital d/05032021 t/1500 p/eye checkup`
 
 ### Viewing medicine of an elderly: `viewmed`
 Views all medicine of an existing elderly.
@@ -124,12 +124,12 @@ Format: `viewmed n/USERNAME`
 
 Example of usage:
 
-`viewmed n/johntan123`
+`viewmed u/johntan123`
 
 ### Viewing appointments of an elderly: `viewappt`
 Views all appointments of an existing elderly.
 
-Format: `viewappt n/USERNAME`
+Format: `viewappt u/USERNAME`
 
 * The `USERNAME`  only can contain characters or numbers.
 
