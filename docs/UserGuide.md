@@ -10,6 +10,7 @@ needs, vitals and appointments with the various hospitals.
 
 ## Table of Contents
 
+TODO: UPDATE THIS
 - [Duke User Guide](#user-guide)
     - [Quick Start](#quick-start)
     - [Features](#features)
@@ -797,7 +798,7 @@ Of course, you are welcome to upgrade this to make it more scalable! :D
 |Set vaccination status |`setvaccination u/USER_NAME`|
 |View vaccination status |`viewvaccination u/USER_NAME`|
 
-
+TODO: UPDATE THIS
 
 
 ## Reference
