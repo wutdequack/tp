@@ -341,13 +341,53 @@ public class ElderlyList {
                 purpose = GENERAL_CHECKUP;
             }
             assert paramList.length == 5 || paramList.length == 6 : "addappt input does not have all required values";
-            elderly.addAppointment(new Appointment(location, date, time, purpose));
-            ui.printAddAppointmentMessage();
+            if (isValidDate(date) && isValidTime(time)) {
+                elderly.addAppointment(new Appointment(location, date, time, purpose));
+                ui.printAddAppointmentMessage();
+            } else if (isValidDate(date) == false) {
+                ui.printInvalidDateMessage();
+            } else {
+                ui.printInvalidTimeMessage();
+            }
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
+    }
+
+    public boolean isValidDate(String date) {
+        char[] dateArray = date.toCharArray();
+        int [] numArray = new int[8];
+        for (int i = 0; i < 8; i += 1) {
+            numArray[i] = dateArray[i] - '0';
+        }
+        int day = (numArray[0] * 10) + numArray[1];
+        int month = (numArray[2] * 10) + numArray[3];
+        if (day > 31 || month > 12) {
+            return false;
+        }
+        if (day == 31 && (month == 4 || month == 6 || month == 9 || month == 11)) {
+            return false;
+        }
+        if (month == 2 && (day == 29 || day == 30 || day == 31)) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isValidTime(String time) {
+        char[] timeArray = time.toCharArray();
+        int [] numArray = new int[4];
+        for (int i = 0; i < 4; i += 1) {
+            numArray[i] = timeArray[i] - '0';
+        }
+        int hour = (numArray[0] * 10) + numArray[1];
+        int minute = (numArray[2] * 10) + numArray[3];
+        if (hour > 23 || minute > 59) {
+            return false;
+        }
+        return true;
     }
 
     /**
