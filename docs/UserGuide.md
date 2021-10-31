@@ -10,25 +10,49 @@ needs, vitals and appointments with the various hospitals.
 
 ## Table of Contents
 
-TODO: UPDATE THIS
 - [Duke User Guide](#user-guide)
     - [Quick Start](#quick-start)
+    - [Brief Overview of Functions](#brief-overview-of-functions)
+      - [Miscellaneous Commands](#miscellaneous-commands)
+      - [Creation Commands](#creation-commands)
+      - [Reading Commands](#reading-commands)
+      - [Filter Commands](#filter-commands)
+      - [Delete Commands](#delete-commands)
+      - [File I/O Commands](#file-io-commands)
     - [Features](#features)
         - [Adding an elderly : `addelderly`](#adding-an-elderly-addelderly)
         - [Adding a medicine to an elderly : `addmed`](#adding-medicine-to-an-elderly-addmed)
         - [Adding an appointment to an elderly : `addappt`](#adding-appointment-to-an-elderly-addappt)
-        - [Viewing medicine of an elderly : `viewmed`](#viewing-medicine-of-an-elderly-viewmed)
-        - [Viewing appointments of an elderly : `viewappt`](#viewing-appointments-of-an-elderly-viewappt)
-        - [Setting dietary preference `setdiet`](#set-dietary-preference-setdiet)
-        - [Viewing dietary preference `viewdiet`](#view-dietary-preference-viewdiet)
-        - [Setting birthday `setbirthday`](#set-birthday-setbirthday)
-        - [Viewing birthday `viewbirthday`](#view-birthday-viewbirthday)
-        - [Setting blood pressure`setbloodpressure`](#set-blood-pressuresetbloodpressure)
-        - [Viewing blood pressure `viewbloodpressure`](#view-blood-pressure-viewbloodpressure)
-        - [Setting to be vaccinated `setvaccination`](#set-to-be-vaccinated-setvaccinatd)
-        - [View vaccination status `viewvaccination`](#view-blood-pressure-viewbloodpressure)
-        - [Terminating `bye`](#terminating-bye)
-    - [Table of commands](#Command Summary)
+        - [Adding next-of-kin information to an elderly: `addnok`](#adding-next-of-kin-information-to-an-elderly-addnok)
+        - [Adding record information to an elderly: `addrec`](#adding-record-information-to-an-elderly-addrec)
+        - [Adding medical history information to an elderly: `addmedicalhistory`](#adding-medical-history-information-to-an-elderly-addmedicalhistory)
+        - [Set birthday `setbirthday`](#set-birthday-setbirthday)
+        - [Set vaccination `setvaccination`](#set-vaccination-setvaccination)
+        - [Set dietary preference `setdiet`](#set-dietary-preference-setdiet)
+        - [Set blood pressure `setbloodpressure`](#set-blood-pressure-setbloodpressure)
+        - [Viewing medicine of an elderly: `viewmed`](#viewing-medicine-of-an-elderly-viewmed)
+        - [Viewing appointments of an elderly: `viewappt`](#viewing-appointments-of-an-elderly-viewappt)
+        - [Viewing Next-Of-Kin information of an elderly: `viewnok`](#viewing-next-of-kin-information-of-an-elderly-viewnok)
+        - [Viewing record information of an elderly: `viewrec`](#viewing-record-information-of-an-elderly-viewrec)
+        - [Viewing medical history information of an elderly: `viewmedicalhistory`](#viewing-medical-history-information-of-an-elderly-viewmedicalhistory)
+        - [View birthday `viewbirthday`](#view-birthday-viewbirthday)
+        - [View vaccination status `viewvaccination`](#view-vaccination-status-viewvaccination)
+        - [View dietary preference `viewdiet`](#view-dietary-preference-viewdiet)
+        - [View blood pressure `viewbloodpressure`](#view-blood-pressure-viewbloodpressure)
+        - [List all elderly in the system: `list`](#list-all-elderly-in-the-system-list)
+        - [Terminating: `bye`](#terminating-bye)
+        - [Find which elderly is taking what medication: `findbymed`](#find-which-elderly-is-taking-what-medication-findbymed)
+        - [Find which elderly is on what kind of diet: `findbydiet`](#find-which-elderly-is-on-what-kind-of-diet-findbydiet)
+        - [Find elderly details given their name: `findbyname`](#find-elderly-details-given-their-name-findbyname)
+        - [Delete elderly from system given username: `deleteelderly`](#delete-elderly-from-system-given-username-deleteelderly)
+        - [Delete medicine from elderly: `deletemed`](#delete-medicine-from-elderly-deletemed)
+        - [Delete appointment from elderly: `deleteappt`](#delete-appointment-from-elderly-deleteappt)
+        - [Delete Next-of-Kin contact from elderly: `deletenok`](#delete-next-of-kin-contact-from-elderly-deletenok)
+        - [Delete previous medication history information from elderly: `deletemedicalhistory`](#delete-previous-medication-history-information-from-elderly-deletemedicalhistory)
+        - [Store data in system into a file: `store`](#store-data-in-system-into-a-file-store)
+        - [Load data from file into the system: `load`](#load-data-from-file-into-the-system-load)
+    - [FAQ](#faq)
+    - [Table of commands](#command-summary)
     - [Reference](#reference)
 
 ## Quick Start
@@ -262,7 +286,7 @@ Expected output:
 [*] Birthday of John Tan has been set to 1959-10-29
 ```
 
-### Set to be vaccinated `setvaccination`
+### Set vaccination `setvaccination`
 
 Sets the vaccination status of the given elderly to be vaccinated
 
