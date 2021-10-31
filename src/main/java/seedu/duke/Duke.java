@@ -153,8 +153,8 @@ public class Duke {
             elderlyHelperFunction.viewBloodPressure(userLine);
             break;
         case SET_BLOOD_PRESSURE:
-            targetElderly = elderlyHelperFunction.setBloodPressure(userLine);
-            targetElderly.ifPresentOrElse(ui::printSetBloodPressureMessage, ui::printNoSuchElderly);
+            elderlyHelperFunction.setBloodPressure(userLine);
+            //targetElderly.ifPresentOrElse(ui::printSetBloodPressureMessage, ui::printNoSuchElderly);
             break;
         case VIEW_BIRTHDAY:
             elderlyHelperFunction.viewBirthday(userLine);

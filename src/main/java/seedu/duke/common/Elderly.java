@@ -44,7 +44,7 @@ public abstract class Elderly {
     protected final String username;
     protected String name;
 
-    protected double[] bloodPressure;
+    protected Integer[] bloodPressure;
     protected boolean isVaccinated;
     protected Date birthday;
     protected DietaryPreference diet;
@@ -172,13 +172,13 @@ public abstract class Elderly {
         return records;
     }
 
-    public void setBloodPressure(double systolic, double diastolic) {
-        bloodPressure = new double[LENGTH_OF_BLOOS_PRESSURE_ARRAY];
+    public void setBloodPressure(Integer systolic, Integer diastolic) {
+        bloodPressure = new Integer[LENGTH_OF_BLOOS_PRESSURE_ARRAY];
         bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY] = systolic;
         bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY] = diastolic;
     }
 
-    public double[] getBloodPressure() {
+    public Integer[] getBloodPressure() {
         return bloodPressure;
     }
 

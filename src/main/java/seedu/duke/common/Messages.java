@@ -55,6 +55,12 @@ public class Messages {
             + "from given options (l, m, h) only. Please redo addelderly command.";
 
     /**
+     * Used when invalid set blood pressure.
+     */
+    public static final String MESSAGE_INVALID_SET_BLOOD_PRESSURE = "[!] Set blood "
+            + "pressure format: setbloodpressure u/[username] s/[systolic pressure] d/[diastolic pressure]";
+
+    /**
      * Used when duplicate elderly name is found in database.
      */
     public static final String MESSAGE_DUPLICATE_ELDERLY = "[!] Elderly username already found in system! Addition "
@@ -198,7 +204,7 @@ public class Messages {
      * Used when blood pressure of the elderly has been updated.
      */
     public static final String MESSAGE_SET_BLOOD_PRESSURE = "[*] Blood pressure of %s has been updated to "
-            + "%.2f %.2f!\r\n";
+            + "%d %d!\r\n";
 
     /**
      * Used when dietary preference of the elderly has been updated.
