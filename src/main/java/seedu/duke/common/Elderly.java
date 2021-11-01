@@ -1,6 +1,5 @@
 package seedu.duke.common;
 
-import static seedu.duke.common.MagicValues.DEFAULT_FILE_PATH;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.LENGTH_OF_BLOOS_PRESSURE_ARRAY;
@@ -218,29 +217,23 @@ public abstract class Elderly {
     }
 
     private static boolean isValidDate(String date) {
-        int[] DAYS = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int[] days = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         try {
             int year = Integer.parseInt(date.substring(0, 4));
-            if (year <= 0)
+            if (year <= 0) {
                 return false;
+            }
             int month = Integer.parseInt(date.substring(5, 7));
-            if (month <= 0 || month > 12)
+            if (month <= 0 || month > 12) {
                 return false;
+            }
             int day = Integer.parseInt(date.substring(8, 10));
-            if (day <= 0 || day > DAYS[month])
+            if (day <= 0 || day > days[month]) {
                 return false;
+            }
             if (month == 2 && day == 29 && !isGregorianLeapYear(year)) {
                 return false;
             }
-            int hour = Integer.parseInt(date.substring(11, 13));
-            if (hour < 0 || hour > 23)
-                return false;
-            int minute = Integer.parseInt(date.substring(14, 16));
-            if (minute < 0 || minute > 59)
-                return false;
-            int second = Integer.parseInt(date.substring(17, 19));
-            if (second < 0 || second > 59)
-                return false;
 
         } catch (Exception e) {
             e.printStackTrace();
