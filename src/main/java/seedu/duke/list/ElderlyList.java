@@ -57,6 +57,8 @@ import seedu.duke.exceptions.InvalidRiskLevelException;
 import seedu.duke.exceptions.InvalidInputException;
 import seedu.duke.exceptions.InvalidViewDietCommandException;
 import seedu.duke.exceptions.InvalidSetDietCommandException;
+import seedu.duke.exceptions.InvalidSetVaccinationException;
+import seedu.duke.exceptions.InvalidViewVaccinationException;
 
 
 import com.google.gson.Gson;
@@ -761,6 +763,13 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> setVaccinated(String userLine) {
+        try{
+            if(!re.isValidSetVaccCommand(userLine)){
+                throw new InvalidSetVaccinationException();
+            }
+        } catch(InvalidInputException e){
+            ui.printInvalidInputException(e);
+        }
         String[] paramList = userLine.split(" u/");
         assert paramList.length == 2 : "setvaccinated input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -780,10 +789,17 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void getVaccinationStatus(String userLine) {
+        try{
+            if(!re.isValidViewVaccCommand(userLine)){
+                throw new InvalidViewVaccinationException();
+            }
+        } catch(InvalidInputException e){
+            ui.printInvalidInputException(e);
+        }
+        String[] paramList = userLine.split(" u/");
+        assert paramList.length == 2 : "Username is empty";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
         try {
-            String[] paramList = userLine.split(" u/");
-            assert paramList.length == 2 : "Username is empty";
-            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printVaccinationStatus();
         } catch (DukeException e) {

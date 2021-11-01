@@ -222,7 +222,6 @@ public class Messages {
             + "u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC_PRESSURE";
 
 
-
     /**
      * Used when invalid viewrecord is typed.
      */
@@ -315,6 +314,10 @@ public class Messages {
      */
     public static final String MESSAGE_NUMBER_OF_ELDERLY = "[*] There are currently %d elderly registered in the "
             + "system\n";
+
+    public static final String WRONG_SET_VACC_INPUT = "[!] Correct setvaccination input: setvaccinated u/USER_NAME";
+
+    public static final String WRONG_VIEW_VACC_INPUT = "[!] Correct viewvaccination input: viewvaccination u/USER_NAME";
 
     /**
      * Used to list down all the supported dietary preferences for user's selection.
