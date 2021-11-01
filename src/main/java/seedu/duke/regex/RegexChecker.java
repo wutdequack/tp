@@ -119,6 +119,14 @@ public class RegexChecker {
         return Pattern.matches("^viewvaccination u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
+    public boolean isValidSetBirthdayCommand(String userLine) {
+        return Pattern.matches("^setbirthday u/[a-z0-9]+ b/[0-9]{4}-[0-9]{2}-[0-9]{2}$", userLine.toLowerCase());
+    }
+
+    public boolean isValidViewBirthdayCommand(String userLine) {
+        return Pattern.matches("^viewvaccination u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
     /**
      * Takes 2 strings and compare the distance(similarity) between them.
      *
