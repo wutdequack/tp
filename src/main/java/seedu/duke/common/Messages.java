@@ -324,6 +324,9 @@ public class Messages {
     public static final String WRONG_SET_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: setbirthday "
             + "u/USER_NAME b/YYYY-MM-DD";
 
+    public static final String WRONG_BIRTHDAY_FORMAT_INPUT = "[!] Wrong birthday format or invalid date keyed in"
+            + "u/USER_NAME b/YYYY-MM-DD";
+
 
     /**
      * Used to list down all the supported dietary preferences for user's selection.
