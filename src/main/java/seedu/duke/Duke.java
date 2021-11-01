@@ -53,7 +53,7 @@ public class Duke {
     /**
      * Global variable used to show if loop to get user input should continue running.
      */
-    public static Boolean toContinue = true;
+    private static Boolean toContinue = true;
 
     private ElderlyList elderlyHelperFunction;
 
@@ -102,7 +102,7 @@ public class Duke {
     /**
      * Stops loop and print bye message.
      */
-    public void terminateInput() {
+    private void terminateInput() {
         toContinue = false;
     }
 
