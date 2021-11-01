@@ -111,6 +111,14 @@ public class RegexChecker {
         return Pattern.matches("^setdiet u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
+    public boolean isValidSetVaccCommand(String userLine) {
+        return Pattern.matches("^setvaccinated u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidViewVaccCommand(String userLine) {
+        return Pattern.matches("^viewvaccination u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
     /**
      * Takes 2 strings and compare the distance(similarity) between them.
      *
