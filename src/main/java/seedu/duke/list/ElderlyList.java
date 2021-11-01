@@ -26,32 +26,7 @@ import seedu.duke.common.MediumRiskElderly;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
-import seedu.duke.exceptions.DoctorIndexException;
-import seedu.duke.exceptions.DukeException;
-import seedu.duke.exceptions.DuplicateElderlyException;
-import seedu.duke.exceptions.ElderlyNotFoundException;
-import seedu.duke.exceptions.HospitalIndexException;
-import seedu.duke.exceptions.InvalidAddMedicineFormatException;
-import seedu.duke.exceptions.InvalidAddNokFormatException;
-import seedu.duke.exceptions.InvalidAddRecordFormatException;
-import seedu.duke.exceptions.InvalidDeleteApptFormatException;
-import seedu.duke.exceptions.InvalidDeleteElderlyException;
-import seedu.duke.exceptions.InvalidDeleteMedFormatException;
-import seedu.duke.exceptions.InvalidDeleteNokFormatException;
-import seedu.duke.exceptions.InvalidElderlyFormatException;
-import seedu.duke.exceptions.InvalidLoadFromFilePathException;
-import seedu.duke.exceptions.InvalidSetBloodPressureException;
-import seedu.duke.exceptions.InvalidViewMedicineFormatException;
-import seedu.duke.exceptions.InvalidAddAppointmentFormatException;
-import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
-import seedu.duke.exceptions.InvalidStoreToFilePathException;
-import seedu.duke.exceptions.InvalidViewByNameException;
-import seedu.duke.exceptions.InvalidViewDietException;
-import seedu.duke.exceptions.InvalidViewMedicineException;
-import seedu.duke.exceptions.InvalidViewNokFormatException;
-import seedu.duke.exceptions.InvalidViewRecordFormatException;
-import seedu.duke.exceptions.InvalidRiskLevelException;
-import seedu.duke.exceptions.InvalidInputException;
+import seedu.duke.exceptions.*;
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
 
@@ -144,6 +119,7 @@ public class ElderlyList {
 
     /**
      * Checks in current list if current elderly username exists.
+     *
      * @param inputElderlyName String containing elderly username to check with
      * @return Boolean value if elderly exists in array list
      */
@@ -198,7 +174,7 @@ public class ElderlyList {
     /**
      * Adds the elderly as a low risk elderly.
      *
-     * @param userName username of elderly.
+     * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
     private void addLowRiskElderly(String userName, String elderlyName) {
@@ -208,7 +184,7 @@ public class ElderlyList {
     /**
      * Adds the elderly as a medium risk elderly.
      *
-     * @param userName username of elderly.
+     * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
     private void addMediumRiskElderly(String userName, String elderlyName) throws HospitalIndexException {
@@ -230,7 +206,7 @@ public class ElderlyList {
     /**
      * Adds the elderly as a high risk elderly.
      *
-     * @param userName username of elderly.
+     * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
     private void addHighRiskElderly(String userName, String elderlyName) throws HospitalIndexException,
@@ -359,7 +335,7 @@ public class ElderlyList {
 
     public boolean isValidDate(String date) {
         char[] dateArray = date.toCharArray();
-        int [] numArray = new int[8];
+        int[] numArray = new int[8];
         for (int i = 0; i < 8; i += 1) {
             numArray[i] = dateArray[i] - '0';
         }
@@ -379,7 +355,7 @@ public class ElderlyList {
 
     public boolean isValidTime(String time) {
         char[] timeArray = time.toCharArray();
-        int [] numArray = new int[4];
+        int[] numArray = new int[4];
         for (int i = 0; i < 4; i += 1) {
             numArray[i] = timeArray[i] - '0';
         }
@@ -812,11 +788,16 @@ public class ElderlyList {
      */
     public void viewDietaryPreference(String userLine) {
         try {
+            if (!re.isValidViewDietCommand(userLine)) {
+                throw new InvalidViewDietCommandException();
+            }
             String[] paramList = userLine.split(" u/");
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printDietaryPreference();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
