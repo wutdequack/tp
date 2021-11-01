@@ -319,6 +319,11 @@ public class Messages {
 
     public static final String WRONG_VIEW_VACC_INPUT = "[!] Correct viewvaccination input: viewvaccination u/USER_NAME";
 
+    public static final String WRONG_VIEW_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: viewbirthday u/USER_NAME";
+
+    public static final String WRONG_SET_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: setbirthday u/USER_NAME b/YYYY-MM-DD";
+
+
     /**
      * Used to list down all the supported dietary preferences for user's selection.
      */

@@ -26,8 +26,10 @@ import seedu.duke.common.MediumRiskElderly;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
+
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
+
 
 import seedu.duke.exceptions.DoctorIndexException;
 import seedu.duke.exceptions.DukeException;
@@ -59,6 +61,8 @@ import seedu.duke.exceptions.InvalidViewDietCommandException;
 import seedu.duke.exceptions.InvalidSetDietCommandException;
 import seedu.duke.exceptions.InvalidSetVaccinationException;
 import seedu.duke.exceptions.InvalidViewVaccinationException;
+import seedu.duke.exceptions.InvalidSetBirthdayException;
+import seedu.duke.exceptions.InvalidViewBirthdayException;
 
 
 import com.google.gson.Gson;
@@ -723,8 +727,16 @@ public class ElderlyList {
      */
     public void viewBirthday(String userLine) {
         try {
-            String[] paramList = userLine.split(" u/");
-            assert paramList.length == 2 : "Name is empty";
+            if (!re.isValidViewBirthdayCommand(userLine)) {
+                throw new InvalidViewBirthdayException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
+
+        String[] paramList = userLine.split(" u/");
+        assert paramList.length == 2 : "Name is empty";
+        try {
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             printBirthday(elderly);
@@ -743,6 +755,15 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> setBirthday(String userLine) {
+        try {
+            if (!re.isValidSetBirthdayCommand(userLine)) {
+                throw new InvalidSetBirthdayException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
+
+
         String[] paramList = userLine.split(" [ub]/");
         assert paramList.length == 3 : "setbirthday input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
