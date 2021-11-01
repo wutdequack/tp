@@ -26,9 +26,38 @@ import seedu.duke.common.MediumRiskElderly;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
-import seedu.duke.exceptions.*;
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
+
+import seedu.duke.exceptions.DoctorIndexException;
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.DuplicateElderlyException;
+import seedu.duke.exceptions.ElderlyNotFoundException;
+import seedu.duke.exceptions.HospitalIndexException;
+import seedu.duke.exceptions.InvalidAddMedicineFormatException;
+import seedu.duke.exceptions.InvalidAddNokFormatException;
+import seedu.duke.exceptions.InvalidAddRecordFormatException;
+import seedu.duke.exceptions.InvalidDeleteApptFormatException;
+import seedu.duke.exceptions.InvalidDeleteElderlyException;
+import seedu.duke.exceptions.InvalidDeleteMedFormatException;
+import seedu.duke.exceptions.InvalidDeleteNokFormatException;
+import seedu.duke.exceptions.InvalidElderlyFormatException;
+import seedu.duke.exceptions.InvalidLoadFromFilePathException;
+import seedu.duke.exceptions.InvalidSetBloodPressureException;
+import seedu.duke.exceptions.InvalidViewMedicineFormatException;
+import seedu.duke.exceptions.InvalidAddAppointmentFormatException;
+import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
+import seedu.duke.exceptions.InvalidStoreToFilePathException;
+import seedu.duke.exceptions.InvalidViewByNameException;
+import seedu.duke.exceptions.InvalidViewDietException;
+import seedu.duke.exceptions.InvalidViewMedicineException;
+import seedu.duke.exceptions.InvalidViewNokFormatException;
+import seedu.duke.exceptions.InvalidViewRecordFormatException;
+import seedu.duke.exceptions.InvalidRiskLevelException;
+import seedu.duke.exceptions.InvalidInputException;
+import seedu.duke.exceptions.InvalidViewDietCommandException;
+import seedu.duke.exceptions.InvalidSetDietCommandException;
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -768,6 +797,13 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> setDietaryPreference(String userLine) {
+        try {
+            if (!re.isValidSetDietCommand(userLine)) {
+                throw new InvalidSetDietCommandException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
         String[] paramList = userLine.split(" u/");
         assert paramList.length == 2 : "setdiet input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
