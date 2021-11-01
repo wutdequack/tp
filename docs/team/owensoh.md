@@ -44,14 +44,20 @@ Drew the UML class diagram for this part. Elaborated on how classes interact wit
 
 Added non-functional requirements, added user stories. 
 
-Miscellaneous parts (i.e. product scope, target user profile, value proposition)
+Miscellaneous parts: 
+- Table of contents
+- Product scope
+- Target user profile
+- Value proposition, 
+- Non-functional requirements
+- Instructions for manual testing
 
 ### Contributions to team-based tasks
 - Adding of all the issue labels in GitHub
 - Adding of all the milestones in GitHub
 - Maintaining the issue tracker
 - GitHub release management
-- Miscellaneous parts for DG (i.e. product scope, target user profile, value proposition)
+- Miscellaneous parts for DG (For specific parts refer above)
 - Initiated the completion of JUnit tests and assertions
 
 ### Review/mentoring contributions

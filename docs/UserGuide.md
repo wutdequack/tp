@@ -10,7 +10,7 @@ needs, vitals and appointments with the various hospitals.
 
 ## Table of Contents
 
-- [Duke User Guide](#user-guide)
+- [User Guide](#user-guide)
     - [Quick Start](#quick-start)
     - [Brief Overview of Functions](#brief-overview-of-functions)
       - [Miscellaneous Commands](#miscellaneous-commands)
