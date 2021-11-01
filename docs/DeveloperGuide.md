@@ -29,7 +29,8 @@ and a `RegexChecker` class to check for validity of the input. Various `elderly`
 as well. *(Further explained in Elderly Risk Categorisation)*
 
 Below is a UML sequence diagram for the process of addition of elderly:
-![](team/img/addelderly_seq_diag.png)
+
+![](team/img/seq_diag.png)
 
 #### How the classes interact with each other
 
