@@ -1,17 +1,9 @@
 package seedu.duke.common;
 
-import java.util.Objects;
-
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
 
-import static seedu.duke.common.Messages.MESSAGE_APPOINTMENTS;
-import static seedu.duke.common.Messages.MESSAGE_BIRTHDAY;
-import static seedu.duke.common.Messages.MESSAGE_MEDICINES;
 import static seedu.duke.common.Messages.MESSAGE_HIGH_RISK_ELDERLY;
-import static seedu.duke.common.Messages.MESSAGE_NOKS;
-import static seedu.duke.common.Messages.MESSAGE_RECORDS;
-import static seedu.duke.common.Messages.MESSAGE_VACCINATED;
 
 public class HighRiskElderly extends Elderly implements Hospitalisable {
 

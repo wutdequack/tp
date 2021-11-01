@@ -3,7 +3,6 @@ package seedu.duke.list;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Appointment;
 import seedu.duke.common.Medicine;
@@ -272,7 +271,7 @@ public class ElderlyListTest {
         try {
             final Integer[] expectedOutput = new Integer[]{169, 108};
             assertArrayEquals(expectedOutput,
-                    elderlyList.getElderly("limqq369").getBloodPressure());
+                    elderlyList.getElderly("limqq369").getElderlyBloodPressure());
         } catch (ElderlyNotFoundException e) {
             System.out.println("error");
         }

@@ -100,15 +100,15 @@ public abstract class Elderly {
      *
      * @param appointment Appointment to be added.
      */
-    public void addAppointment(Appointment appointment) {
+    public void addElderlyAppointment(Appointment appointment) {
         appointments.add(appointment);
     }
 
-    public void addNok(NextOfKin nextofkin) {
+    public void addElderlyNok(NextOfKin nextofkin) {
         nextofkins.add(nextofkin);
     }
 
-    public Optional<NextOfKin> removeNok(String nextOfkin) {
+    public Optional<NextOfKin> removeElderlyNok(String nextOfkin) {
         NextOfKin deleteNok;
         for (NextOfKin nok : nextofkins) {
             String currentNokName = nok.nokName.toLowerCase();
@@ -121,14 +121,14 @@ public abstract class Elderly {
         return Optional.empty();
     }
 
-    public Optional<Medicine> removeMedicine(String medName) {
-        Medicine deleteMed;
+    public Optional<Medicine> removeElderlyMedicine(String medName) {
+        Medicine deleteMedicine;
         for (Medicine med : medicines) {
             String currentMedName = med.medicineName.toLowerCase();
             if (currentMedName.contentEquals(medName.toLowerCase())) {
-                deleteMed = med;
+                deleteMedicine = med;
                 medicines.remove(med);
-                return Optional.of(deleteMed);
+                return Optional.of(deleteMedicine);
             }
         }
         return Optional.empty();
@@ -148,7 +148,7 @@ public abstract class Elderly {
         return Optional.empty();
     }
 
-    public void addRecord(Record record) {
+    public void addElderlyRecord(Record record) {
         records.add(record);
     }
 
@@ -178,17 +178,17 @@ public abstract class Elderly {
         return records;
     }
 
-    public void setBloodPressure(Integer systolic, Integer diastolic) {
+    public void setElderlyBloodPressure(Integer systolic, Integer diastolic) {
         bloodPressure = new Integer[LENGTH_OF_BLOOS_PRESSURE_ARRAY];
         bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY] = systolic;
         bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY] = diastolic;
     }
 
-    public Integer[] getBloodPressure() {
+    public Integer[] getElderlyBloodPressure() {
         return bloodPressure;
     }
 
-    public void setVaccinated() {
+    public void setElderlyVaccinated() {
         isVaccinated = true;
     }
 
@@ -258,7 +258,7 @@ public abstract class Elderly {
         System.out.printf("vaccinated.%n");
     }
 
-    public String getDiet() {
+    public String getElderlyDiet() {
         switch (diet) {
         case HALAL:
             return "Halal";
@@ -279,7 +279,7 @@ public abstract class Elderly {
         }
     }
 
-    public void setDietByUserChoice() {
+    public void setElderlyDietByUserChoice() {
         System.out.printf(PROMPT_LIST_OF_DIETS);
         int choice;
         try {
@@ -288,7 +288,7 @@ public abstract class Elderly {
             ui.printGeneralException(e);
             return;
         }
-        Optional<DietaryPreference> dietaryPreference = getDietFromChoice(choice);
+        Optional<DietaryPreference> dietaryPreference = getElderlyDietFromChoice(choice);
         try {
             if (dietaryPreference.isPresent()) {
                 this.diet = dietaryPreference.get();
@@ -300,7 +300,7 @@ public abstract class Elderly {
         }
     }
 
-    private Optional<DietaryPreference> getDietFromChoice(int choice) {
+    private Optional<DietaryPreference> getElderlyDietFromChoice(int choice) {
         switch (choice) {
         case INPUT_HALAL:
             return Optional.of(DietaryPreference.HALAL);
@@ -319,19 +319,19 @@ public abstract class Elderly {
         }
     }
 
-    public void printDietaryPreference() {
+    public void printElderlyDietaryPreference() {
         if (diet == DietaryPreference.NOT_SET) {
             System.out.printf("Dietary preference of %s has not been set%n", name);
             return;
         }
-        System.out.printf("%s is having a %s diet%n", name, getDiet());
+        System.out.printf("%s is having a %s diet%n", name, getElderlyDiet());
     }
 
-    private void updateMedicalHistory(StringBuffer newMedicalHistory) {
+    private void updateElderlyMedicalHistory(StringBuffer newMedicalHistory) {
         medicalHistory = newMedicalHistory.toString();
     }
 
-    public void setMedicalHistory() {
+    public void setElderlyMedicalHistory() {
         String currentHistory = medicalHistory;
         System.out.printf(PROMPT_KEY_IN_MEDICAL_HISTORY);
         String addedHistory = ui.getUserInput();
@@ -341,14 +341,14 @@ public abstract class Elderly {
             currentHistoryStringBuffer.append("\r\n");
         }
         currentHistoryStringBuffer.append(addedHistory);
-        updateMedicalHistory(currentHistoryStringBuffer);
+        updateElderlyMedicalHistory(currentHistoryStringBuffer);
     }
 
-    public void printMedicalHistory() {
+    public void printElderlyMedicalHistory() {
         System.out.printf("%s's medical history:%n%s%n", name, medicalHistory);
     }
 
-    public Elderly deleteMedicalHistory() {
+    public Elderly deleteElderlyMedicalHistory() {
         System.out.printf(PROMPT_DELETE_MEDICAL_HISTORY, name);
         String confirmationMessage = ui.getUserInput();
         if (!confirmationMessage.equalsIgnoreCase("Y")) {

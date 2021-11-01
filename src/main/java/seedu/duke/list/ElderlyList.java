@@ -71,8 +71,6 @@ import com.google.gson.GsonBuilder;
 import java.util.Objects;
 import java.util.Optional;
 
-import com.google.gson.JsonSyntaxException;
-
 import static seedu.duke.common.MagicValues.SPLIT_ADD_NOK;
 import static seedu.duke.common.MagicValues.SPLIT_ADD_RECORD;
 import static seedu.duke.common.MagicValues.SPLIT_DELETE_APPOINTMENT;
@@ -114,7 +112,6 @@ import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.SIMILARITY_INDEX;
 import static seedu.duke.common.MagicValues.SPLIT_STORE_FILE;
-import static seedu.duke.common.MagicValues.VALUE_DEFAULT_BP;
 import static seedu.duke.common.MagicValues.parser;
 import static seedu.duke.common.MagicValues.ui;
 import static seedu.duke.common.MagicValues.re;
@@ -123,7 +120,6 @@ import static seedu.duke.common.MagicValues.hospitalArrayList;
 
 import static seedu.duke.common.Messages.MESSAGE_NO_BLOOD_PRESSURE;
 import static seedu.duke.common.Messages.MESSAGE_NUMBER_OF_ELDERLY;
-import static seedu.duke.common.Messages.MESSAGE_SET_BLOOD_PRESSURE;
 
 
 public class ElderlyList {
@@ -226,7 +222,7 @@ public class ElderlyList {
         hospitalArrayList.printHospitalNames();
         ui.printEnterHospitalMessage();
         String stringHospitalIndex = ui.getUserInput();
-        if (!re.isValidHospitalIndex(stringHospitalIndex)) {
+        if (re.isNotValidHospitalIndex(stringHospitalIndex)) {
             throw new HospitalIndexException();
         }
         int hospitalIndex = Integer.parseInt(stringHospitalIndex) - INPUT_OFFSET;
@@ -249,7 +245,7 @@ public class ElderlyList {
         hospitalArrayList.printHospitalNames();
         ui.printEnterHospitalMessage();
         String stringHospitalIndex = ui.getUserInput();
-        if (!re.isValidHospitalIndex(stringHospitalIndex)) {
+        if (re.isNotValidHospitalIndex(stringHospitalIndex)) {
             throw new HospitalIndexException();
         }
         int hospitalIndex = Integer.parseInt(stringHospitalIndex) - INPUT_OFFSET;
@@ -354,7 +350,7 @@ public class ElderlyList {
             }
             assert paramList.length == 5 || paramList.length == 6 : "addappt input does not have all required values";
             if (isValidDate(date) && isValidTime(time)) {
-                elderly.addAppointment(new Appointment(location, date, time, purpose));
+                elderly.addElderlyAppointment(new Appointment(location, date, time, purpose));
                 ui.printAddAppointmentMessage();
             } else if (isValidDate(date) == false) {
                 ui.printInvalidDateMessage();
@@ -368,7 +364,7 @@ public class ElderlyList {
         }
     }
 
-    public boolean isValidDate(String date) {
+    private boolean isValidDate(String date) {
         char[] dateArray = date.toCharArray();
         int[] numArray = new int[8];
         for (int i = 0; i < 8; i += 1) {
@@ -388,7 +384,7 @@ public class ElderlyList {
         return true;
     }
 
-    public boolean isValidTime(String time) {
+    private boolean isValidTime(String time) {
         char[] timeArray = time.toCharArray();
         int[] numArray = new int[4];
         for (int i = 0; i < 4; i += 1) {
@@ -487,7 +483,7 @@ public class ElderlyList {
             String nokEmail = paramList[INDEX_OF_NOK_EMAIL];
             String nokAddress = paramList[INDEX_OF_NOK_ADDRESS];
             String nokRelationship = paramList[INDEX_OF_NOK_RELATIONSHIP];
-            elderly.addNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
+            elderly.addElderlyNok(new NextOfKin(nokName, nokPhoneNumber, nokEmail, nokAddress, nokRelationship));
             ui.printAddNokMessage();
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
@@ -539,7 +535,7 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String nokName = paramList[INDEX_OF_NOK_NAME];
             Elderly elderly = getElderly(elderlyName);
-            Optional<NextOfKin> deletedNok = elderly.removeNok(nokName);
+            Optional<NextOfKin> deletedNok = elderly.removeElderlyNok(nokName);
             deletedNok.ifPresentOrElse(this::printDeletedNextOfKin, this::printNoNextOfKin);
             System.gc();
         } catch (InvalidInputException e) {
@@ -569,7 +565,7 @@ public class ElderlyList {
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             String medName = paramList[INDEX_OF_MEDICINE_NAME];
             Elderly elderly = getElderly(elderlyName);
-            Optional<Medicine> deletedMed = elderly.removeMedicine(medName);
+            Optional<Medicine> deletedMed = elderly.removeElderlyMedicine(medName);
             deletedMed.ifPresentOrElse(this::printDeletedMedicine, this::printNoMedicine);
             System.gc();
         } catch (InvalidInputException e) {
@@ -604,7 +600,7 @@ public class ElderlyList {
             Elderly elderly = getElderly(elderlyName);
             String elderlyPhoneNumber = paramList[INDEX_OF_ELDERLY_PHONE_NUMBER];
             String elderlyAddress = paramList[INDEX_OF_ELDERLY_ADDRESS];
-            elderly.addRecord(new Record(elderlyPhoneNumber, elderlyAddress));
+            elderly.addElderlyRecord(new Record(elderlyPhoneNumber, elderlyAddress));
             ui.printAddRecordMessage();
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
@@ -650,22 +646,15 @@ public class ElderlyList {
      *
      * @param username String containing name of elderly.
      * @return Elderly object.
+     * @throws ElderlyNotFoundException if the elderly with that username is not found.
      */
     public Elderly getElderly(String username) throws ElderlyNotFoundException {
-        int counter = 0;
-        boolean elderlyExists = false;
         for (Elderly elderly : elderlyArrayList) {
             if (Objects.equals(elderly.getUsername(), username)) {
-                elderlyExists = true;
-                break;
+                return elderly;
             }
-            counter++;
         }
-        if (!elderlyExists) {
-            throw new ElderlyNotFoundException();
-        }
-        //assert counter < getElderlyCount() : "Elderly is not found";
-        return elderlyArrayList.get(counter);
+        throw new ElderlyNotFoundException();
     }
 
     /**
@@ -686,7 +675,7 @@ public class ElderlyList {
     }
 
     private void printBloodPressure(Elderly elderly) {
-        Integer[] bloodPressure = elderly.getBloodPressure();
+        Integer[] bloodPressure = elderly.getElderlyBloodPressure();
         if (!elderly.isBloodPressureSet()) {
             System.out.printf(MESSAGE_NO_BLOOD_PRESSURE, elderly.getName());
         } else {
@@ -713,7 +702,7 @@ public class ElderlyList {
             Integer diastolicPressure = Integer.parseInt(paramList[INDEX_OF_DIASTOLIC_PRESSURE]);
             Elderly elderly;
             elderly = getElderly(elderlyName);
-            elderly.setBloodPressure(systolicPressure, diastolicPressure);
+            elderly.setElderlyBloodPressure(systolicPressure, diastolicPressure);
             ui.printSetBloodPressureMessage(elderly);
         } catch (DukeException e) {
             ui.printDukeException(e);
@@ -785,7 +774,7 @@ public class ElderlyList {
      */
     public Optional<Elderly> setVaccinated(String userLine) {
         try {
-            if (!re.isValidSetVaccCommand(userLine)) {
+            if (!re.isValidSetVaccinationCommand(userLine)) {
                 throw new InvalidSetVaccinationException();
             }
         } catch (InvalidInputException e) {
@@ -797,7 +786,7 @@ public class ElderlyList {
         Elderly elderly;
         try {
             elderly = getElderly(elderlyName);
-            elderly.setVaccinated();
+            elderly.setElderlyVaccinated();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
             return Optional.empty();
@@ -811,7 +800,7 @@ public class ElderlyList {
      */
     public void getVaccinationStatus(String userLine) {
         try {
-            if (!re.isValidViewVaccCommand(userLine)) {
+            if (!re.isValidViewVaccinationCommand(userLine)) {
                 throw new InvalidViewVaccinationException();
             }
         } catch (InvalidInputException e) {
@@ -847,7 +836,7 @@ public class ElderlyList {
         Elderly elderly;
         try {
             elderly = getElderly(elderlyName);
-            elderly.setDietByUserChoice();
+            elderly.setElderlyDietByUserChoice();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
             return Optional.empty();
@@ -872,7 +861,7 @@ public class ElderlyList {
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
-            elderly.printDietaryPreference();
+            elderly.printElderlyDietaryPreference();
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -890,7 +879,7 @@ public class ElderlyList {
         Elderly elderly;
         try {
             elderly = getElderly(elderlyName);
-            elderly.setMedicalHistory();
+            elderly.setElderlyMedicalHistory();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
             return Optional.empty();
@@ -908,7 +897,7 @@ public class ElderlyList {
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
-            elderly.printMedicalHistory();
+            elderly.printElderlyMedicalHistory();
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -927,7 +916,7 @@ public class ElderlyList {
         Elderly returningElderly;
         try {
             elderly = getElderly(elderlyName);
-            returningElderly = elderly.deleteMedicalHistory();
+            returningElderly = elderly.deleteElderlyMedicalHistory();
             return Optional.of(returningElderly);
         } catch (ElderlyNotFoundException e) {
             return Optional.empty();
@@ -981,7 +970,7 @@ public class ElderlyList {
                 medicineMappings.get(medicineName).add(elderlyName);
             }
             // Update diet mappings
-            String dietPreference = elderlyObject.getDiet();
+            String dietPreference = elderlyObject.getElderlyDiet();
             if (!dietMappings.containsKey(dietPreference)) {
                 dietMappings.put(dietPreference, new HashSet<>());
             }
