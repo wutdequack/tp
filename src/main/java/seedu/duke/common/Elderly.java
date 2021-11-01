@@ -26,6 +26,8 @@ import static seedu.duke.common.Messages.PROMPT_DELETE_MEDICAL_HISTORY;
 import static seedu.duke.common.MagicValues.ui;
 
 import com.google.gson.annotations.SerializedName;
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.InvalidDateFormatException;
 import seedu.duke.exceptions.InvalidDietIndexException;
 import seedu.duke.exceptions.InvalidInputException;
 
@@ -200,12 +202,55 @@ public abstract class Elderly {
     }
 
     public void setElderlyBirthday(String birthday) {
+        try {
+            if (!isValidDate(birthday)) {
+                throw new InvalidDateFormatException();
+            }
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+        }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             this.birthday = simpleDateFormat.parse(birthday);
         } catch (ParseException e) {
             ui.printGeneralException(e);
         }
+    }
+
+    private static boolean isValidDate(String date) {
+        int[] DAYS = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        try {
+            int year = Integer.parseInt(date.substring(0, 4));
+            if (year <= 0)
+                return false;
+            int month = Integer.parseInt(date.substring(5, 7));
+            if (month <= 0 || month > 12)
+                return false;
+            int day = Integer.parseInt(date.substring(8, 10));
+            if (day <= 0 || day > DAYS[month])
+                return false;
+            if (month == 2 && day == 29 && !isGregorianLeapYear(year)) {
+                return false;
+            }
+            int hour = Integer.parseInt(date.substring(11, 13));
+            if (hour < 0 || hour > 23)
+                return false;
+            int minute = Integer.parseInt(date.substring(14, 16));
+            if (minute < 0 || minute > 59)
+                return false;
+            int second = Integer.parseInt(date.substring(17, 19));
+            if (second < 0 || second > 59)
+                return false;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    private static final boolean isGregorianLeapYear(int year) {
+        return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
     }
 
     public String getBirthday() {
