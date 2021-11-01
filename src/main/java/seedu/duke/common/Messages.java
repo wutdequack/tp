@@ -321,7 +321,8 @@ public class Messages {
 
     public static final String WRONG_VIEW_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: viewbirthday u/USER_NAME";
 
-    public static final String WRONG_SET_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: setbirthday u/USER_NAME b/YYYY-MM-DD";
+    public static final String WRONG_SET_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: setbirthday "
+            + "u/USER_NAME b/YYYY-MM-DD";
 
 
     /**
