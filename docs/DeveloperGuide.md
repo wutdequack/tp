@@ -21,7 +21,61 @@ to add and retrieve elderly information with ease. This increases productivity.
 
 ## Design & implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Addition of Elderly
+#### Implementation
+Before the user can do anything, he has to first add some elderly into the system *(Details of 
+`addelderly` function is in UG)*. We created a `ElderlyList` class to handle the addition of `elderly`,
+and a `RegexChecker` class to check for validity of the input. Various `elderly` subclasses are added 
+as well. *(Further explained in Elderly Risk Categorisation)*
+
+Below is a UML sequence diagram for the process of addition of elderly:
+![](team/img/addelderly_seq_diag.png)
+
+#### How the classes interact with each other
+
+1. `addElderly()` in the class `ElderlyList` is run, supplied with the input `userline`
+2. Regex checks from `RegexChecker` class `isValidAddElderly()` and `isValidRiskLevel()` are run
+3. Depending on the `riskLevel`, `elderly` is added into respective subclasses *(Further explained in Elderly Risk Categorisation)*
+4. Message for elderly added is printed
+
+
+
+### Elderly risk categorisation
+#### Implementation
+The elderly risk categorisation is an addition to the current `Elderly` class. It utilises
+**polymorphism**, creating three subclasses `LowRiskElderly`, `MediumRiskElderly`, `HighRiskElderly`,
+all of which **inherits** from the `Elderly` class. <br>
+Additionally, 2 new classes are implemented:
+- `Hospital` — A class that contains information about a hospital, and contains a list of
+  all its doctors.
+- `Doctor` — A class that contains information about a doctor
+
+Below is a UML class diagram for the elderly risk categorisation:
+![](team/img/elderly_implementation.png)
+
+
+#### How the classes interact with each other
+
+`LowRiskElderly`, `MediumRiskElderly` and `HighRiskElderly` are expected to contain all current
+attributes and methods that `Elderly` class is supposed to have.
+
+In addition, `MediumRiskElderly` and `HighRiskElderly` are tagged with extra information,
+specifically `Hospital`, `Conditions` and `NotesOnCare`. `Conditions` is an array string that
+contains all the conditions the elderly has, while `NotesOnCare` is just a string that sequentially
+lists tips to care for elderly. Each elderly here is tagged to 1 `Hospital`.
+
+Finally, `HighRiskElderly` is also tagged with `Doctor`. Each elderly here is tagged to 1 `Doctor`.
+
+Every `Hospital` has 1 or more `Doctor`, stored in an ArrayList of type `Doctor`.
+
+#### Design considerations
+
+Since our TP is only intended for one user (i.e. the caretaker in the elderly home), the input of
+`Hospital` and `Doctor` data should not be done by them. As such, we have made it such that they are
+preset. `Hospital` and `Doctor` data are made to be fixed, as we make the assumption that the
+`Hospital` and `Doctor` that the `MediumRiskElderly` and `HighRiskElderly` are looking for
+are already there.
+
 
 ### Addition of Next-of-Kin and Record Classes
 #### Implementation
@@ -83,42 +137,6 @@ Below is the Sequence Diagram for deletion of objects which are stored in `Elder
 
 ![Screenshot](https://user-images.githubusercontent.com/70097982/139586603-43812b5e-6c50-4ee5-8d8e-492925c3101b.png)
 
-
-### Elderly risk categorisation
-#### Implementation
-The elderly risk categorisation is an addition to the current `Elderly` class. It utilises
-**polymorphism**, creating three subclasses `LowRiskElderly`, `MediumRiskElderly`, `HighRiskElderly`,
-all of which **inherits** from the `Elderly` class. <br>
-Additionally, 2 new classes are implemented:
-- `Hospital` — A class that contains information about a hospital, and contains a list of 
-all its doctors. 
-- `Doctor` — A class that contains information about a doctor
-
-Below is a UML class diagram for the elderly risk categorisation:
-![](team/img/elderly_implementation.png)
-
-
-#### How the classes interact with each other
-
-`LowRiskElderly`, `MediumRiskElderly` and `HighRiskElderly` are expected to contain all current 
-attributes and methods that `Elderly` class is supposed to have. 
-
-In addition, `MediumRiskElderly` and `HighRiskElderly` are tagged with extra information,
-specifically `Hospital`, `Conditions` and `NotesOnCare`. `Conditions` is an array string that 
-contains all the conditions the elderly has, while `NotesOnCare` is just a string that sequentially
-lists tips to care for elderly. Each elderly here is tagged to 1 `Hospital`.
-
-Finally, `HighRiskElderly` is also tagged with `Doctor`. Each elderly here is tagged to 1 `Doctor`.
-
-Every `Hospital` has 1 or more `Doctor`, stored in an ArrayList of type `Doctor`. 
-
-#### Design considerations
-
-Since our TP is only intended for one user (i.e. the caretaker in the elderly home), the input of 
-`Hospital` and `Doctor` data should not be done by them. As such, we have made it such that they are
-preset. `Hospital` and `Doctor` data are made to be fixed, as we make the assumption that the
-`Hospital` and `Doctor` that the `MediumRiskElderly` and `HighRiskElderly` are looking for 
-are already there. 
 
 ### Autosuggestions for search functions
 #### Problems Faced
@@ -199,7 +217,6 @@ complementary tool, **it will not be a major problem**.
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
 1. The product is not required to ensure that the dosage of medicine keyed are safe.
 2. The product should work on both 32-bit and 64-bit system.
 3. This version of product does not allow for addition of hospital and doctors.
