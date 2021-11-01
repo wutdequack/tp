@@ -305,6 +305,10 @@ public class Messages {
      */
     public static final String MESSAGE_ERROR_IN_VIEW_DIET = "[!] Correct viewdiet input: viewdiet u/USER_NAME.\r\n";
 
+    /**
+     * Used for the exception message of the index out of range for the given diets plans.
+     */
+    public static final String MESSAGE_ERROR_IN_SET_DIET = "[!] Correct setdiet input: setdiet u/USER_NAME.\r\n";
 
     /**
      * Used when counting number of elderly for list.

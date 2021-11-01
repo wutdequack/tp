@@ -107,6 +107,10 @@ public class RegexChecker {
         return Pattern.matches("^viewdiet u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
+    public boolean isValidSetDietCommand(String userLine) {
+        return Pattern.matches("^setdiet u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
     /**
      * Takes 2 strings and compare the distance(similarity) between them.
      *
