@@ -243,7 +243,13 @@ public abstract class Elderly {
 
     public void setDietByUserChoice() {
         System.out.printf(PROMPT_LIST_OF_DIETS);
-        int choice = Integer.parseInt(ui.getUserInput());
+        int choice;
+        try {
+            choice = Integer.parseInt(ui.getUserInput());
+        } catch (NumberFormatException e) {
+            ui.printGeneralException(e);
+            return;
+        }
         Optional<DietaryPreference> dietaryPreference = getDietFromChoice(choice);
         try {
             if (dietaryPreference.isPresent()) {
@@ -342,7 +348,7 @@ public abstract class Elderly {
         if (!isBloodPressureSet()) {
             bloodPressureString = String.format(MESSAGE_NO_BLOOD_PRESSURE, name);
         } else {
-            bloodPressureString =  String.format("Blood pressure of %s is now (%d %d)%n", name,
+            bloodPressureString = String.format("Blood pressure of %s is now (%d %d)%n", name,
                     bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
                     bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
         }

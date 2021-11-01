@@ -827,13 +827,15 @@ public class ElderlyList {
             if (!re.isValidViewDietCommand(userLine)) {
                 throw new InvalidViewDietCommandException();
             }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
+        try {
             String[] paramList = userLine.split(" u/");
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printDietaryPreference();
-        } catch (InvalidInputException e) {
-            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
