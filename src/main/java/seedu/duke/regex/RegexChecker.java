@@ -2,7 +2,6 @@ package seedu.duke.regex;
 
 import static java.lang.Math.min;
 
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class RegexChecker {
@@ -14,8 +13,8 @@ public class RegexChecker {
         return Pattern.matches("^[LMH]$", userLine);
     }
 
-    public boolean isValidHospitalIndex(String userLine) {
-        return Pattern.matches("^[1-6]$", userLine);
+    public boolean isNotValidHospitalIndex(String userLine) {
+        return !Pattern.matches("^[1-6]$", userLine);
     }
 
     public boolean isValidDoctorIndex(String userLine) {
@@ -111,11 +110,11 @@ public class RegexChecker {
         return Pattern.matches("^setdiet u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
-    public boolean isValidSetVaccCommand(String userLine) {
+    public boolean isValidSetVaccinationCommand(String userLine) {
         return Pattern.matches("^setvaccinated u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
-    public boolean isValidViewVaccCommand(String userLine) {
+    public boolean isValidViewVaccinationCommand(String userLine) {
         return Pattern.matches("^viewvaccination u/[a-z0-9]+$", userLine.toLowerCase());
     }
 

@@ -3,7 +3,6 @@ package seedu.duke;
 
 import seedu.duke.common.Elderly;
 import seedu.duke.list.ElderlyList;
-import seedu.duke.list.HospitalList;
 import seedu.duke.ui.TextUi;
 import seedu.duke.parser.Parser;
 

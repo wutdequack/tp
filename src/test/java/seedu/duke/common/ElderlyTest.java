@@ -1,7 +1,6 @@
 package seedu.duke.common;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -38,7 +37,7 @@ public class ElderlyTest {
                 + "\n"
                 + "[*] These are NOK(s) attached to johntan123:\n"
                 + "\n");
-        johnTan.setVaccinated();
+        johnTan.setElderlyVaccinated();
         assertEquals(johnTan.toString(), "[*] Risk Level : LOW\n"
                 + "[*] Elderly Username: johntan123\n"
                 + "[*] Elderly Name: John Tan\n"

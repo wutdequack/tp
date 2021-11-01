@@ -4,13 +4,7 @@ import java.util.Objects;
 
 import seedu.duke.hospital.Hospital;
 
-import static seedu.duke.common.Messages.MESSAGE_APPOINTMENTS;
-import static seedu.duke.common.Messages.MESSAGE_BIRTHDAY;
 import static seedu.duke.common.Messages.MESSAGE_MEDIUM_RISK_ELDERLY;
-import static seedu.duke.common.Messages.MESSAGE_MEDICINES;
-import static seedu.duke.common.Messages.MESSAGE_NOKS;
-import static seedu.duke.common.Messages.MESSAGE_RECORDS;
-import static seedu.duke.common.Messages.MESSAGE_VACCINATED;
 
 public class MediumRiskElderly extends Elderly implements Hospitalisable {
 

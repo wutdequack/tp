@@ -8,7 +8,6 @@ import seedu.duke.common.Elderly;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.InvalidInputException;
 
-import static seedu.duke.common.MagicValues.FIND_BY_NAME;
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.Messages.MESSAGE_ADD_BIRTHDAY_FORMAT;
@@ -307,8 +306,8 @@ public class TextUi {
      */
     public void printSetBloodPressureMessage(Elderly elderly) {
         out.printf(MESSAGE_SET_BLOOD_PRESSURE, elderly.getName(),
-                elderly.getBloodPressure()[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
-                elderly.getBloodPressure()[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
+                elderly.getElderlyBloodPressure()[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
+                elderly.getElderlyBloodPressure()[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
     }
 
     /**
@@ -324,7 +323,7 @@ public class TextUi {
      * Prints acknowledgement of dietary preference of elderly added to user.
      */
     public void printSetDietMessage(Elderly elderly) {
-        out.printf(MESSAGE_SET_DIET, elderly.getName(), elderly.getDiet());
+        out.printf(MESSAGE_SET_DIET, elderly.getName(), elderly.getElderlyDiet());
     }
 
     /**
