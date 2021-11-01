@@ -763,11 +763,11 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> setVaccinated(String userLine) {
-        try{
-            if(!re.isValidSetVaccCommand(userLine)){
+        try {
+            if (!re.isValidSetVaccCommand(userLine)) {
                 throw new InvalidSetVaccinationException();
             }
-        } catch(InvalidInputException e){
+        } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
         }
         String[] paramList = userLine.split(" u/");
@@ -789,11 +789,11 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void getVaccinationStatus(String userLine) {
-        try{
-            if(!re.isValidViewVaccCommand(userLine)){
+        try {
+            if (!re.isValidViewVaccCommand(userLine)) {
                 throw new InvalidViewVaccinationException();
             }
-        } catch(InvalidInputException e){
+        } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
         }
         String[] paramList = userLine.split(" u/");
