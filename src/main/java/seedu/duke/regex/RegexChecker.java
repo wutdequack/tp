@@ -2,6 +2,7 @@ package seedu.duke.regex;
 
 import static java.lang.Math.min;
 
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class RegexChecker {
@@ -33,7 +34,7 @@ public class RegexChecker {
         boolean case1 = Pattern.matches("^addappt u/[a-z0-9]+ l/[a-z0-9\\s]+ d/[0-9]{8} t/[0-9]{4}$",
                 userLine.toLowerCase());
         boolean case2 = Pattern.matches("^addappt u/[a-z0-9]+ l/[a-z0-9\\s]+ d/[0-9]{8} t/[0-9]{4} "
-                        + "p/[a-z0-9\\s]+$", userLine.toLowerCase());
+                + "p/[a-z0-9\\s]+$", userLine.toLowerCase());
         return case1 || case2;
     }
 
@@ -102,9 +103,34 @@ public class RegexChecker {
         return Pattern.matches("^setbloodpressure u/[a-z0-9]+ s/[0-9]{2,3} d/[0-9]{2,3}$", userLine.toLowerCase());
     }
 
+    public boolean isValidViewDietCommand(String userLine) {
+        return Pattern.matches("^viewdiet u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidSetDietCommand(String userLine) {
+        return Pattern.matches("^setdiet u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidSetVaccCommand(String userLine) {
+        return Pattern.matches("^setvaccinated u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidViewVaccCommand(String userLine) {
+        return Pattern.matches("^viewvaccination u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidSetBirthdayCommand(String userLine) {
+        return Pattern.matches("^setbirthday u/[a-z0-9]+ b/[0-9]{4}-[0-9]{2}-[0-9]{2}$", userLine.toLowerCase());
+    }
+
+    public boolean isValidViewBirthdayCommand(String userLine) {
+        return Pattern.matches("^viewvaccination u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
     /**
      * Takes 2 strings and compare the distance(similarity) between them.
-     * @param firstString First String to be compared.
+     *
+     * @param firstString  First String to be compared.
      * @param secondString Second String to be compared.
      * @return Float containing the ratio of similarity between the two strings.
      */

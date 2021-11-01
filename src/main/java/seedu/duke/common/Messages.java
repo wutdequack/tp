@@ -222,7 +222,6 @@ public class Messages {
             + "u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC_PRESSURE";
 
 
-
     /**
      * Used when invalid viewrecord is typed.
      */
@@ -300,12 +299,34 @@ public class Messages {
      */
     public static final String MESSAGE_ERROR_IN_DIET_INDEX = "[!] Wrong index of diet is keyed in.\r\n";
 
+    /**
+     * Used for the exception message of the index out of range for the given diets plans.
+     */
+    public static final String MESSAGE_ERROR_IN_VIEW_DIET = "[!] Correct viewdiet input: viewdiet u/USER_NAME.\r\n";
+
+    /**
+     * Used for the exception message of the index out of range for the given diets plans.
+     */
+    public static final String MESSAGE_ERROR_IN_SET_DIET = "[!] Correct setdiet input: setdiet u/USER_NAME.\r\n";
 
     /**
      * Used when counting number of elderly for list.
      */
     public static final String MESSAGE_NUMBER_OF_ELDERLY = "[*] There are currently %d elderly registered in the "
             + "system\n";
+
+    public static final String WRONG_SET_VACC_INPUT = "[!] Correct setvaccination input: setvaccinated u/USER_NAME";
+
+    public static final String WRONG_VIEW_VACC_INPUT = "[!] Correct viewvaccination input: viewvaccination u/USER_NAME";
+
+    public static final String WRONG_VIEW_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: viewbirthday u/USER_NAME";
+
+    public static final String WRONG_SET_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: setbirthday "
+            + "u/USER_NAME b/YYYY-MM-DD";
+
+    public static final String WRONG_BIRTHDAY_FORMAT_INPUT = "[!] Wrong birthday format or invalid date keyed in"
+            + "u/USER_NAME b/YYYY-MM-DD";
+
 
     /**
      * Used to list down all the supported dietary preferences for user's selection.

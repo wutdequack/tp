@@ -26,6 +26,11 @@ import seedu.duke.common.MediumRiskElderly;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
+
+import seedu.duke.hospital.Doctor;
+import seedu.duke.hospital.Hospital;
+
+
 import seedu.duke.exceptions.DoctorIndexException;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.DuplicateElderlyException;
@@ -52,8 +57,13 @@ import seedu.duke.exceptions.InvalidViewNokFormatException;
 import seedu.duke.exceptions.InvalidViewRecordFormatException;
 import seedu.duke.exceptions.InvalidRiskLevelException;
 import seedu.duke.exceptions.InvalidInputException;
-import seedu.duke.hospital.Doctor;
-import seedu.duke.hospital.Hospital;
+import seedu.duke.exceptions.InvalidViewDietCommandException;
+import seedu.duke.exceptions.InvalidSetDietCommandException;
+import seedu.duke.exceptions.InvalidSetVaccinationException;
+import seedu.duke.exceptions.InvalidViewVaccinationException;
+import seedu.duke.exceptions.InvalidSetBirthdayException;
+import seedu.duke.exceptions.InvalidViewBirthdayException;
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -144,6 +154,7 @@ public class ElderlyList {
 
     /**
      * Checks in current list if current elderly username exists.
+     *
      * @param inputElderlyName String containing elderly username to check with
      * @return Boolean value if elderly exists in array list
      */
@@ -198,7 +209,7 @@ public class ElderlyList {
     /**
      * Adds the elderly as a low risk elderly.
      *
-     * @param userName username of elderly.
+     * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
     private void addLowRiskElderly(String userName, String elderlyName) {
@@ -208,7 +219,7 @@ public class ElderlyList {
     /**
      * Adds the elderly as a medium risk elderly.
      *
-     * @param userName username of elderly.
+     * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
     private void addMediumRiskElderly(String userName, String elderlyName) throws HospitalIndexException {
@@ -230,7 +241,7 @@ public class ElderlyList {
     /**
      * Adds the elderly as a high risk elderly.
      *
-     * @param userName username of elderly.
+     * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
     private void addHighRiskElderly(String userName, String elderlyName) throws HospitalIndexException,
@@ -359,7 +370,7 @@ public class ElderlyList {
 
     public boolean isValidDate(String date) {
         char[] dateArray = date.toCharArray();
-        int [] numArray = new int[8];
+        int[] numArray = new int[8];
         for (int i = 0; i < 8; i += 1) {
             numArray[i] = dateArray[i] - '0';
         }
@@ -379,7 +390,7 @@ public class ElderlyList {
 
     public boolean isValidTime(String time) {
         char[] timeArray = time.toCharArray();
-        int [] numArray = new int[4];
+        int[] numArray = new int[4];
         for (int i = 0; i < 4; i += 1) {
             numArray[i] = timeArray[i] - '0';
         }
@@ -716,8 +727,16 @@ public class ElderlyList {
      */
     public void viewBirthday(String userLine) {
         try {
-            String[] paramList = userLine.split(" u/");
-            assert paramList.length == 2 : "Name is empty";
+            if (!re.isValidViewBirthdayCommand(userLine)) {
+                throw new InvalidViewBirthdayException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
+
+        String[] paramList = userLine.split(" u/");
+        assert paramList.length == 2 : "Name is empty";
+        try {
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             printBirthday(elderly);
@@ -736,6 +755,15 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> setBirthday(String userLine) {
+        try {
+            if (!re.isValidSetBirthdayCommand(userLine)) {
+                throw new InvalidSetBirthdayException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
+
+
         String[] paramList = userLine.split(" [ub]/");
         assert paramList.length == 3 : "setbirthday input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -756,6 +784,13 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> setVaccinated(String userLine) {
+        try {
+            if (!re.isValidSetVaccCommand(userLine)) {
+                throw new InvalidSetVaccinationException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
         String[] paramList = userLine.split(" u/");
         assert paramList.length == 2 : "setvaccinated input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -776,9 +811,16 @@ public class ElderlyList {
      */
     public void getVaccinationStatus(String userLine) {
         try {
-            String[] paramList = userLine.split(" u/");
-            assert paramList.length == 2 : "Username is empty";
-            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            if (!re.isValidViewVaccCommand(userLine)) {
+                throw new InvalidViewVaccinationException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
+        String[] paramList = userLine.split(" u/");
+        assert paramList.length == 2 : "Username is empty";
+        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+        try {
             Elderly elderly = getElderly(elderlyName);
             elderly.printVaccinationStatus();
         } catch (DukeException e) {
@@ -792,6 +834,13 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> setDietaryPreference(String userLine) {
+        try {
+            if (!re.isValidSetDietCommand(userLine)) {
+                throw new InvalidSetDietCommandException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
         String[] paramList = userLine.split(" u/");
         assert paramList.length == 2 : "setdiet input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
@@ -811,6 +860,13 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public void viewDietaryPreference(String userLine) {
+        try {
+            if (!re.isValidViewDietCommand(userLine)) {
+                throw new InvalidViewDietCommandException();
+            }
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        }
         try {
             String[] paramList = userLine.split(" u/");
             assert paramList.length == 2 : "Username is empty";
