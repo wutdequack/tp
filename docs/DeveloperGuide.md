@@ -1,5 +1,21 @@
 # Developer Guide
 
+## Table of contents
+
+- [Developer's Guide](#developer-guide)
+  - [Product scope](#product-scope)
+    - [Target user profile](#target-user-profile)
+    - [Value proposition](#value-proposition)
+  - [Design & Implementation](#design--implementation)
+    - [Addition of Elderly](#addition-of-elderly)
+    - [Elderly risk categorisation](#elderly-risk-categorisation)
+    - [Addition of Next-of-Kin and Record Classes](#addition-of-next-of-kin-and-record-classes)
+    - [Creation of New Objects Stored in ElderlyList Class](#creation-of-new-objects-stored-in-elderlylist-class)
+    - [Deletion of Objects Stored in ElderlyList Class](#deletion-of-objects-stored-in-elderlylist-class)
+    - [Autosuggestions for search functions](#autosuggestions-for-search-functions)
+  - [User Stories](#user-stories)
+  - [Non-Functional Requirements](#non-functional-requirements)
+  - [Instructions for manual testing](#instructions-for-manual-testing)
 
 ## Product scope
 Hi, welcome to the Elderly in Your Hood.
@@ -222,10 +238,10 @@ complementary tool, **it will not be a major problem**.
 2. The product should work on both 32-bit and 64-bit system.
 3. This version of product does not allow for addition of hospital and doctors.
 
-## Glossary
-
-* *glossary item* - Definition
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+1. To load sample/saved data to use, use the command `load` (e.g. `load fp/data.json`)
+2. To store data, use the command `store` (e.g. `store fp/data.json`)
+
+Note: filename can only consist of characters and must end with `.json` View User Guide for more information.
