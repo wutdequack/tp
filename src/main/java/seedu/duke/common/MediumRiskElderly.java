@@ -8,9 +8,9 @@ import static seedu.duke.common.Messages.MESSAGE_MEDIUM_RISK_ELDERLY;
 
 public class MediumRiskElderly extends Elderly implements Hospitalisable {
 
-    protected Hospital hospital;
-    protected String conditions;
-    protected String notesOnCare;
+    private Hospital hospital;
+    private String conditions;
+    private String notesOnCare;
 
     public MediumRiskElderly(String username, String name, Hospital hospital, String conditions,
                              String notesOnCare) {

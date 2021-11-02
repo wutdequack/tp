@@ -7,10 +7,10 @@ import static seedu.duke.common.Messages.MESSAGE_HIGH_RISK_ELDERLY;
 
 public class HighRiskElderly extends Elderly implements Hospitalisable {
 
-    protected Hospital hospital;
-    protected String conditions;
-    protected String notesOnCare;
-    protected Doctor doctor;
+    private Hospital hospital;
+    private String conditions;
+    private String notesOnCare;
+    private Doctor doctor;
 
     public HighRiskElderly(String username, String name, Hospital hospital, String conditions,
                            String notesOnCare,

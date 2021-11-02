@@ -2,11 +2,11 @@ package seedu.duke.common;
 
 public class NextOfKin {
 
-    protected String nokName;
-    protected String nokPhoneNumber;
-    protected String nokEmail;
-    protected String nokAddress;
-    protected String nokRelationship;
+    private String nokName;
+    private String nokPhoneNumber;
+    private String nokEmail;
+    private String nokAddress;
+    private String nokRelationship;
 
     public NextOfKin(String nokName, String nokPhoneNumber, String nokEmail, String nokAddress,
                      String nokRelationship) {

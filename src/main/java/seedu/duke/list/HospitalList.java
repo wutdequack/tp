@@ -1,8 +1,7 @@
 package seedu.duke.list;
 
 import java.util.ArrayList;
-import seedu.duke.common.Medicine;
-import seedu.duke.hospital.Doctor;
+
 import seedu.duke.hospital.Hospital;
 
 public class HospitalList {
@@ -119,12 +118,12 @@ public class HospitalList {
      * Initialises hospitalArrayList array based on constants.
      */
     public void initHospitals() {
-        hospitalArrayList.add(initChangiGeneralHospital());
-        hospitalArrayList.add(initKhooTeckPuatHospital());
-        hospitalArrayList.add(initNationalUniversityHospital());
-        hospitalArrayList.add(initNgTengFongHospital());
-        hospitalArrayList.add(initSingaporeGeneralHospital());
-        hospitalArrayList.add(initTanTockSengHospital());
+        hospitalArrayList.add(initializeChangiGeneralHospital());
+        hospitalArrayList.add(initializeKhooTeckPuatHospital());
+        hospitalArrayList.add(initializeNationalUniversityHospital());
+        hospitalArrayList.add(initializeNgTengFongHospital());
+        hospitalArrayList.add(initializeSingaporeGeneralHospital());
+        hospitalArrayList.add(initializeTanTockSengHospital());
     }
 
     /**
@@ -160,7 +159,7 @@ public class HospitalList {
     /**
      * Initialises Changi General Hospital variables based on constants.
      */
-    private Hospital initChangiGeneralHospital() {
+    private Hospital initializeChangiGeneralHospital() {
         Hospital changiGeneralHospital = new Hospital(CHANGI_GENERAL_HOSPITAL, CHANGI_GENERAL_HOSPITAL_NUMBER);
         changiGeneralHospital.addDoctor(MA_XUEGANG, MA_XUEGANG_NUMBER);
         changiGeneralHospital.addDoctor(XIE_FANG, XIE_FANG_NUMBER);
@@ -173,7 +172,7 @@ public class HospitalList {
     /**
      * Initialises Khoo Teck Puat Hospital variables based on constants.
      */
-    private Hospital initKhooTeckPuatHospital() {
+    private Hospital initializeKhooTeckPuatHospital() {
         Hospital khooTeckPuatHospital = new Hospital(KHOO_TECK_PUAT_HOSPITAL, KHOO_TECK_PUAT_HOSPITAL_NUMBER);
         khooTeckPuatHospital.addDoctor(ADRIAN_VERGIL, ADRIAN_VERGIL_NUMBER);
         khooTeckPuatHospital.addDoctor(JOLINE_DEAN, JOLINE_DEAN_NUMBER);
@@ -186,7 +185,7 @@ public class HospitalList {
     /**
      * Initialises National University Hospital variables based on constants.
      */
-    private Hospital initNationalUniversityHospital() {
+    private Hospital initializeNationalUniversityHospital() {
         Hospital nationalUniversityHospital = new Hospital(NATIONAL_UNIVERSITY_HOSPITAL,
                 NATIONAL_UNIVERSITY_HOSPITAL_NUMBER);
         nationalUniversityHospital.addDoctor(DWAIN_WONG, DWAIN_WONG_NUMBER);
@@ -200,7 +199,7 @@ public class HospitalList {
     /**
      * Initialises Ng Teng Fong Hospital variables based on constants.
      */
-    private Hospital initNgTengFongHospital() {
+    private Hospital initializeNgTengFongHospital() {
         Hospital ngTengFongHospital = new Hospital(NG_TENG_FONG_GENERAL_HOSPITAL, NG_TENG_FONG_GENERAL_HOSPITAL_NUMBER);
         ngTengFongHospital.addDoctor(SUN_GENGXIN, SUN_GENGXIN_NUMBER);
         ngTengFongHospital.addDoctor(DAI_JIA, DAI_JIA_NUMBER);
@@ -213,7 +212,7 @@ public class HospitalList {
     /**
      * Initialises Singapore General Hospital variables based on constants.
      */
-    private Hospital initSingaporeGeneralHospital() {
+    private Hospital initializeSingaporeGeneralHospital() {
         Hospital singaporeGeneralHospital = new Hospital(SINGAPORE_GENERAL_HOSPITAL, SINGAPORE_GENERAL_HOSPITAL_NUMBER);
         singaporeGeneralHospital.addDoctor(NILOFER_SIDDHI, NILOFER_SIDDHI_NUMBER);
         singaporeGeneralHospital.addDoctor(TARAN_NIRMALA, TARAN_NIRMALA_NUMBER);
@@ -226,7 +225,7 @@ public class HospitalList {
     /**
      * Initialises Tan Tock Seng Hospital variables based on constants.
      */
-    private Hospital initTanTockSengHospital() {
+    private Hospital initializeTanTockSengHospital() {
         Hospital tanTockSengHospital = new Hospital(TAN_TOCK_SENG_HOSPITAL, TAN_TOCK_SENG_HOSPITAL_NUMBER);
         tanTockSengHospital.addDoctor(MARALYN_HARSHA, MARALYN_HARSHA_NUMBER);
         tanTockSengHospital.addDoctor(STACE_FANG, STACE_FANG_NUMBER);

@@ -111,7 +111,7 @@ public abstract class Elderly {
     public Optional<NextOfKin> removeElderlyNok(String nextOfkin) {
         NextOfKin deleteNok;
         for (NextOfKin nok : nextofkins) {
-            String currentNokName = nok.nokName.toLowerCase();
+            String currentNokName = nok.getNokName().toLowerCase();
             if (currentNokName.contentEquals(nextOfkin.toLowerCase())) {
                 deleteNok = nok;
                 nextofkins.remove(nok);
@@ -124,7 +124,7 @@ public abstract class Elderly {
     public Optional<Medicine> removeElderlyMedicine(String medName) {
         Medicine deleteMedicine;
         for (Medicine med : medicines) {
-            String currentMedName = med.medicineName.toLowerCase();
+            String currentMedName = med.getMedicineName().toLowerCase();
             if (currentMedName.contentEquals(medName.toLowerCase())) {
                 deleteMedicine = med;
                 medicines.remove(med);
@@ -137,8 +137,8 @@ public abstract class Elderly {
     public Optional<Appointment> removeAppointment(String deleteDate, String deleteTime) {
         Appointment deletedAppointment;
         for (Appointment appointment : appointments) {
-            String currentDate = appointment.date;
-            String currentTime = appointment.time;
+            String currentDate = appointment.getDate();
+            String currentTime = appointment.getTime();
             if (currentDate.contentEquals(deleteDate) && currentTime.contentEquals(deleteTime)) {
                 deletedAppointment = appointment;
                 appointments.remove(appointment);

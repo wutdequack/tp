@@ -2,10 +2,10 @@ package seedu.duke.common;
 
 public class Appointment {
 
-    protected String location;
-    protected String date;
-    protected String time;
-    protected String purpose;
+    private String location;
+    private String date;
+    private String time;
+    private String purpose;
 
     public Appointment(String location, String date, String time, String purpose) {
         this.location = location;
