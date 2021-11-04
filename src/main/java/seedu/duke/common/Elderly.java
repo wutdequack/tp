@@ -13,6 +13,8 @@ import static seedu.duke.common.MagicValues.INPUT_NO_RESTRICTIONS;
 import static seedu.duke.common.MagicValues.VALUE_DEFAULT_BP;
 import static seedu.duke.common.Messages.MESSAGE_APPOINTMENTS;
 import static seedu.duke.common.Messages.MESSAGE_BIRTHDAY;
+import static seedu.duke.common.Messages.MESSAGE_BLOODPRESSURE;
+import static seedu.duke.common.Messages.MESSAGE_MEDICALHIST;
 import static seedu.duke.common.Messages.MESSAGE_MEDICINES;
 import static seedu.duke.common.Messages.MESSAGE_NOKS;
 import static seedu.duke.common.Messages.MESSAGE_NO_BLOOD_PRESSURE;
@@ -347,6 +349,10 @@ public abstract class Elderly {
         updateElderlyMedicalHistory(currentHistoryStringBuffer);
     }
 
+    public String getMedicalHistory() {
+        return medicalHistory;
+    }
+
     public void printElderlyMedicalHistory() {
         System.out.printf("%s's medical history:%n%s%n", name, medicalHistory);
     }
@@ -389,7 +395,7 @@ public abstract class Elderly {
         if (!isBloodPressureSet()) {
             bloodPressureString = String.format(MESSAGE_NO_BLOOD_PRESSURE, name);
         } else {
-            bloodPressureString = String.format("Blood pressure of %s is now (%d %d)%n", name,
+            bloodPressureString = String.format(MESSAGE_BLOODPRESSURE, name,
                     bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
                     bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
         }
@@ -404,8 +410,9 @@ public abstract class Elderly {
                 listOfMedicinesString);
         String combinedListOfNoksString = String.format(MESSAGE_NOKS, username,
                 listOfNoksString);
+        String medicalHistoryString = String.format(MESSAGE_MEDICALHIST, getMedicalHistory());
         return String.format(MESSAGE_OVERALL_ELDERLY, username, name, vaccinatedString, bloodPressureString,
-                birthdayString, combinedListofRecordsString,
+                birthdayString, medicalHistoryString, combinedListofRecordsString,
                 combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString);
     }
 }
