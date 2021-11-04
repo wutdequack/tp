@@ -93,7 +93,6 @@ public class Duke {
                 executeCommand(userInput);
             } catch (Exception e) {
                 ui.printGeneralException(e);
-                // todo - logger here!
             }
         }
     }

@@ -910,7 +910,7 @@ public class ElderlyList {
      */
     public Optional<Elderly> deleteMedicalHistory(String userLine) {
         String[] paramList = userLine.split(" u/");
-        assert paramList.length == 2 : "deletemedicalhistor input does not have all required values";
+        assert paramList.length == 2 : "deletemedicalhistory input does not have all required values";
         String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
         Elderly elderly;
         Elderly returningElderly;
@@ -1041,7 +1041,6 @@ public class ElderlyList {
 
     /**
      * Prints the list of elderly that is taking the searched diet preference.
-     * TODO: Unable to test this function without fix to diet
      *
      * @param userLine String containing diet to be looked up.
      */
