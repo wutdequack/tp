@@ -115,6 +115,7 @@ public abstract class Elderly {
             if (currentNokName.contentEquals(nextOfkin.toLowerCase())) {
                 deleteNok = nok;
                 nextofkins.remove(nok);
+                System.gc();
                 return Optional.of(deleteNok);
             }
         }
@@ -128,6 +129,7 @@ public abstract class Elderly {
             if (currentMedName.contentEquals(medName.toLowerCase())) {
                 deleteMedicine = med;
                 medicines.remove(med);
+                System.gc();
                 return Optional.of(deleteMedicine);
             }
         }
@@ -142,6 +144,7 @@ public abstract class Elderly {
             if (currentDate.contentEquals(deleteDate) && currentTime.contentEquals(deleteTime)) {
                 deletedAppointment = appointment;
                 appointments.remove(appointment);
+                System.gc();
                 return Optional.of(deletedAppointment);
             }
         }
@@ -242,7 +245,7 @@ public abstract class Elderly {
         return true;
     }
 
-    private static final boolean isGregorianLeapYear(int year) {
+    private static boolean isGregorianLeapYear(int year) {
         return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
     }
 
