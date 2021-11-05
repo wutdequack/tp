@@ -111,6 +111,10 @@ public class Messages {
     public static final String MESSAGE_ADD_ELDERLY_FORMAT =
             "[*] Add Elderly format: addelderly u/USERNAME n/NAME r/RISK_LEVEL";
 
+    /**
+     * Used when invalid elderly name is given.
+     */
+    public static final String MESSAGE_NO_SUCH_ELDERLY = "[!] Elderly name you have keyed in does not exist";
 
     /**
      * Used when appointment has been added.
