@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Hospital {
     private final String name;
     private final Integer number;
-    protected ArrayList<Doctor> doctorArrayList = new ArrayList<Doctor>();
+    private final ArrayList<Doctor> doctorArrayList = new ArrayList<Doctor>();
 
     public Hospital(String name, Integer number) {
         this.name = name;

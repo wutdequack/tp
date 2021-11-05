@@ -125,9 +125,9 @@ import static seedu.duke.common.Messages.MESSAGE_NUMBER_OF_ELDERLY;
 public class ElderlyList {
 
 
-    protected static ArrayList<Elderly> elderlyArrayList = new ArrayList<>();
-    protected static HashMap<String, HashSet<String>> medicineMappings = new HashMap<>();
-    protected static HashMap<String, HashSet<String>> dietMappings = new HashMap<>();
+    protected ArrayList<Elderly> elderlyArrayList = new ArrayList<>();
+    protected final HashMap<String, HashSet<String>> medicineMappings = new HashMap<>();
+    protected final HashMap<String, HashSet<String>> dietMappings = new HashMap<>();
 
     private String filePath;
     private final Gson gson;
