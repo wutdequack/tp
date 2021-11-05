@@ -152,18 +152,17 @@ public class Duke {
             break;
         case SET_BLOOD_PRESSURE:
             elderlyHelperFunction.setBloodPressure(userLine);
-            //targetElderly.ifPresentOrElse(ui::printSetBloodPressureMessage, ui::printNoSuchElderly);
             break;
         case VIEW_BIRTHDAY:
             elderlyHelperFunction.viewBirthday(userLine);
             break;
         case SET_BIRTHDAY:
             targetElderly = elderlyHelperFunction.setBirthday(userLine);
-            targetElderly.ifPresentOrElse(ui::printSetBirthdayMessage, ui::printNoSuchElderly);
+            targetElderly.ifPresent(ui::printSetBirthdayMessage);
             break;
         case SET_VACCINATED:
             targetElderly = elderlyHelperFunction.setVaccinated(userLine);
-            targetElderly.ifPresentOrElse(ui::printSetVaccinationMessage, ui::printNoSuchElderly);
+            targetElderly.ifPresent(ui::printSetVaccinationMessage);
             break;
         case VIEW_VACCINATION:
             elderlyHelperFunction.getVaccinationStatus(userLine);
@@ -173,7 +172,7 @@ public class Duke {
             break;
         case SET_DIET:
             targetElderly = elderlyHelperFunction.setDietaryPreference(userLine);
-            targetElderly.ifPresentOrElse(ui::printSetDietMessage, ui::printNoSuchElderly);
+            targetElderly.ifPresent(ui::printSetDietMessage);
             break;
         case VIEW_DIET:
             elderlyHelperFunction.viewDietaryPreference(userLine);
@@ -210,14 +209,14 @@ public class Duke {
             break;
         case ADD_MEDICAL_HISTORY:
             targetElderly = elderlyHelperFunction.addMedicalHistory(userLine);
-            targetElderly.ifPresentOrElse(ui::printAddMedicalHistoryMessage, ui::printNoSuchElderly);
+            targetElderly.ifPresent(ui::printAddMedicalHistoryMessage);
             break;
         case VIEW_MEDICAL_HISTORY:
             elderlyHelperFunction.viewMedicalHistory(userLine);
             break;
         case DELETE_MEDICAL_HISTORY:
             targetElderly = elderlyHelperFunction.deleteMedicalHistory(userLine);
-            targetElderly.ifPresentOrElse(ui::printDeleteMedicalHistoryMessage, ui::printNoSuchElderly);
+            targetElderly.ifPresent(ui::printDeleteMedicalHistoryMessage);
             break;
         default:
             // Command is not recognized

@@ -744,27 +744,27 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> setBirthday(String userLine) {
+        Elderly elderly;
         try {
             if (!re.isValidSetBirthdayCommand(userLine)) {
                 throw new InvalidSetBirthdayException();
             }
+            String[] paramList = userLine.split(" [ub]/");
+            assert paramList.length == 3 : "setbirthday input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            String birthday = paramList[INDEX_OF_BIRTHDAY];
+            elderly = getElderly(elderlyName);
+            boolean successfulSet = elderly.setElderlyBirthday(birthday);
+            if (successfulSet) {
+                return Optional.of(elderly);
+            }
+
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
-        }
-
-
-        String[] paramList = userLine.split(" [ub]/");
-        assert paramList.length == 3 : "setbirthday input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
-        String birthday = paramList[INDEX_OF_BIRTHDAY];
-        Elderly elderly;
-        try {
-            elderly = getElderly(elderlyName);
-            elderly.setElderlyBirthday(birthday);
-            return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
-            return Optional.empty();
+            ui.printDukeException(e);
         }
+        return Optional.empty();
     }
 
     /**
@@ -789,6 +789,7 @@ public class ElderlyList {
             elderly.setElderlyVaccinated();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
+            ui.printDukeException(e);
             return Optional.empty();
         }
     }
@@ -839,6 +840,7 @@ public class ElderlyList {
             elderly.setElderlyDietByUserChoice();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
+            ui.printDukeException(e);
             return Optional.empty();
         }
     }
@@ -882,6 +884,7 @@ public class ElderlyList {
             elderly.setElderlyMedicalHistory();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
+            ui.printDukeException(e);
             return Optional.empty();
         }
     }
@@ -919,6 +922,7 @@ public class ElderlyList {
             returningElderly = elderly.deleteElderlyMedicalHistory();
             return Optional.of(returningElderly);
         } catch (ElderlyNotFoundException e) {
+            ui.printDukeException(e);
             return Optional.empty();
         }
     }
