@@ -119,7 +119,7 @@ public class RegexChecker {
     }
 
     public boolean isValidSetBirthdayCommand(String userLine) {
-        return Pattern.matches("^setbirthday u/[a-z0-9]+ b/[0-9]{4}-[0-9]{2}-[0-9]{2}$", userLine.toLowerCase());
+        return Pattern.matches("^setbirthday u/[a-z0-9]+ b/[0-9-]+$", userLine.toLowerCase());
     }
 
     public boolean isValidViewBirthdayCommand(String userLine) {

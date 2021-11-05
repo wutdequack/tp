@@ -205,19 +205,20 @@ public abstract class Elderly {
         return isVaccinated;
     }
 
-    public void setElderlyBirthday(String birthday) {
+    public boolean setElderlyBirthday(String birthday) {
         try {
             if (!isValidDate(birthday)) {
                 throw new InvalidDateFormatException();
             }
-        } catch (DukeException e) {
-            ui.printDukeException(e);
-        }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             this.birthday = simpleDateFormat.parse(birthday);
+            return true;
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+            return false;
         } catch (ParseException e) {
             ui.printGeneralException(e);
+            return false;
         }
     }
 
@@ -241,7 +242,6 @@ public abstract class Elderly {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
         return true;
