@@ -46,7 +46,7 @@ as well. *(Further explained in Elderly Risk Categorisation)*
 
 Below is a UML sequence diagram for the process of addition of elderly:
 
-![](team/img/seq_diag.png)
+![](team/img/updated_seq_diag.png)
 
 #### How the classes interact with each other
 

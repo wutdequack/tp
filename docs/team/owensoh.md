@@ -6,7 +6,7 @@ Elderly In Your Hood is a lightweight command-line (CLI) desktop application for
 ## Summary of Contributions
 
 ### Code contributed
-https://nus-cs2113-ay2122s1.github.io/tp-dashboard/?search=owensoh&sort=groupTitle&sortWithin=title&since=2021-09-25&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=owensoh&tabRepo=AY2122S1-CS2113-T16-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false
+[Link to code](https://nus-cs2113-ay2122s1.github.io/tp-dashboard/?search=owensoh&sort=groupTitle&sortWithin=title&since=2021-09-25&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=owensoh&tabRepo=AY2122S1-CS2113-T16-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false)
 
 ### Enhancements implemented
 - Adding of elderly (`addelderly`)
