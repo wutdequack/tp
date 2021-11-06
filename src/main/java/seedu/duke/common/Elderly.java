@@ -66,7 +66,7 @@ public abstract class Elderly {
         medicalHistory = new String();
         diet = DietaryPreference.NOT_SET;
         typeName = getClass().getName();
-        bloodPressure = new int[] {VALUE_DEFAULT_BP, VALUE_DEFAULT_BP} ;
+        bloodPressure = new int[]{VALUE_DEFAULT_BP, VALUE_DEFAULT_BP};
     }
 
     /**
