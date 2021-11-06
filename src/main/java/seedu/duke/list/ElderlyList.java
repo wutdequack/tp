@@ -364,6 +364,13 @@ public class ElderlyList {
         }
     }
 
+    /**
+     * Takes in date and checks if the date is valid.
+     *
+     * @param date Date that is to be checked.
+     *
+     * @return True if date is valid, false if the date is invalid.
+     */
     private boolean isValidDate(String date) {
         char[] dateArray = date.toCharArray();
         int[] numArray = new int[8];
@@ -384,6 +391,13 @@ public class ElderlyList {
         return true;
     }
 
+    /**
+     * Takes in the time and checks if it is valid.
+     *
+     * @param time Time that is to be checked.
+     *
+     * @return True if the time is valid and false if the time is invalid.
+     */
     private boolean isValidTime(String time) {
         char[] timeArray = time.toCharArray();
         int[] numArray = new int[4];
@@ -420,6 +434,11 @@ public class ElderlyList {
         }
     }
 
+    /**
+     * Deletes the specified apppointment (based on date and time) from the elderly that is provided.
+     *
+     * @param userLine Line that is entered by the user.
+     */
     public void deleteAppointment(String userLine) {
         try {
             if (!re.isValidDeleteAppointment(userLine)) {
@@ -440,11 +459,20 @@ public class ElderlyList {
         }
     }
 
+    /**
+     * Prints the deleted appointment message with the deleted appointment for the user to verify that the
+     * appointment has been deleted.
+     *
+     * @param deletedAppointment Appointment that has just been deleted.
+     */
     public void printDeletedAppointment(Appointment deletedAppointment) {
         System.out.println("These appointment details are now deleted:");
         System.out.println(deletedAppointment);
     }
 
+    /**
+     * Prints message when there is no appointment matching what is specified by the user.
+     */
     public void printNoAppointment() {
         System.out.println("No Appointment found");
     }
@@ -525,6 +553,12 @@ public class ElderlyList {
         System.out.println(elderly.getNextOfKin());
     }
 
+    /**
+     * Deletes the details of Next-Of-Kin (identified by name) that is specified by the user from the elderly
+     * provided.
+     *
+     * @param userLine Line that is entered by the user.
+     */
     public void deleteNextOfKin(String userLine) {
         try {
             if (!re.isValidDeleteNok(userLine)) {
@@ -546,15 +580,29 @@ public class ElderlyList {
     }
 
 
+    /**
+     * Prints out details of Next-Of-Kin that has just been deleted, to notify the user that the details are deleted.
+     *
+     * @param deletedNok Details of Next-Of-Kin that are recently deleted.
+     */
     public void printDeletedNextOfKin(NextOfKin deletedNok) {
         System.out.println("These details are now deleted:");
         System.out.println(deletedNok);
     }
 
+    /**
+     * Message printed when there are no matching details of Next-Of-Kin (identified by name) found.
+     */
     public void printNoNextOfKin() {
         System.out.println("No Next-Of-Kin found");
     }
 
+    /**
+     * Deletes the medicine information that is specified by the user (based on name of medicine) from the elderly
+     * that is specified by the user.
+     *
+     * @param userLine Line that is entered by the user.
+     */
     public void deleteMedicine(String userLine) {
         try {
             if (!re.isValidDeleteMedicine(userLine)) {
@@ -575,10 +623,18 @@ public class ElderlyList {
         }
     }
 
+    /**
+     * Message prints when there is no medicine details found (identified by the name of medicine).
+     */
     public void printNoMedicine() {
         System.out.println("No Medicine found");
     }
 
+    /**
+     * Prints out the recently deleted medicine information from the elderly.
+     *
+     * @param deletedMed Medicine that has been recently deleted.
+     */
     public void printDeletedMedicine(Medicine deletedMed) {
         System.out.println("These medicine details are now deleted:");
         System.out.println(deletedMed);
