@@ -42,10 +42,10 @@ import java.util.Optional;
 
 public abstract class Elderly {
 
-    private ArrayList<Medicine> medicines = new ArrayList<>();
-    private ArrayList<Appointment> appointments = new ArrayList<>();
-    private ArrayList<NextOfKin> nextofkins = new ArrayList<>();
-    private ArrayList<Record> records = new ArrayList<>();
+    private final ArrayList<Medicine> medicines = new ArrayList<>();
+    private final ArrayList<Appointment> appointments = new ArrayList<>();
+    private final ArrayList<NextOfKin> nextofkins = new ArrayList<>();
+    private final ArrayList<Record> records = new ArrayList<>();
 
     private final String username;
     private final String name;
@@ -390,7 +390,7 @@ public abstract class Elderly {
                 .map(Objects::toString)
                 .reduce((t, u) -> t + '\n' + u)
                 .orElse("");
-        String bloodPressureString = "";
+        String bloodPressureString;
         if (!isBloodPressureSet()) {
             bloodPressureString = String.format(MESSAGE_NO_BLOOD_PRESSURE, name);
         } else {
@@ -401,7 +401,7 @@ public abstract class Elderly {
         String vaccinatedString = String.format(MESSAGE_VACCINATED, username,
                 isVaccinated ? "Vaccinated" : "Not vaccinated");
         String birthdayString = String.format(MESSAGE_BIRTHDAY, username,
-                birthday == null ? "Not Recorded" : getBirthday());
+                (Objects.isNull(birthday)) ? "Not Recorded" : getBirthday());
         String combinedListofRecordsString = String.format(MESSAGE_RECORDS, username, listOfRecordsString);
         String combinedListOfAppointmentsString = String.format(MESSAGE_APPOINTMENTS,
                 listOfAppointmentsString);
