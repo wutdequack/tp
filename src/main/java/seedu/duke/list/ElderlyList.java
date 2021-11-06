@@ -726,13 +726,20 @@ public class ElderlyList {
             printBirthday(elderly);
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
+            return;
         } catch (DukeException e) {
             ui.printDukeException(e);
+            return;
         }
     }
 
     private void printBirthday(Elderly elderly) {
-        System.out.printf("Birthday of %s is %s%n", elderly.getUsername(), elderly.getBirthday());
+        try {
+            String birthday = elderly.getBirthday();
+            System.out.printf("Birthday of %s is %s%n", elderly.getName(), birthday);
+        } catch (NullPointerException e) {
+            System.out.printf("Birthday of %s has not been set.%n", elderly.getName());
+        }
     }
 
     /**

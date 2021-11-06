@@ -48,7 +48,7 @@ public abstract class Elderly {
     protected ArrayList<Record> records = new ArrayList<>();
 
     protected final String username;
-    protected String name;
+    protected final String name;
 
     protected Integer[] bloodPressure = new Integer[2];
     protected boolean isVaccinated;
