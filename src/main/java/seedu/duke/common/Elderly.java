@@ -452,7 +452,8 @@ public abstract class Elderly {
                 listOfNoksString);
         String medicalHistoryString = String.format(MESSAGE_MEDICALHIST, getMedicalHistory());
 
-        return String.format(TO_STRING_MESSAGE_ABSTRACT_ELDERLY, username, name, vaccinatedString, bloodPressureString,
+        return String.format(TO_STRING_MESSAGE_ABSTRACT_ELDERLY, username, name, dietString,
+                vaccinatedString, bloodPressureString,
                 birthdayString, medicalHistoryString, combinedListofRecordsString,
                 combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString);
     }

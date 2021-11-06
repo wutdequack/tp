@@ -3,6 +3,7 @@ package seedu.duke.common;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -17,11 +18,11 @@ public class NextOfKinTest {
 
     @Test
     void testNokDetails() {
-        assertEquals(nextOfKin.getNokName(), "tony lim");
-        assertEquals(nextOfKin.getNokPhoneNumber(), "92334500");
-        assertEquals(nextOfKin.getNokEmail(), "tonylim@yahoo.com");
-        assertEquals(nextOfKin.getNokAddress(), "23 yishun block 234");
-        assertEquals(nextOfKin.getNokRelationship(), "son");
+        assertEquals("tony lim", nextOfKin.getNokName());
+        assertEquals("92334500", nextOfKin.getNokPhoneNumber());
+        assertEquals("tonylim@yahoo.com", nextOfKin.getNokEmail());
+        assertEquals("23 yishun block 234", nextOfKin.getNokAddress());
+        assertEquals("son", nextOfKin.getNokRelationship());
     }
 
 }

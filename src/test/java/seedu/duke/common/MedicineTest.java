@@ -22,6 +22,7 @@ public class MedicineTest {
 
     @Test
     void testMedicineToString() {
-        assertEquals(medicine.toString(), "Medicine Name: panadol, Frequency: once a day");
+        String expectedOutput = "Medicine Name: panadol, Frequency: once a day";
+        assertEquals(expectedOutput, medicine.toString());
     }
 }
