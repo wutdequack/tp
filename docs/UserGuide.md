@@ -191,7 +191,7 @@ Format: `addappt u/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`
 * The `USERNAME` only can contain characters or numbers.
 * The `LOCATION` can be in a natural language format.
 * The `DATE` only can contain 8 numbers, in the format DDMMYYYY.
-* The `TIME` only can contain 4 numbers, in the format hhmm.
+* The `TIME` only can contain 4 numbers, in the format hhmm. 24h time format.
 * The `PURPOSE` can be in a natural language format. Take note that this argument is optional, and
 is defaulted to `general checkup` if unassigned.
 
@@ -883,6 +883,16 @@ Hence, we have made the hospitals and doctors fixed for this program, with the a
 these few hospitals and doctors are available to be selected. 
 
 Of course, you are welcome to upgrade this to make it more scalable! :D
+
+**Q**: It seems that I can type in numbers and gibberish for inputs like conditions and notes on
+care for medium and high risk elderly?
+
+**A**: Yes, but take note that this is **not a bug. It's a feature.** There are many times when the
+helper needs to input numbers, medicine name and stuff into these fields. There is no way to check
+and 100% guarantee the legitimacy of input. Hence, we decided to accept any input. We trust that the
+input by the user will be legitimate, hence we accept anything from the user. 
+
+
 
 ## Command Summary
 
