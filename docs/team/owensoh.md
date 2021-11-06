@@ -61,10 +61,10 @@ Miscellaneous parts:
 - Initiated the completion of JUnit tests and assertions
 
 ### Review/mentoring contributions
-- Reviewing the DG of group CS2113T-T10-2 (https://github.com/nus-cs2113-AY2122S1/tp/pulls?q=is%3Aopen+is%3Apr+CS2113T-T10-2+)
-- Reviewing the JAR and UG of group CS2113T-F12-2 (https://github.com/owensoh/ped)
+- Reviewing the DG of group CS2113T-T10-2: [Click here!](https://github.com/nus-cs2113-AY2122S1/tp/pulls?q=is%3Aopen+is%3Apr+CS2113T-T10-2+)
+- Reviewing the JAR and UG of group CS2113T-F12-2: [Click here!](https://github.com/owensoh/ped)
 - Helped teammate to fix the bug for `setbloodpressure` function, since it appeared not to handle exceptions for invalid inputs,
 as mentioned by fellow course mates during PE-D
 
 ### Contributions beyond the project team
-NIL
+- Did heavy testing on our team's code after PE-D to check for any more remaining bugs
