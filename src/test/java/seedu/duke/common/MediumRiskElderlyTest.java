@@ -31,6 +31,7 @@ public class MediumRiskElderlyTest {
         assertEquals(hotchic31.toString(), "[*] Risk Level : MEDIUM\n"
                 + "[*] Elderly Username: hotchic31\n"
                 + "[*] Elderly Name: Owin Soh\n"
+                + "[*] Diet Preference of hotchic31: Not set\n"
                 + "[*] Vaccination status of hotchic31: Not vaccinated\n"
                 + "[*] Blood pressure of Owin Soh has not yet been set!\n"
                 + "[*] Birthday of hotchic31: Not Recorded\n"

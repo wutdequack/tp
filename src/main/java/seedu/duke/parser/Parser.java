@@ -34,7 +34,7 @@ public class Parser {
         // Extract out medicine name
         String[] paramList = userLine.split(SPLIT_SEARCH_MED);
         assert paramList.length == 2 : "findbymed input does not have all required values";
-        return paramList[INDEX_OF_SEARCH_MED];
+        return paramList[INDEX_OF_SEARCH_MED].toLowerCase();
     }
 
     /**
@@ -46,7 +46,7 @@ public class Parser {
         // Extract out diet name
         String[] paramList = userLine.split(SPLIT_SEARCH_DIET);
         assert paramList.length == 2 : "findbydiet input does not have all required values";
-        return paramList[INDEX_OF_SEARCH_DIET];
+        return paramList[INDEX_OF_SEARCH_DIET].toLowerCase();
     }
 
     /**
@@ -58,7 +58,7 @@ public class Parser {
         // Extract out Real name
         String[] paramList = userLine.split(SPLIT_SEARCH_NAME);
         assert paramList.length == 2 : "findbyname input does not have all required values";
-        return paramList[INDEX_OF_SEARCH_NAME];
+        return paramList[INDEX_OF_SEARCH_NAME].toLowerCase();
     }
 
     /**
@@ -70,6 +70,6 @@ public class Parser {
         // Extract out username
         String[] paramList = userLine.split(SPLIT_DELETE_NAME);
         assert paramList.length == 2 : "deleteelderly input does not have all required values";
-        return paramList[INDEX_OF_USER_NAME];
+        return paramList[INDEX_OF_USER_NAME].toLowerCase();
     }
 }

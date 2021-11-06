@@ -50,6 +50,14 @@ public class RegexChecker {
                 + "a/[a-z0-9\\s]+ r/[a-z0-9]+$", userLine.toLowerCase());
     }
 
+    public boolean isValidEmail(String userEmail) {
+        return Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)+$", userEmail);
+    }
+
+    public boolean isValidHpNumber(String number) {
+        return Pattern.matches("^[0-9]{8}$", number);
+    }
+
     public boolean isValidViewNok(String userLine) {
         return Pattern.matches("^viewnok u/[a-z0-9]+$", userLine.toLowerCase());
     }
@@ -79,7 +87,7 @@ public class RegexChecker {
     }
 
     public boolean isValidFindDiet(String userLine) {
-        return Pattern.matches("^findbydiet d/[a-z0-9]+$", userLine.toLowerCase());
+        return Pattern.matches("^findbydiet d/[a-z0-9\\s]+$", userLine.toLowerCase());
     }
 
     public boolean isValidFindByName(String userLine) {
@@ -111,7 +119,7 @@ public class RegexChecker {
     }
 
     public boolean isValidSetVaccinationCommand(String userLine) {
-        return Pattern.matches("^setvaccinated u/[a-z0-9]+$", userLine.toLowerCase());
+        return Pattern.matches("^setvaccination u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
     public boolean isValidViewVaccinationCommand(String userLine) {

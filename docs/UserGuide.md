@@ -258,7 +258,7 @@ Format: `addmedicalhistory u/USERNAME`
 
 Example of usage:
 
-`addmedical u/johntan123`
+`addmedicalhistory u/johntan123`
 
 ```
 > addmedicalhistory u/johntan123
@@ -898,13 +898,13 @@ input by the user will be legitimate, hence we accept anything from the user.
 
 |Command|Format|
 |---|---|
-|Add elderly |`addelderly u/USERNAME n/NAME`|
+|Add elderly |`addelderly u/USERNAME n/NAME r/RISKLEVEL`|
 |Add medicine |`addmed u/USERNAME m/MEDICINE_NAME f/FREQUENCY`|
 |Add appointment |`addappt u/USERNAME l/LOCATION d/DATE t/TIME [p/PURPOSE]`|
 |Add nok |`addnok u/USERNAME k/NOKNAME p/NOKPHONE e/NOKEMAIL a/NOKADDR r/NOKRSHIP`|
 |Add record |`addrec u/USERNAME p/PHONENUMBER a/HOMEADDRESS`|
 |Add medical history |`addmedicalhistory u/USERNAME`|
-|Set birthday |`setbirthday u/USERNAME b/BIRHTDAY`|
+|Set birthday |`setbirthday u/USERNAME b/BIRTHDAY`|
 |Set vaccination status |`setvaccination u/USERNAME`|
 |Set dietary preference |`setdiet u/USER_NAME`|
 |Set blood pressure |`setbloodpressure u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC_PRESSURE`|
