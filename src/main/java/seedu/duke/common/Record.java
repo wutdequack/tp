@@ -2,8 +2,8 @@ package seedu.duke.common;
 
 public class Record {
 
-    private String elderlyPhoneNumber;
-    private String elderlyAddress;
+    private final String elderlyPhoneNumber;
+    private final String elderlyAddress;
 
     public Record(String elderlyPhoneNumber, String elderlyAddress) {
         this.elderlyPhoneNumber = elderlyPhoneNumber;

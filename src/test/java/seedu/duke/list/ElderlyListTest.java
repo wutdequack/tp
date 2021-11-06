@@ -269,7 +269,7 @@ public class ElderlyListTest {
     @Test
     void bloodPressureTest() {
         try {
-            final Integer[] expectedOutput = new Integer[]{169, 108};
+            final int[] expectedOutput = new int[]{169, 108};
             assertArrayEquals(expectedOutput,
                     elderlyList.getElderly("limqq369").getElderlyBloodPressure());
         } catch (ElderlyNotFoundException e) {
