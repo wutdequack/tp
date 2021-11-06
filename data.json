@@ -1,98 +1,181 @@
 [
   {
-    "hospital": {
-      "name": "tan tock seng hospital",
-      "number": 62566011,
-      "doctorArrayList": [
-        {
-          "name": "maralyn harsha",
-          "number": 99026440
-        },
-        {
-          "name": "stace fang",
-          "number": 91074243
-        },
-        {
-          "name": "chantelle jia",
-          "number": 80463166
-        },
-        {
-          "name": "yasmin ang",
-          "number": 81338150
-        },
-        {
-          "name": "wolf emmet",
-          "number": 89490406
-        }
-      ]
-    },
-    "conditions": "dead",
-    "notesOnCare": "deader",
-    "doctor": {
-      "name": "wolf emmet",
-      "number": 89490406
-    },
-    "medicines": [],
+    "medicines": [
+      {
+        "medicineName": "penicillin",
+        "frequency": "whenever necessary"
+      }
+    ],
     "appointments": [],
-    "nextofkins": [],
-    "records": [],
-    "username": "high",
-    "name": "high high",
-    "isVaccinated": false,
-    "diet": "NOT_SET",
-    "medicalHistory": "",
-    "type": "seedu.duke.common.HighRiskElderly"
+    "nextofkins": [
+      {
+        "nokName": "Robert Ng",
+        "nokPhoneNumber": "98392382",
+        "nokEmail": "hello@gmail.com",
+        "nokAddress": "Blk 2 Some Road",
+        "nokRelationship": "Son"
+      }
+    ],
+    "records": [
+      {
+        "elderlyPhoneNumber": "82738734",
+        "elderlyAddress": "Blk 2 Some Road"
+      }
+    ],
+    "username": "nguyin",
+    "name": "rebecca ng",
+    "bloodPressure": [
+      90,
+      120
+    ],
+    "isVaccinated": true,
+    "birthday": "Sep 20, 1987, 12:00:00 AM",
+    "diet": "VEGAN",
+    "medicalHistory": "G6PD",
+    "type": "seedu.duke.common.LowRiskElderly"
   },
   {
     "hospital": {
-      "name": "singapore general hospital",
-      "number": 62223322,
+      "name": "khoo teck puat hospital",
+      "number": 65558000,
       "doctorArrayList": [
         {
-          "name": "nilofer siddhi",
-          "number": 92834168
+          "name": "adrian vergil",
+          "number": 88129931
         },
         {
-          "name": "taran nirmala",
-          "number": 90877889
+          "name": "joline dean",
+          "number": 98672657
         },
         {
-          "name": "paxton jerrod",
-          "number": 94424161
+          "name": "shui lorin",
+          "number": 99046617
         },
         {
-          "name": "piers coleman",
-          "number": 99350450
+          "name": "britney soh",
+          "number": 91982575
         },
         {
-          "name": "tan cailin",
-          "number": 99897593
+          "name": "aditi nitya",
+          "number": 91208702
         }
       ]
     },
-    "conditions": "deader",
-    "notesOnCare": "deadddddd",
-    "medicines": [],
-    "appointments": [],
-    "nextofkins": [],
-    "records": [],
-    "username": "medium",
-    "name": "medium medium",
+    "conditions": "mild dizziness upon standing up",
+    "notesOnCare": "abrasion on tigh from fall. Could be fall risk.",
+    "medicines": [
+      {
+        "medicineName": "chlorpheniramine",
+        "frequency": "daily after meals"
+      }
+    ],
+    "appointments": [
+      {
+        "location": "tan tock seng hospital",
+        "date": "30122021",
+        "time": "0900",
+        "purpose": "general checkup"
+      }
+    ],
+    "nextofkins": [
+      {
+        "nokName": "Rita Soh",
+        "nokPhoneNumber": "81111823",
+        "nokEmail": "byebye@gmail.com",
+        "nokAddress": "Blk 5 Some Road",
+        "nokRelationship": "Daughter"
+      }
+    ],
+    "records": [
+      {
+        "elderlyPhoneNumber": "98298938",
+        "elderlyAddress": "Blk 5 Some Road"
+      }
+    ],
+    "username": "owinsoh",
+    "name": "owen soh",
+    "bloodPressure": [
+      120,
+      130
+    ],
     "isVaccinated": false,
-    "diet": "NOT_SET",
-    "medicalHistory": "",
+    "birthday": "Jan 22, 1983, 12:00:00 AM",
+    "diet": "BEEF_FREE",
+    "medicalHistory": "Osteoporosis",
     "type": "seedu.duke.common.MediumRiskElderly"
   },
   {
-    "medicines": [],
-    "appointments": [],
-    "nextofkins": [],
-    "records": [],
-    "username": "low",
-    "name": "low low",
+    "hospital": {
+      "name": "national university hospital",
+      "number": 67795555,
+      "doctorArrayList": [
+        {
+          "name": "dwain wong",
+          "number": 98105561
+        },
+        {
+          "name": "lim qingchen",
+          "number": 96737937
+        },
+        {
+          "name": "ling li se",
+          "number": 83892911
+        },
+        {
+          "name": "juan chelsie",
+          "number": 97915260
+        },
+        {
+          "name": "lorie pang",
+          "number": 88235081
+        }
+      ]
+    },
+    "conditions": "strong migraines. Currently has concussion",
+    "notesOnCare": "Doctor to monitor status upon routine check ups",
+    "doctor": {
+      "name": "juan chelsie",
+      "number": 97915260
+    },
+    "medicines": [
+      {
+        "medicineName": "paracetemol",
+        "frequency": "daily"
+      }
+    ],
+    "appointments": [
+      {
+        "location": "ng teng fong general hospital",
+        "date": "20112021",
+        "time": "1130",
+        "purpose": "routine checkup"
+      }
+    ],
+    "nextofkins": [
+      {
+        "nokName": "Pita Lee",
+        "nokPhoneNumber": "91898372",
+        "nokEmail": "gg@gg.com",
+        "nokAddress": "Blk 10 Some Road",
+        "nokRelationship": "Cousin"
+      }
+    ],
+    "records": [
+      {
+        "elderlyPhoneNumber": "88883823",
+        "elderlyAddress": "Blk 10 Some Road"
+      }
+    ],
+    "username": "wutdequack",
+    "name": "jonathan lee",
+    "bloodPressure": [
+      60,
+      70
+    ],
     "isVaccinated": false,
-    "diet": "NOT_SET",
-    "medicalHistory": "",
-    "type": "seedu.duke.common.LowRiskElderly"
+    "birthday": "Feb 1, 1959, 12:00:00 AM",
+    "diet": "NO_RESTRICTION",
+    "medicalHistory": "Heart Disease",
+    "type": "seedu.duke.common.HighRiskElderly"
   }
 ]

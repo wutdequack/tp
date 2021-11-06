@@ -14,6 +14,7 @@ import static seedu.duke.common.MagicValues.VALUE_DEFAULT_BP;
 import static seedu.duke.common.Messages.MESSAGE_APPOINTMENTS;
 import static seedu.duke.common.Messages.MESSAGE_BIRTHDAY;
 import static seedu.duke.common.Messages.MESSAGE_BLOODPRESSURE;
+import static seedu.duke.common.Messages.MESSAGE_DIETPREF;
 import static seedu.duke.common.Messages.MESSAGE_MEDICALHIST;
 import static seedu.duke.common.Messages.MESSAGE_MEDICINES;
 import static seedu.duke.common.Messages.MESSAGE_NOKS;
@@ -438,6 +439,7 @@ public abstract class Elderly {
                     bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
                     bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
         }
+        String dietString = String.format(MESSAGE_DIETPREF, username, getElderlyDiet());
         String vaccinatedString = String.format(MESSAGE_VACCINATED, username,
                 isVaccinated ? "Vaccinated" : "Not vaccinated");
         String birthdayString = String.format(MESSAGE_BIRTHDAY, username,
@@ -450,7 +452,7 @@ public abstract class Elderly {
         String combinedListOfNoksString = String.format(MESSAGE_NOKS, username,
                 listOfNoksString);
         String medicalHistoryString = String.format(MESSAGE_MEDICALHIST, getMedicalHistory());
-        return String.format(MESSAGE_OVERALL_ELDERLY, username, name, vaccinatedString, bloodPressureString,
+        return String.format(MESSAGE_OVERALL_ELDERLY, username, name, dietString, vaccinatedString, bloodPressureString,
                 birthdayString, medicalHistoryString, combinedListofRecordsString,
                 combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString);
     }
