@@ -181,20 +181,22 @@ public class ElderlyList {
             if (elderlyExists(userName)) {
                 throw new DuplicateElderlyException();
             }
+            Elderly addedElderly;
             switch (riskLevel) {
             case LOW:
-                addLowRiskElderly(userName, elderlyName);
+                addedElderly = addLowRiskElderly(userName, elderlyName);
                 break;
             case MEDIUM:
-                addMediumRiskElderly(userName, elderlyName);
+                addedElderly = addMediumRiskElderly(userName, elderlyName);
                 break;
             case HIGH:
-                addHighRiskElderly(userName, elderlyName);
+                addedElderly = addHighRiskElderly(userName, elderlyName);
                 break;
             default:
-                break;
+                throw new InvalidRiskLevelException();
             }
-            ui.printAddElderlyMessage();
+            ui.printAddElderlyMessage(addedElderly);
+            return;
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
         } catch (DukeException e) {
@@ -208,8 +210,10 @@ public class ElderlyList {
      * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
-    private void addLowRiskElderly(String userName, String elderlyName) {
-        elderlyArrayList.add(new LowRiskElderly(userName, elderlyName));
+    private Elderly addLowRiskElderly(String userName, String elderlyName) {
+        LowRiskElderly addedElderly = new LowRiskElderly(userName, elderlyName);
+        elderlyArrayList.add(addedElderly);
+        return addedElderly;
     }
 
     /**
@@ -218,7 +222,7 @@ public class ElderlyList {
      * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
-    private void addMediumRiskElderly(String userName, String elderlyName) throws HospitalIndexException {
+    private Elderly addMediumRiskElderly(String userName, String elderlyName) throws HospitalIndexException {
         hospitalArrayList.printHospitalNames();
         ui.printEnterHospitalMessage();
         String stringHospitalIndex = ui.getUserInput();
@@ -231,7 +235,10 @@ public class ElderlyList {
         String conditions = ui.getUserInput();
         ui.printEnterNotesOnCareMessage();
         String notesOnCare = ui.getUserInput();
-        elderlyArrayList.add(new MediumRiskElderly(userName, elderlyName, hospital, conditions, notesOnCare));
+
+        MediumRiskElderly addedElderly = new MediumRiskElderly(userName, elderlyName, hospital, conditions, notesOnCare);
+        elderlyArrayList.add(addedElderly);
+        return addedElderly;
     }
 
     /**
@@ -240,7 +247,7 @@ public class ElderlyList {
      * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      */
-    private void addHighRiskElderly(String userName, String elderlyName) throws HospitalIndexException,
+    private Elderly addHighRiskElderly(String userName, String elderlyName) throws HospitalIndexException,
             DoctorIndexException {
         hospitalArrayList.printHospitalNames();
         ui.printEnterHospitalMessage();
@@ -261,8 +268,10 @@ public class ElderlyList {
             throw new DoctorIndexException();
         }
         Doctor doctor = hospital.getDoctor(Integer.parseInt(stringDoctorIndex) - INPUT_OFFSET);
-        elderlyArrayList.add(new HighRiskElderly(userName, elderlyName, hospital,
-                conditions, notesOnCare, doctor));
+        HighRiskElderly addedElderly = new HighRiskElderly(userName, elderlyName, hospital,
+                conditions, notesOnCare, doctor);
+        elderlyArrayList.add(addedElderly);
+        return addedElderly;
     }
 
     /**

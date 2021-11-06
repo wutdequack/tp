@@ -167,8 +167,8 @@ public class TextUi {
     /**
      * Prints Add Elderly message to user.
      */
-    public void printAddElderlyMessage() {
-        out.println(MESSAGE_ADD_ELDERLY);
+    public void printAddElderlyMessage(Elderly addedElderly) {
+        out.printf(MESSAGE_ADD_ELDERLY, addedElderly.getName());
     }
 
     /**
