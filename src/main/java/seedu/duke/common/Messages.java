@@ -102,7 +102,7 @@ public class Messages {
     /**
      * Used when elderly has been added.
      */
-    public static final String MESSAGE_ADD_ELDERLY = "[*] Elderly has been added!";
+    public static final String MESSAGE_ADD_ELDERLY = "[*] Elderly, %s, has been added!%n";
 
 
     /**
@@ -364,11 +364,12 @@ public class Messages {
     public static final String MESSAGE_NOKS = "[*] These are NOK(s) attached to %s:\n%s\n";
     public static final String MESSAGE_MEDICALHIST = "[*] Medical History: %s";
     public static final String MESSAGE_BLOODPRESSURE = "[*] Blood pressure of %s is now (%d %d)";
-    public static final String MESSAGE_OVERALL_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
+    public static final String TO_STRING_MESSAGE_ABSTRACT_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
             + "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
-    public static final String MESSAGE_LOW_RISK_ELDERLY = "[*] Risk Level : LOW\n%s";
-    public static final String MESSAGE_MEDIUM_RISK_ELDERLY = "[*] Risk Level : MEDIUM\n%s\n%s\n%s\n%s";
-    public static final String MESSAGE_HIGH_RISK_ELDERLY = "[*] Risk Level : HIGH\n%s\n%s\n%s\n%s\n%s";
+    public static final String TO_STRING_MESSAGE_LOW_RISK_ELDERLY = "[*] Risk Level : LOW\n%s";
+    public static final String TO_STRING_MESSAGE_MEDIUM_RISK_ELDERLY = "[*] Risk Level : MEDIUM\n%s\n%s\n%s\n%s";
+    public static final String TO_STRING_MESSAGE_HIGH_RISK_ELDERLY = "[*] Risk Level : HIGH\n%s\n%s\n%s\n%s\n%s";
+
 
     /**
      * Used in querying for information.

@@ -27,8 +27,8 @@ Correct input format: [*] Add Elderly format: addelderly u/USERNAME n/NAME r/RIS
 [*] Enter hospital number choice. (e.g. 1 for Changi General Hospital etc.)
 > [*] Enter elderly condition below. Hit enter when done.
 > [*] Enter notes on care below. Hit enter when done.
-> [*] Elderly has been added!
-> [*] Elderly has been added!
+> [*] Elderly, tan bo jiao, has been added!
+> [*] Elderly, lim ah seng, has been added!
 > [*] Medicine has been added!
 > [*] Medicine has been added!
 > Medicine of tan are shown below:

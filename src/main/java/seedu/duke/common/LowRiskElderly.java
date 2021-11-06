@@ -1,6 +1,6 @@
 package seedu.duke.common;
 
-import static seedu.duke.common.Messages.MESSAGE_LOW_RISK_ELDERLY;
+import static seedu.duke.common.Messages.TO_STRING_MESSAGE_LOW_RISK_ELDERLY;
 
 public class LowRiskElderly extends Elderly {
 
@@ -10,6 +10,6 @@ public class LowRiskElderly extends Elderly {
 
     @Override
     public String toString() {
-        return String.format(MESSAGE_LOW_RISK_ELDERLY, super.toString());
+        return String.format(TO_STRING_MESSAGE_LOW_RISK_ELDERLY, super.toString());
     }
 }

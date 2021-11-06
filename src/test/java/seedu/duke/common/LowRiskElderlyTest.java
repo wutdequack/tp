@@ -20,7 +20,7 @@ public class LowRiskElderlyTest {
 
     @Test
     void testElderlyToString() {
-        assertEquals(johnTan.toString(), "[*] Risk Level : LOW\n"
+        String expectedOutput = "[*] Risk Level : LOW\n"
                 + "[*] Elderly Username: johntan123\n"
                 + "[*] Elderly Name: John Tan\n"
                 + "[*] Diet Preference of johntan123: Not set\n"
@@ -38,9 +38,10 @@ public class LowRiskElderlyTest {
                 + "\n"
                 + "\n"
                 + "[*] These are NOK(s) attached to johntan123:\n"
-                + "\n");
+                + "\n";
+        assertEquals(expectedOutput, johnTan.toString());
         johnTan.setElderlyVaccinated();
-        assertEquals(johnTan.toString(), "[*] Risk Level : LOW\n"
+        expectedOutput = "[*] Risk Level : LOW\n"
                 + "[*] Elderly Username: johntan123\n"
                 + "[*] Elderly Name: John Tan\n"
                 + "[*] Diet Preference of johntan123: Not set\n"
@@ -58,7 +59,8 @@ public class LowRiskElderlyTest {
                 + "\n"
                 + "\n"
                 + "[*] These are NOK(s) attached to johntan123:\n"
-                + "\n");
+                + "\n";
+        assertEquals(expectedOutput, johnTan.toString());
     }
 
 }

@@ -32,7 +32,7 @@ public class HighRiskElderlyTest {
 
     @Test
     void testElderlyToString() {
-        assertEquals(hotchic31.toString(), "[*] Risk Level : HIGH\n"
+        String expectetOutput = "[*] Risk Level : HIGH\n"
                 + "[*] Elderly Username: yqt69\n"
                 + "[*] Elderly Name: Yang Qing Ting\n"
                 + "[*] Diet Preference of yqt69: Not set\n"
@@ -66,6 +66,7 @@ public class HighRiskElderlyTest {
                 + "amnesia "
                 + "may lead to memory"
                 + " loss of eating. chemotherapy is every 6th day of the month at hospital. only allow one "
-                + "stick per day (night). keep an eye on him at all times.\n");
+                + "stick per day (night). keep an eye on him at all times.\n";
+        assertEquals(expectetOutput, hotchic31.toString());
     }
 }

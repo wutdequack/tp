@@ -28,7 +28,7 @@ public class MediumRiskElderlyTest {
 
     @Test
     void testElderlyToString() {
-        assertEquals(hotchic31.toString(), "[*] Risk Level : MEDIUM\n"
+        String expectedOutput = "[*] Risk Level : MEDIUM\n"
                 + "[*] Elderly Username: hotchic31\n"
                 + "[*] Elderly Name: Owin Soh\n"
                 + "[*] Diet Preference of hotchic31: Not set\n"
@@ -56,6 +56,7 @@ public class MediumRiskElderlyTest {
                 + "\n"
                 + "Notes on care for hotchic31 : requires putting of eyedrops every 5 hours. "
                 + "blood pressure and heart rate to be measured daily to ensure lower possibility of reoccurrence of "
-                + "stroke. watch diet intake.\n");
+                + "stroke. watch diet intake.\n";
+        assertEquals(expectedOutput, hotchic31.toString());
     }
 }

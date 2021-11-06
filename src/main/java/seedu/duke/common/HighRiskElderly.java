@@ -3,7 +3,7 @@ package seedu.duke.common;
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
 
-import static seedu.duke.common.Messages.MESSAGE_HIGH_RISK_ELDERLY;
+import static seedu.duke.common.Messages.TO_STRING_MESSAGE_HIGH_RISK_ELDERLY;
 
 public class HighRiskElderly extends Elderly implements Hospitalisable {
 
@@ -47,6 +47,7 @@ public class HighRiskElderly extends Elderly implements Hospitalisable {
         String conditions = String.format("[*] Conditions of elderly %s : %s\n", getUsername(), getConditions());
         String notesOnCare = String.format("[*] Notes on care for %s : %s\n", getUsername(), getNotesOnCare());
         String doctor = String.format("[*] Doctor for %s :\n%s\n", getUsername(), getDoctor());
-        return String.format(MESSAGE_HIGH_RISK_ELDERLY, super.toString(), hospital, conditions, doctor, notesOnCare);
+        return String.format(TO_STRING_MESSAGE_HIGH_RISK_ELDERLY,
+                super.toString(), hospital, conditions, doctor, notesOnCare);
     }
 }
