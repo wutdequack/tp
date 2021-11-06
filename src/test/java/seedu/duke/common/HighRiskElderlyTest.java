@@ -35,6 +35,7 @@ public class HighRiskElderlyTest {
         assertEquals(hotchic31.toString(), "[*] Risk Level : HIGH\n"
                 + "[*] Elderly Username: yqt69\n"
                 + "[*] Elderly Name: Yang Qing Ting\n"
+                + "[*] Diet Preference of yqt69: Not set\n"
                 + "[*] Vaccination status of yqt69: Not vaccinated\n"
                 + "[*] Blood pressure of Yang Qing Ting has not yet been set!\n"
                 + "[*] Birthday of yqt69: Not Recorded\n"

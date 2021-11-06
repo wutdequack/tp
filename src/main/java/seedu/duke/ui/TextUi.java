@@ -1,38 +1,38 @@
 package seedu.duke.ui;
 
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.util.Scanner;
-
-import seedu.duke.common.Elderly;
-import seedu.duke.exceptions.DukeException;
-import seedu.duke.exceptions.InvalidInputException;
-
 import static seedu.duke.common.MagicValues.INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY;
 import static seedu.duke.common.MagicValues.INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY;
+import static seedu.duke.common.Messages.LOGO;
+import static seedu.duke.common.Messages.MESSAGE_ADD_APPOINTMENT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_APPOINTMENT_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_ADD_BIRTHDAY_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_ADD_BP_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_ADD_DIET_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY;
+import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_ADD_MEDHISTORY_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_ADD_NOK;
-import static seedu.duke.common.Messages.MESSAGE_ADD_RECORD;
 import static seedu.duke.common.Messages.MESSAGE_ADD_MEDICINE;
+import static seedu.duke.common.Messages.MESSAGE_ADD_MED_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_NOK;
+import static seedu.duke.common.Messages.MESSAGE_ADD_NOK_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_ADD_RECORD;
+import static seedu.duke.common.Messages.MESSAGE_ADD_RECORD_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_ADD_VACCINATION_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_BYE_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_CLOSEST_SEARCH_RESULT;
-import static seedu.duke.common.Messages.MESSAGE_ADD_MED_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_ADD_NOK_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_CREATION_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_DATA_STORE_SUCCESS;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_APPOINTMENT_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_ELDERLY_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_ELDERLY_SUCCESSFUL;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_MEDHISTORY_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_DELETE_MEDICAL_HISTORY;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_MEDICINE_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_NOK_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_DELETION_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_ENTER_CONDITIONS;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_DATE;
 import static seedu.duke.common.Messages.MESSAGE_ENTER_DOCTOR;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_HOSPITAL;
 import static seedu.duke.common.Messages.MESSAGE_ENTER_NOTES_ON_CARE;
 import static seedu.duke.common.Messages.MESSAGE_FILE_DOES_NOT_EXISTS;
 import static seedu.duke.common.Messages.MESSAGE_FILE_EXISTS;
@@ -42,42 +42,43 @@ import static seedu.duke.common.Messages.MESSAGE_FILTER_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_FIND_BY_DIET_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_FIND_BY_MED_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_FIND_BY_NAME_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_GOODBYE;
 import static seedu.duke.common.Messages.MESSAGE_HELP_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_HELP_MENU;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_DATE;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_SEARCH_TERM;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_TIME;
 import static seedu.duke.common.Messages.MESSAGE_LIST_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_LOAD_ELDERLY_ERROR;
 import static seedu.duke.common.Messages.MESSAGE_LOAD_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_MISC_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_PROMPT;
+import static seedu.duke.common.Messages.MESSAGE_QUERY_RESULTS_INTRO;
 import static seedu.duke.common.Messages.MESSAGE_READING_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_SET_BIRTHDAY;
+import static seedu.duke.common.Messages.MESSAGE_SET_BLOOD_PRESSURE;
+import static seedu.duke.common.Messages.MESSAGE_SET_DIET;
+import static seedu.duke.common.Messages.MESSAGE_SET_MEDICAL_HISTORY;
+import static seedu.duke.common.Messages.MESSAGE_SET_VACCINATED;
 import static seedu.duke.common.Messages.MESSAGE_STORE_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_VIEW_APPOINTMENT_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_VIEW_BIRTHDAY_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_VIEW_BP_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_VIEW_DIET_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_VIEW_MEDHISTORY_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_VIEW_NOK_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_ADD_RECORD_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_VIEW_RECORD_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_VIEW_MED_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_ADD_APPOINTMENT;
-import static seedu.duke.common.Messages.MESSAGE_ADD_APPOINTMENT_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_VIEW_APPOINTMENT_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_QUERY_RESULTS_INTRO;
+import static seedu.duke.common.Messages.MESSAGE_VIEW_NOK_FORMAT;
+import static seedu.duke.common.Messages.MESSAGE_VIEW_RECORD_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_VIEW_VACCINATION_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_WELCOME;
-import static seedu.duke.common.Messages.MESSAGE_PROMPT;
-import static seedu.duke.common.Messages.LOGO;
-import static seedu.duke.common.Messages.MESSAGE_GOODBYE;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_TIME;
-import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY;
-import static seedu.duke.common.Messages.MESSAGE_ADD_ELDERLY_FORMAT;
-import static seedu.duke.common.Messages.MESSAGE_SET_VACCINATED;
-import static seedu.duke.common.Messages.MESSAGE_SET_BIRTHDAY;
-import static seedu.duke.common.Messages.MESSAGE_SET_BLOOD_PRESSURE;
-import static seedu.duke.common.Messages.MESSAGE_SET_DIET;
-import static seedu.duke.common.Messages.MESSAGE_ENTER_HOSPITAL;
-import static seedu.duke.common.Messages.MESSAGE_SET_MEDICAL_HISTORY;
-import static seedu.duke.common.Messages.MESSAGE_DELETE_MEDICAL_HISTORY;
+
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
+import seedu.duke.common.Elderly;
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.InvalidInputException;
 
 public class TextUi {
     private final Scanner in;
@@ -414,5 +415,21 @@ public class TextUi {
      */
     public void printWrongFileSyntax() {
         out.println(MESSAGE_FILE_WRONG_FORMAT);
+    }
+
+    /**
+     * Prints that data is stored successfully.
+     */
+    public void printDataStoredSuccess() {
+        out.println(MESSAGE_DATA_STORE_SUCCESS);
+    }
+
+    /**
+     * Prints that has error parsing elderly information.
+     *
+     * @param elderlyName String containing elderly name.
+     */
+    public void printAffectedElderlyLoadIssue(String elderlyName) {
+        out.printf(MESSAGE_LOAD_ELDERLY_ERROR, elderlyName);
     }
 }

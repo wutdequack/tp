@@ -9,10 +9,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -149,15 +151,16 @@ public class ElderlyList {
     }
 
     /**
-     * Checks in current list if current elderly username exists.
+     * Checks the number of elderly with a given username.
      *
      * @param inputElderlyName String containing elderly username to check with
      * @return Boolean value if elderly exists in array list
      */
-    private boolean elderlyExists(String inputElderlyName) {
-        return elderlyArrayList
+    private int elderlyCount(String inputElderlyName) {
+        return (int)elderlyArrayList
                 .stream()
-                .anyMatch(s -> s.getUsername().equals(inputElderlyName));
+                .filter(s -> s.getUsername().equals(inputElderlyName))
+                .count();
     }
 
     /**
@@ -171,14 +174,14 @@ public class ElderlyList {
                 throw new InvalidElderlyFormatException();
             }
             String[] paramList = userLine.split(SPLIT_NAME);
-            String userName = paramList[INDEX_OF_ELDERLY_USERNAME];
-            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME];
+            String userName = paramList[INDEX_OF_ELDERLY_USERNAME].toLowerCase();
+            String elderlyName = paramList[INDEX_OF_ELDERLY_NAME].toLowerCase();
             String riskLevel = paramList[INDEX_OF_RISK_LEVEL].toUpperCase();
             if (!re.isValidRiskLevel(riskLevel)) {
                 throw new InvalidRiskLevelException();
             }
             // If Elderly username exists, reject addition
-            if (elderlyExists(userName)) {
+            if (elderlyCount(userName) > 0) {
                 throw new DuplicateElderlyException();
             }
             switch (riskLevel) {
@@ -352,7 +355,7 @@ public class ElderlyList {
             if (isValidDate(date) && isValidTime(time)) {
                 elderly.addElderlyAppointment(new Appointment(location, date, time, purpose));
                 ui.printAddAppointmentMessage();
-            } else if (isValidDate(date) == false) {
+            } else if (!isValidDate(date)) {
                 ui.printInvalidDateMessage();
             } else {
                 ui.printInvalidTimeMessage();
@@ -959,10 +962,10 @@ public class ElderlyList {
     public void updateMappings() {
         // Creation of hashmap to do mapping between medicine and list of elderly that take given medicine
         for (Elderly elderlyObject : elderlyArrayList) {
-            String elderlyName = elderlyObject.getUsername();
+            String elderlyName = elderlyObject.getUsername().toLowerCase();
             // Update Medicine Mappings
             for (Medicine medicineObject : elderlyObject.getMedicines()) {
-                String medicineName = medicineObject.getMedicineName();
+                String medicineName = medicineObject.getMedicineName().toLowerCase();
                 // Create new Medicine name to Elderly name HashSet Mapping if it doesn't exist
                 if (!medicineMappings.containsKey(medicineName)) {
                     medicineMappings.put(medicineName, new HashSet<>());
@@ -971,7 +974,7 @@ public class ElderlyList {
                 medicineMappings.get(medicineName).add(elderlyName);
             }
             // Update diet mappings
-            String dietPreference = elderlyObject.getElderlyDiet();
+            String dietPreference = elderlyObject.getElderlyDiet().toLowerCase();
             if (!dietMappings.containsKey(dietPreference)) {
                 dietMappings.put(dietPreference, new HashSet<>());
             }
@@ -1074,7 +1077,7 @@ public class ElderlyList {
     public String filterElderlyInformationGivenName(String realName) {
         return elderlyArrayList
                 .stream()
-                .filter((t) -> t.getName().contentEquals(realName))
+                .filter((t) -> t.getName().toLowerCase().contentEquals(realName))
                 .map(Objects::toString)
                 .reduce((t, u) -> t + '\n' + u)
                 .orElse("");
@@ -1170,7 +1173,7 @@ public class ElderlyList {
             Set<String> allUserNames = getAllUserNames();
             if (allUserNames.contains(userName)) {
                 elderlyArrayList
-                        .removeIf((t) -> t.getUsername().contentEquals(userName));
+                        .removeIf((t) -> t.getUsername().toLowerCase().contentEquals(userName));
                 System.gc();
                 ui.printDeleteByName(userName);
             } else {
@@ -1201,6 +1204,7 @@ public class ElderlyList {
             JsonWriter jw = gson.newJsonWriter(fw);
             gson.toJson(gson.toJsonTree(elderlyArrayList), jw);
             fw.close();
+            ui.printDataStoredSuccess();
         } catch (InvalidInputException e) {
             ui.printInvalidInputException(e);
         } catch (IOException e) {
@@ -1216,6 +1220,134 @@ public class ElderlyList {
      */
     private boolean checkIfFileExists(String filePath) {
         return new File(filePath).exists();
+    }
+
+    /**
+     * Checks for default elderly object to see if there are any violations.
+     * @param elderly Elderly object.
+     * @return Boolean value.
+     */
+    private boolean isValidGenericElderly(Elderly elderly) {
+        // Check for appointment date and time
+        for (Appointment appointment: elderly.getAppointments()) {
+            // If fields are incorrect
+            if (!isValidDate(appointment.getDate()) || !isValidTime(appointment.getTime())) {
+                return false;
+            }
+        }
+        // Check for employee email and phone number
+        for (NextOfKin nextOfKin: elderly.getNextOfKin()) {
+            if (!re.isValidEmail(nextOfKin.getNokEmail()) || !re.isValidHpNumber(nextOfKin.getNokPhoneNumber())) {
+                return false;
+            }
+        }
+
+        // Check for phone numbers
+        for (Record record: elderly.getRecord()) {
+            if (!re.isValidHpNumber(record.getElderlyPhoneNumber())) {
+                return false;
+            }
+        }
+
+        // Check values of blood pressure
+        for (int bloodPressure : elderly.getElderlyBloodPressure()) {
+            if (bloodPressure < -1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks if high risk elderly has the correct information.
+     *
+     * @param elderly High Risk Elderly object.
+     * @return Boolean Value.
+     */
+    private boolean checkIfHighElderlyParsedCorrectly(HighRiskElderly elderly) {
+        boolean getHospitalNull = elderly.getHospital() == null;
+        boolean getConditionsNull = elderly.getConditions() == null;
+        boolean getNotesOnCareNull = elderly.getNotesOnCare() == null;
+        boolean getDoctorNull = elderly.getDoctor() == null;
+        return !getHospitalNull && !getConditionsNull && !getNotesOnCareNull && !getDoctorNull;
+    }
+
+    /**
+     * Checks if medium risk elderly has the correct information.
+     *
+     * @param elderly Medium Risk Elderly object.
+     * @return Boolean Value.
+     */
+    private boolean checkIfMediumElderlyParsedCorrectly(MediumRiskElderly elderly) {
+        boolean getHospitalNull = elderly.getHospital() == null;
+        boolean getConditionsNull = elderly.getConditions() == null;
+        boolean getNotesOnCareNull = elderly.getNotesOnCare() == null;
+        return !getHospitalNull && !getConditionsNull && !getNotesOnCareNull;
+    }
+
+    /**
+     * Check the respective fields of the elderly to see if it is valid.
+     *
+     * @param elderly MediumRiskElderly or HighRiskElderly object.
+     * @return Boolean Value.
+     */
+    private boolean checkFieldsForSpecialElderly(Elderly elderly) {
+        if (elderly instanceof MediumRiskElderly) {
+            MediumRiskElderly mediumRiskElderly = (MediumRiskElderly) elderly;
+            Hospital hospital = mediumRiskElderly.getHospital();
+            return re.isValidHpNumber(hospital.getHospitalNumber().toString());
+        } else if (elderly instanceof HighRiskElderly) {
+            HighRiskElderly highRiskElderly = (HighRiskElderly) elderly;
+            Hospital hospital = highRiskElderly.getHospital();
+            Doctor assignedDoctor = highRiskElderly.getDoctor();
+            return re.isValidHpNumber(hospital.getHospitalNumber().toString())
+                    && re.isValidHpNumber(assignedDoctor.getDoctorNumber().toString());
+        }
+        return true;
+    }
+
+    /**
+     * Checks if elderly list is in the correct format.
+     * @return Boolean value.
+     */
+    private boolean isElderlyListCorrectFormat() {
+        // Iterate through each elderly to check for compliance
+        try {
+            for (Elderly elderly : elderlyArrayList) {
+                if (!isValidGenericElderly(elderly)) {
+                    ui.printAffectedElderlyLoadIssue(elderly.getUsername());
+                    return false;
+                }
+                // Checks if got duplicate elderly username
+                if (elderlyCount(elderly.getUsername()) > 1) {
+                    throw new DuplicateElderlyException();
+                }
+                if (elderly instanceof HighRiskElderly) {
+                    if (!checkIfHighElderlyParsedCorrectly((HighRiskElderly) elderly)) {
+                        ui.printAffectedElderlyLoadIssue(elderly.getUsername());
+                        return false;
+                    } else if (!checkFieldsForSpecialElderly(elderly)) {
+                        ui.printAffectedElderlyLoadIssue(elderly.getUsername());
+                        return false;
+                    }
+                }
+
+                if (elderly instanceof MediumRiskElderly) {
+                    if (!checkIfMediumElderlyParsedCorrectly((MediumRiskElderly) elderly)) {
+                        ui.printAffectedElderlyLoadIssue(elderly.getUsername());
+                        return false;
+                    } else if (!checkFieldsForSpecialElderly(elderly)) {
+                        ui.printAffectedElderlyLoadIssue(elderly.getUsername());
+                        return false;
+                    }
+                }
+            }
+        } catch (DukeException e) {
+            ui.printDukeException(e);
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -1249,6 +1381,12 @@ public class ElderlyList {
             elderlyArrayList = gson.fromJson(jr, new TypeToken<ArrayList<Elderly>>() {
             }.getType());
             fr.close();
+
+            // Check if in correct format, if it is not, purge list and show error
+            if (!isElderlyListCorrectFormat()) {
+                elderlyArrayList.clear();
+                throw new JsonParseException("Error");
+            }
 
             // Check if the toStrings are null
             getConsolidatedStringOfElderly();

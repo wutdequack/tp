@@ -355,6 +355,7 @@ public class Messages {
     /**
      * Used when printing elderly object.
      */
+    public static final String MESSAGE_DIETPREF = "[*] Diet Preference of %s: %s";
     public static final String MESSAGE_VACCINATED = "[*] Vaccination status of %s: %s";
     public static final String MESSAGE_BIRTHDAY = "[*] Birthday of %s: %s";
     public static final String MESSAGE_RECORDS = "[*] Here are %s's records:\n%s\n";
@@ -364,7 +365,7 @@ public class Messages {
     public static final String MESSAGE_MEDICALHIST = "[*] Medical History: %s";
     public static final String MESSAGE_BLOODPRESSURE = "[*] Blood pressure of %s is now (%d %d)";
     public static final String MESSAGE_OVERALL_ELDERLY = "[*] Elderly Username: %s\n[*] Elderly Name: %s\n"
-            + "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
+            + "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s";
     public static final String MESSAGE_LOW_RISK_ELDERLY = "[*] Risk Level : LOW\n%s";
     public static final String MESSAGE_MEDIUM_RISK_ELDERLY = "[*] Risk Level : MEDIUM\n%s\n%s\n%s\n%s";
     public static final String MESSAGE_HIGH_RISK_ELDERLY = "[*] Risk Level : HIGH\n%s\n%s\n%s\n%s\n%s";
@@ -444,4 +445,8 @@ public class Messages {
      * Used when file format is wrong.
      */
     public static final String MESSAGE_FILE_WRONG_FORMAT = "[!] File is in the wrong format, could not load!";
+    public static final String MESSAGE_LOAD_ELDERLY_ERROR = "[!] %s object has issue!\n";
+
+
+    public static final String MESSAGE_DATA_STORE_SUCCESS = "[*] Data is stored successfully!";
 }
