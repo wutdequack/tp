@@ -14,6 +14,7 @@ import static seedu.duke.common.MagicValues.VALUE_DEFAULT_BP;
 import static seedu.duke.common.Messages.MESSAGE_APPOINTMENTS;
 import static seedu.duke.common.Messages.MESSAGE_BIRTHDAY;
 import static seedu.duke.common.Messages.MESSAGE_BLOODPRESSURE;
+import static seedu.duke.common.Messages.MESSAGE_DIETPREF;
 import static seedu.duke.common.Messages.MESSAGE_MEDICALHIST;
 import static seedu.duke.common.Messages.MESSAGE_MEDICINES;
 import static seedu.duke.common.Messages.MESSAGE_NOKS;
@@ -104,10 +105,22 @@ public abstract class Elderly {
         appointments.add(appointment);
     }
 
+    /**
+     * Adds Next-Of-Kin details to the elderly's Next-of-Kin ArrayList.
+     *
+     * @param nextofkin Next-Of-Kin to be added.
+     */
     public void addElderlyNok(NextOfKin nextofkin) {
         nextofkins.add(nextofkin);
     }
 
+    /**
+     * Removes the Next-Of-Kin information as specified by the name of the next-of-kin.
+     *
+     * @param nextOfkin Next-Of-Kin to be deleted (identified by the name).
+     *
+     * @return Next-Of-Kin that has just been deleted. If no Next-Of-Kin found, empty object returned.
+     */
     public Optional<NextOfKin> removeElderlyNok(String nextOfkin) {
         NextOfKin deleteNok;
         for (NextOfKin nok : nextofkins) {
@@ -122,6 +135,13 @@ public abstract class Elderly {
         return Optional.empty();
     }
 
+    /**
+     * Deletes the medicine, identified by name, from the elderly.
+     *
+     * @param medName Name of medicine to be deleted.
+     *
+     * @return Medicine that has just been deleted. Empty object returned if cannot find medicine object.
+     */
     public Optional<Medicine> removeElderlyMedicine(String medName) {
         Medicine deleteMedicine;
         for (Medicine med : medicines) {
@@ -136,6 +156,17 @@ public abstract class Elderly {
         return Optional.empty();
     }
 
+    /**
+     * Deletes Appointment based on the date and time as specified by the user. Checks with the current appointments
+     * stored and deletes the appointment that matches the date and time.
+     *
+     * @param deleteDate Date of appointment to be deleted.
+     * @param deleteTime Time of appointment to be deleted.
+     *
+     * @return Appointment that has just been deleted. If no appointment matches the date and time, empty object is
+     *         returned.
+     *
+     */
     public Optional<Appointment> removeAppointment(String deleteDate, String deleteTime) {
         Appointment deletedAppointment;
         for (Appointment appointment : appointments) {
@@ -173,10 +204,20 @@ public abstract class Elderly {
         return appointments;
     }
 
+    /**
+     * Returns the elderly's Next-of-Kin ArrayList.
+     *
+     * @return Next-of-Kin ArrayList of elderly.
+     */
     public ArrayList<NextOfKin> getNextOfKin() {
         return nextofkins;
     }
 
+    /**
+     * Returns the elderly's Record ArrayList.
+     *
+     * @return Record ArrayList of elderly.
+     */
     public ArrayList<Record> getRecord() {
         return records;
     }
@@ -397,6 +438,7 @@ public abstract class Elderly {
                     bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
                     bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY]);
         }
+        String dietString = String.format(MESSAGE_DIETPREF, username, getElderlyDiet());
         String vaccinatedString = String.format(MESSAGE_VACCINATED, username,
                 isVaccinated ? "Vaccinated" : "Not vaccinated");
         String birthdayString = String.format(MESSAGE_BIRTHDAY, username,
@@ -409,6 +451,7 @@ public abstract class Elderly {
         String combinedListOfNoksString = String.format(MESSAGE_NOKS, username,
                 listOfNoksString);
         String medicalHistoryString = String.format(MESSAGE_MEDICALHIST, getMedicalHistory());
+
         return String.format(TO_STRING_MESSAGE_ABSTRACT_ELDERLY, username, name, vaccinatedString, bloodPressureString,
                 birthdayString, medicalHistoryString, combinedListofRecordsString,
                 combinedListOfAppointmentsString, combinedListOfMedicinesString, combinedListOfNoksString);

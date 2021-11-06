@@ -44,6 +44,14 @@ public class Hospital {
     }
 
     /**
+     * Gets all doctors associated to a hospital.
+     * @return Array List of Doctors
+     */
+    public ArrayList<Doctor> getAllDoctors() {
+        return doctorArrayList;
+    }
+
+    /**
      * Returns the doctor in doctorArrayList given the index.
      *
      * @param doctorIndex Index of doctor.
