@@ -239,7 +239,8 @@ public class ElderlyList {
         ui.printEnterNotesOnCareMessage();
         String notesOnCare = ui.getUserInput();
 
-        MediumRiskElderly addedElderly = new MediumRiskElderly(userName, elderlyName, hospital, conditions, notesOnCare);
+        MediumRiskElderly addedElderly =
+                new MediumRiskElderly(userName, elderlyName, hospital, conditions, notesOnCare);
         elderlyArrayList.add(addedElderly);
         return addedElderly;
     }

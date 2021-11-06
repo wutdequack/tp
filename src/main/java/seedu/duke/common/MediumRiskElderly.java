@@ -38,7 +38,8 @@ public class MediumRiskElderly extends Elderly implements Hospitalisable {
         String hospital = String.format("Hospital Details :\n%s\n", getHospital());
         String conditions = String.format("Conditions of elderly %s : %s\n", getUsername(), getConditions());
         String notesOnCare = String.format("Notes on care for %s : %s\n", getUsername(), getNotesOnCare());
-        return String.format(TO_STRING_MESSAGE_MEDIUM_RISK_ELDERLY, super.toString(), hospital, conditions, notesOnCare);
+        return String.format(TO_STRING_MESSAGE_MEDIUM_RISK_ELDERLY,
+                super.toString(), hospital, conditions, notesOnCare);
     }
 
 }
