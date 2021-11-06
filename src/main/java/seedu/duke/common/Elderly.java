@@ -42,20 +42,20 @@ import java.util.Optional;
 
 public abstract class Elderly {
 
-    protected ArrayList<Medicine> medicines = new ArrayList<>();
-    protected ArrayList<Appointment> appointments = new ArrayList<>();
-    protected ArrayList<NextOfKin> nextofkins = new ArrayList<>();
-    protected ArrayList<Record> records = new ArrayList<>();
+    private ArrayList<Medicine> medicines = new ArrayList<>();
+    private ArrayList<Appointment> appointments = new ArrayList<>();
+    private ArrayList<NextOfKin> nextofkins = new ArrayList<>();
+    private ArrayList<Record> records = new ArrayList<>();
 
-    protected final String username;
-    protected final String name;
+    private final String username;
+    private final String name;
 
-    protected Integer[] bloodPressure = new Integer[2];
-    protected boolean isVaccinated;
-    protected Date birthday;
-    protected DietaryPreference diet;
+    private int[] bloodPressure;
+    private boolean isVaccinated;
+    private Date birthday;
+    private DietaryPreference diet;
 
-    protected String medicalHistory;
+    private String medicalHistory;
 
     @SerializedName("type")
     private String typeName;
@@ -66,8 +66,7 @@ public abstract class Elderly {
         medicalHistory = new String();
         diet = DietaryPreference.NOT_SET;
         typeName = getClass().getName();
-        bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY] = VALUE_DEFAULT_BP;
-        bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY] = VALUE_DEFAULT_BP;
+        bloodPressure = new int[] {VALUE_DEFAULT_BP, VALUE_DEFAULT_BP} ;
     }
 
     /**
@@ -184,12 +183,12 @@ public abstract class Elderly {
     }
 
     public void setElderlyBloodPressure(Integer systolic, Integer diastolic) {
-        bloodPressure = new Integer[LENGTH_OF_BLOOS_PRESSURE_ARRAY];
+        bloodPressure = new int[LENGTH_OF_BLOOS_PRESSURE_ARRAY];
         bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY] = systolic;
         bloodPressure[INDEX_OF_DIASTOLIC_PRESSURE_IN_ARRAY] = diastolic;
     }
 
-    public Integer[] getElderlyBloodPressure() {
+    public int[] getElderlyBloodPressure() {
         return bloodPressure;
     }
 

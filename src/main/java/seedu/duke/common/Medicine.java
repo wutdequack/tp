@@ -2,8 +2,8 @@ package seedu.duke.common;
 
 public class Medicine {
 
-    private String medicineName;
-    private String frequency;
+    private final String medicineName;
+    private final String frequency;
 
     public Medicine(String medicineName, String frequency) {
         this.medicineName = medicineName;

@@ -675,7 +675,7 @@ public class ElderlyList {
     }
 
     private void printBloodPressure(Elderly elderly) {
-        Integer[] bloodPressure = elderly.getElderlyBloodPressure();
+        int[] bloodPressure = elderly.getElderlyBloodPressure();
         if (!elderly.isBloodPressureSet()) {
             System.out.printf(MESSAGE_NO_BLOOD_PRESSURE, elderly.getName());
         } else {

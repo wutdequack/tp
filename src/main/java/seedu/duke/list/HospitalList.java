@@ -109,7 +109,7 @@ public class HospitalList {
     /**
      * Array list of all hospitals.
      */
-    protected ArrayList<Hospital> hospitalArrayList = new ArrayList<Hospital>();
+    private final ArrayList<Hospital> hospitalArrayList = new ArrayList<Hospital>();
 
     public HospitalList() {
     }
