@@ -123,7 +123,7 @@ public class RegexChecker {
     }
 
     public boolean isValidViewBirthdayCommand(String userLine) {
-        return Pattern.matches("^viewvaccination u/[a-z0-9]+$", userLine.toLowerCase());
+        return Pattern.matches("^viewbirthday u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
     /**

@@ -320,9 +320,9 @@ public class Messages {
 
     public static final String WRONG_VIEW_VACC_INPUT = "[!] Correct viewvaccination input: viewvaccination u/USER_NAME";
 
-    public static final String WRONG_VIEW_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: viewbirthday u/USER_NAME";
+    public static final String WRONG_VIEW_BIRTHDAY_INPUT = "[!] Correct viewbirthday input: viewbirthday u/USER_NAME";
 
-    public static final String WRONG_SET_BIRTHDAY_INPUT = "[!] Correct viewvbirthday input: setbirthday "
+    public static final String WRONG_SET_BIRTHDAY_INPUT = "[!] Correct setbirthday input: setbirthday "
             + "u/USER_NAME b/YYYY-MM-DD";
 
     public static final String WRONG_BIRTHDAY_FORMAT_INPUT = "[!] Invalid date keyed in"

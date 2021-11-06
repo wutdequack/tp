@@ -719,16 +719,13 @@ public class ElderlyList {
             if (!re.isValidViewBirthdayCommand(userLine)) {
                 throw new InvalidViewBirthdayException();
             }
-        } catch (InvalidInputException e) {
-            ui.printInvalidInputException(e);
-        }
-
-        String[] paramList = userLine.split(" u/");
-        assert paramList.length == 2 : "Name is empty";
-        try {
+            String[] paramList = userLine.split(" u/");
+            assert paramList.length == 2 : "Name is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             printBirthday(elderly);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
