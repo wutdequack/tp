@@ -9,8 +9,8 @@
 3. `setbloodpressure` : Setting\Updating of the blood pressure of the elderly
 4. `viewbloodpressure` : Viewing of blood pressure of the elderly
 5. `addmedicalhistory` : Adding additional medical history to the elderly
-6. `viewmedicaljistory` : Viewing the whole medical history of the elderly
-7. `deleteMedicalHistory` : Clearing the whole medical history of the elderly
+6. `viewmedicalhistory` : Viewing the whole medical history of the elderly
+7. `deletemedicalhistory` : Clearing the whole medical history of the elderly
 8. `viewvaccination` : Viewing of the vaccination status of the elderly
 9. `setvaccinated` : Setting the vaccination statuts of the elderly to be vaccinated
 10. `setbirthday` : Setting of the birthday of the elderly
