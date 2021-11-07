@@ -1,8 +1,7 @@
 ## An Ruyi
 
 #### contribution page
-[click me](https://nus-cs2113-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2021-09-25&tabOpen=true&tabType=zoom&zA=ruyian&zR=AY2122S1-CS2113-T16-2%2Ftp%5Bmaster%5D&zACS=574.7345067840117&zS=2021-09-25&zFS=&zU=2021-11-02&zMG=false&zFTF=commit&zFGS=groupByRepos&zFR=false)
-
+[click me](https://nus-cs2113-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2021-09-25&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=ruyian&tabRepo=AY2122S1-CS2113-T16-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
 ### Enhancements implemented
 1. `setdiet` : Setting of the dietary preference of the elderly
 2. `viewdiet` : Viewing of the dietary preference of the elderly
