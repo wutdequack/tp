@@ -64,7 +64,8 @@ Risk Categorisation)*
 #### Implementation
 The elderly risk categorisation is an addition to the current abstract `Elderly` class. It utilises
 **polymorphism**, creating three subclasses `LowRiskElderly`, `MediumRiskElderly`, `HighRiskElderly`,
-all of which **inherits** from the `Elderly` class. <br>
+all of which **inherits** from the abstract `Elderly` class. In addition, to achieve better **encapsulation**,
+fields in each of the class are declared as `private`.<br>
 Since the `MediumRiskElderly` and `HighRiskElderly` needs to receive hospitalisation at appropriate timing,
 they are implemented with the interface `Hospitalisable` where its assigned hospital, medical conditions
 as well as special notes to take care of them can be returned via the methods in the interface.
