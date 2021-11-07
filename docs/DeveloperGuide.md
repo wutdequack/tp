@@ -27,6 +27,7 @@ It is for service staffs at the elderly home who works at a PC,
 prefers typing, and wants to avoid the tedious tracking of details of each and every
 elderly they are assisting.
 
+<div style="page-break-after: always;"></div>
 
 ### Value proposition
 
@@ -47,6 +48,8 @@ as well. *(Further explained in Elderly Risk Categorisation)*
 Below is a UML sequence diagram for the process of addition of elderly:
 
 ![](team/img/updated_seq_diag.PNG)
+
+<div style="page-break-after: always;"></div>
 
 #### How the classes interact with each other
 
@@ -74,8 +77,10 @@ Additionally, 2 new classes are implemented:
   all its doctors.
 - `Doctor` — A class that contains information about a doctor
 
+<div style="page-break-after: always;"></div>
+
 Below is a UML class diagram for the elderly risk categorisation:
-![](https://user-images.githubusercontent.com/78540645/140644039-4ff507f8-6c90-42b7-80d8-e734bfb5f8a7.png)
+![](team/img/elderly_risk_cat.png)
 
 
 #### How the classes interact with each other
@@ -114,6 +119,8 @@ as ArrayLists in its attributes.
 
 This information in both classes is then stored in `Elderly` class.
 
+<div style="page-break-after: always;"></div>
+
 UML Diagram of the interaction between classes is shown below:
 ![Screenshot](https://user-images.githubusercontent.com/70097982/138797711-e0545ea3-c0bd-48fc-9e28-48a2814e255f.png)
 
@@ -137,6 +144,8 @@ Interaction of the `Record` class is also similar to the previous interaction. H
 now stored instead. Similarly, `addRecord()` function is called to store the details of the elderly and `viewRecord()`
 is used to view the details that are stored.
 
+<div style="page-break-after: always;"></div>
+
 #### Future Implementation and Considerations
 
 `removeRecord()` function has not been implemented yet as it is deemed to be **not critical** in this current phase.
@@ -153,6 +162,8 @@ Below is the Sequence Diagram for creating new objects which will be stored in `
 
 ![Screenshot](https://user-images.githubusercontent.com/70097982/139586495-45934bf6-b33e-416d-9d52-065a209f86ee.png)
 
+
+<div style="page-break-after: always;"></div>
 
 ### Deletion of Objects Stored in ElderlyList Class
 #### Design and Implementation
