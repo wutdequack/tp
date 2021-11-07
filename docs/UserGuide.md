@@ -30,6 +30,8 @@ needs, vitals and appointments with the various hospitals.
         - [Set vaccination `setvaccination`](#set-vaccination-setvaccination)
         - [Set dietary preference `setdiet`](#set-dietary-preference-setdiet)
         - [Set blood pressure `setbloodpressure`](#set-blood-pressure-setbloodpressure)
+        - [Add medical history `addmedicalhistory`](#add-medical-history-addmedicalhistory)
+        - 
         - [Viewing medicine of an elderly: `viewmed`](#viewing-medicine-of-an-elderly-viewmed)
         - [Viewing appointments of an elderly: `viewappt`](#viewing-appointments-of-an-elderly-viewappt)
         - [Viewing Next-Of-Kin information of an elderly: `viewnok`](#viewing-next-of-kin-information-of-an-elderly-viewnok)
@@ -261,10 +263,13 @@ Example of usage:
 `addmedicalhistory u/johntan123`
 
 ```
+[*] Please key in your medical history
+> 29/10/20 Fainted due to low blood sugar
+[*] Medical history of john tan has been updated
 > addmedicalhistory u/johntan123
 [*] Please key in your medical history
-> Diabetes, Osteoporosis
-[*] Medical history of John Tan has been updated
+> 28/04/21 Experienced severe cough
+[*] Medical history of john tan has been updated
 ```
 
 ### Set birthday `setbirthday`
@@ -439,9 +444,9 @@ Example of usage:
 `viewmedicalhistory u/johntan123`
 
 ```
-> viewmedicalhistory u/johntan123
-John Tan's medical history:
-Diabetes, Osteoporosis
+john tan's medical history:
+29/10/20 Fainted due to low blood sugar
+28/04/21 Experienced severe cough
 ```
 
 ### View birthday `viewbirthday`
@@ -520,6 +525,8 @@ Expected output:
 ```
 Blood pressure of John Tan is now (120 80)
 ```
+
+
 
 ### List all elderly in the system: `list`
 Returns the information of all elderly in the current session.
