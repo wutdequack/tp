@@ -30,11 +30,11 @@ public class RegexChecker {
     }
 
     public boolean isValidAddAppointment(String userLine) {
-        boolean case1 = Pattern.matches("^addappt u/[a-z0-9]+ l/[a-z0-9\\s]+ d/[0-9]{8} t/[0-9]{4}$",
+        boolean isValidWithoutPurpose = Pattern.matches("^addappt u/[a-z0-9]+ l/[a-z0-9\\s]+ d/[0-9]{8} t/[0-9]{4}$",
                 userLine.toLowerCase());
-        boolean case2 = Pattern.matches("^addappt u/[a-z0-9]+ l/[a-z0-9\\s]+ d/[0-9]{8} t/[0-9]{4} "
+        boolean isValidWithPurpose = Pattern.matches("^addappt u/[a-z0-9]+ l/[a-z0-9\\s]+ d/[0-9]{8} t/[0-9]{4} "
                 + "p/[a-z0-9\\s]+$", userLine.toLowerCase());
-        return case1 || case2;
+        return isValidWithoutPurpose || isValidWithPurpose;
     }
 
     public boolean isValidViewMedicine(String userLine) {
@@ -157,24 +157,24 @@ public class RegexChecker {
 
         // Iterate through the rest to see the cost
         int cost;
-        int colIndex;
+        int columnIndex;
         int rowIndex = 1;
-        for (colIndex = 1; colIndex < numberCols; ++colIndex) {
+        for (columnIndex = 1; columnIndex < numberCols; ++columnIndex) {
             for (rowIndex = 1; rowIndex < numberRows; ++rowIndex) {
-                if (firstString.charAt(rowIndex - 1) == secondString.charAt(colIndex - 1)) {
+                if (firstString.charAt(rowIndex - 1) == secondString.charAt(columnIndex - 1)) {
                     cost = 0;
                 } else {
                     cost = 2;
                 }
-                int deletionCost = levDistanceArray[rowIndex - 1][colIndex] + 1;
-                int insertionCost = levDistanceArray[rowIndex][colIndex - 1] + 1;
-                int subCost = levDistanceArray[rowIndex - 1][colIndex - 1] + cost;
-                levDistanceArray[rowIndex][colIndex] = min(min(deletionCost, insertionCost), subCost);
+                int deletionCost = levDistanceArray[rowIndex - 1][columnIndex] + 1;
+                int insertionCost = levDistanceArray[rowIndex][columnIndex - 1] + 1;
+                int subCost = levDistanceArray[rowIndex - 1][columnIndex - 1] + cost;
+                levDistanceArray[rowIndex][columnIndex] = min(min(deletionCost, insertionCost), subCost);
             }
         }
 
         float totalLengthOfString = firstString.length() + secondString.length();
-        result = (totalLengthOfString - levDistanceArray[rowIndex - 1][colIndex - 1]) / totalLengthOfString;
+        result = (totalLengthOfString - levDistanceArray[rowIndex - 1][columnIndex - 1]) / totalLengthOfString;
 
         return result;
     }
