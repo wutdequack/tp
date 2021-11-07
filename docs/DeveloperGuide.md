@@ -46,7 +46,7 @@ as well. *(Further explained in Elderly Risk Categorisation)*
 
 Below is a UML sequence diagram for the process of addition of elderly:
 
-![](team/img/updated_seq_diag.png)
+![](team/img/updated_seq_diag.PNG)
 
 #### How the classes interact with each other
 
@@ -57,7 +57,6 @@ Below is a UML sequence diagram for the process of addition of elderly:
 3. Depending on the `riskLevel`, `elderly` is added into respective subclasses *(Further explained in Elderly
    Risk Categorisation)*
 4. Message to notify the users that the elderly has been added is printed via `TextUi`
-
 
 
 ### Elderly risk categorisation
@@ -115,7 +114,7 @@ as ArrayLists in its attributes.
 
 This information in both classes is then stored in `Elderly` class.
 
-UML Diagram of the interaction between classes is shown below :
+UML Diagram of the interaction between classes is shown below:
 ![Screenshot](https://user-images.githubusercontent.com/70097982/138797711-e0545ea3-c0bd-48fc-9e28-48a2814e255f.png)
 
 #### Interaction of Classes
@@ -150,7 +149,7 @@ implemented in the future to help improve the usability and convenience of the o
 ### Creation of New Objects Stored in ElderlyList Class
 #### Design and Implementation
 
-Below is the Sequence Diagram for creating new objects which will be stored in `ElderlyList` Class
+Below is the Sequence Diagram for creating new objects which will be stored in `ElderlyList` Class:
 
 ![Screenshot](https://user-images.githubusercontent.com/70097982/139586495-45934bf6-b33e-416d-9d52-065a209f86ee.png)
 
@@ -158,7 +157,7 @@ Below is the Sequence Diagram for creating new objects which will be stored in `
 ### Deletion of Objects Stored in ElderlyList Class
 #### Design and Implementation
 
-Below is the Sequence Diagram for deletion of objects which are stored in `ElderlyList` class
+Below is the Sequence Diagram for deletion of objects which are stored in `ElderlyList` Class:
 
 ![Screenshot](https://user-images.githubusercontent.com/70097982/139586603-43812b5e-6c50-4ee5-8d8e-492925c3101b.png)
 
@@ -254,4 +253,5 @@ complementary tool, **it will not be a major problem**.
 1. To load sample/saved data to use, use the command `load` (e.g. `load fp/data.json`)
 2. To store data, use the command `store` (e.g. `store fp/data.json`)
 
-Note: filename can only consist of characters and must end with `.json` View User Guide for more information.
+Note: filename can only consist of characters and must end with `.json`.
+View User Guide for more information.
