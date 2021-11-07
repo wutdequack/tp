@@ -152,7 +152,7 @@ implemented in the future to help improve the usability and convenience of the o
 
 Below is the Sequence Diagram for creating new objects which will be stored in `ElderlyList` Class
 
-![Screenshot](https://user-images.githubusercontent.com/70097982/139586495-45934bf6-b33e-416d-9d52-065a209f86ee.png)
+![Screenshot](https://user-images.githubusercontent.com/78540645/140644039-4ff507f8-6c90-42b7-80d8-e734bfb5f8a7.png)
 
 
 ### Deletion of Objects Stored in ElderlyList Class
