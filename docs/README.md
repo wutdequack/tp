@@ -12,9 +12,3 @@ Welcome to the landing page! Here are some topics that might pique your interest
 - [Jonathan's PPP](https://ay2122s1-cs2113-t16-2.github.io/tp/team/wutdequack.html)
 - [Rebecca's PPP](https://ay2122s1-cs2113-t16-2.github.io/tp/team/nguyin.html)
 - [Ru Yi's PPP](https://ay2122s1-cs2113-t16-2.github.io/tp/team/ruyian.html)
-
-
-Useful links:
-* [User Guide](UserGuide.md)
-* [Developer Guide](DeveloperGuide.md)
-* 

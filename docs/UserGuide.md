@@ -30,8 +30,6 @@ needs, vitals and appointments with the various hospitals.
         - [Set vaccination `setvaccination`](#set-vaccination-setvaccination)
         - [Set dietary preference `setdiet`](#set-dietary-preference-setdiet)
         - [Set blood pressure `setbloodpressure`](#set-blood-pressure-setbloodpressure)
-        - [Add medical history `addmedicalhistory`](#add-medical-history-addmedicalhistory)
-        - 
         - [Viewing medicine of an elderly: `viewmed`](#viewing-medicine-of-an-elderly-viewmed)
         - [Viewing appointments of an elderly: `viewappt`](#viewing-appointments-of-an-elderly-viewappt)
         - [Viewing Next-Of-Kin information of an elderly: `viewnok`](#viewing-next-of-kin-information-of-an-elderly-viewnok)
