@@ -76,7 +76,7 @@ Additionally, 2 new classes are implemented:
 - `Doctor` — A class that contains information about a doctor
 
 Below is a UML class diagram for the elderly risk categorisation:
-![](https://user-images.githubusercontent.com/78540645/140644039-4ff507f8-6c90-42b7-80d8-e734bfb5f8a7.png)
+![](https://user-images.githubusercontent.com/78540645/140648498-a586c28c-de8f-44e3-bd9e-6eedb42d228c.png)
 
 
 #### How the classes interact with each other
