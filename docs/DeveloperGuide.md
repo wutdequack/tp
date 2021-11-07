@@ -39,23 +39,23 @@ to add and retrieve elderly information with ease. This increases productivity.
 
 ### Addition of Elderly
 #### Implementation
-Before the user can do anything, he has to first add some elderly into the system *(Details of 
+Before the user can do anything, he has to first add some elderly into the system *(Details of
 `addelderly` function is in UG)*. We created a `ElderlyList` class to handle the addition of `elderly`,
-and a `RegexChecker` class to check for validity of the input. Various `elderly` subclasses are added 
+and a `RegexChecker` class to check for validity of the input. Various `elderly` subclasses are added
 as well. *(Further explained in Elderly Risk Categorisation)*
 
 Below is a UML sequence diagram for the process of addition of elderly:
 
-![](https://user-images.githubusercontent.com/78540645/140644039-4ff507f8-6c90-42b7-80d8-e734bfb5f8a7.png)
+![](team/img/updated_seq_diag.png)
 
 #### How the classes interact with each other
 
 1. `addElderly()` in the class `ElderlyList` is run, supplied with the input `userline`, and methods from the `TextUi
-class will interact with the `userLine`
+   class will interact with the `userLine`
 2. Regex checks from `RegexChecker` class `isValidAddElderly()` and `isValidRiskLevel()` are run in order to check
-if the inputs in the `userLine` are valid
-3. Depending on the `riskLevel`, `elderly` is added into respective subclasses *(Further explained in Elderly 
-Risk Categorisation)*
+   if the inputs in the `userLine` are valid
+3. Depending on the `riskLevel`, `elderly` is added into respective subclasses *(Further explained in Elderly
+   Risk Categorisation)*
 4. Message to notify the users that the elderly has been added is printed via `TextUi`
 
 
@@ -76,7 +76,7 @@ Additionally, 2 new classes are implemented:
 - `Doctor` — A class that contains information about a doctor
 
 Below is a UML class diagram for the elderly risk categorisation:
-![](team/img/elderly_implementation.png)
+![](https://user-images.githubusercontent.com/78540645/140644039-4ff507f8-6c90-42b7-80d8-e734bfb5f8a7.png)
 
 
 #### How the classes interact with each other
@@ -165,57 +165,57 @@ Below is the Sequence Diagram for deletion of objects which are stored in `Elder
 
 ### Autosuggestions for search functions
 #### Problems Faced
-For fast typers, they may **misspell words** and are somehow convinced that their spelling is correct. 
-Furthermore, as our program mainly deals with usernames, medicine names, etc., they may be cryptic 
-and **difficult to remember**. 
+For fast typers, they may **misspell words** and are somehow convinced that their spelling is correct.
+Furthermore, as our program mainly deals with usernames, medicine names, etc., they may be cryptic
+and **difficult to remember**.
 
 #### Solution to said problems
-We opted to have an autosuggestion function that will look for the 
-closest possible search result in the store of the program. 
+We opted to have an autosuggestion function that will look for the
+closest possible search result in the store of the program.
 
 #### Details of solution
-We used a concept known as [Levenshtein Distance](https://medium.com/@ethannam/understanding-the-levenshtein-distance-equation-for-beginners-c4285a5604f0) 
-to check the similarities between 2 strings. 
+We used a concept known as [Levenshtein Distance](https://medium.com/@ethannam/understanding-the-levenshtein-distance-equation-for-beginners-c4285a5604f0)
+to check the similarities between 2 strings.
 
-For brevity, I will attempt to explain the concept here. In essence, it checks what are the number 
-of edits made at position `i` of 2 strings. This can be better illustrated with an example. 
+For brevity, I will attempt to explain the concept here. In essence, it checks what are the number
+of edits made at position `i` of 2 strings. This can be better illustrated with an example.
 
-Given that we have a medicine `panadol` in the system and a misspelt user query of `parasol`. 
+Given that we have a medicine `panadol` in the system and a misspelt user query of `parasol`.
 Assuming we have `i` as the iterator for `panadol` and `j` as the iterator of `parasol`. At position
-`i=3` and `j=3`, there is a change of 1 character from `n->r` so `lev_i,j(3,3) = 1` as 1 edit is 
-required. At `lev_i,j(7,7)`, there would have been a total of 2 characters changed. 
+`i=3` and `j=3`, there is a change of 1 character from `n->r` so `lev_i,j(3,3) = 1` as 1 edit is
+required. At `lev_i,j(7,7)`, there would have been a total of 2 characters changed.
 
 ![Image of Levenshtein Distance Function](team/img/lev_function_img.jpg)
 <p align = center>Image of Levenshtein Distance Function</p>
 
-The function above is applied to both strings and its results are compounded. We then take a **ratio 
-of the number of unchanged characters over the total number of characters in both strings** to 
-determine how similar the 2 strings are. 
+The function above is applied to both strings and its results are compounded. We then take a **ratio
+of the number of unchanged characters over the total number of characters in both strings** to
+determine how similar the 2 strings are.
 
 #### How is it applied to the program?
-When using the `findbymed`, `findbydiet`, `findbyname` functions, they will take generate a set of 
+When using the `findbymed`, `findbydiet`, `findbyname` functions, they will take generate a set of
 medicine, diets and real names respectively. The function `checkSimilarities` in `ElderlyList.class`
-will then iterate through each item in the set and compare it with the query term. If there is a 
-similarity score of `>=0.8`, the closest match will be printed. 
+will then iterate through each item in the set and compare it with the query term. If there is a
+similarity score of `>=0.8`, the closest match will be printed.
 
 #### How did you determine that the magic similarity value to be used is 0.8?
-It was through vigorous trial and testing that 0.8 seems like the most appropriate value. 
+It was through vigorous trial and testing that 0.8 seems like the most appropriate value.
 
 #### An example of AutoSuggestions
-Assuming we have an elderly that exist in the system called `John Tan`. We, as the user, remember 
+Assuming we have an elderly that exist in the system called `John Tan`. We, as the user, remember
 that his name was `<SOMETHING> Tan`, and it was either `Josh` or `John`. We try `Josh`
 first.
 
 ![Example of AutoSuggestions](team/img/autosuggestions_example.png)
 
 Instead of just prompting that the system could not find `Josh Tan`, the search term went through
-the Levenshtein Distance logic and the name `John Tan` returned with a result of `0.9375`. As you 
+the Levenshtein Distance logic and the name `John Tan` returned with a result of `0.9375`. As you
 can see, this was our intended result and showcases the intended solution to our problem.
 
 #### Potential Shortcomings of this function
-There may be two strings that have similar edit distance to each other but may not be related to 
-each other. This will include words like `sitting` and `kitten` for example. This may give 
-inaccurate suggestions. However, since this is **not a key function** and is only meant to be a 
+There may be two strings that have similar edit distance to each other but may not be related to
+each other. This will include words like `sitting` and `kitten` for example. This may give
+inaccurate suggestions. However, since this is **not a key function** and is only meant to be a
 complementary tool, **it will not be a major problem**.
 
 
