@@ -2,6 +2,7 @@ package seedu.duke.common;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -15,7 +16,7 @@ public class LowRiskElderlyTest {
 
     @Test
     void testElderlyDetails() {
-        assertEquals(johnTan.getUsername(), "johntan123");
+        assertEquals("johntan123", johnTan.getUsername());
     }
 
     @Test

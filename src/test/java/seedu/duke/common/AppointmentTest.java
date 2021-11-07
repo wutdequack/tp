@@ -17,10 +17,10 @@ public class AppointmentTest {
 
     @Test
     void testAppointmentDetails() {
-        assertEquals(generalAppointment.getLocation(), "khoo teck puat hospital");
-        assertEquals(generalAppointment.getDate(), "01012021");
-        assertEquals(generalAppointment.getTime(), "0900");
-        assertEquals(generalAppointment.getPurpose(), "general checkup");
+        assertEquals("khoo teck puat hospital", generalAppointment.getLocation());
+        assertEquals("01012021", generalAppointment.getDate());
+        assertEquals("0900", generalAppointment.getTime());
+        assertEquals("general checkup", generalAppointment.getPurpose());
     }
 
     @Test

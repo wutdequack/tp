@@ -27,7 +27,7 @@ public class HighRiskElderlyTest {
 
     @Test
     void testElderlyDetails() {
-        assertEquals(hotchic31.getUsername(), "yqt69");
+        assertEquals("yqt69", hotchic31.getUsername());
     }
 
     @Test

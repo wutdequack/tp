@@ -23,7 +23,7 @@ public class MediumRiskElderlyTest {
 
     @Test
     void testElderlyDetails() {
-        assertEquals(hotchic31.getUsername(), "hotchic31");
+        assertEquals("hotchic31", hotchic31.getUsername());
     }
 
     @Test

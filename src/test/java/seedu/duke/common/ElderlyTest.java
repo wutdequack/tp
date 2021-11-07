@@ -16,7 +16,7 @@ public class ElderlyTest {
 
     @Test
     void testElderlyDetails() {
-        assertEquals(johnTan.getUsername(), "johntan123");
+        assertEquals("johntan123", johnTan.getUsername());
     }
 
     @Test
