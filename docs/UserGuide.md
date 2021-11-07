@@ -62,11 +62,11 @@ needs, vitals and appointments with the various hospitals.
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-2. Download the latest version of `Duke` 
-from [here](https://github.com/AY2122S1-CS2113-T16-2/tp/releases).
-3. Copy Duke.jar to the target directory as the home folder
+2. Download the latest version of `ElderlyInTheHood` 
+from [here](https://github.com/AY2122S1-CS2113-T16-2/tp/releases/tag/v2.1).
+3. Copy `ElderlyInTheHood.jar` to the target directory as the home folder
 4. Open terminal and move current directory to the home folder
-5. Run the program using `java -jar Duke.jar` command.
+5. Run the program using `java -jar ElderlyInTheHood.jar` command.
 6. Type in your command and press Enter to execute it.
 
 ## Brief Overview of Functions
