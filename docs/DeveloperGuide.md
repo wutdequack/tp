@@ -50,18 +50,25 @@ Below is a UML sequence diagram for the process of addition of elderly:
 
 #### How the classes interact with each other
 
-1. `addElderly()` in the class `ElderlyList` is run, supplied with the input `userline`
-2. Regex checks from `RegexChecker` class `isValidAddElderly()` and `isValidRiskLevel()` are run
-3. Depending on the `riskLevel`, `elderly` is added into respective subclasses *(Further explained in Elderly Risk Categorisation)*
-4. Message for elderly added is printed
+1. `addElderly()` in the class `ElderlyList` is run, supplied with the input `userline`, and methods from the `TextUi
+class will interact with the `userLine`
+2. Regex checks from `RegexChecker` class `isValidAddElderly()` and `isValidRiskLevel()` are run in order to check
+if the inputs in the `userLine` are valid
+3. Depending on the `riskLevel`, `elderly` is added into respective subclasses *(Further explained in Elderly 
+Risk Categorisation)*
+4. Message to notify the users that the elderly has been added is printed via `TextUi`
 
 
 
 ### Elderly risk categorisation
 #### Implementation
-The elderly risk categorisation is an addition to the current `Elderly` class. It utilises
+The elderly risk categorisation is an addition to the current abstract `Elderly` class. It utilises
 **polymorphism**, creating three subclasses `LowRiskElderly`, `MediumRiskElderly`, `HighRiskElderly`,
 all of which **inherits** from the `Elderly` class. <br>
+Since the `MediumRiskElderly` and `HighRiskElderly` needs to receive hospitalisation at appropriate timing,
+they are implemented with the interface `Hospitalisable` where its assigned hospital, medical conditions
+as well as special notes to take care of them can be returned via the methods in the interface.
+
 Additionally, 2 new classes are implemented:
 - `Hospital` — A class that contains information about a hospital, and contains a list of
   all its doctors.
@@ -221,12 +228,14 @@ complementary tool, **it will not be a major problem**.
 |v1.0|helper|view hospital appointment dates|view all the hospital appointment dates for each elderly|
 |v1.0|helper|store elderly medicine types|keep track of the medicine for each elderly|
 |v1.0|helper|view elderly medicine types|ensure that the elderly will take the right medicine on time|
-|v2.0|helper|categorise elderly by risk level|pay more attention to elderly of higher risk|
+|v2.0|helper|categorise elderly by risk their levels|pay more attention to elderly of higher risk|
 |v2.0|helper|add hospital information to medium and high risk elderly|store hospital information specific to the elderly|
 |v2.0|helper|view hospital information to medium and high risk elderly|utilise hospital information during emergency|
-|v2.0|helper|add conditions of medium and high risk elderly|to keep track of conditions specific to the elderly|
+|v2.0|helper|add medical history|keep track of all the medical history of the elderly|
+|v2.0|helper|view medical history|view of all the medical history of the elderly when it is needed (such as bringing the elderly for a health check-up)|
+|v2.0|helper|add conditions of medium and high risk elderly|keep track of conditions specific to the elderly|
 |v2.0|helper|view conditions of medium and high risk elderly|view the conditions of the elderly|
-|v2.0|helper|add notes on care of medium and high risk elderly|so that other helpers can render assistance specific to the elderly|
+|v2.0|helper|add notes on care of medium and high risk elderly|enable other helpers can render assistance specific to the elderly|
 |v2.0|helper|view notes on care of medium and high risk elderly|take notes on how to care for the elderly|
 |v2.0|helper|add doctor information to high risk elderly|store doctor information specific to the elderly|
 |v2.0|helper|view doctor information to high risk elderly|utilise doctor information during emergency|
@@ -236,7 +245,7 @@ complementary tool, **it will not be a major problem**.
 
 1. The product is not required to ensure that the dosage of medicine keyed are safe.
 2. The product should work on both 32-bit and 64-bit system.
-3. This version of product does not allow for addition of hospital and doctors.
+3. This version of product does not allow users to manually add additional hospital and doctors.
 
 
 ## Instructions for manual testing
