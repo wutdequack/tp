@@ -67,6 +67,8 @@ from [here](https://github.com/AY2122S1-CS2113-T16-2/tp/releases/tag/v2.1).
 5. Run the program using `java -jar ElderlyInTheHood.jar` command.
 6. Type in your command and press Enter to execute it.
 
+<div style="page-break-after: always;"></div>
+
 ## Brief Overview of Functions
 ![](https://img.shields.io/static/v1?label=info&message=functions&color=blue&style=flat)
 
@@ -183,6 +185,8 @@ Example of usage:
 [*] Medicine has been added!
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### Adding appointment to an elderly: `addappt`
 Adds an appointment to an existing elderly.
 
@@ -269,6 +273,7 @@ Example of usage:
 > 28/04/21 Experienced severe cough
 [*] Medical history of john tan has been updated
 ```
+<div style="page-break-after: always;"></div>
 
 ### Set birthday `setbirthday`
 
@@ -412,6 +417,8 @@ Example of usage:
 Details of johntan123 Next-of-Kin are shown below:
 [NOK Name: peter tan, NOK HP: 98733842, NOK Email: hello-world@gmail.com, NOK Address: Blk 2 College Drive, Relationship: Father]
 ```
+
+<div style="page-break-after: always;"></div>
 
 ### Viewing record information of an elderly: `viewrec`
 Views all record information (phone number, home address) of an existing elderly.
@@ -652,6 +659,7 @@ File I/O Commands
 [*] Store format: store fp/FILE
 [*] Load format: load fp/FILE
 ```
+<div style="page-break-after: always;"></div>
 
 ### Terminating: `bye`
 Terminates the current session.
@@ -696,6 +704,7 @@ Example of usage:
 [*] This is the results for the following query: Vegetarian
 johntan123
 ```
+<div style="page-break-after: always;"></div>
 
 ### Find elderly details given their name: `findbyname`
 Filter elderly based on real name and get all their information.
