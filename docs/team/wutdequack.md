@@ -43,6 +43,8 @@ Elderly In Your Hood is a **lightweight command-line (CLI) desktop application**
    2. Setup of packages and common files (e.g `Parser`, `TextUi`, `ElderlyList`, MagicValues`, etc.)
 2. Refactored all code to follow the same format (`username` instead of `name`)
 3. Helped [Owen](https://github.com/owensoh) with mini-feature to prevent the addition of duplicate elderly usernames
+4. Helped [Owen](https://github.com/owensoh) with creation of dataset for the Demo video
+5. Standardized the format to follow Java Coding standards
 
 ### Contributions beyond the project team
 1. Review of JAR file and UG from [Team CS2113-T13-1](https://github.com/AY2122S1-CS2113-T13-1/tp) in [Mock-PE](https://github.com/wutdequack/ped)
