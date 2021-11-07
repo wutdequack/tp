@@ -687,7 +687,7 @@ johntan123
 ### Find which elderly is on what kind of diet: `findbydiet`
 Filter elderly that have certain dietary preferences.
 
-Format: `findbymed d/DIET`
+Format: `findbydiet d/DIET`
 
 Example of usage:
 
