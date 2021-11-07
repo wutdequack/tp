@@ -228,8 +228,16 @@ inaccurate suggestions. However, since this is **not a key function** and is onl
 complementary tool, **it will not be a major problem**.
 
 
+## Appendix A: Product Scope
+### Target user profile
+Caregivers who are fast typists and prefer Command Line Interface(CLI) for their duties.
 
-## User Stories
+### Value proposition
+* Easily manage patient information
+* Easily manage patient schedules and appointments
+
+
+## Appendix B: User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
@@ -251,17 +259,201 @@ complementary tool, **it will not be a major problem**.
 |v2.0|helper|view doctor information to high risk elderly|utilise doctor information during emergency|
 
 
-## Non-Functional Requirements
+## Appendix C: Non-Functional Requirements
 
-1. The product is not required to ensure that the dosage of medicine keyed are safe.
-2. The product should work on both 32-bit and 64-bit system.
-3. This version of product does not allow users to manually add additional hospital and doctors.
+1. Should work on any _mainstream OS_ as long as it has `Java 11` or above installed.
+2. The product is not required to ensure that the dosage of medicine keyed are safe.
+3. The product should work on both 32-bit and 64-bit system.
+4. This version of product does not allow users to manually add additional hospital and doctors.
 
+## Appendix D: Glossary
+* _Mainstream OS_ - Windows, Linux, Unix, OS-X
 
-## Instructions for manual testing
+## Appendix E: Instructions for manual testing
 
-1. To load sample/saved data to use, use the command `load` (e.g. `load fp/data.json`)
-2. To store data, use the command `store` (e.g. `store fp/data.json`)
+Given below are instructions to test the app manually.
 
-Note: filename can only consist of characters and must end with `.json`.
-View User Guide for more information.
+### Launch and shutdown
+1. Initial launch 
+   1. Download the jar file and copy into working directory
+   2. Launch it with `java -jar ElderlyInTheHood.jar`
+
+2. Shutdown of program
+   1. Launch the `bye` command to exit
+
+### Saving and Loading Data
+Data from the current running instance of the program can be stored in persistent storage.
+It will save to the filename specified by the user in the local directory. 
+While program is being run, run `load fp/[FILENAME.json]`
+
+Note: Filename can only consist of characters and must end with `.json`.
+View [User Guide](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html) for more information.
+
+Data can be restored from the file specified. 
+
+#### Storing into wrong file locaton
+Test Case: Storing into a file that you are unable to write to
+1. On your system, traverse to a place you cannot write to. 
+2. Copy the JAR file there. 
+3. Run the program and run `store fp/data.json`
+4. Expected output:
+   ```
+   data.json (Access is denied)
+   ```
+
+#### Dealing with corrupted data files
+Test Case 1: Loading from file, a user with an invalid appointment date `32132021`
+      
+1. Create a file data.json in the local directory with the following contents
+```json
+[
+  {
+    "medicines": [],
+    "appointments": [],
+    "nextofkins": [],
+    "records": [],
+    "username": "nguyin",
+    "name": "rebecca ng",
+    "bloodPressure": [
+      -1,
+      -1
+    ],
+    "isVaccinated": false,
+    "diet": "NOT_SET",
+    "medicalHistory": "",
+    "type": "seedu.duke.common.LowRiskElderly"
+  },
+  {
+    "medicines": [],
+    "appointments": [
+      {
+        "location": "khoo teck puat hospital",
+        "date": "32132021",
+        "time": "0900",
+        "purpose": "general checkup"
+      }
+    ],
+    "nextofkins": [],
+    "records": [],
+    "username": "owinsoh",
+    "name": "owen soh",
+    "bloodPressure": [
+      -1,
+      -1
+    ],
+    "isVaccinated": false,
+    "diet": "NOT_SET",
+    "medicalHistory": "",
+    "type": "seedu.duke.common.LowRiskElderly"
+  }
+]
+```
+2. In the running instance of the program, call `load fp/data.json`.
+This is the expected result:
+```
+[*] data.json exists. Loading from file!
+[!] owinsoh object has issue!
+[!] File is in the wrong format, could not load!
+```   
+3. Rectify the error, and load again. The `load` command will not successfully load unless the file is in the format
+
+Test Case 2: Loading from file, a user with a different type `Integer` instead of `String`
+1. Create a file data.json in the local directory with the following contents
+```json
+[
+  {
+    "medicines": [],
+    "appointments": [],
+    "nextofkins": [],
+    "records": [],
+    "username": "nguyin",
+    "name": "rebecca ng",
+    "bloodPressure": [
+      -1,
+      -1
+    ],
+    "isVaccinated": false,
+    "diet": 123,
+    "medicalHistory": "",
+    "type": "seedu.duke.common.LowRiskElderly"
+  },
+  {
+    "medicines": [],
+    "appointments": [
+      {
+        "location": "khoo teck puat hospital",
+        "date": "31122021",
+        "time": "0900",
+        "purpose": "general checkup"
+      }
+    ],
+    "nextofkins": [],
+    "records": [],
+    "username": "owinsoh",
+    "name": "owen soh",
+    "bloodPressure": [
+      -1,
+      -1
+    ],
+    "isVaccinated": false,
+    "diet": "NOT_SET",
+    "medicalHistory": "",
+    "type": "seedu.duke.common.LowRiskElderly"
+  }
+]
+```
+2. In the running instance of the program, call `load fp/data.json`.
+   This is the expected result:
+```
+[*] data.json exists. Loading from file!
+[!] File is in the wrong format, could not load!
+```   
+
+#### Loading from a file in the correct format
+Test Case: Loading from a file with the correct format
+1. Create a file data.json in the local directory with the following contents
+```json
+[
+  {
+    "medicines": [],
+    "appointments": [],
+    "nextofkins": [],
+    "records": [],
+    "username": "nguyin",
+    "name": "rebecca ng",
+    "bloodPressure": [
+      -1,
+      -1
+    ],
+    "isVaccinated": false,
+    "diet": "NOT_SET",
+    "medicalHistory": "",
+    "type": "seedu.duke.common.LowRiskElderly"
+  },
+  {
+    "medicines": [],
+    "appointments": [
+      {
+        "location": "khoo teck puat hospital",
+        "date": "31122021",
+        "time": "0900",
+        "purpose": "general checkup"
+      }
+    ],
+    "nextofkins": [],
+    "records": [],
+    "username": "owinsoh",
+    "name": "owen soh",
+    "bloodPressure": [
+      -1,
+      -1
+    ],
+    "isVaccinated": false,
+    "diet": "NOT_SET",
+    "medicalHistory": "",
+    "type": "seedu.duke.common.LowRiskElderly"
+  }
+]
+```
+2. In the running instance of the program, call `load fp/data.json`.
+   This is the expected result:```[*] data1.json exists. Loading from file!```
