@@ -224,6 +224,7 @@ public class ElderlyList {
      *
      * @param userName    username of elderly.
      * @param elderlyName name of elderly.
+     * @throws HospitalIndexException if the hospital index keyed in is out of range.
      */
     private Elderly addMediumRiskElderly(String userName, String elderlyName) throws HospitalIndexException {
         hospitalArrayList.printHospitalNames();
@@ -250,6 +251,8 @@ public class ElderlyList {
      *
      * @param userName    username of elderly.
      * @param elderlyName name of elderly.
+     * @throws HospitalIndexException if the hospital index keyed in is out of range.
+     * @throws DoctorIndexException if the doctor index keyed in is out of range.
      */
     private Elderly addHighRiskElderly(String userName, String elderlyName) throws HospitalIndexException,
             DoctorIndexException {
