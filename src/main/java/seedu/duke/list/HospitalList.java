@@ -203,6 +203,7 @@ public class HospitalList {
         Hospital ngTengFongHospital = new Hospital(NG_TENG_FONG_GENERAL_HOSPITAL, NG_TENG_FONG_GENERAL_HOSPITAL_NUMBER);
         ngTengFongHospital.addDoctor(SUN_GENGXIN, SUN_GENGXIN_NUMBER);
         ngTengFongHospital.addDoctor(DAI_JIA, DAI_JIA_NUMBER);
+        ngTengFongHospital.addDoctor(XAVIER_YUAN, XAVIER_YUAN_NUMBER);
         ngTengFongHospital.addDoctor(ZENG_ZEMIN, ZENG_ZEMIN_NUMBER);
         ngTengFongHospital.addDoctor(FU_JING, FU_JING_NUMBER);
         return ngTengFongHospital;
