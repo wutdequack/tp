@@ -291,7 +291,7 @@ View [User Guide](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html) for
 
 Data can be restored from the file specified. 
 
-#### Storing into wrong file locaton
+#### Storing into wrong file location
 Test Case: Storing into a file that you are unable to write to
 1. On your system, traverse to a place you cannot write to. 
 2. Copy the JAR file there. 
@@ -457,3 +457,550 @@ Test Case: Loading from a file with the correct format
 ```
 2. In the running instance of the program, call `load fp/data.json`.
    This is the expected result:```[*] data1.json exists. Loading from file!```
+
+### Viewing birthdays
+Birthdays that has been added to an elderly can be viewed.
+While program is being run, run `viewbirthday u/USER_NAME`
+
+View [UG-viewbirthday](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#view-birthday-viewbirthday) for more information.
+
+
+#### Viewing from invalid username
+Test Case: Viewing birthday of a non-existent username
+1. On the program, attempt to view birthday of non-existent username
+   ```
+   > viewbirthday u/random_username
+    Invalid input detected
+    Correct input format: viewbirthday u/USER_NAME
+   ```
+
+#### Viewing from valid username, but birthday has not been set
+Test Case: Viewing birthday of an existent username, but birthday has not been set
+1. On the program, attempt to view birthday of existent username, but birthday not set
+   ```
+   > viewbirthday u/hotchic31
+    Birthday of owen soh has not been set.
+   ```
+
+#### Viewing from valid username and birthday has been set
+Test Case: Viewing birthday of an existent username, but birthday has been set
+1. On the program, attempt to view birthday of existent username, and birthday is set
+   ```
+   > viewbirthday u/rheng
+    Birthday of rachel heng is 1977-09-22
+   ```
+
+### Viewing vaccination status
+Vaccination status of elderly can be viewed.
+While program is being run, run `viewvaccination u/USER_NAME`
+
+Note: We assume that an elderly has not been vaccinated yet if he/she is not recorded as vaccinated in the system.
+View [UG-viewvaccination](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#view-vaccination-status-viewvaccination) for more information.
+
+
+#### Viewing from invalid username
+Test Case: Viewing vaccination status of a non-existent username
+1. On the program, attempt to view vaccination status of non-existent username
+   ```
+   > viewvaccination u/random_username
+    Invalid input detected
+    Correct input format: [!] Correct viewvaccination input: viewvaccination u/USER_NAME
+    [!] Elderly name you have keyed in does not exist
+   ```
+
+#### Viewing from valid username, but vaccination status has not been changed
+Test Case: Viewing vaccination status of an existent username, but has not been changed
+1. On the program, attempt to view vaccination status of existent username, but vaccination status not changed
+   ```
+   > viewvaccination u/hotchic31
+    owen soh is currently not vaccinated.
+   ```
+
+#### Viewing from valid username and vaccination status has been changed
+Test Case: Viewing vaccination status of an existent username, but has been changed
+1. On the program, attempt to view vaccination status of existent username, and vaccination status is changed
+   ```
+   > viewvaccination u/rheng
+    rachel heng is currently vaccinated.
+   ```
+
+### Viewing dietary preference
+Dietary preference of elderly can be viewed.
+While program is being run, run `viewdiet u/USER_NAME`
+
+Note: Elderly diet defaulted to not set if elderly exists, but no diet has been set
+View [UG-viewdiet](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#view-dietary-preference-viewdiet) for more information.
+
+
+#### Viewing from invalid username
+Test Case: Viewing dietary preference of a non-existent username
+1. On the program, attempt to view dietary preference of non-existent username
+   ```
+   > viewdiet u/random_username
+    Invalid input detected
+    Correct input format: [!] Correct viewdiet input: viewdiet u/USER_NAME.
+    [!] Elderly name you have keyed in does not exist
+   ```
+
+#### Viewing from valid username, but dietary preference has not been set
+Test Case: Viewing dietary preference of an existent username, but has not been set
+1. On the program, attempt to view dietary preference of existent username, but dietary preference not set
+   ```
+   > viewdiet u/hotchic31
+    Dietary preference of owen soh has not been set
+   ```
+
+#### Viewing from valid username and dietary preference has been set
+Test Case: Viewing dietary preference of an existent username, but has been changed
+1. On the program, attempt to view dietary preference of existent username, and dietary preference is set
+   ```
+   > viewdiet u/rheng
+    rachel heng is having a Vegan diet
+   ```
+
+### Viewing blood pressure
+Blood pressure of elderly can be viewed.
+While program is being run, run `viewbloodpressure u/USER_NAME`
+
+Note: Elderly blood pressure defaulted to not set
+View [UG-viewbloodpressure](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#view-blood-pressure-viewbloodpressure) for more information.
+
+
+#### Viewing from invalid username
+Test Case: Viewing blood pressure of a non-existent username
+1. On the program, attempt to view blood pressure of non-existent username
+   ```
+   > viewbloodpressure u/random_username
+    [!] Elderly name you have keyed in does not exist
+   ```
+
+#### Viewing from valid username, but blood pressure has not been set
+Test Case: Viewing blood pressure of an existent username, but has not been set
+1. On the program, attempt to view blood pressure of existent username, but blood pressure not set
+   ```
+   > viewbloodpressure u/hotchic31
+    [*] Blood pressure of owen soh has not yet been set!
+   ```
+
+#### Viewing from valid username and dietary preference has been set
+Test Case: Viewing blood pressure of an existent username, but has been changed
+1. On the program, attempt to view blood pressure of existent username, and blood pressure is set
+   ```
+   > viewbloodpressure u/rheng
+    Blood pressure of rachel heng is now (92 107)
+   ```
+
+### List 
+The information of all elderly can be listed down
+While program is being run, run `list`
+
+View [UG-list](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#list-all-elderly-in-the-system-list) for more information.
+
+
+#### Listing when elderly has not been added
+Test Case: Listing elderly in system when none have been added
+1. On the program, attempt to list all elderly
+   ```
+   > list
+    [*] There are currently 0 elderly registered in the system
+   ```
+
+#### Listing when elderly has been added 
+Test Case: Listing elderly in system when some have been added
+1. On the program, attempt to list all elderly
+   ```
+   > list
+    [*] There are currently 2 elderly registered in the system
+    [*] Risk Level : HIGH
+    [*] Elderly Username: johntan123
+    [*] Elderly Name: John Tan
+    [*] Vaccination status of johntan123: Vaccinated
+    Blood pressure of John Tan is now (120 80)
+    
+    [*] Birthday of johntan123: 1959-10-29
+    [*] Here are johntan123's records:
+    Elderly HP: 87778374, Elderly Address: Blk 2 College Drive
+    
+    [*] Here is the list of upcoming appointments:
+    Location: khoo teck puat hospital, Date: 02012021, Time: 1000, Purpose of Visit: general checkup
+    Location: khoo teck puat hospital, Date: 05032021, Time: 1500, Purpose of Visit: eye checkup
+    
+    [*] This is the list of medicine(s):
+    Medicine Name: paracetamol, Frequency: once a day
+    
+    [*] These are NOK(s) attached to johntan123:
+    NOK Name: peter tan, NOK HP: 98733842, NOK Email: hello-world@gmail.com, NOK Address: Blk 2 College Drive, Relationship: Father
+    
+    [*] Hospital Details :
+    khoo teck puat hospital (Hospital Name)
+    65558000 (Hospital Number)
+    
+    [*] Conditions of elderly johntan123 : amnesia, stage 2 liver cancer, lower body paralysis
+    
+    [*] Doctor for johntan123 :
+    adrian vergil (Doctor Name)
+    88129931 (Doctor Number)
+    
+    [*] Notes on care for johntan123 : at least 3 nurses required to ensure safety when showering. needs daily routine of going on walks at 7am. remember to lock wheelchair when stationary. meals should only be given during mealtimes to prevent overconsumption. reduce salt in food. liver checks to be done every sunday 3pm.
+    
+    [*] Risk Level : LOW
+    [*] Elderly Username: owintoh456
+    [*] Elderly Name: Owin Toh
+    [*] Vaccination status of owintoh456: Not vaccinated
+    [*] Blood pressure of Owin Toh has not yet been set!
+    
+    [*] Birthday of owintoh456: Not Recorded
+    [*] Here are owintoh456's records:
+    
+    
+    [*] Here is the list of upcoming appointments:
+    
+    
+    [*] This is the list of medicine(s):
+    
+    
+    [*] These are NOK(s) attached to owintoh456:
+   ```
+
+### Help
+The list of all commands can be shown
+While program is being run, run `help`
+
+Notes: Commands shown in help screen are split up based on the command type
+View [UG-help](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#show-help-menu-help) for more information.
+
+
+#### Running help
+Test Case: Listing all commands that can be run by the user
+1. On the program, use help command
+   ```
+   > help
+
+    [*] The following is a list of commands:
+    Misc. Commands
+    
+    list - List all elderly in the program
+    help - Prints this help menu
+    bye - Quits Program
+    
+    Creation Commands
+    
+    [*] Add Elderly format: addelderly u/USERNAME n/NAME r/RISK_LEVEL
+    [*] Add Medicine format: addmed u/USERNAME m/MEDICINE_NAME f/FREQUENCY
+    [*] Add Appointment format: addappt u/USERNAME l/LOCATION d/DATE t/TIME p/[PURPOSE]
+    [*] Add Next-Of-Kin information format: addnok u/USERNAME k/NOKNAME p/NOKPHONE e/NOKEMAIL a/NOKADDR r/NOKRSHIP
+    [*] Add Elderly Record Information format: addrec u/USERNAME p/PHONENUMBER a/HOMEADDRESS
+    [*] Add Medical History format: addmedicalhistory u/USERNAME
+    [*] Set Birthday format: setbirthday u/USERNAME b/BIRTHDAY
+    [*] Set Vaccination format: setvaccination u/USERNAME
+    [*] Set Diet format: setdiet u/USERNAME
+    [*] Set Blood Pressure format: setbloodpressure u/USERNAME s/SYSTOLIC_PRESSURE d/DIATOLIC_PRESSURE
+    
+    Reading Commands
+    
+    [*] View Medicine format: viewmed u/USERNAME
+    [*] View Appointment format: viewappt u/USERNAME
+    [*] View Next-Of-Kin format: viewnok u/USERNAME
+    [*] View Elderly Record Information format: viewrec u/USERNAME
+    [*] View Medical History format: viewmedicalhistory u/USERNAME
+    [*] View Birthday format: viewbirthday u/USERNAME
+    [*] View Vaccination format: viewvaccination u/USERNAME
+    [*] View Diet format: viewdiet u/USERNAME
+    [*] View Blood Pressure format: viewbloodpressure u/USERNAME
+    
+    Filter Commands
+    
+    [*] Find By Medicine format: findbymed m/MEDICINE_NAME
+    [*] Find By Diet format: findbydiet d/DIET
+    [*] Find By Name format: findbyname n/NAME
+    
+    Delete Commands
+    
+    [*] Delete format: deleteelderly u/USERNAME
+    [*] Delete medicine format: deletemed u/USERNAME m/MEDICINE_NAME
+    [*] Delete appointment format: deleteappt u/USERNAME d/DATE t/TIME
+    [*] Delete Next-Of-Kin information format: deletenok u/USERNAME n/NOKNAME
+    [*] Delete medical history format: deletemedicalhistory u/USERNAME
+    
+    File I/O Commands
+    
+    [*] Store format: store fp/FILE
+    [*] Load format: load fp/FILE
+   ```
+
+### Bye
+Program termination
+While program is being run, run `bye`
+
+Notes: Elderly inputs are not automatically saved after `bye` is run. Check out `store` command.
+View [UG-bye](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#terminating-bye) for more information.
+
+
+#### Running bye
+Test Case: Terminating program
+1. On the program, use bye command
+   ```
+   > bye
+    [*] Bye command has been recognized. Goodbye!
+   ```
+
+### Finding elderly by medicine
+Elderly can be found based on medicine taken.
+While program is being run, run `findbymed m/MEDICINE_NAME`
+
+View [UG-findbymed](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#find-which-elderly-is-taking-what-medication-findbymed) for more information.
+
+
+#### Finding with medicine name that nobody has
+Test Case: Finding elderly by medicine, but none of the elderly takes the given medicine
+1. On the program, attempt to find elderly by medicine with a random medicine name
+   ```
+   > findbymed m/abacavir
+    [*] This is the results for the following query: abacavir
+    [!] I cannot find abacavir
+   ```
+
+#### Finding with medicine name that at least an elderly has
+Test Case: Finding elderly by medicine, and 2 of the elderly takes the given medicine
+1. On the program, attempt to find elderly by medicine with a medicine name that they take
+   ```
+   > findbymed m/paracetemol
+    [*] This is the results for the following query: paracetemol
+    wutdequack
+    hotchic31
+   ```
+   
+### Finding elderly by diet
+Elderly can be found based on diet taken.
+While program is being run, run `findbydiet d/DIET`
+
+Note: There are fixed diet to be chosen from when setting diet. Hence, weird diet names will just be taken at face value and will not produce useful results.
+View [UG-findbydiet](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#find-which-elderly-is-on-what-kind-of-diet-findbydiet) for more information.
+
+
+#### Finding with diet that nobody has
+Test Case: Finding elderly by diet, but none of the elderly has the given diet
+1. On the program, attempt to find elderly by diet with a diet that nobody takes
+   ```
+   > findbydiet d/chicken only
+    [*] This is the results for the following query: chicken only
+    [!] I cannot find chicken only
+   ```
+
+#### Finding with diet that at least an elderly has
+Test Case: Finding elderly by diet, and 2 of the elderly has the given diet
+1. On the program, attempt to find elderly by diet with a diet that they take
+   ```
+   > findbydiet d/beef free
+    [*] This is the results for the following query: beef free
+    owinsoh
+    rtay
+   ```
+
+### Finding elderly by name
+Elderly can be found based on name.
+While program is being run, run `findbyname n/NAME`
+
+Note: If there are elderly with the same name, both instances will be printed out
+View [UG-findbyname](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#find-elderly-details-given-their-name-findbyname) for more information.
+
+
+#### Finding with name that nobody has
+Test Case: Finding elderly by name, but none of the elderly has the given name
+1. On the program, attempt to find elderly by name with a name that nobody has
+   ```
+   > findbyname n/lim qing qing
+    [*] This is the results for the following query: lim qing qing
+    [!] I cannot find lim qing qing
+   ```
+
+#### Finding with name that at least an elderly has
+Test Case: Finding elderly by name, and 1 of the name has the given name
+1. On the program, attempt to find elderly by name, where someone has given name
+   ```
+   > findbyname n/jonathan lee
+    [*] This is the results for the following query: jonathan lee
+    [*] Risk Level : HIGH
+    [*] Elderly Username: wutdequack
+    [*] Elderly Name: jonathan lee
+    [*] Diet Preference of wutdequack: No restriction
+    [*] Vaccination status of wutdequack: Not vaccinated
+    [*] Blood pressure of jonathan lee is now (60 70)
+    [*] Birthday of wutdequack: 1959-02-01
+    [*] Medical History: Heart Disease
+    [*] Here are wutdequack's records:
+    Elderly HP: 88883823, Elderly Address: Blk 10 Some Road
+    
+    [*] Here is the list of upcoming appointments:
+    Location: ng teng fong general hospital, Date: 20112021, Time: 1130, Purpose of Visit: routine checkup
+    
+    [*] This is the list of medicine(s):
+    Medicine Name: paracetemol, Frequency: daily
+    
+    [*] These are NOK(s) attached to wutdequack:
+    NOK Name: Pita Lee, NOK HP: 91898372, NOK Email: gg@gg.com, NOK Address: Blk 10 Some Road, Relationship: Cousin
+    
+    [*] Hospital Details :
+    national university hospital (Hospital Name)
+    67795555 (Hospital Number)
+    
+    [*] Conditions of elderly wutdequack : strong migraines. Currently has concussion
+    
+    [*] Doctor for wutdequack :
+    juan chelsie (Doctor Name)
+    97915260 (Doctor Number)
+    
+    [*] Notes on care for wutdequack : Doctor to monitor status upon routine check ups
+   ```
+
+### Deleting elderly from records
+Elderly record can be deleted.
+While program is being run, run `deleteelderly u/USERNAME`
+
+View [UG-deleteelderly](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#delete-elderly-from-system-given-username-deleteelderly) for more information.
+
+
+#### Deleting an elderly record but username not in system
+Test Case: Deleting elderly record, but username is not in system
+1. On the program, attempt to delete elderly, but with non-existent username
+   ```
+   > deleteelderly u/superman123
+    [!] I cannot find superman123
+   ```
+
+#### Deleting an elderly record and username is in system
+Test Case: Deleting elderly record, and username is in system
+1. On the program, attempt to delete elderly, but with existent username
+   ```
+   > deleteelderly u/wutdequack
+    [*] wutdequack has been deleted.
+   ```
+
+### Deleting elderly medicine from records
+Medicine record from given elderly can be deleted.
+While program is being run, run `deletemed u/USERNAME m/MEDICINE_NAME`
+
+View [UG-deletemed](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#delete-medicine-from-elderly-deletemed) for more information.
+
+#### Deleting a medicine record from non-existent elderly
+Test Case: Deleting medicine record, but elderly username is not in system
+1. On the program, attempt to delete medicine, but with non-existent username
+   ```
+   > deletemed u/username1234 m/paracetemol
+    [!] Elderly name you have keyed in does not exist
+   ```
+
+#### Deleting a medicine record from existent elderly but medicine name not in system
+Test Case: Deleting medicine record that does not exist, but elderly username exists
+1. On the program, attempt to delete non-existent medicine from existing elderly
+   ```
+   > deletemed u/rheng m/abacavir
+    No Medicine found
+   ```
+
+#### Deleting an existing medicine record from existent elderly
+Test Case: Deleting existing medicine record from existing elderly
+1. On the program, attempt to delete medicine record from given elderly
+   ```
+   > deletemed u/rheng m/panadol
+    These medicine details are now deleted:
+    Medicine Name: panadol, Frequency: 3 times a day
+   ```
+
+### Deleting elderly appointment from records
+Appointment record from given elderly can be deleted.
+While program is being run, run `deleteappt u/USERNAME d/DATE t/TIME`
+
+Note: Error checking for datetime has already been done when adding appointment, hence we do not provide an indifferent error message when invalid datetime is shown.
+View [UG-deleteappt](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#delete-appointment-from-elderly-deleteappt) for more information.
+
+#### Deleting an appointment record from non-existent elderly
+Test Case: Deleting appointment record, but elderly username is not in system
+1. On the program, attempt to delete appointment, but with non-existent username
+   ```
+   > deleteappt u/username1234 d/09092021 t/0900
+    [!] Elderly name you have keyed in does not exist
+   ```
+
+#### Deleting an appointment record from existent elderly but appointment details not in system
+Test Case: Deleting appointment record that does not exist, but elderly username exists
+1. On the program, attempt to delete non-existent appointment from existing elderly
+   ```
+   > deleteappt u/rheng d/09092021 t/0900
+    No Appointment found
+   ```
+
+#### Deleting an appointment record from existent elderly but invalid datetime given
+Test Case: Deleting appointment record that has incorrect datetime format, but elderly username exists
+1. On the program, attempt to delete non-existent appointment from existing elderly
+   ```
+   deleteappt u/rheng d/09092021 t/2500
+    No Appointment found
+   ```
+
+#### Deleting an existing appointment record from existent elderly
+Test Case: Deleting existing appointment record from existing elderly
+1. On the program, attempt to delete appointment record from given elderly
+   ```
+   > deleteappt u/rheng d/06022022 t/1330
+    These appointment details are now deleted:
+    Location: singapore general hospital, Date: 06022022, Time: 1330, Purpose of Visit: general checkup
+   ```
+
+### Deleting elderly next of kin from records
+Next of kin (nok) record from given elderly can be deleted.
+While program is being run, run `deletenok u/USERNAME n/NOKNAME`
+
+View [UG-deletenok](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#delete-next-of-kin-contact-from-elderly-deletenok) for more information.
+
+#### Deleting a nok record from non-existent elderly
+Test Case: Deleting nok record, but elderly username is not in system
+1. On the program, attempt to delete nok, but with non-existent username
+   ```
+   > deletenok u/username1234 n/jack lee
+    [!] Elderly name you have keyed in does not exist
+   ```
+
+#### Deleting a nok record from existent elderly but appointment details not in system
+Test Case: Deleting nok record that does not exist, but elderly username exists
+1. On the program, attempt to delete non-existent nok from existing elderly
+   ```
+   > deletenok u/rheng n/jack lee
+    No Next-Of-Kin found
+   ```
+
+#### Deleting an existing nok record from existent elderly
+Test Case: Deleting existing nok record from existing elderly
+1. On the program, attempt to delete nok record from given elderly
+   ```
+   > deletenok u/rheng n/mina lee
+    These details are now deleted:
+    NOK Name: Mina Lee, NOK HP: 89273642, NOK Email: mlee@gmail.com, NOK Address: Blk 1 Lorong Chuan, Relationship: Friend
+   ```
+
+### Deleting elderly medical history from records
+Medical history record from given elderly can be deleted.
+While program is being run, run `deletemedicalhistory u/USERNAME`
+
+View [UG-deletemedicalhistory](https://ay2122s1-cs2113-t16-2.github.io/tp/UserGuide.html#delete-previous-medication-history-information-from-elderly-deletemedicalhistory) for more information.
+
+#### Deleting a medical history record from non-existent elderly
+Test Case: Deleting medical history record, but elderly username is not in system
+1. On the program, attempt to delete medical history, but with non-existent username
+   ```
+   > deletemedicalhistory u/username1234
+    [!] Elderly name you have keyed in does not exist
+   ```
+
+#### Deleting an existing medical history record from existent elderly
+Test Case: Deleting existing medical history record from existing elderly
+1. On the program, attempt to delete medical history record from given elderly
+   ```
+   > deletemedicalhistory u/username1234
+    [!] Elderly name you have keyed in does not exist
+    > deletemedicalhistory u/rheng
+    [*] Are you sure you want to delete the medical history of rachel heng? (Y/N)
+    > Y
+    [*] Medical history of rachel heng has been deleted
+   ```
+   
