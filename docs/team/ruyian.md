@@ -65,6 +65,6 @@ to distinguish the methods that have similar names in different classes
 (e.g. deleteElderlyMedicalHistory in Elderly class and deleteMedicalHistory in ElderlyList class)
 6. Add javadocs to the public methods
 
-#### Other Relevant Links
+### Other Relevant Links
 
 - [List of issues resolved](https://github.com/AY2122S1-CS2113-T16-2/tp/issues?q=is%3Aissue+assignee%3Aruyian)
