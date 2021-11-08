@@ -9,12 +9,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,10 +25,6 @@ import seedu.duke.common.Appointment;
 import seedu.duke.common.MediumRiskElderly;
 import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
-
-
-import seedu.duke.hospital.Doctor;
-import seedu.duke.hospital.Hospital;
 
 
 import seedu.duke.exceptions.DoctorIndexException;
@@ -65,6 +59,13 @@ import seedu.duke.exceptions.InvalidSetVaccinationException;
 import seedu.duke.exceptions.InvalidViewVaccinationException;
 import seedu.duke.exceptions.InvalidSetBirthdayException;
 import seedu.duke.exceptions.InvalidViewBirthdayException;
+import seedu.duke.exceptions.InvalidViewBloodPressureException;
+import seedu.duke.exceptions.InvalidAddMedicalHistoryException;
+import seedu.duke.exceptions.InvalidDeleteMedicalHistoryException;
+import seedu.duke.exceptions.InvalidViewMedicalHistoryException;
+
+import seedu.duke.hospital.Doctor;
+import seedu.duke.hospital.Hospital;
 
 
 import com.google.gson.Gson;
@@ -157,7 +158,7 @@ public class ElderlyList {
      * @return Boolean value if elderly exists in array list
      */
     private int elderlyCount(String inputElderlyName) {
-        return (int)elderlyArrayList
+        return (int) elderlyArrayList
                 .stream()
                 .filter(s -> s.getUsername().equals(inputElderlyName))
                 .count();
@@ -252,7 +253,7 @@ public class ElderlyList {
      * @param userName    username of elderly.
      * @param elderlyName name of elderly.
      * @throws HospitalIndexException if the hospital index keyed in is out of range.
-     * @throws DoctorIndexException if the doctor index keyed in is out of range.
+     * @throws DoctorIndexException   if the doctor index keyed in is out of range.
      */
     private Elderly addHighRiskElderly(String userName, String elderlyName) throws HospitalIndexException,
             DoctorIndexException {
@@ -384,7 +385,6 @@ public class ElderlyList {
      * Takes in date and checks if the date is valid.
      *
      * @param date Date that is to be checked.
-     *
      * @return True if date is valid, false if the date is invalid.
      */
     private boolean isValidDate(String date) {
@@ -411,7 +411,6 @@ public class ElderlyList {
      * Takes in the time and checks if it is valid.
      *
      * @param time Time that is to be checked.
-     *
      * @return True if the time is valid and false if the time is invalid.
      */
     private boolean isValidTime(String time) {
@@ -736,11 +735,16 @@ public class ElderlyList {
      */
     public void viewBloodPressure(String userLine) {
         try {
+            if (!re.isValidViewBloodPressureCommand(userLine)) {
+                throw new InvalidViewBloodPressureException();
+            }
             String[] paramList = userLine.split(" u/");
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             printBloodPressure(elderly);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         } catch (DukeException e) {
             ui.printDukeException(e);
         }
@@ -750,6 +754,7 @@ public class ElderlyList {
         int[] bloodPressure = elderly.getElderlyBloodPressure();
         if (!elderly.isBloodPressureSet()) {
             System.out.printf(MESSAGE_NO_BLOOD_PRESSURE, elderly.getName());
+            System.out.printf("%n");
         } else {
             System.out.printf("Blood pressure of %s is now (%d %d)%n", elderly.getName(),
                     bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
@@ -853,21 +858,22 @@ public class ElderlyList {
             if (!re.isValidSetVaccinationCommand(userLine)) {
                 throw new InvalidSetVaccinationException();
             }
-        } catch (InvalidInputException e) {
-            ui.printInvalidInputException(e);
-        }
-        String[] paramList = userLine.split(" u/");
-        assert paramList.length == 2 : "setvaccinated input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
-        Elderly elderly;
-        try {
+            String[] paramList = userLine.split(" u/");
+            assert paramList.length == 2 : "setvaccinated input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            Elderly elderly;
+
             elderly = getElderly(elderlyName);
             elderly.setElderlyVaccinated();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
             ui.printDukeException(e);
             return Optional.empty();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+            return Optional.empty();
         }
+
     }
 
     /**
@@ -880,16 +886,15 @@ public class ElderlyList {
             if (!re.isValidViewVaccinationCommand(userLine)) {
                 throw new InvalidViewVaccinationException();
             }
-        } catch (InvalidInputException e) {
-            ui.printInvalidInputException(e);
-        }
-        String[] paramList = userLine.split(" u/");
-        assert paramList.length == 2 : "Username is empty";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
-        try {
+            String[] paramList = userLine.split(" u/");
+            assert paramList.length == 2 : "Username is empty";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+
             Elderly elderly = getElderly(elderlyName);
             elderly.printVaccinationStatus();
-        } catch (DukeException e) {
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        } catch (ElderlyNotFoundException e) {
             ui.printDukeException(e);
         }
     }
@@ -904,19 +909,20 @@ public class ElderlyList {
             if (!re.isValidSetDietCommand(userLine)) {
                 throw new InvalidSetDietCommandException();
             }
-        } catch (InvalidInputException e) {
-            ui.printInvalidInputException(e);
-        }
-        String[] paramList = userLine.split(" u/");
-        assert paramList.length == 2 : "setdiet input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
-        Elderly elderly;
-        try {
+
+            String[] paramList = userLine.split(" u/");
+            assert paramList.length == 2 : "setdiet input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            Elderly elderly;
+
             elderly = getElderly(elderlyName);
             elderly.setElderlyDietByUserChoice();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
             ui.printDukeException(e);
+            return Optional.empty();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
             return Optional.empty();
         }
     }
@@ -931,16 +937,14 @@ public class ElderlyList {
             if (!re.isValidViewDietCommand(userLine)) {
                 throw new InvalidViewDietCommandException();
             }
-        } catch (InvalidInputException e) {
-            ui.printInvalidInputException(e);
-        }
-        try {
             String[] paramList = userLine.split(" u/");
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printElderlyDietaryPreference();
-        } catch (DukeException e) {
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
+        } catch (ElderlyNotFoundException e) {
             ui.printDukeException(e);
         }
     }
@@ -951,16 +955,22 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> addMedicalHistory(String userLine) {
-        String[] paramList = userLine.split(" u/");
-        assert paramList.length == 2 : "addmedicalhistory input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
-        Elderly elderly;
         try {
+            if (!re.isValidAddMedicalHistoryCommand(userLine)) {
+                throw new InvalidAddMedicalHistoryException();
+            }
+            String[] paramList = userLine.split(" u/");
+            assert paramList.length == 2 : "addmedicalhistory input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            Elderly elderly;
             elderly = getElderly(elderlyName);
             elderly.setElderlyMedicalHistory();
             return Optional.of(elderly);
         } catch (ElderlyNotFoundException e) {
             ui.printDukeException(e);
+            return Optional.empty();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
             return Optional.empty();
         }
     }
@@ -972,13 +982,18 @@ public class ElderlyList {
      */
     public void viewMedicalHistory(String userLine) {
         try {
+            if (!re.isValidViewMedicalHistoryCommand(userLine)) {
+                throw new InvalidViewMedicalHistoryException();
+            }
             String[] paramList = userLine.split(" u/");
             assert paramList.length == 2 : "Username is empty";
             String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
             Elderly elderly = getElderly(elderlyName);
             elderly.printElderlyMedicalHistory();
-        } catch (DukeException e) {
+        } catch (ElderlyNotFoundException e) {
             ui.printDukeException(e);
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
         }
     }
 
@@ -988,17 +1003,25 @@ public class ElderlyList {
      * @param userLine Line that has been inputted by user.
      */
     public Optional<Elderly> deleteMedicalHistory(String userLine) {
-        String[] paramList = userLine.split(" u/");
-        assert paramList.length == 2 : "deletemedicalhistory input does not have all required values";
-        String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
-        Elderly elderly;
-        Elderly returningElderly;
         try {
+            if (!re.isValidDeleteMedicalHistoryCommand(userLine)) {
+                throw new InvalidDeleteMedicalHistoryException();
+            }
+
+            String[] paramList = userLine.split(" u/");
+            assert paramList.length == 2 : "deletemedicalhistory input does not have all required values";
+            String elderlyName = paramList[INDEX_OF_ELDERLY_USERNAME];
+            Elderly elderly;
+            Elderly returningElderly;
+
             elderly = getElderly(elderlyName);
             returningElderly = elderly.deleteElderlyMedicalHistory();
             return Optional.of(returningElderly);
         } catch (ElderlyNotFoundException e) {
             ui.printDukeException(e);
+            return Optional.empty();
+        } catch (InvalidInputException e) {
+            ui.printInvalidInputException(e);
             return Optional.empty();
         }
     }
@@ -1300,26 +1323,27 @@ public class ElderlyList {
 
     /**
      * Checks for default elderly object to see if there are any violations.
+     *
      * @param elderly Elderly object.
      * @return Boolean value.
      */
     private boolean isValidGenericElderly(Elderly elderly) {
         // Check for appointment date and time
-        for (Appointment appointment: elderly.getAppointments()) {
+        for (Appointment appointment : elderly.getAppointments()) {
             // If fields are incorrect
             if (!isValidDate(appointment.getDate()) || !isValidTime(appointment.getTime())) {
                 return false;
             }
         }
         // Check for employee email and phone number
-        for (NextOfKin nextOfKin: elderly.getNextOfKin()) {
+        for (NextOfKin nextOfKin : elderly.getNextOfKin()) {
             if (!re.isValidEmail(nextOfKin.getNokEmail()) || !re.isValidHpNumber(nextOfKin.getNokPhoneNumber())) {
                 return false;
             }
         }
 
         // Check for phone numbers
-        for (Record record: elderly.getRecord()) {
+        for (Record record : elderly.getRecord()) {
             if (!re.isValidHpNumber(record.getElderlyPhoneNumber())) {
                 return false;
             }
@@ -1385,6 +1409,7 @@ public class ElderlyList {
 
     /**
      * Checks if elderly list is in the correct format.
+     *
      * @return Boolean value.
      */
     private boolean isElderlyListCorrectFormat() {
