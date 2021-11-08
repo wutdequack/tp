@@ -134,6 +134,22 @@ public class RegexChecker {
         return Pattern.matches("^viewbirthday u/[a-z0-9]+$", userLine.toLowerCase());
     }
 
+    public boolean isValidDeleteMedicalHistoryCommand(String userLine) {
+        return Pattern.matches("^deletemedicalhistory u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidAddMedicalHistoryCommand(String userLine) {
+        return Pattern.matches("^addmedicalhistory u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidViewMedicalHistoryCommand(String userLine) {
+        return Pattern.matches("^addmedicalhistory u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
+    public boolean isValidViewBloodPressureCommand(String userLine) {
+        return Pattern.matches("^viewbloodpressure u/[a-z0-9]+$", userLine.toLowerCase());
+    }
+
     /**
      * Takes 2 strings and compare the distance(similarity) between them.
      *

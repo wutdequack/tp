@@ -161,6 +161,10 @@ public class Messages {
     public static final String MESSAGE_DELETE_NOK_FORMAT = "[*] Delete Next-Of-Kin information format: deletenok "
             + "u/USERNAME n/NOKNAME";
 
+    public static final String MESSAGE_DELETE_MEDICAL_HISTORY_FORMAT =
+            "[*] Delete medical history information format: deletenok "
+            + "u/USERNAME";
+
     public static final String MESSAGE_DELETE_MEDICINE_FORMAT = "[*] Delete medicine format: deletemed "
             + "u/USERNAME m/MEDICINE_NAME";
 
@@ -174,6 +178,25 @@ public class Messages {
      * Used when invalid viewnok is typed.
      */
     public static final String MESSAGE_VIEW_NOK_FORMAT = "[*] View Next-Of-Kin format: viewnok u/USERNAME";
+
+    /**
+     * Used when invalid viewmedicalhistory is typed.
+     */
+    public static final String MESSAGE_VIEW_MEDICAL_HISTORY_FORMAT =
+            "[*] View Medical History format: viewmedicalhistory u/USERNAME";
+
+    /**
+     * Used when invalid addmedicalhistory is typed.
+     */
+    public static final String MESSAGE_ADD_MEDICAL_HISTORY_FORMAT =
+            "[*] Set Medical History format: addmedicalhistory u/USERNAME";
+
+    /**
+     * Used when invalid addmedicalhistory is typed.
+     */
+    public static final String MESSAGE_VIEW_BLOOD_PRESSURE_FORMAT =
+            "[*] Set View Blood Pressure format: viewbloodpressure u/USERNAME";
+
 
     /**
      * Used when Next-Of_kin has been added.
@@ -278,7 +301,7 @@ public class Messages {
     /**
      * Used when blood pressure of the elderly has not been set.
      */
-    public static final String MESSAGE_NO_BLOOD_PRESSURE = "[*] Blood pressure of %s has not yet been set!";
+    public static final String MESSAGE_NO_BLOOD_PRESSURE = "[*] Blood pressure of %s has not yet been set!%n";
 
     /**
      * Used when dietary preference of the elderly has been updated.
