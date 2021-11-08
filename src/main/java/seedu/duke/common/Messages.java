@@ -301,7 +301,7 @@ public class Messages {
     /**
      * Used when blood pressure of the elderly has not been set.
      */
-    public static final String MESSAGE_NO_BLOOD_PRESSURE = "[*] Blood pressure of %s has not yet been set!%n";
+    public static final String MESSAGE_NO_BLOOD_PRESSURE = "[*] Blood pressure of %s has not yet been set!";
 
     /**
      * Used when dietary preference of the elderly has been updated.

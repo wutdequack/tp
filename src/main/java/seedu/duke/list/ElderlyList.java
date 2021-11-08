@@ -754,6 +754,7 @@ public class ElderlyList {
         int[] bloodPressure = elderly.getElderlyBloodPressure();
         if (!elderly.isBloodPressureSet()) {
             System.out.printf(MESSAGE_NO_BLOOD_PRESSURE, elderly.getName());
+            System.out.printf("%n");
         } else {
             System.out.printf("Blood pressure of %s is now (%d %d)%n", elderly.getName(),
                     bloodPressure[INDEX_OF_SYSTOLIC_PRESSURE_IN_ARRAY],
