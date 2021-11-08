@@ -27,7 +27,43 @@ import seedu.duke.common.NextOfKin;
 import seedu.duke.common.Record;
 
 
-import seedu.duke.exceptions.*;
+import seedu.duke.exceptions.DoctorIndexException;
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.DuplicateElderlyException;
+import seedu.duke.exceptions.ElderlyNotFoundException;
+import seedu.duke.exceptions.HospitalIndexException;
+import seedu.duke.exceptions.InvalidAddMedicineFormatException;
+import seedu.duke.exceptions.InvalidAddNokFormatException;
+import seedu.duke.exceptions.InvalidAddRecordFormatException;
+import seedu.duke.exceptions.InvalidDeleteApptFormatException;
+import seedu.duke.exceptions.InvalidDeleteElderlyException;
+import seedu.duke.exceptions.InvalidDeleteMedFormatException;
+import seedu.duke.exceptions.InvalidDeleteNokFormatException;
+import seedu.duke.exceptions.InvalidElderlyFormatException;
+import seedu.duke.exceptions.InvalidLoadFromFilePathException;
+import seedu.duke.exceptions.InvalidSetBloodPressureException;
+import seedu.duke.exceptions.InvalidViewMedicineFormatException;
+import seedu.duke.exceptions.InvalidAddAppointmentFormatException;
+import seedu.duke.exceptions.InvalidViewAppointmentFormatException;
+import seedu.duke.exceptions.InvalidStoreToFilePathException;
+import seedu.duke.exceptions.InvalidViewByNameException;
+import seedu.duke.exceptions.InvalidViewDietException;
+import seedu.duke.exceptions.InvalidViewMedicineException;
+import seedu.duke.exceptions.InvalidViewNokFormatException;
+import seedu.duke.exceptions.InvalidViewRecordFormatException;
+import seedu.duke.exceptions.InvalidRiskLevelException;
+import seedu.duke.exceptions.InvalidInputException;
+import seedu.duke.exceptions.InvalidViewDietCommandException;
+import seedu.duke.exceptions.InvalidSetDietCommandException;
+import seedu.duke.exceptions.InvalidSetVaccinationException;
+import seedu.duke.exceptions.InvalidViewVaccinationException;
+import seedu.duke.exceptions.InvalidSetBirthdayException;
+import seedu.duke.exceptions.InvalidViewBirthdayException;
+import seedu.duke.exceptions.InvalidViewBloodPressureException;
+import seedu.duke.exceptions.InvalidAddMedicalHistoryException;
+import seedu.duke.exceptions.InvalidDeleteMedicalHistoryException;
+import seedu.duke.exceptions.InvalidViewMedicalHistoryException;
+
 import seedu.duke.hospital.Doctor;
 import seedu.duke.hospital.Hospital;
 
@@ -946,7 +982,7 @@ public class ElderlyList {
     public void viewMedicalHistory(String userLine) {
         try {
             if (!re.isValidViewMedicalHistoryCommand(userLine)) {
-                throw new InvalidViewMedicalHistoryFormat();
+                throw new InvalidViewMedicalHistoryException();
             }
             String[] paramList = userLine.split(" u/");
             assert paramList.length == 2 : "Username is empty";
